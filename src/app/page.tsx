@@ -124,7 +124,7 @@ export default function Home() {
 
             {/* Right Column: Floating White Widget Card */}
             <div className="lg:col-span-5">
-              <div className="rounded-3xl bg-white p-8 text-slate-800 shadow-2xl relative border border-slate-100/80">
+              <div className="rounded-3xl bg-white p-8 text-slate-800 shadow-2xl relative border border-slate-100/80 max-w-[450px] mx-auto lg:ml-auto">
                 {/* Floating Green Circle Badge */}
                 <div className="absolute -top-6 left-1/2 -translate-x-1/2 h-12 w-12 rounded-full bg-[#036829] border-4 border-white flex items-center justify-center text-white text-lg font-bold shadow-md">
                   📋
