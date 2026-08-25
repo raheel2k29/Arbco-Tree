@@ -45,7 +45,7 @@ export default function Home() {
             </a>
             <Link
               href="/book-quote"
-              className="rounded-full bg-[#036829] px-6 py-3 text-sm font-extrabold text-white shadow-md hover:bg-emerald-800 hover:scale-[1.02] transition-all"
+              className="quote-btn-gradient rounded-full px-6 py-3 text-sm font-extrabold text-white"
             >
               Get Free Quote
             </Link>
@@ -93,7 +93,7 @@ export default function Home() {
               <div className="flex flex-wrap gap-4 pt-2">
                 <Link
                   href="/book-quote"
-                  className="inline-flex items-center gap-2 rounded-lg bg-[#5ba625] hover:bg-[#4d8b1e] px-6 py-3.5 text-sm font-extrabold text-white shadow-md transition-all hover:scale-[1.02]"
+                  className="quote-btn-gradient inline-flex items-center gap-2 rounded-lg px-6 py-3.5 text-sm font-extrabold text-white"
                 >
                   Request a Free Quote <span className="text-xs">→</span>
                 </Link>
@@ -179,7 +179,7 @@ export default function Home() {
                   </div>
                   <button
                     type="submit"
-                    className="w-full rounded-xl bg-[#398018] hover:bg-[#2d6512] text-white font-extrabold py-4 transition-all shadow-md font-heading"
+                    className="quote-btn-gradient w-full rounded-lg text-white font-extrabold py-4 font-heading cursor-pointer"
                   >
                     Get My Free Quote
                   </button>
