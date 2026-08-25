@@ -62,12 +62,12 @@ export default function Home() {
             loop
             muted
             playsInline
-            className="absolute inset-0 h-full w-full object-cover opacity-45"
+            className="absolute inset-0 h-full w-full object-cover opacity-75"
           >
             <source src="/hero%20sec%20video.mp4" type="video/mp4" />
             Your browser does not support the video tag.
           </video>
-          <div className="absolute inset-0 bg-[#023014]/85" />
+          <div className="absolute inset-0 bg-slate-950/50" />
         </div>
         
         <div className="relative z-10 mx-auto max-w-7xl px-4 lg:px-8">
