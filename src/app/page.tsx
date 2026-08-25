@@ -14,7 +14,7 @@ export default function Home() {
 
       {/* Header / Navbar */}
       <header className="sticky top-0 z-50 bg-white/90 shadow-sm backdrop-blur-md border-b border-slate-100">
-        <div className="mx-auto flex max-w-7xl items-center justify-between p-4 lg:px-8">
+        <div className="mx-auto flex max-w-[1440px] items-center justify-between p-4 lg:px-8">
           <Link href="/" className="flex items-center">
             <Image
               src="/logo.png"
@@ -70,7 +70,7 @@ export default function Home() {
           <div className="absolute inset-0 bg-slate-950/50" />
         </div>
         
-        <div className="relative z-10 mx-auto max-w-7xl px-4 lg:px-8">
+        <div className="relative z-10 mx-auto max-w-[1440px] px-4 lg:px-8">
           <div className="grid gap-12 lg:grid-cols-12 lg:items-center">
             {/* Left Column: Heading and info */}
             <div className="lg:col-span-7 space-y-6">
@@ -176,7 +176,7 @@ export default function Home() {
 
       {/* Services Grid Section */}
       <section className="py-24 bg-white">
-        <div className="mx-auto max-w-7xl px-4 lg:px-8">
+        <div className="mx-auto max-w-[1440px] px-4 lg:px-8">
           <div className="text-center max-w-3xl mx-auto space-y-4 mb-16">
             <span className="text-[#036829] font-black uppercase tracking-wider text-xs">Arbco Services</span>
             <h2 className="text-3xl font-extrabold tracking-tight sm:text-4xl text-slate-900 font-heading">
@@ -306,7 +306,7 @@ export default function Home() {
 
       {/* 4-Step Process Timeline */}
       <section className="py-20 lg:py-28 bg-slate-50 border-t border-b border-slate-100">
-        <div className="mx-auto max-w-7xl px-4 lg:px-8">
+        <div className="mx-auto max-w-[1440px] px-4 lg:px-8">
           <div className="text-center max-w-3xl mx-auto space-y-4 mb-20">
             <span className="text-[#036829] font-black uppercase tracking-wider text-xs">How We Work</span>
             <h2 className="text-3xl font-extrabold tracking-tight sm:text-4xl text-slate-900 font-heading">
@@ -359,7 +359,7 @@ export default function Home() {
 
       {/* Why Choose Us */}
       <section className="py-24 bg-white">
-        <div className="mx-auto max-w-7xl px-4 lg:px-8">
+        <div className="mx-auto max-w-[1440px] px-4 lg:px-8">
           <div className="grid gap-12 lg:grid-cols-12 lg:items-center">
             {/* Left side: Checklist content */}
             <div className="lg:col-span-7 space-y-6">
@@ -416,7 +416,7 @@ export default function Home() {
             className="object-cover"
           />
         </div>
-        <div className="relative z-10 mx-auto max-w-7xl px-4 lg:px-8 space-y-12">
+        <div className="relative z-10 mx-auto max-w-[1440px] px-4 lg:px-8 space-y-12">
           <h2 className="text-3xl font-extrabold tracking-tight sm:text-4xl font-heading">
             What makes Arbco Tree the trusted experts?
           </h2>
@@ -452,7 +452,7 @@ export default function Home() {
 
       {/* Google Reviews Section */}
       <section className="py-24 bg-white">
-        <div className="mx-auto max-w-7xl px-4 lg:px-8 text-center space-y-12">
+        <div className="mx-auto max-w-[1440px] px-4 lg:px-8 text-center space-y-12">
           <div className="max-w-3xl mx-auto space-y-4">
             <span className="text-[#036829] font-black uppercase tracking-wider text-xs">Testimonials</span>
             <h2 className="text-3xl font-extrabold tracking-tight sm:text-4xl text-slate-900 font-heading">
@@ -496,7 +496,7 @@ export default function Home() {
 
       {/* Map & Service Regions */}
       <section className="py-24 bg-slate-50 border-t border-b border-slate-200/50">
-        <div className="mx-auto max-w-7xl px-4 lg:px-8">
+        <div className="mx-auto max-w-[1440px] px-4 lg:px-8">
           <div className="grid gap-12 lg:grid-cols-12 lg:items-center">
             {/* Left side: Map representation */}
             <div className="lg:col-span-6 h-[400px] rounded-3xl overflow-hidden relative shadow-inner">
@@ -559,7 +559,7 @@ export default function Home() {
 
       {/* Footer */}
       <footer className="bg-emerald-950 text-slate-300 py-16 border-t border-emerald-900/60 font-sans">
-        <div className="mx-auto max-w-7xl px-4 lg:px-8 grid gap-12 md:grid-cols-2 lg:grid-cols-4">
+        <div className="mx-auto max-w-[1440px] px-4 lg:px-8 grid gap-12 md:grid-cols-2 lg:grid-cols-4">
           {/* Column 1: Info */}
           <div className="space-y-4">
             <Image
@@ -610,7 +610,7 @@ export default function Home() {
         </div>
 
         {/* Bottom Bar: Copyright & Badges */}
-        <div className="mx-auto max-w-7xl px-4 lg:px-8 mt-16 pt-8 border-t border-emerald-900/60 flex flex-col md:flex-row items-center justify-between gap-4 text-xs">
+        <div className="mx-auto max-w-[1440px] px-4 lg:px-8 mt-16 pt-8 border-t border-emerald-900/60 flex flex-col md:flex-row items-center justify-between gap-4 text-xs">
           <p>&copy; {new Date().getFullYear()} Arbco Tree Solutions. All rights reserved. Created in Next.js.</p>
           <div className="flex gap-4">
             <span className="text-slate-400">ABN: 67 608 227 343</span>
