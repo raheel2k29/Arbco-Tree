@@ -55,15 +55,18 @@ export default function Home() {
 
       {/* Hero Section */}
       <section className="relative bg-emerald-950 py-24 lg:py-36 text-white overflow-hidden">
-        {/* Next.js Image component for background instead of unreliable CSS bg-[url] */}
+        {/* Looping HTML5 Background Video */}
         <div className="absolute inset-0 z-0">
-          <Image
-            src="https://images.unsplash.com/photo-1542273917363-3b1817f69a2d?auto=format&fit=crop&q=80&w=2000"
-            alt="Arborist working on tall trees"
-            fill
-            priority
-            className="object-cover opacity-25 mix-blend-overlay"
-          />
+          <video
+            autoPlay
+            loop
+            muted
+            playsInline
+            className="absolute inset-0 h-full w-full object-cover opacity-25"
+          >
+            <source src="/hero%20sec%20video.mp4" type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
           <div className="absolute inset-0 bg-gradient-to-r from-emerald-950/95 via-emerald-950/80 to-transparent" />
         </div>
         
