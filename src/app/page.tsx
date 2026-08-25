@@ -74,35 +74,63 @@ export default function Home() {
           <div className="grid gap-12 lg:grid-cols-12 lg:items-center">
             {/* Left Column: Heading and info */}
             <div className="lg:col-span-7 space-y-6">
-              <span className="inline-flex items-center gap-2 rounded-full bg-emerald-500/10 border border-emerald-400/20 px-4.5 py-2 text-xs font-bold uppercase tracking-wider text-emerald-300">
-                🌱 Melbourne’s Premium Tree Care & Arborists
+              <span className="text-[#7cc043] font-black uppercase tracking-widest text-xs sm:text-sm block font-heading">
+                SAFE. RELIABLE. PROFESSIONAL.
               </span>
               <h1 className="text-4xl font-extrabold tracking-tight sm:text-5xl lg:text-6xl leading-tight font-heading text-white">
-                Safe, Professional <br />
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-teal-200">
-                  Tree Removal & Arboriculture
-                </span>
+                Expert Tree <br />
+                Removal & Arborist <br />
+                Services in <span className="text-[#7cc043] italic relative font-heading">Melbourne</span>
               </h1>
-              <p className="max-w-xl text-lg text-slate-300 leading-relaxed font-sans">
-                Arbco Tree Solutions delivers expert tree care, technical removals, stump grinding, and arborist reports. We combine decades of experience with rigorous safety standards to protect your home and landscape.
+              <p className="max-w-xl text-base sm:text-lg text-slate-300 leading-relaxed font-sans">
+                Arbco Tree Solutions provides professional tree removal, pruning, stump grinding and arborist solutions with a focus on safety, care and customer satisfaction.
               </p>
               
-              <div className="flex flex-wrap gap-4 pt-4">
-                <div className="flex items-center gap-2 rounded-xl bg-white/5 border border-white/10 px-5 py-3 text-sm text-slate-200 backdrop-blur-sm">
-                  🛡️ $20M Insurance Cover
+              <div className="flex flex-wrap gap-4 pt-2">
+                <Link
+                  href="/book-quote"
+                  className="inline-flex items-center gap-2 rounded-lg bg-[#5ba625] hover:bg-[#4d8b1e] px-6 py-3.5 text-sm font-extrabold text-white shadow-md transition-all hover:scale-[1.02]"
+                >
+                  Request a Free Quote <span className="text-xs">→</span>
+                </Link>
+                <Link
+                  href="/services"
+                  className="inline-flex items-center gap-2 rounded-lg border border-slate-400 hover:border-white px-6 py-3.5 text-sm font-extrabold text-white transition-all"
+                >
+                  Our Services <span className="text-xs">→</span>
+                </Link>
+              </div>
+
+              {/* Bottom Trust Badges row */}
+              <div className="flex flex-wrap gap-x-6 gap-y-3 pt-6 border-t border-white/10 text-xs font-bold text-slate-300 font-heading">
+                <div className="flex items-center gap-1.5">
+                  <span className="text-[#7cc043] text-sm">👤</span> Qualified Arborists
                 </div>
-                <div className="flex items-center gap-2 rounded-xl bg-white/5 border border-white/10 px-5 py-3 text-sm text-slate-200 backdrop-blur-sm">
-                  👷 Level 5 Qualified Arborists
+                <div className="flex items-center gap-1.5">
+                  <span className="text-[#7cc043] text-sm">📋</span> Fully Insured
+                </div>
+                <div className="flex items-center gap-1.5">
+                  <span className="text-[#7cc043] text-sm">🛡️</span> Safety Focused
+                </div>
+                <div className="flex items-center gap-1.5">
+                  <span className="text-[#7cc043] text-sm">⭐</span> Satisfaction Guaranteed
                 </div>
               </div>
             </div>
 
             {/* Right Column: Floating White Widget Card */}
             <div className="lg:col-span-5">
-              <div className="rounded-3xl bg-white p-8 text-slate-800 shadow-2xl border border-slate-100/80 relative">
-                <div className="absolute -top-3 -right-3 h-12 w-12 rounded-full bg-emerald-500/10 flex items-center justify-center text-xl text-emerald-600 animate-pulse">📋</div>
-                <h3 className="text-2xl font-extrabold text-emerald-950 tracking-tight font-heading">Request a Free On-Site Quote</h3>
-                <p className="text-sm text-slate-500 mt-2 mb-6">Fully transparent pricing. No hidden fees.</p>
+              <div className="rounded-3xl bg-white p-8 text-slate-800 shadow-2xl relative border border-slate-100/80">
+                {/* Floating Green Circle Badge */}
+                <div className="absolute -top-6 left-1/2 -translate-x-1/2 h-12 w-12 rounded-full bg-[#036829] border-4 border-white flex items-center justify-center text-white text-lg font-bold shadow-md">
+                  📋
+                </div>
+
+                <div className="text-center mt-2 mb-6">
+                  <h3 className="text-xl font-extrabold text-slate-900 tracking-tight font-heading">Get a Free Quote Today!</h3>
+                  <p className="text-xs text-slate-500 font-medium font-sans mt-1">Fast. No obligation.</p>
+                </div>
+
                 <form className="space-y-4">
                   <div>
                     <input
@@ -119,24 +147,23 @@ export default function Home() {
                     />
                   </div>
                   <div>
-                    <select
-                      className="w-full rounded-xl bg-slate-50 border border-slate-200 px-4 py-3.5 text-sm focus:outline-none focus:border-[#036829] focus:bg-white transition-all text-slate-600 font-sans"
-                    >
-                      <option>Select Service Needed</option>
-                      <option>Tree Removal</option>
-                      <option>Stump Grinding / Removal</option>
-                      <option>Palm Tree Care</option>
-                      <option>Tree Pruning & Lopping</option>
-                      <option>Arborist Assessment Report</option>
-                    </select>
+                    <input
+                      type="text"
+                      className="w-full rounded-xl bg-slate-50 border border-slate-200 px-4 py-3.5 text-sm placeholder-slate-400 focus:outline-none focus:border-[#036829] focus:bg-white transition-all font-sans"
+                      placeholder="Suburb"
+                    />
                   </div>
                   <button
                     type="submit"
-                    className="w-full rounded-xl bg-[#036829] hover:bg-emerald-800 text-white font-extrabold py-4 transition-all shadow-md shadow-emerald-950/20 hover:-translate-y-0.5"
+                    className="w-full rounded-xl bg-[#398018] hover:bg-[#2d6512] text-white font-extrabold py-4 transition-all shadow-md font-heading"
                   >
-                    Send Quote Request
+                    Get My Free Quote
                   </button>
                 </form>
+
+                <div className="text-center mt-4 text-[10px] text-slate-400 font-medium flex items-center justify-center gap-1">
+                  <span className="text-[#398018] text-xs">🛡️</span> 100% Secure. We respect your privacy.
+                </div>
               </div>
             </div>
           </div>
