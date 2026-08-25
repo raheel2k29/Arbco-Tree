@@ -1,137 +1,130 @@
+import Image from "next/image";
 import Link from "next/link";
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-slate-50 font-sans text-slate-800">
-      {/* Top emergency bar */}
-      <div className="bg-emerald-950 text-emerald-300 py-2.5 px-4 text-center text-xs font-semibold uppercase tracking-wider sm:text-sm">
-        ⚠️ Need Emergency Tree Work? Call us 24/7 on <a href="tel:0426204514" className="text-white underline hover:text-emerald-100">0426 204 514</a>
+    <div className="min-h-screen bg-white font-sans text-slate-800">
+      {/* Top Banner (Thin green bar) */}
+      <div className="bg-[#036829] text-white py-2 px-4 text-center text-xs font-semibold sm:text-sm">
+        <span>Melbourne's Trusted Arborists • Fully Insured • Free Quotes</span>
+        <a href="tel:0426204514" className="ml-3 underline hover:text-emerald-100 font-bold">
+          Call Now: 0426 204 514
+        </a>
       </div>
 
-      {/* Navigation */}
-      <header className="sticky top-0 z-50 bg-white/95 shadow-sm backdrop-blur-md">
+      {/* Header / Navbar */}
+      <header className="sticky top-0 z-50 bg-white/95 shadow-sm backdrop-blur-md border-b border-slate-100">
         <div className="mx-auto flex max-w-7xl items-center justify-between p-4 lg:px-8">
-          <div className="flex items-center gap-2">
-            {/* Tree Icon */}
-            <svg className="h-8 w-8 text-emerald-700" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-              <path strokeLinecap="round" strokeLinejoin="round" d="M12 3v18M12 3L7 8h10L12 3zm0 6l-5 5h10l-5-5zm0 6l-5 5h10l-5-5z" />
-            </svg>
-            <span className="text-xl font-bold tracking-tight text-emerald-900">
-              Milone's <span className="text-emerald-700">Tree Solutions</span>
-            </span>
-          </div>
+          <Link href="/" className="flex items-center">
+            {/* Using the logo copied to the public folder */}
+            <Image
+              src="/logo.png"
+              alt="Milone's Tree Solutions Logo"
+              width={220}
+              height={40}
+              priority
+              className="object-contain h-10 w-auto"
+            />
+          </Link>
 
-          <nav className="hidden items-center gap-6 text-sm font-semibold md:flex">
-            <Link href="/" className="text-emerald-700">Home</Link>
+          {/* Navigation Links */}
+          <nav className="hidden lg:flex items-center gap-8 text-sm font-bold text-[#036829]">
+            <Link href="/" className="text-[#036829] border-b-2 border-[#036829] pb-1">Home</Link>
             <Link href="/about" className="hover:text-emerald-700 transition-colors">About Us</Link>
             <Link href="/services" className="hover:text-emerald-700 transition-colors">Services</Link>
             <Link href="/faq" className="hover:text-emerald-700 transition-colors">FAQs</Link>
             <Link href="/contact" className="hover:text-emerald-700 transition-colors">Contact</Link>
           </nav>
 
+          {/* Call-to-action button */}
           <div className="flex items-center gap-4">
             <a
               href="tel:0426204514"
-              className="hidden items-center gap-2 rounded-full border-2 border-emerald-700 px-4 py-2 text-sm font-bold text-emerald-700 hover:bg-emerald-50 md:flex transition-colors"
+              className="hidden sm:inline-flex items-center gap-2 rounded-full border-2 border-[#036829] px-5 py-2 text-sm font-extrabold text-[#036829] hover:bg-[#036829]/5 transition-colors"
             >
               📞 0426 204 514
             </a>
             <Link
               href="/book-quote"
-              className="rounded-full bg-emerald-700 px-5 py-2.5 text-sm font-bold text-white shadow-md hover:bg-emerald-800 transition-all"
+              className="rounded-full bg-[#036829] px-6 py-2.5 text-sm font-extrabold text-white shadow-md hover:bg-emerald-800 transition-all"
             >
-              Get Free Quote
+              Get a Quote
             </Link>
           </div>
         </div>
       </header>
 
       {/* Hero Section */}
-      <section className="relative overflow-hidden bg-slate-900 py-24 text-white lg:py-32">
-        {/* Soft atmospheric gradient */}
-        <div className="absolute inset-0 bg-gradient-to-r from-emerald-950/95 to-slate-900/90" />
+      <section className="relative bg-emerald-950 py-20 lg:py-32 text-white overflow-hidden">
+        {/* Decorative Leaf Overlay or Background */}
+        <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1542273917363-3b1817f69a2d?auto=format&fit=crop&q=80&w=2000')] bg-cover bg-center mix-blend-overlay opacity-30" />
         
-        {/* Abstract design elements */}
-        <div className="absolute -top-40 -right-40 h-96 w-96 rounded-full bg-emerald-500/10 blur-3xl" />
-        <div className="absolute -bottom-40 -left-40 h-96 w-96 rounded-full bg-emerald-700/10 blur-3xl" />
-
         <div className="relative mx-auto max-w-7xl px-4 lg:px-8">
           <div className="grid gap-12 lg:grid-cols-12 lg:items-center">
+            {/* Left Column: Heading and info */}
             <div className="lg:col-span-7 space-y-6">
-              <span className="inline-block rounded-full bg-emerald-500/20 px-4.5 py-1.5 text-xs font-bold uppercase tracking-wider text-emerald-300">
-                ⭐ Fully Insured & Certified Arborists
+              <span className="inline-block rounded-full bg-[#036829]/30 border border-emerald-500/30 px-4 py-1.5 text-xs font-bold uppercase tracking-wider text-emerald-300">
+                ★ Professional Arborist Services
               </span>
-              <h1 className="text-4xl font-extrabold tracking-tight sm:text-5xl lg:text-6xl text-white">
-                Melbourne's Trusted <br />
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-teal-300">
-                  Tree Removal & Arborist
-                </span> Experts
+              <h1 className="text-4xl font-extrabold tracking-tight sm:text-5xl lg:text-6xl leading-tight">
+                Professional Tree Removal & Arborist Services <br />
+                <span className="text-emerald-400">across Melbourne</span>
               </h1>
-              <p className="max-w-xl text-lg text-slate-300 leading-relaxed">
-                Specialising in safe tree removal, stump grinding, tree pruning, and arborist assessments across Melbourne and regional Victoria. With 15+ years of experience, we tackle any job safely and professionally.
+              <p className="max-w-xl text-lg text-slate-200 leading-relaxed">
+                Need reliable tree removal, stump grinding, or a qualified arborist assessment? Milone's Tree Solutions offers top-tier, fully insured tree services for commercial and residential properties.
               </p>
               
-              <div className="flex flex-col gap-4 sm:flex-row sm:items-center">
-                <Link
-                  href="/book-quote"
-                  className="inline-flex h-14 items-center justify-center rounded-full bg-emerald-600 px-8 text-base font-bold text-white shadow-lg shadow-emerald-900/30 hover:bg-emerald-500 hover:scale-[1.02] active:scale-95 transition-all"
-                >
-                  Request a Free Quote
-                </Link>
-                <a
-                  href="tel:0426204514"
-                  className="inline-flex h-14 items-center justify-center rounded-full border-2 border-white/20 px-8 text-base font-bold text-white hover:bg-white/10 hover:border-white transition-all"
-                >
-                  📞 Call Emergency Crew
-                </a>
-              </div>
-
-              {/* Trust badges */}
-              <div className="pt-8 border-t border-white/10 grid grid-cols-2 gap-4 sm:grid-cols-4">
-                <div className="flex items-center gap-2">
-                  <span className="text-2xl">🛡️</span>
-                  <span className="text-xs font-semibold text-slate-300">Fully Insured<br />$20M Cover</span>
+              <div className="flex flex-wrap gap-4 pt-2">
+                <div className="flex items-center gap-2 rounded-lg bg-emerald-900/40 border border-emerald-800 px-4 py-2 text-sm text-slate-200">
+                  🛡️ Fully Insured ($20M)
                 </div>
-                <div className="flex items-center gap-2">
-                  <span className="text-2xl">👷</span>
-                  <span className="text-xs font-semibold text-slate-300">Qualified<br />Arborists</span>
+                <div className="flex items-center gap-2 rounded-lg bg-emerald-900/40 border border-emerald-800 px-4 py-2 text-sm text-slate-200">
+                  👷 Qualified Arborists
                 </div>
-                <div className="flex items-center gap-2">
-                  <span className="text-2xl">⭐</span>
-                  <span className="text-xs font-semibold text-slate-300">5-Star Google<br />Reviews</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <span className="text-2xl">🪓</span>
-                  <span className="text-xs font-semibold text-slate-300">15+ Years<br />Experience</span>
+                <div className="flex items-center gap-2 rounded-lg bg-emerald-900/40 border border-emerald-800 px-4 py-2 text-sm text-slate-200">
+                  ⏳ 15+ Years Experience
                 </div>
               </div>
             </div>
 
-            {/* Visual card element on the right */}
+            {/* Right Column: Floating White Widget Card */}
             <div className="lg:col-span-5">
-              <div className="overflow-hidden rounded-3xl bg-slate-800/80 border border-slate-700 p-6 shadow-2xl backdrop-blur-sm sm:p-8">
-                <h3 className="text-xl font-bold text-white">Get a Quick Quote</h3>
-                <p className="text-sm text-slate-400 mb-6">Fill in details for a prompt response within 2 hours.</p>
+              <div className="rounded-3xl bg-white p-8 text-slate-800 shadow-2xl border border-slate-100">
+                <h3 className="text-2xl font-black text-emerald-950 tracking-tight">Fully Insured Professional Tree Care Melbourne</h3>
+                <p className="text-sm text-slate-500 mt-2 mb-6">Request a free assessment and formal written quote today.</p>
                 <form className="space-y-4">
                   <div>
-                    <label className="block text-xs font-semibold text-slate-400 uppercase tracking-wide mb-1">Your Name</label>
-                    <input type="text" className="w-full rounded-xl bg-slate-900 border border-slate-700 px-4 py-3 text-white placeholder-slate-500 focus:outline-none focus:border-emerald-500 transition-colors" placeholder="John Doe" />
+                    <input
+                      type="text"
+                      className="w-full rounded-xl bg-slate-50 border border-slate-200 px-4 py-3.5 text-sm placeholder-slate-400 focus:outline-none focus:border-[#036829] focus:bg-white transition-all"
+                      placeholder="Your Name"
+                    />
                   </div>
                   <div>
-                    <label className="block text-xs font-semibold text-slate-400 uppercase tracking-wide mb-1">Phone Number</label>
-                    <input type="text" className="w-full rounded-xl bg-slate-900 border border-slate-700 px-4 py-3 text-white placeholder-slate-500 focus:outline-none focus:border-emerald-500 transition-colors" placeholder="0400 000 000" />
+                    <input
+                      type="text"
+                      className="w-full rounded-xl bg-slate-50 border border-slate-200 px-4 py-3.5 text-sm placeholder-slate-400 focus:outline-none focus:border-[#036829] focus:bg-white transition-all"
+                      placeholder="Phone Number"
+                    />
                   </div>
                   <div>
-                    <label className="block text-xs font-semibold text-slate-400 uppercase tracking-wide mb-1">Service Needed</label>
-                    <select className="w-full rounded-xl bg-slate-900 border border-slate-700 px-4 py-3 text-white focus:outline-none focus:border-emerald-500 transition-colors">
+                    <select
+                      className="w-full rounded-xl bg-slate-50 border border-slate-200 px-4 py-3.5 text-sm focus:outline-none focus:border-[#036829] focus:bg-white transition-all text-slate-600"
+                    >
+                      <option>Select Service</option>
                       <option>Tree Removal</option>
-                      <option>Stump Grinding</option>
+                      <option>Stump Grinding / Removal</option>
                       <option>Palm Tree Removal</option>
-                      <option>Pruning & Lopping</option>
+                      <option>Tree Pruning & Lopping</option>
                       <option>Arborist Report</option>
                     </select>
                   </div>
-                  <button type="submit" className="w-full rounded-xl bg-emerald-600 hover:bg-emerald-500 py-3.5 font-bold transition-all text-white shadow-md">Submit Quote Request</button>
+                  <button
+                    type="submit"
+                    className="w-full rounded-xl bg-[#036829] hover:bg-emerald-800 text-white font-extrabold py-4 transition-all shadow-md shadow-emerald-950/20"
+                  >
+                    Request a Free Quote
+                  </button>
                 </form>
               </div>
             </div>
@@ -139,198 +132,374 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Services Grid */}
-      <section className="py-20 lg:py-28">
+      {/* Services Grid Section */}
+      <section className="py-20 bg-slate-50 border-b border-slate-100">
         <div className="mx-auto max-w-7xl px-4 lg:px-8">
           <div className="text-center max-w-3xl mx-auto space-y-4 mb-16">
-            <span className="text-emerald-700 font-bold uppercase tracking-wider text-sm">Professional Tree Services</span>
             <h2 className="text-3xl font-extrabold tracking-tight sm:text-4xl text-slate-900">
-              Our Certified Arborist Solutions
+              Explore our wide range of Tree Services
             </h2>
-            <p className="text-slate-600 text-lg">
-              We provide professional, environment-friendly tree care services tailored to your property's needs.
+            <p className="text-slate-600 text-lg leading-relaxed">
+              We offer comprehensive tree solutions across Melbourne and regional Victoria. Our team of certified arborists ensures safety, precision, and efficiency on every project.
             </p>
           </div>
 
-          <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-            {/* Service 1 */}
-            <div className="group rounded-3xl bg-white border border-slate-100 p-8 shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
-              <div className="mb-6 inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-emerald-50 text-2xl">🌲</div>
-              <h3 className="text-xl font-bold text-slate-900 group-hover:text-emerald-700 transition-colors">Tree Removal</h3>
-              <p className="mt-4 text-slate-600 leading-relaxed text-sm">
-                Safe, expert removal of hazardous, dead, or unwanted trees from residential and commercial properties. Fully equipped.
-              </p>
-              <Link href="/services/tree-removal" className="mt-6 inline-flex items-center gap-1.5 text-sm font-bold text-emerald-700 hover:text-emerald-600">
-                Learn more <span>→</span>
-              </Link>
+          {/* 8 Card Grid */}
+          <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+            {/* Card 1 */}
+            <div className="overflow-hidden rounded-2xl bg-white border border-slate-100 shadow-sm hover:shadow-lg transition-all group">
+              <div className="h-44 bg-[url('https://images.unsplash.com/photo-1502082553048-f009c37129b9?auto=format&fit=crop&q=80&w=600')] bg-cover bg-center" />
+              <div className="p-6">
+                <h3 className="font-bold text-slate-900 text-lg group-hover:text-[#036829] transition-colors">Tree Removal Melbourne</h3>
+                <p className="text-slate-500 text-xs mt-2">Safe, expert tree felling and extraction for dangerous or unwanted trees.</p>
+              </div>
             </div>
 
-            {/* Service 2 */}
-            <div className="group rounded-3xl bg-white border border-slate-100 p-8 shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
-              <div className="mb-6 inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-emerald-50 text-2xl">⚙️</div>
-              <h3 className="text-xl font-bold text-slate-900 group-hover:text-emerald-700 transition-colors">Stump Grinding</h3>
-              <p className="mt-4 text-slate-600 leading-relaxed text-sm">
-                Complete grinding and removal of unsightly or dangerous tree stumps to clear space for landscaping and prevent pests.
-              </p>
-              <Link href="/services/stump-grinding" className="mt-6 inline-flex items-center gap-1.5 text-sm font-bold text-emerald-700 hover:text-emerald-600">
-                Learn more <span>→</span>
-              </Link>
+            {/* Card 2 */}
+            <div className="overflow-hidden rounded-2xl bg-white border border-slate-100 shadow-sm hover:shadow-lg transition-all group">
+              <div className="h-44 bg-[url('https://images.unsplash.com/photo-1518531933037-91b2f5f229cc?auto=format&fit=crop&q=80&w=600')] bg-cover bg-center" />
+              <div className="p-6">
+                <h3 className="font-bold text-slate-900 text-lg group-hover:text-[#036829] transition-colors">Stump Grinding Melbourne</h3>
+                <p className="text-slate-500 text-xs mt-2">Eliminate unsightly or pest-attracting stumps completely from your lawn.</p>
+              </div>
             </div>
 
-            {/* Service 3 */}
-            <div className="group rounded-3xl bg-white border border-slate-100 p-8 shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
-              <div className="mb-6 inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-emerald-50 text-2xl">🌴</div>
-              <h3 className="text-xl font-bold text-slate-900 group-hover:text-emerald-700 transition-colors">Palm Tree Removal</h3>
-              <p className="mt-4 text-slate-600 leading-relaxed text-sm">
-                Specialist palm tree extraction, shaving, and cleaning. Safely dealing with messy seed pods and spikes.
-              </p>
-              <Link href="/services/palm-tree-removal" className="mt-6 inline-flex items-center gap-1.5 text-sm font-bold text-emerald-700 hover:text-emerald-600">
-                Learn more <span>→</span>
-              </Link>
+            {/* Card 3 */}
+            <div className="overflow-hidden rounded-2xl bg-white border border-slate-100 shadow-sm hover:shadow-lg transition-all group">
+              <div className="h-44 bg-[url('https://images.unsplash.com/photo-1508193638397-1c4234db14d8?auto=format&fit=crop&q=80&w=600')] bg-cover bg-center" />
+              <div className="p-6">
+                <h3 className="font-bold text-slate-900 text-lg group-hover:text-[#036829] transition-colors">Palm Tree Removal Melbourne</h3>
+                <p className="text-slate-500 text-xs mt-2">Specialist palm cleanup, trimming, shaving, and full removals.</p>
+              </div>
             </div>
 
-            {/* Service 4 */}
-            <div className="group rounded-3xl bg-white border border-slate-100 p-8 shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
-              <div className="mb-6 inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-emerald-50 text-2xl">✂️</div>
-              <h3 className="text-xl font-bold text-slate-900 group-hover:text-emerald-700 transition-colors">Tree Pruning & Lopping</h3>
-              <p className="mt-4 text-slate-600 leading-relaxed text-sm">
-                Enhance tree health, shape, and structure while removing hazardous overhanging branches near house lines.
-              </p>
-              <Link href="/services/tree-pruning-lopping" className="mt-6 inline-flex items-center gap-1.5 text-sm font-bold text-emerald-700 hover:text-emerald-600">
-                Learn more <span>→</span>
-              </Link>
+            {/* Card 4 */}
+            <div className="overflow-hidden rounded-2xl bg-white border border-slate-100 shadow-sm hover:shadow-lg transition-all group">
+              <div className="h-44 bg-[url('https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&q=80&w=600')] bg-cover bg-center" />
+              <div className="p-6">
+                <h3 className="font-bold text-slate-900 text-lg group-hover:text-[#036829] transition-colors">Tree Pruning & Lopping</h3>
+                <p className="text-slate-500 text-xs mt-2">Regular maintenance to shape trees, thin branches, and remove hazards.</p>
+              </div>
             </div>
 
-            {/* Service 5 */}
-            <div className="group rounded-3xl bg-white border border-slate-100 p-8 shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
-              <div className="mb-6 inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-emerald-50 text-2xl">📋</div>
-              <h3 className="text-xl font-bold text-slate-900 group-hover:text-emerald-700 transition-colors">Arborist Reports</h3>
-              <p className="mt-4 text-slate-600 leading-relaxed text-sm">
-                Comprehensive health assessments, hazard checks, and documentation for council permit submissions.
-              </p>
-              <Link href="/services/arborist-reports" className="mt-6 inline-flex items-center gap-1.5 text-sm font-bold text-emerald-700 hover:text-emerald-600">
-                Learn more <span>→</span>
-              </Link>
+            {/* Card 5 */}
+            <div className="overflow-hidden rounded-2xl bg-white border border-slate-100 shadow-sm hover:shadow-lg transition-all group">
+              <div className="h-44 bg-[url('https://images.unsplash.com/photo-1473448912268-2022ce9509d8?auto=format&fit=crop&q=80&w=600')] bg-cover bg-center" />
+              <div className="p-6">
+                <h3 className="font-bold text-slate-900 text-lg group-hover:text-[#036829] transition-colors">Arborist Reports</h3>
+                <p className="text-slate-500 text-xs mt-2">Certified safety audits, tree health reports, and council applications.</p>
+              </div>
             </div>
 
-            {/* Service 6 */}
-            <div className="group rounded-3xl bg-white border border-slate-100 p-8 shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
-              <div className="mb-6 inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-red-50 text-2xl">🚨</div>
-              <h3 className="text-xl font-bold text-slate-900 group-hover:text-red-700 transition-colors">24/7 Emergency Tree Care</h3>
-              <p className="mt-4 text-slate-600 leading-relaxed text-sm">
-                Urgent tree cleanup and extraction following heavy storms, wind, or sudden structural failures. Call anytime.
-              </p>
-              <Link href="/services/emergency-tree-removal" className="mt-6 inline-flex items-center gap-1.5 text-sm font-bold text-red-700 hover:text-red-600">
-                Call Emergency <span>→</span>
-              </Link>
+            {/* Card 6 */}
+            <div className="overflow-hidden rounded-2xl bg-white border border-slate-100 shadow-sm hover:shadow-lg transition-all group">
+              <div className="h-44 bg-[url('https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&q=80&w=600')] bg-cover bg-center" />
+              <div className="p-6">
+                <h3 className="font-bold text-slate-900 text-lg group-hover:text-red-700 transition-colors">Emergency Tree Removal</h3>
+                <p className="text-slate-500 text-xs mt-2">24/7 rapid storm cleanup, fallen tree extraction, and hazard securing.</p>
+              </div>
             </div>
+
+            {/* Card 7 */}
+            <div className="overflow-hidden rounded-2xl bg-white border border-slate-100 shadow-sm hover:shadow-lg transition-all group">
+              <div className="h-44 bg-[url('https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?auto=format&fit=crop&q=80&w=600')] bg-cover bg-center" />
+              <div className="p-6">
+                <h3 className="font-bold text-slate-900 text-lg group-hover:text-[#036829] transition-colors">Wood Chipping & Mulching</h3>
+                <p className="text-slate-500 text-xs mt-2">Convert heavy green waste into useful, moisture-retaining organic mulch.</p>
+              </div>
+            </div>
+
+            {/* Card 8 */}
+            <div className="overflow-hidden rounded-2xl bg-white border border-slate-100 shadow-sm hover:shadow-lg transition-all group">
+              <div className="h-44 bg-[url('https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&q=80&w=600')] bg-cover bg-center" />
+              <div className="p-6">
+                <h3 className="font-bold text-slate-900 text-lg group-hover:text-[#036829] transition-colors">Land & Block Clearing</h3>
+                <p className="text-slate-500 text-xs mt-2">Full block clearance for construction, subdivisions, or fire prevention.</p>
+              </div>
+            </div>
+          </div>
+
+          <div className="text-center mt-12">
+            <Link
+              href="/services"
+              className="inline-flex items-center justify-center rounded-full bg-[#036829] hover:bg-emerald-800 text-white font-extrabold px-8 py-3.5 shadow-md transition-all"
+            >
+              View All Services
+            </Link>
           </div>
         </div>
       </section>
 
-      {/* Why Choose Us */}
-      <section className="bg-emerald-950 text-white py-20 lg:py-28">
+      {/* Why Choose Us Section */}
+      <section className="py-20 lg:py-28 bg-white">
         <div className="mx-auto max-w-7xl px-4 lg:px-8">
           <div className="grid gap-12 lg:grid-cols-12 lg:items-center">
-            <div className="lg:col-span-6 space-y-6">
-              <span className="text-emerald-400 font-bold uppercase tracking-wider text-sm">Why Choose Milone's</span>
-              <h2 className="text-3xl font-extrabold tracking-tight sm:text-4xl">
-                Melbourne’s Gold Standard in Professional Tree Care
+            {/* Left side: Checklist content */}
+            <div className="lg:col-span-7 space-y-6">
+              <span className="text-[#036829] font-black uppercase tracking-wider text-sm">Professionalism First</span>
+              <h2 className="text-3xl font-extrabold tracking-tight sm:text-4xl text-slate-900">
+                Why Choose Milone's Tree Solutions?
               </h2>
-              <p className="text-emerald-100 text-lg leading-relaxed">
-                We handle every domestic and commercial job with absolute safety, efficiency, and respect for your property. 
+              <p className="text-slate-600 text-lg leading-relaxed">
+                With a focus on safety, environment, and customer satisfaction, we deliver gold-standard arborist care for all shapes and sizes of trees.
               </p>
-              <div className="space-y-4 pt-4">
-                <div className="flex gap-4">
-                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-emerald-800 text-emerald-300 font-bold">✓</div>
+              
+              <ul className="space-y-4 pt-4 text-slate-700">
+                <li className="flex items-start gap-3">
+                  <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-emerald-100 text-emerald-800 font-bold text-xs">✓</span>
                   <div>
-                    <h4 className="font-bold text-white text-base">Full $20 Million Public Liability Insurance</h4>
-                    <p className="text-emerald-200/80 text-sm mt-1">Total peace of mind knowing you and your assets are completely protected.</p>
+                    <strong>Fully Insured Crew:</strong> $20 Million public liability protection on every single project site.
                   </div>
-                </div>
-                <div className="flex gap-4">
-                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-emerald-800 text-emerald-300 font-bold">✓</div>
+                </li>
+                <li className="flex items-start gap-3">
+                  <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-emerald-100 text-emerald-800 font-bold text-xs">✓</span>
                   <div>
-                    <h4 className="font-bold text-white text-base">State-of-the-Art Tree Care Machinery</h4>
-                    <p className="text-emerald-200/80 text-sm mt-1">High-reach tower trucks, commercial wood chippers, and compact stump grinders.</p>
+                    <strong>State-of-the-Art Equipment:</strong> Tower trucks, advanced rigging gear, and efficient stump grinders.
                   </div>
-                </div>
-                <div className="flex gap-4">
-                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-emerald-800 text-emerald-300 font-bold">✓</div>
+                </li>
+                <li className="flex items-start gap-3">
+                  <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-emerald-100 text-emerald-800 font-bold text-xs">✓</span>
                   <div>
-                    <h4 className="font-bold text-white text-base">Eco-Friendly Recycling</h4>
-                    <p className="text-emerald-200/80 text-sm mt-1">We turn green waste into high-quality organic garden mulch, preventing landfill waste.</p>
+                    <strong>Qualified Team members:</strong> Fully certified arborists who understand local council permit laws.
                   </div>
-                </div>
+                </li>
+              </ul>
+
+              <div className="pt-6">
+                <Link
+                  href="/book-quote"
+                  className="inline-flex items-center justify-center rounded-full bg-[#036829] hover:bg-emerald-800 text-white font-extrabold px-8 py-3.5 shadow-md transition-all"
+                >
+                  Request a Free Quote
+                </Link>
               </div>
             </div>
 
-            {/* Side illustration / trust badge box */}
-            <div className="lg:col-span-6 bg-emerald-900/50 rounded-3xl p-8 border border-emerald-800/80 space-y-6">
-              <h3 className="text-xl font-bold">What Our Clients Say</h3>
-              <div className="space-y-6">
-                <div className="bg-emerald-950/60 p-6 rounded-2xl border border-emerald-800/60 relative">
-                  <div className="text-yellow-400 text-lg mb-2">★★★★★</div>
-                  <p className="text-slate-200 text-sm italic">"Highly recommend Milone's Tree Solutions. They removed 3 large trees from my backyard. Safe, clean, and very competitively priced!"</p>
-                  <p className="text-emerald-300 font-bold text-xs mt-4">— David K., Werribee</p>
-                </div>
-                <div className="bg-emerald-950/60 p-6 rounded-2xl border border-emerald-800/60 relative">
-                  <div className="text-yellow-400 text-lg mb-2">★★★★★</div>
-                  <p className="text-slate-200 text-sm italic">"Professional crew, turned up on time, ground down all stumps and cleaned up so well you wouldn't even know they had been there. Fantastic job."</p>
-                  <p className="text-emerald-300 font-bold text-xs mt-4">— Sarah M., Geelong</p>
-                </div>
+            {/* Right side: Single High-End Image */}
+            <div className="lg:col-span-5">
+              <div className="relative h-[480px] w-full overflow-hidden rounded-3xl shadow-xl">
+                <Image
+                  src="https://images.unsplash.com/photo-1502082553048-f009c37129b9?auto=format&fit=crop&q=80&w=800"
+                  alt="Professional arborist climbing palm tree"
+                  fill
+                  className="object-cover"
+                />
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* CTA Footer Form */}
-      <section className="py-20 lg:py-28 text-center bg-slate-100">
-        <div className="mx-auto max-w-5xl px-4 space-y-8">
-          <h2 className="text-3xl font-extrabold sm:text-4xl text-slate-900">Ready to clear your backyard?</h2>
-          <p className="text-slate-600 text-lg max-w-xl mx-auto">Get in touch with Milone’s Tree Solutions today for a fully free, zero-obligation assessment and written quote.</p>
-          <div className="flex flex-col gap-4 justify-center sm:flex-row">
-            <Link href="/book-quote" className="rounded-full bg-emerald-700 hover:bg-emerald-800 px-8 py-4 font-bold text-white shadow-lg shadow-emerald-800/20">Book a Free Consultation</Link>
-            <a href="tel:0426204514" className="rounded-full bg-white hover:bg-slate-50 border border-slate-300 px-8 py-4 font-bold text-slate-800 shadow-sm">Call 0426 204 514</a>
+      {/* Trusted Tree Experts Block (Dark Green Background) */}
+      <section className="bg-[#024a1c] text-white py-20 text-center relative overflow-hidden">
+        <div className="mx-auto max-w-7xl px-4 lg:px-8 space-y-12">
+          <h2 className="text-3xl font-extrabold tracking-tight sm:text-4xl">
+            What makes Milone's the trusted tree experts?
+          </h2>
+
+          <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3 text-left">
+            <div className="space-y-2 p-6 rounded-2xl bg-[#036829]/20 border border-emerald-700/30">
+              <h4 className="font-extrabold text-lg text-emerald-300">✓ Fully Insured</h4>
+              <p className="text-sm text-slate-300">Complete property protection with full public liability insurance ($20 million cover).</p>
+            </div>
+            <div className="space-y-2 p-6 rounded-2xl bg-[#036829]/20 border border-emerald-700/30">
+              <h4 className="font-extrabold text-lg text-emerald-300">✓ Council Permit Experts</h4>
+              <p className="text-sm text-slate-300">Expert guidance on Victoria's council laws and planning permit applications.</p>
+            </div>
+            <div className="space-y-2 p-6 rounded-2xl bg-[#036829]/20 border border-emerald-700/30">
+              <h4 className="font-extrabold text-lg text-emerald-300">✓ Safety First</h4>
+              <p className="text-sm text-slate-300">Rigorous safety assessments before climbing or starting any rigging operations.</p>
+            </div>
+            <div className="space-y-2 p-6 rounded-2xl bg-[#036829]/20 border border-emerald-700/30">
+              <h4 className="font-extrabold text-lg text-emerald-300">✓ Qualified Arborists</h4>
+              <p className="text-sm text-slate-300">Expertise in tree health, pruning standards (AS4373), and emergency felling.</p>
+            </div>
+            <div className="space-y-2 p-6 rounded-2xl bg-[#036829]/20 border border-emerald-700/30">
+              <h4 className="font-extrabold text-lg text-emerald-300">✓ Eco-Friendly Recycling</h4>
+              <p className="text-sm text-slate-300">We recycle tree material into nutrient-rich mulches for gardens and community spaces.</p>
+            </div>
+            <div className="space-y-2 p-6 rounded-2xl bg-[#036829]/20 border border-emerald-700/30">
+              <h4 className="font-extrabold text-lg text-emerald-300">✓ High-End Equipment</h4>
+              <p className="text-sm text-slate-300">Modern chippers, high-access platforms, and heavy transport trucks.</p>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="bg-slate-900 text-slate-400 py-12 border-t border-slate-800">
-        <div className="mx-auto max-w-7xl px-4 lg:px-8 grid gap-8 md:grid-cols-2 lg:grid-cols-4">
+      {/* Customer Reviews Section */}
+      <section className="py-20 lg:py-28 bg-[#fdfdfd]">
+        <div className="mx-auto max-w-7xl px-4 lg:px-8 text-center space-y-12">
+          <div className="max-w-3xl mx-auto space-y-4">
+            <h2 className="text-3xl font-extrabold tracking-tight sm:text-4xl text-slate-900">
+              Meet Our Happy Customers
+            </h2>
+            <div className="flex items-center justify-center gap-1.5 text-yellow-500 font-bold text-lg">
+              ★★★★★ <span className="text-slate-800 text-sm ml-2">5.0 Star Google Rating</span>
+            </div>
+          </div>
+
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 text-left">
+            {/* Review 1 */}
+            <div className="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm">
+              <div className="text-yellow-400 text-sm mb-2">★★★★★</div>
+              <p className="text-slate-600 text-sm italic">"Highly recommend Milone's Tree Solutions. They removed 3 large trees from my backyard. Safe, clean, and very competitively priced!"</p>
+              <div className="mt-4 flex items-center gap-3">
+                <div className="h-9 w-9 rounded-full bg-emerald-100 text-emerald-800 font-black flex items-center justify-center text-xs">DK</div>
+                <span className="font-bold text-xs text-slate-800">David K.</span>
+              </div>
+            </div>
+
+            {/* Review 2 */}
+            <div className="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm">
+              <div className="text-yellow-400 text-sm mb-2">★★★★★</div>
+              <p className="text-slate-600 text-sm italic">"Professional crew, turned up on time, ground down all stumps and cleaned up so well you wouldn't even know they had been there. Fantastic job."</p>
+              <div className="mt-4 flex items-center gap-3">
+                <div className="h-9 w-9 rounded-full bg-emerald-100 text-emerald-800 font-black flex items-center justify-center text-xs">SM</div>
+                <span className="font-bold text-xs text-slate-800">Sarah M.</span>
+              </div>
+            </div>
+
+            {/* Review 3 */}
+            <div className="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm">
+              <div className="text-yellow-400 text-sm mb-2">★★★★★</div>
+              <p className="text-slate-600 text-sm italic">"I have used Milone's twice now. They are extremely careful and did a wonderful job lopping the gum tree overhanging our roof."</p>
+              <div className="mt-4 flex items-center gap-3">
+                <div className="h-9 w-9 rounded-full bg-emerald-100 text-emerald-800 font-black flex items-center justify-center text-xs">JL</div>
+                <span className="font-bold text-xs text-slate-800">John L.</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Map & Service Regions */}
+      <section className="py-20 bg-slate-50 border-t border-b border-slate-100">
+        <div className="mx-auto max-w-7xl px-4 lg:px-8">
+          <div className="grid gap-12 lg:grid-cols-12 lg:items-center">
+            {/* Left side: Map representation */}
+            <div className="lg:col-span-6 bg-slate-200 h-[380px] rounded-3xl overflow-hidden relative shadow-inner">
+              {/* Fallback image of a map layout */}
+              <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1524661135-423995f22d0b?auto=format&fit=crop&q=80&w=1200')] bg-cover bg-center opacity-60 mix-blend-multiply" />
+              <div className="absolute inset-0 flex flex-col items-center justify-center p-6 text-center bg-emerald-950/20 text-slate-900">
+                <span className="text-3xl mb-3">📍</span>
+                <h4 className="font-extrabold text-xl text-emerald-950">Servicing All Greater Melbourne & Suburbs</h4>
+                <p className="text-sm mt-1 text-slate-800 max-w-xs font-semibold">104+ target suburbs serviced with fast-response arborist teams.</p>
+              </div>
+            </div>
+
+            {/* Right side: Details */}
+            <div className="lg:col-span-6 space-y-6">
+              <span className="text-[#036829] font-black uppercase tracking-wider text-sm">Where We Work</span>
+              <h2 className="text-3xl font-extrabold tracking-tight text-slate-900">
+                Rapid Tree Services Across Melbourne & Surrounding Regions
+              </h2>
+              <p className="text-slate-600 text-lg leading-relaxed">
+                Whether you need tree removal in Werribee, stump grinding in Geelong, or emergency pruning in Box Hill, we have localized crews ready to respond.
+              </p>
+              <div className="pt-4">
+                <Link
+                  href="/service-areas"
+                  className="inline-flex items-center justify-center rounded-full bg-[#036829] hover:bg-emerald-800 text-white font-extrabold px-8 py-3.5 shadow-md transition-all"
+                >
+                  View Service Areas
+                </Link>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Instagram Row Showcase */}
+      <section className="py-16 bg-white">
+        <div className="mx-auto max-w-7xl px-4 lg:px-8 text-center space-y-8">
+          <h3 className="font-black text-2xl text-slate-900 tracking-tight">Recent Work & Machinery Showcase</h3>
+          <div className="grid gap-4 grid-cols-2 md:grid-cols-3">
+            <div className="h-60 rounded-2xl overflow-hidden shadow-sm relative group">
+              <Image src="https://images.unsplash.com/photo-1542273917363-3b1817f69a2d?auto=format&fit=crop&q=80&w=800" alt="Arborist at work" fill className="object-cover group-hover:scale-105 transition-all duration-300" />
+            </div>
+            <div className="h-60 rounded-2xl overflow-hidden shadow-sm relative group">
+              <Image src="https://images.unsplash.com/photo-1518531933037-91b2f5f229cc?auto=format&fit=crop&q=80&w=800" alt="Stump grinder machinery" fill className="object-cover group-hover:scale-105 transition-all duration-300" />
+            </div>
+            <div className="h-60 rounded-2xl overflow-hidden shadow-sm relative group col-span-2 md:col-span-1">
+              <Image src="https://images.unsplash.com/photo-1508193638397-1c4234db14d8?auto=format&fit=crop&q=80&w=800" alt="Chipped wood mulcher" fill className="object-cover group-hover:scale-105 transition-all duration-300" />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Pre-footer Callout Banner */}
+      <section className="relative py-24 bg-emerald-950 text-white text-center overflow-hidden">
+        <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&q=80&w=2000')] bg-cover bg-center opacity-25 mix-blend-overlay" />
+        
+        <div className="relative mx-auto max-w-4xl px-4 space-y-6">
+          <h2 className="text-3xl font-extrabold sm:text-5xl">Reach out to Milone's today!</h2>
+          <p className="text-emerald-100 text-lg max-w-xl mx-auto">Get absolute peace of mind for your tree issues. Get a quote or talk to an arborist now.</p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
+            <Link href="/book-quote" className="rounded-full bg-emerald-500 hover:bg-emerald-400 px-8 py-4 font-extrabold text-emerald-950 shadow-lg">Request a Free Quote</Link>
+            <a href="tel:0426204514" className="rounded-full border-2 border-white px-8 py-4 font-bold hover:bg-white/10 transition-colors">Call 0426 204 514</a>
+          </div>
+        </div>
+      </section>
+
+      {/* Footer (Dark Green) */}
+      <footer className="bg-[#023313] text-slate-300 py-16 border-t border-emerald-950">
+        <div className="mx-auto max-w-7xl px-4 lg:px-8 grid gap-12 md:grid-cols-2 lg:grid-cols-4">
+          {/* Column 1: Info */}
           <div className="space-y-4">
-            <h3 className="text-white font-bold text-lg">Milone's Tree Solutions</h3>
-            <p className="text-sm">Melbourne's premier tree removal and arborist solutions company. Fully certified, clean, and insured.</p>
+            <Image
+              src="/logo.png"
+              alt="Milone's Tree Solutions"
+              width={200}
+              height={36}
+              className="brightness-0 invert object-contain"
+            />
+            <p className="text-xs text-slate-400 mt-4 leading-relaxed">
+              Melbourne's leading arborist and tree removal services. We provide high-quality, professional solutions with focus on safety, customer service, and environment.
+            </p>
           </div>
+
+          {/* Column 2: Navigation */}
           <div>
-            <h4 className="text-white font-bold mb-4 text-sm uppercase tracking-wider">Quick Links</h4>
-            <ul className="space-y-2 text-sm">
-              <li><Link href="/about" className="hover:text-white transition-colors">About Us</Link></li>
-              <li><Link href="/services" className="hover:text-white transition-colors">Services Directory</Link></li>
-              <li><Link href="/faq" className="hover:text-white transition-colors">FAQs</Link></li>
+            <h4 className="text-white font-extrabold mb-4 text-sm uppercase tracking-wider">Quick Navigation</h4>
+            <ul className="space-y-2 text-xs">
+              <li><Link href="/" className="hover:text-white transition-colors">Home Page</Link></li>
+              <li><Link href="/about" className="hover:text-white transition-colors">About Our Team</Link></li>
+              <li><Link href="/services" className="hover:text-white transition-colors">Tree Services</Link></li>
+              <li><Link href="/faq" className="hover:text-white transition-colors">Frequently Asked Questions</Link></li>
               <li><Link href="/contact" className="hover:text-white transition-colors">Contact Us</Link></li>
             </ul>
           </div>
+
+          {/* Column 3: Services */}
           <div>
-            <h4 className="text-white font-bold mb-4 text-sm uppercase tracking-wider">Our Services</h4>
-            <ul className="space-y-2 text-sm">
-              <li><Link href="/services/tree-removal" className="hover:text-white transition-colors">Tree Removal</Link></li>
-              <li><Link href="/services/stump-grinding" className="hover:text-white transition-colors">Stump Grinding</Link></li>
-              <li><Link href="/services/palm-tree-removal" className="hover:text-white transition-colors">Palm Tree Care</Link></li>
-              <li><Link href="/services/arborist-reports" className="hover:text-white transition-colors">Arborist Reports</Link></li>
+            <h4 className="text-white font-extrabold mb-4 text-sm uppercase tracking-wider">Our Core Services</h4>
+            <ul className="space-y-2 text-xs">
+              <li><Link href="/services/tree-removal" className="hover:text-white transition-colors">Professional Tree Removal</Link></li>
+              <li><Link href="/services/stump-grinding" className="hover:text-white transition-colors">Stump Grinding & Removal</Link></li>
+              <li><Link href="/services/palm-tree-removal" className="hover:text-white transition-colors">Palm Tree Cleaning & Removal</Link></li>
+              <li><Link href="/services/arborist-reports" className="hover:text-white transition-colors">Certified Arborist Reports</Link></li>
+              <li><Link href="/services/tree-pruning-lopping" className="hover:text-white transition-colors">Tree Lopping & Maintenance</Link></li>
             </ul>
           </div>
+
+          {/* Column 4: Contact info */}
           <div>
-            <h4 className="text-white font-bold mb-4 text-sm uppercase tracking-wider">Contact Info</h4>
-            <p className="text-sm">📍 Factory 8 61/65 Russell St, Werribee VIC 3030</p>
-            <p className="text-sm mt-2">📞 Phone: <a href="tel:0426204514" className="hover:text-white">0426 204 514</a></p>
-            <p className="text-sm mt-2">✉️ Email: <a href="mailto:milonesgroup@gmail.com" className="hover:text-white">milonesgroup@gmail.com</a></p>
+            <h4 className="text-white font-extrabold mb-4 text-sm uppercase tracking-wider">Contact Information</h4>
+            <ul className="space-y-3 text-xs">
+              <li>📍 Factory 8 61/65 Russell St, Werribee VIC 3030</li>
+              <li>📞 Phone: <a href="tel:0426204514" className="hover:text-white font-semibold">0426 204 514</a></li>
+              <li>✉️ Email: <a href="mailto:milonesgroup@gmail.com" className="hover:text-white">milonesgroup@gmail.com</a></li>
+            </ul>
           </div>
         </div>
-        <div className="mx-auto max-w-7xl px-4 lg:px-8 mt-12 pt-6 border-t border-slate-800 text-center text-xs">
+
+        {/* Bottom Bar: Copyright & Badges */}
+        <div className="mx-auto max-w-7xl px-4 lg:px-8 mt-16 pt-8 border-t border-emerald-900/60 flex flex-col md:flex-row items-center justify-between gap-4 text-xs">
           <p>&copy; {new Date().getFullYear()} Milone's Tree Solutions. All rights reserved. Created in Next.js.</p>
+          <div className="flex gap-4">
+            <span className="text-slate-400">ABN: 67 608 227 343</span>
+            <span className="text-slate-400">Fully Certified</span>
+          </div>
         </div>
       </footer>
     </div>
