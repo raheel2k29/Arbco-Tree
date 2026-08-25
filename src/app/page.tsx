@@ -80,7 +80,11 @@ export default function Home() {
               <h1 className="text-4xl font-extrabold tracking-tight sm:text-5xl lg:text-6xl leading-tight font-heading text-white">
                 Expert Tree <br />
                 Removal & Arborist <br />
-                Services in <span className="text-[#7cc043] italic relative font-heading">Melbourne</span>
+                Services in{" "}
+                <span className="text-[#7cc043] font-cursive normal-case font-normal text-5xl lg:text-7xl ml-1 relative inline-block">
+                  Melbourne
+                  <span className="absolute -bottom-1 left-0 right-0 h-[3px] bg-[#7cc043] rounded-full transform -rotate-2" />
+                </span>
               </h1>
               <p className="max-w-xl text-base sm:text-lg text-slate-300 leading-relaxed font-sans">
                 Arbco Tree Solutions provides professional tree removal, pruning, stump grinding and arborist solutions with a focus on safety, care and customer satisfaction.
