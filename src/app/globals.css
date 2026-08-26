@@ -20,14 +20,20 @@ body {
 }
 
 .quote-btn-gradient {
-  background: linear-gradient(180deg, #3f9d12 0%, #2f850b 55%, #267307 100%);
+  background-image: linear-gradient(180deg, rgba(124, 198, 67, 0.92) 0%, rgba(91, 166, 37, 0.92) 55%, rgba(67, 131, 24, 0.96) 100%), url('https://images.unsplash.com/photo-1501004318641-b39e6451bec6?auto=format&fit=crop&q=80&w=300');
+  background-size: cover;
+  background-position: center;
+  background-blend-mode: multiply;
   border: 1px solid rgba(120, 190, 70, 0.35);
   box-shadow: 0 4px 10px rgba(31, 105, 10, 0.28), inset 0 1px 1px rgba(255, 255, 255, 0.18);
   transition: all 0.25s ease;
 }
 
 .quote-btn-gradient:hover {
-  background: linear-gradient(180deg, #4aaa15 0%, #31890b 100%);
+  background-image: linear-gradient(180deg, rgba(138, 218, 75, 0.92) 0%, rgba(105, 190, 43, 0.92) 100%), url('https://images.unsplash.com/photo-1501004318641-b39e6451bec6?auto=format&fit=crop&q=80&w=300');
+  background-size: cover;
+  background-position: center;
+  background-blend-mode: multiply;
   transform: translateY(-1px);
   box-shadow: 0 6px 16px rgba(31, 105, 10, 0.38), inset 0 1px 1px rgba(255, 255, 255, 0.2);
 }
