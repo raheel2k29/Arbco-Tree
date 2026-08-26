@@ -5,15 +5,35 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-slate-50 font-sans text-slate-800 antialiased">
       {/* Top Banner (Thin green bar) */}
-      <div className="bg-[#036829] text-white py-2.5 px-4 text-center text-xs font-bold sm:text-sm tracking-wide">
-        <span>Arbco Tree Solutions • Professional Arborists • $20M Public Liability Insurance</span>
-        <a href="tel:0426204514" className="ml-3 underline hover:text-emerald-100 font-extrabold">
-          Call: 0426 204 514
-        </a>
+      <div className="bg-[#01250d] border-b border-[#036829]/20 w-full">
+        <div className="mx-auto max-w-[1440px] flex flex-col sm:flex-row items-center justify-between py-2 px-4 lg:px-8 text-[11px] font-semibold text-slate-300 w-full gap-2">
+          {/* Left Side: Trust elements */}
+          <div className="flex items-center gap-3.5 flex-wrap text-white">
+            <div className="flex items-center gap-1.5">
+              <span className="text-[#7cc043] font-bold text-xs">◎</span> Fully Insured
+            </div>
+            <span className="text-slate-700">|</span>
+            <div className="flex items-center gap-1.5">
+              <span className="text-[#7cc043] font-bold text-xs">◎</span> Qualified Arborists
+            </div>
+            <span className="text-slate-700">|</span>
+            <div className="flex items-center gap-1.5">
+              <span className="text-[#7cc043] font-bold text-xs">◎</span> 24/7 Emergency Service
+            </div>
+          </div>
+          
+          {/* Right Side: Call info */}
+          <div className="flex items-center gap-2">
+            <span className="text-slate-400">Call Us Anytime</span>
+            <a href="tel:0426204514" className="flex items-center gap-1 text-white hover:text-[#7cc043] transition-colors font-bold font-heading">
+              <span className="text-[#7cc043]">📞</span> 0426 204 514
+            </a>
+          </div>
+        </div>
       </div>
 
       {/* Header / Navbar */}
-      <header className="sticky top-0 z-50 bg-white/90 shadow-sm backdrop-blur-md border-b border-slate-100">
+      <header className="sticky top-0 z-50 bg-white shadow-sm border-b border-slate-100 w-full">
         <div className="mx-auto flex max-w-[1440px] items-center justify-between p-4 lg:px-8">
           <Link href="/" className="flex items-center">
             <Image
@@ -27,27 +47,26 @@ export default function Home() {
           </Link>
 
           {/* Navigation Links */}
-          <nav className="hidden lg:flex items-center gap-8 text-sm font-bold text-slate-700">
-            <Link href="/" className="text-[#036829]">Home</Link>
+          <nav className="hidden lg:flex items-center gap-7 text-sm font-bold text-slate-700 font-heading">
+            <Link href="/" className="text-[#036829] border-b-2 border-[#036829] pb-1">Home</Link>
+            <div className="relative group cursor-pointer flex items-center gap-1 hover:text-[#036829] transition-colors">
+              <Link href="/services">Services</Link>
+              <span className="text-[10px] text-slate-400 group-hover:text-[#036829] transition-colors">▼</span>
+            </div>
             <Link href="/about" className="hover:text-[#036829] transition-colors">About Us</Link>
-            <Link href="/services" className="hover:text-[#036829] transition-colors">Services</Link>
-            <Link href="/faq" className="hover:text-[#036829] transition-colors">FAQs</Link>
+            <Link href="/service-areas" className="hover:text-[#036829] transition-colors">Areas We Serve</Link>
+            <Link href="/gallery" className="hover:text-[#036829] transition-colors">Gallery</Link>
+            <Link href="/testimonials" className="hover:text-[#036829] transition-colors">Reviews</Link>
             <Link href="/contact" className="hover:text-[#036829] transition-colors">Contact</Link>
           </nav>
 
           {/* Call-to-action button */}
-          <div className="flex items-center gap-4">
-            <a
-              href="tel:0426204514"
-              className="hidden sm:inline-flex items-center gap-2 rounded-full border-2 border-slate-200 px-5 py-2.5 text-sm font-extrabold text-slate-700 hover:border-[#036829] hover:text-[#036829] transition-all"
-            >
-              📞 0426 204 514
-            </a>
+          <div className="flex items-center">
             <Link
               href="/book-quote"
-              className="quote-btn-gradient rounded-full px-6 py-3 text-sm font-extrabold text-white"
+              className="quote-btn-gradient rounded-lg px-5 py-3 text-xs sm:text-sm font-extrabold text-white flex items-center gap-1.5"
             >
-              Get Free Quote
+              Get a Free Quote <span className="text-xs">→</span>
             </Link>
           </div>
         </div>
