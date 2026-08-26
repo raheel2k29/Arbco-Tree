@@ -6,7 +6,7 @@ export default function Home() {
     <div className="min-h-screen bg-slate-50 font-sans text-slate-800 antialiased">
       {/* Top Banner (Thin dark green bar) */}
       <div className="bg-[#0b1f10] w-full">
-        <div className="mx-auto max-w-[1440px] flex flex-row items-center justify-between py-2 px-4 lg:px-8 text-[11px] font-medium">
+        <div className="mx-auto max-w-[1440px] flex flex-row items-center justify-between py-3 px-4 lg:px-8 text-[11px] font-medium">
           {/* Left Side: Trust icons */}
           <div className="flex items-center gap-4 text-slate-300">
             <div className="flex items-center gap-1.5">
