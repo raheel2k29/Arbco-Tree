@@ -34,15 +34,15 @@ export default function Home() {
 
       {/* Header / Navbar */}
       <header className="sticky top-0 z-50 bg-white shadow-sm border-b border-slate-100 w-full">
-        <div className="mx-auto flex max-w-[1440px] items-center justify-between p-4 lg:px-8">
+        <div className="mx-auto flex max-w-[1440px] items-center justify-between py-2 px-4 lg:px-8">
           <Link href="/" className="flex items-center">
             <Image
               src="/logo.png"
               alt="Arbco Tree Logo"
-              width={200}
-              height={50}
+              width={120}
+              height={120}
               priority
-              className="object-contain h-12 w-auto"
+              className="object-contain h-16 w-auto"
             />
           </Link>
 
@@ -51,7 +51,9 @@ export default function Home() {
             <Link href="/" className="text-[#036829] border-b-2 border-[#036829] pb-1">Home</Link>
             <div className="relative group cursor-pointer flex items-center gap-1 hover:text-[#036829] transition-colors">
               <Link href="/services">Services</Link>
-              <span className="text-[10px] text-slate-400 group-hover:text-[#036829] transition-colors">▼</span>
+              <svg className="h-3.5 w-3.5 text-slate-400 group-hover:text-[#036829] transition-colors mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+              </svg>
             </div>
             <Link href="/about" className="hover:text-[#036829] transition-colors">About Us</Link>
             <Link href="/service-areas" className="hover:text-[#036829] transition-colors">Areas We Serve</Link>
