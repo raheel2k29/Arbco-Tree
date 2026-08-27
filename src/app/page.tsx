@@ -1,5 +1,6 @@
 "use client";
 
+// Trigger deployment rebuild: 2026-08-28T04:41
 import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
