@@ -609,32 +609,77 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 text-left font-sans">
-            <div className="bg-slate-50 p-8 rounded-3xl border border-slate-200/50 shadow-sm hover:shadow-md transition-all">
-              <div className="text-yellow-400 text-sm mb-2">★★★★★</div>
-              <p className="text-slate-600 text-sm leading-relaxed italic">"Highly recommend Arbco Tree Solutions. They removed 3 large trees from my backyard. Safe, clean, and very competitively priced!"</p>
-              <div className="mt-4 flex items-center gap-3">
-                <div className="h-9 w-9 rounded-full bg-emerald-100 text-emerald-800 font-black flex items-center justify-center text-xs">DK</div>
-                <span className="font-bold text-xs text-slate-800">David K.</span>
-              </div>
-            </div>
-
-            <div className="bg-slate-50 p-8 rounded-3xl border border-slate-200/50 shadow-sm hover:shadow-md transition-all">
-              <div className="text-yellow-400 text-sm mb-2">★★★★★</div>
-              <p className="text-slate-600 text-sm leading-relaxed italic">"Professional crew, turned up on time, ground down all stumps and cleaned up so well you wouldn't even know they had been there. Fantastic job."</p>
-              <div className="mt-4 flex items-center gap-3">
-                <div className="h-9 w-9 rounded-full bg-emerald-100 text-emerald-800 font-black flex items-center justify-center text-xs">SM</div>
-                <span className="font-bold text-xs text-slate-800">Sarah M.</span>
-              </div>
-            </div>
-
-            <div className="bg-slate-50 p-8 rounded-3xl border border-slate-200/50 shadow-sm hover:shadow-md transition-all">
-              <div className="text-yellow-400 text-sm mb-2">★★★★★</div>
-              <p className="text-slate-600 text-sm leading-relaxed italic">"I have used Arbco twice now. They are extremely careful and did a wonderful job lopping the gum tree overhanging our roof."</p>
-              <div className="mt-4 flex items-center gap-3">
-                <div className="h-9 w-9 rounded-full bg-emerald-100 text-emerald-800 font-black flex items-center justify-center text-xs">JL</div>
-                <span className="font-bold text-xs text-slate-800">John L.</span>
-              </div>
+          <div className="overflow-hidden w-full py-4 relative">
+            <div className="reviews-marquee-track gap-6 flex">
+              {[
+                {
+                  name: "David K.",
+                  initials: "DK",
+                  text: "Highly recommend Arbco Tree Solutions. They removed 3 large trees from my backyard. Safe, clean, and very competitively priced!",
+                },
+                {
+                  name: "Sarah M.",
+                  initials: "SM",
+                  text: "Professional crew, turned up on time, ground down all stumps and cleaned up so well you wouldn't even know they had been there. Fantastic job.",
+                },
+                {
+                  name: "John L.",
+                  initials: "JL",
+                  text: "I have used Arbco twice now. They are extremely careful and did a wonderful job lopping the gum tree overhanging our roof.",
+                },
+                {
+                  name: "Michael B.",
+                  initials: "MB",
+                  text: "Top class arborist service. They explained everything clearly, got the permits sorted quickly, and left the garden spotless. Outstanding work!",
+                },
+                {
+                  name: "Emily R.",
+                  initials: "ER",
+                  text: "Very professional and friendly team. Their stump grinding machinery is state-of-the-art and they cleared the site in record time. Will use again!",
+                },
+              ].concat([
+                {
+                  name: "David K.",
+                  initials: "DK",
+                  text: "Highly recommend Arbco Tree Solutions. They removed 3 large trees from my backyard. Safe, clean, and very competitively priced!",
+                },
+                {
+                  name: "Sarah M.",
+                  initials: "SM",
+                  text: "Professional crew, turned up on time, ground down all stumps and cleaned up so well you wouldn't even know they had been there. Fantastic job.",
+                },
+                {
+                  name: "John L.",
+                  initials: "JL",
+                  text: "I have used Arbco twice now. They are extremely careful and did a wonderful job lopping the gum tree overhanging our roof.",
+                },
+                {
+                  name: "Michael B.",
+                  initials: "MB",
+                  text: "Top class arborist service. They explained everything clearly, got the permits sorted quickly, and left the garden spotless. Outstanding work!",
+                },
+                {
+                  name: "Emily R.",
+                  initials: "ER",
+                  text: "Very professional and friendly team. Their stump grinding machinery is state-of-the-art and they cleared the site in record time. Will use again!",
+                },
+              ]).map((rev, index) => (
+                <div
+                  key={index}
+                  className="w-[350px] sm:w-[380px] bg-slate-50 p-8 rounded-3xl border border-slate-200/50 shadow-sm hover:shadow-md transition-all flex flex-col justify-between text-left font-sans shrink-0 whitespace-normal"
+                >
+                  <div>
+                    <div className="text-yellow-400 text-sm mb-2">★★★★★</div>
+                    <p className="text-slate-600 text-sm leading-relaxed italic">"{rev.text}"</p>
+                  </div>
+                  <div className="mt-4 flex items-center gap-3">
+                    <div className="h-9 w-9 rounded-full bg-emerald-100 text-emerald-800 font-black flex items-center justify-center text-xs shrink-0">
+                      {rev.initials}
+                    </div>
+                    <span className="font-bold text-xs text-slate-800">{rev.name}</span>
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
         </div>

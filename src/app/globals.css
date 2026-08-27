@@ -57,3 +57,19 @@ body {
   100% { transform: translateX(-50%); }
 }
 
+/* Reviews Ticker Track */
+.reviews-marquee-track {
+  display: flex;
+  width: max-content;
+  animation: reviews-scroll 50s linear infinite;
+}
+
+.reviews-marquee-track:hover {
+  animation-play-state: paused;
+}
+
+@keyframes reviews-scroll {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
