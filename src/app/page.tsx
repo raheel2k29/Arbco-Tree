@@ -461,7 +461,7 @@ export default function Home() {
         <div className="mx-auto max-w-[1440px] px-4 lg:px-8">
           <div className="grid gap-12 lg:grid-cols-12 lg:items-center">
             {/* Left side: Falling Tree column */}
-            <div className="hidden lg:block lg:col-span-2 relative h-[300px] w-full self-end select-none">
+            <div className="hidden lg:block lg:col-span-2 relative h-[260px] w-full self-end select-none">
               {/* Stump base */}
               <div className="absolute bottom-0 left-[calc(50%-8px)] w-4 h-3 bg-amber-800 rounded-t-sm z-0" />
               {/* Falling tree */}
@@ -471,13 +471,14 @@ export default function Home() {
                   transformOrigin: 'bottom center',
                   transition: 'transform 0.05s ease-out'
                 }}
-                className="w-full h-full relative z-10"
+                className="absolute bottom-[-2px] left-0 right-0 h-[240px] z-10"
               >
                 <Image
                   src="/tree image.png"
                   alt="Falling tree animation"
                   fill
-                  className="object-contain"
+                  className="object-contain object-bottom"
+                  priority
                 />
               </div>
             </div>
