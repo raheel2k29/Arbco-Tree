@@ -16,8 +16,8 @@ export default function Home() {
       const viewportHeight = window.innerHeight;
       
       const elementTop = rect.top;
-      const startTrigger = viewportHeight * 0.45; // Start falling when top of section passes 45% screen height
-      const endTrigger = -80; // Fully fallen when section moves 80px off-screen top
+      const startTrigger = 0; // Starts falling only when the section top reaches the top of the viewport
+      const endTrigger = -sectionHeight * 0.6; // Fully fallen when 60% of the section goes off-screen
       
       if (elementTop <= startTrigger) {
         const totalDistance = startTrigger - endTrigger;
