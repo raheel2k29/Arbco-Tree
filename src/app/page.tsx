@@ -406,17 +406,17 @@ export default function Home() {
 
       {/* Our Valued Customers Section (Dark Green Background with Edge Fades) */}
       <section className="py-16 bg-[#023011] text-white border-t border-b border-white/5 relative overflow-hidden">
-        {/* Left Side Fade Overlay */}
-        <div className="absolute left-0 top-0 bottom-0 w-16 sm:w-32 bg-gradient-to-r from-[#023011] to-transparent pointer-events-none z-20" />
-        {/* Right Side Fade Overlay */}
-        <div className="absolute right-0 top-0 bottom-0 w-16 sm:w-32 bg-gradient-to-l from-[#023011] to-transparent pointer-events-none z-20" />
-
         <div className="mx-auto max-w-[1440px] px-4 lg:px-8 text-center space-y-8">
           <h3 className="text-[#7cc043] font-extrabold text-sm sm:text-base tracking-widest uppercase font-heading">
             Our Valued Customers
           </h3>
           
-          <div className="space-y-6 overflow-hidden py-2 relative">
+          <div className="space-y-6 overflow-hidden py-2 relative w-full">
+            {/* Left Side Fade Overlay (inside the overflow wrapper) */}
+            <div className="absolute left-0 top-0 bottom-0 w-16 sm:w-28 bg-gradient-to-r from-[#023011] to-transparent pointer-events-none z-20" />
+            {/* Right Side Fade Overlay (inside the overflow wrapper) */}
+            <div className="absolute right-0 top-0 bottom-0 w-16 sm:w-28 bg-gradient-to-l from-[#023011] to-transparent pointer-events-none z-20" />
+
             {/* Top Row: Scrolls Left */}
             <div className="logos-track-left gap-8 flex items-center">
               {[
