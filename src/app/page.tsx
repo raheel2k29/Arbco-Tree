@@ -458,10 +458,32 @@ export default function Home() {
 
       {/* Why Choose Us */}
       <section ref={sectionRef} className="py-24 bg-white relative overflow-hidden">
+        {/* Large Falling Tree Animation on Left Side Margin */}
+        <div className="absolute bottom-0 left-2 sm:left-4 md:left-8 lg:left-12 xl:left-20 w-32 h-32 sm:w-44 sm:h-44 md:w-56 md:h-56 lg:w-64 lg:h-64 pointer-events-none z-10">
+          {/* Stump base */}
+          <div className="absolute bottom-0 left-[calc(50%-8px)] w-4 h-3 bg-amber-800 rounded-t-sm z-0" />
+          {/* Falling tree */}
+          <div 
+            style={{ 
+              transform: `rotate(${rotation}deg)`, 
+              transformOrigin: 'bottom center',
+              transition: 'transform 0.05s ease-out'
+            }}
+            className="w-full h-full relative z-10"
+          >
+            <Image
+              src="/tree image.png"
+              alt="Falling tree animation"
+              fill
+              className="object-contain"
+            />
+          </div>
+        </div>
+
         <div className="mx-auto max-w-[1440px] px-4 lg:px-8">
           <div className="grid gap-12 lg:grid-cols-12 lg:items-center">
             {/* Left side: Checklist content */}
-            <div className="lg:col-span-7 space-y-6 relative pb-20">
+            <div className="lg:col-span-7 space-y-6">
               <span className="text-[#036829] font-black uppercase tracking-wider text-xs">Arbco Standards</span>
               <h2 className="text-3xl font-extrabold tracking-tight sm:text-4xl text-slate-900 font-heading">
                 Melbourne’s Gold Standard in Certified Arborist Work
@@ -510,28 +532,6 @@ export default function Home() {
                     <h4 className="font-extrabold text-slate-900 text-base font-heading">Advanced Machinery</h4>
                     <p className="text-slate-500 text-sm">Equipped with tower platforms, wood chippers, and stump grinders.</p>
                   </div>
-                </div>
-              </div>
-
-              {/* Falling Tree Animation */}
-              <div className="absolute bottom-0 left-4 w-20 h-20 sm:w-24 sm:h-24 pointer-events-none">
-                {/* Stump base */}
-                <div className="absolute bottom-0 left-[calc(50%-6px)] w-3 h-2 bg-amber-800 rounded-t-sm z-0" />
-                {/* Falling tree */}
-                <div 
-                  style={{ 
-                    transform: `rotate(${rotation}deg)`, 
-                    transformOrigin: 'bottom center',
-                    transition: 'transform 0.05s ease-out'
-                  }}
-                  className="w-full h-full relative z-10"
-                >
-                  <Image
-                    src="/tree image.png"
-                    alt="Falling tree animation"
-                    fill
-                    className="object-contain"
-                  />
                 </div>
               </div>
             </div>
