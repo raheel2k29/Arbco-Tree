@@ -459,7 +459,7 @@ export default function Home() {
       {/* Why Choose Us */}
       <section ref={sectionRef} className="py-24 bg-white relative overflow-hidden">
         {/* Large Falling Tree Animation in Left Gutter (Outside content boundaries) */}
-        <div className="hidden xl:block absolute bottom-0 left-[2vw] 2xl:left-[calc((100vw-1440px)/2-180px)] w-44 h-44 pointer-events-none z-10">
+        <div className="hidden xl:block absolute bottom-16 left-[2vw] 2xl:left-[calc((100vw-1440px)/2-180px)] w-44 h-44 pointer-events-none z-10">
           {/* Stump base */}
           <div className="absolute bottom-0 left-[calc(50%-8px)] w-4 h-3 bg-amber-800 rounded-t-sm z-0" />
           {/* Falling tree */}
