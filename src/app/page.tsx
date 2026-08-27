@@ -16,14 +16,14 @@ export default function Home() {
       const viewportHeight = window.innerHeight;
       
       const elementTop = rect.top;
-      const startScroll = viewportHeight; 
-      const endScroll = -sectionHeight / 3; // Fully rotated when 1/3 of the section is scrolled out
+      const startTrigger = viewportHeight * 0.45; // Start falling when top of section passes 45% screen height
+      const endTrigger = -80; // Fully fallen when section moves 80px off-screen top
       
-      if (elementTop <= startScroll) {
-        const totalDistance = startScroll - endScroll;
-        const currentDistance = startScroll - elementTop;
+      if (elementTop <= startTrigger) {
+        const totalDistance = startTrigger - endTrigger;
+        const currentDistance = startTrigger - elementTop;
         const progress = Math.min(Math.max(currentDistance / totalDistance, 0), 1);
-        setRotation(progress * 85); // Rotate up to 85 degrees (almost fully lying down)
+        setRotation(progress * 85); 
       } else {
         setRotation(0);
       }
