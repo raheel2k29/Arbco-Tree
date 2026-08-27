@@ -1,7 +1,39 @@
+"use client";
+
+import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
 
 export default function Home() {
+  const [rotation, setRotation] = useState(0);
+  const sectionRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (!sectionRef.current) return;
+      const rect = sectionRef.current.getBoundingClientRect();
+      const sectionHeight = rect.height;
+      const viewportHeight = window.innerHeight;
+      
+      const elementTop = rect.top;
+      const startScroll = viewportHeight; 
+      const endScroll = -sectionHeight / 3; // Fully rotated when 1/3 of the section is scrolled out
+      
+      if (elementTop <= startScroll) {
+        const totalDistance = startScroll - endScroll;
+        const currentDistance = startScroll - elementTop;
+        const progress = Math.min(Math.max(currentDistance / totalDistance, 0), 1);
+        setRotation(progress * 85); // Rotate up to 85 degrees (almost fully lying down)
+      } else {
+        setRotation(0);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    handleScroll();
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
     <div className="min-h-screen bg-slate-50 font-sans text-slate-800 antialiased">
       {/* Top Banner — Scrolling marquee ticker */}
@@ -425,11 +457,11 @@ export default function Home() {
       </section>
 
       {/* Why Choose Us */}
-      <section className="py-24 bg-white">
+      <section ref={sectionRef} className="py-24 bg-white relative overflow-hidden">
         <div className="mx-auto max-w-[1440px] px-4 lg:px-8">
           <div className="grid gap-12 lg:grid-cols-12 lg:items-center">
             {/* Left side: Checklist content */}
-            <div className="lg:col-span-7 space-y-6">
+            <div className="lg:col-span-7 space-y-6 relative pb-20">
               <span className="text-[#036829] font-black uppercase tracking-wider text-xs">Arbco Standards</span>
               <h2 className="text-3xl font-extrabold tracking-tight sm:text-4xl text-slate-900 font-heading">
                 Melbourne’s Gold Standard in Certified Arborist Work
@@ -478,6 +510,28 @@ export default function Home() {
                     <h4 className="font-extrabold text-slate-900 text-base font-heading">Advanced Machinery</h4>
                     <p className="text-slate-500 text-sm">Equipped with tower platforms, wood chippers, and stump grinders.</p>
                   </div>
+                </div>
+              </div>
+
+              {/* Falling Tree Animation */}
+              <div className="absolute bottom-0 left-4 w-20 h-20 sm:w-24 sm:h-24 pointer-events-none">
+                {/* Stump base */}
+                <div className="absolute bottom-0 left-[calc(50%-6px)] w-3 h-2 bg-amber-800 rounded-t-sm z-0" />
+                {/* Falling tree */}
+                <div 
+                  style={{ 
+                    transform: `rotate(${rotation}deg)`, 
+                    transformOrigin: 'bottom center',
+                    transition: 'transform 0.05s ease-out'
+                  }}
+                  className="w-full h-full relative z-10"
+                >
+                  <Image
+                    src="/tree image.png"
+                    alt="Falling tree animation"
+                    fill
+                    className="object-contain"
+                  />
                 </div>
               </div>
             </div>
