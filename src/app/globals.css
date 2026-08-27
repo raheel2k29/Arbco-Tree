@@ -73,3 +73,27 @@ body {
   100% { transform: translateX(-50%); }
 }
 
+/* Logos Left Scrolling Ticker Track */
+.logos-track-left {
+  display: flex;
+  width: max-content;
+  animation: logos-scroll-left 40s linear infinite;
+}
+
+@keyframes logos-scroll-left {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* Logos Right Scrolling Ticker Track */
+.logos-track-right {
+  display: flex;
+  width: max-content;
+  animation: logos-scroll-right 40s linear infinite;
+}
+
+@keyframes logos-scroll-right {
+  0%   { transform: translateX(-50%); }
+  100% { transform: translateX(0); }
+}
+

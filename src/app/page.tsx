@@ -404,88 +404,125 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Our Valued Customers Section (Dark Green Background) */}
-      <section className="py-16 bg-[#023011] text-white border-t border-b border-white/5">
-        <div className="mx-auto max-w-[1440px] px-4 lg:px-8 text-center space-y-10">
+      {/* Our Valued Customers Section (Dark Green Background with Edge Fades) */}
+      <section className="py-16 bg-[#023011] text-white border-t border-b border-white/5 relative overflow-hidden">
+        {/* Left Side Fade Overlay */}
+        <div className="absolute left-0 top-0 bottom-0 w-16 sm:w-32 bg-gradient-to-r from-[#023011] to-transparent pointer-events-none z-20" />
+        {/* Right Side Fade Overlay */}
+        <div className="absolute right-0 top-0 bottom-0 w-16 sm:w-32 bg-gradient-to-l from-[#023011] to-transparent pointer-events-none z-20" />
+
+        <div className="mx-auto max-w-[1440px] px-4 lg:px-8 text-center space-y-8">
           <h3 className="text-[#7cc043] font-extrabold text-sm sm:text-base tracking-widest uppercase font-heading">
             Our Valued Customers
           </h3>
           
-          <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-7 gap-8 md:gap-12 items-center justify-items-center">
-            {/* Logo 1 */}
-            <div className="flex items-center gap-1 opacity-70 hover:opacity-100 transition-opacity duration-300 select-none">
-              <span className="font-heading font-black tracking-tighter text-lg text-white">Downer</span>
-              <span className="h-2.5 w-2.5 bg-orange-500 rotate-45 transform"></span>
+          <div className="space-y-6 overflow-hidden py-2 relative">
+            {/* Top Row: Scrolls Left */}
+            <div className="logos-track-left gap-8 flex items-center">
+              {[
+                { type: "downer" },
+                { type: "citywide" },
+                { type: "barryplant" },
+                { type: "avington" },
+                { type: "eco" },
+                { type: "arcare" },
+                { type: "johnholland" }
+              ].concat([
+                { type: "downer" },
+                { type: "citywide" },
+                { type: "barryplant" },
+                { type: "avington" },
+                { type: "eco" },
+                { type: "arcare" },
+                { type: "johnholland" }
+              ]).map((logo, idx) => (
+                <div key={`top-${idx}`} className="w-[140px] sm:w-[180px] shrink-0 flex items-center justify-center select-none opacity-60 hover:opacity-100 transition-opacity duration-300">
+                  {logo.type === "downer" && (
+                    <div className="flex items-center gap-1">
+                      <span className="font-heading font-black tracking-tighter text-base sm:text-lg text-white">Downer</span>
+                      <span className="h-2 w-2 sm:h-2.5 sm:w-2.5 bg-orange-500 rotate-45 transform"></span>
+                    </div>
+                  )}
+                  {logo.type === "citywide" && (
+                    <div className="flex flex-col items-center">
+                      <span className="text-[8px] font-bold tracking-widest text-white leading-none">▲</span>
+                      <span className="font-heading font-black tracking-tight text-xs sm:text-sm text-white">CITYWIDE</span>
+                    </div>
+                  )}
+                  {logo.type === "barryplant" && (
+                    <span className="font-serif italic font-bold text-base sm:text-lg text-white">BarryPlant</span>
+                  )}
+                  {logo.type === "avington" && (
+                    <div className="flex flex-col items-center">
+                      <svg className="h-3.5 w-3.5 sm:h-4 sm:w-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+                      </svg>
+                      <span className="text-[9px] font-bold tracking-widest text-white mt-1">AVINGTON</span>
+                    </div>
+                  )}
+                  {logo.type === "eco" && (
+                    <span className="text-[10px] sm:text-xs text-white leading-tight font-sans text-left">🌿 Australian<br/><span className="text-[7px] sm:text-[8px] tracking-widest font-bold">ECOSYSTEMS</span></span>
+                  )}
+                  {logo.type === "arcare" && (
+                    <div className="flex items-center gap-1">
+                      <span className="h-3.5 w-3.5 sm:h-4 sm:w-4 rounded-full border-2 border-white flex items-center justify-center text-[6px] sm:text-[7px] font-bold text-white shrink-0">O</span>
+                      <span className="text-xs font-bold text-white tracking-wide">arcare</span>
+                    </div>
+                  )}
+                  {logo.type === "johnholland" && (
+                    <div className="flex flex-col items-center">
+                      <span className="font-sans font-black tracking-wide text-[10px] sm:text-xs text-white uppercase leading-none">JOHN HOLLAND</span>
+                      <div className="h-[2px] w-full bg-red-600 mt-1" />
+                    </div>
+                  )}
+                </div>
+              ))}
             </div>
 
-            {/* Logo 2 */}
-            <div className="flex items-center gap-1.5 opacity-70 hover:opacity-100 transition-opacity duration-300 select-none">
-              <div className="flex flex-col items-center">
-                <span className="text-[9px] font-bold tracking-widest text-white leading-none">▲</span>
-                <span className="font-heading font-black tracking-tight text-sm text-white">CITYWIDE</span>
-              </div>
-            </div>
-
-            {/* Logo 3 */}
-            <div className="opacity-70 hover:opacity-100 transition-opacity duration-300 select-none">
-              <span className="font-serif italic font-bold text-lg text-white">BarryPlant</span>
-            </div>
-
-            {/* Logo 4 */}
-            <div className="flex flex-col items-center opacity-70 hover:opacity-100 transition-opacity duration-300 select-none">
-              <svg className="h-4 w-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-                <path strokeLinecap="round" strokeLinejoin="round" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
-              </svg>
-              <span className="text-[10px] font-bold tracking-widest text-white mt-1">AVINGTON</span>
-            </div>
-
-            {/* Logo 5 */}
-            <div className="flex items-center gap-1 opacity-70 hover:opacity-100 transition-opacity duration-300 select-none">
-              <span className="text-xs text-white leading-tight font-sans text-left">🌿 Australian<br/><span className="text-[8px] tracking-widest font-bold">ECOSYSTEMS</span></span>
-            </div>
-
-            {/* Logo 6 */}
-            <div className="flex items-center gap-1 opacity-70 hover:opacity-100 transition-opacity duration-300 select-none">
-              <span className="h-4 w-4 rounded-full border-2 border-white flex items-center justify-center text-[7px] font-bold text-white shrink-0">O</span>
-              <span className="text-xs font-bold text-white tracking-wide">arcare</span>
-            </div>
-
-            {/* Logo 7 */}
-            <div className="flex flex-col items-center opacity-70 hover:opacity-100 transition-opacity duration-300 select-none">
-              <span className="font-sans font-black tracking-wide text-xs text-white uppercase leading-none">JOHN HOLLAND</span>
-              <div className="h-[2px] w-full bg-red-600 mt-1" />
-            </div>
-
-            {/* Logo 8 */}
-            <div className="opacity-70 hover:opacity-100 transition-opacity duration-300 select-none">
-              <span className="font-serif font-black text-lg text-white">Manheim</span>
-            </div>
-
-            {/* Logo 9 */}
-            <div className="flex items-center gap-1 opacity-70 hover:opacity-100 transition-opacity duration-300 select-none">
-              <span className="text-white text-xs">🚄</span>
-              <span className="text-[9px] font-black tracking-tight leading-none text-white text-left">MELBOURNE<br/>AIRPORT RAIL</span>
-            </div>
-
-            {/* Logo 10 */}
-            <div className="flex flex-col items-center opacity-70 hover:opacity-100 transition-opacity duration-300 select-none">
-              <span className="font-sans font-extrabold text-xs text-white">Mercy Health</span>
-              <span className="text-[7px] italic text-slate-300">Care first</span>
-            </div>
-
-            {/* Logo 11 */}
-            <div className="opacity-70 hover:opacity-100 transition-opacity duration-300 select-none">
-              <span className="font-heading font-black text-base text-white tracking-tighter">miepol</span>
-            </div>
-
-            {/* Logo 12 */}
-            <div className="opacity-70 hover:opacity-100 transition-opacity duration-300 select-none">
-              <span className="font-serif font-black text-base text-white">Ray White.</span>
-            </div>
-
-            {/* Logo 13 */}
-            <div className="opacity-70 hover:opacity-100 transition-opacity duration-300 select-none">
-              <span className="text-[9px] font-bold tracking-tight text-white leading-none font-sans text-left">☀️ Sunshine<br/><span className="text-[7px] font-normal text-slate-300">SPECIAL SCHOOL</span></span>
+            {/* Bottom Row: Scrolls Right */}
+            <div className="logos-track-right gap-8 flex items-center">
+              {[
+                { type: "manheim" },
+                { type: "airport" },
+                { type: "mercy" },
+                { type: "miepol" },
+                { type: "raywhite" },
+                { type: "sunshine" }
+              ].concat([
+                { type: "manheim" },
+                { type: "airport" },
+                { type: "mercy" },
+                { type: "miepol" },
+                { type: "raywhite" },
+                { type: "sunshine" }
+              ]).map((logo, idx) => (
+                <div key={`bottom-${idx}`} className="w-[140px] sm:w-[180px] shrink-0 flex items-center justify-center select-none opacity-60 hover:opacity-100 transition-opacity duration-300">
+                  {logo.type === "manheim" && (
+                    <span className="font-serif font-black text-base sm:text-lg text-white">Manheim</span>
+                  )}
+                  {logo.type === "airport" && (
+                    <div className="flex items-center gap-1">
+                      <span className="text-white text-xs">🚄</span>
+                      <span className="text-[8px] sm:text-[9px] font-black tracking-tight leading-none text-white text-left">MELBOURNE<br/>AIRPORT RAIL</span>
+                    </div>
+                  )}
+                  {logo.type === "mercy" && (
+                    <div className="flex flex-col items-center">
+                      <span className="font-sans font-extrabold text-[10px] sm:text-xs text-white">Mercy Health</span>
+                      <span className="text-[6px] sm:text-[7px] italic text-slate-300">Care first</span>
+                    </div>
+                  )}
+                  {logo.type === "miepol" && (
+                    <span className="font-heading font-black text-sm sm:text-base text-white tracking-tighter">miepol</span>
+                  )}
+                  {logo.type === "raywhite" && (
+                    <span className="font-serif font-black text-sm sm:text-base text-white">Ray White.</span>
+                  )}
+                  {logo.type === "sunshine" && (
+                    <span className="text-[8px] sm:text-[9px] font-bold tracking-tight text-white leading-none font-sans text-left">☀️ Sunshine<br/><span className="text-[6px] sm:text-[7px] font-normal text-slate-300">SPECIAL SCHOOL</span></span>
+                  )}
+                </div>
+              ))}
             </div>
           </div>
         </div>
