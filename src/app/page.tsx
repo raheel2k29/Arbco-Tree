@@ -497,14 +497,15 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Trusted Tree Experts Block (Dark Green Background) */}
-      <section className="bg-[#024a1c] text-white py-24 text-center relative overflow-hidden">
-        <div className="absolute inset-0 opacity-10">
+      {/* Trusted Tree Experts Block (Dark Green Background with Forest Overlay) */}
+      <section className="bg-gradient-to-b from-[#0a2514] to-[#041209] text-white py-24 text-center relative overflow-hidden">
+        <div className="absolute inset-0 opacity-25">
           <Image
             src="https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&q=80&w=2000"
             alt="Forest overlay"
             fill
             className="object-cover"
+            priority
           />
         </div>
         <div className="relative z-10 mx-auto max-w-[1440px] px-4 lg:px-8 space-y-12">
@@ -513,29 +514,83 @@ export default function Home() {
           </h2>
 
           <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3 text-left font-sans">
-            <div className="space-y-2 p-6 rounded-2xl bg-[#036829]/20 border border-emerald-700/30 backdrop-blur-sm">
-              <h4 className="font-extrabold text-lg text-emerald-300 font-heading">✓ Fully Insured</h4>
-              <p className="text-sm text-slate-200">Complete property protection with full public liability insurance ($20 million cover).</p>
+            {/* Card 1 */}
+            <div className="space-y-4 p-6 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-sm hover:border-emerald-500/40 hover:bg-white/10 transition-all duration-300">
+              <div className="flex items-center gap-3">
+                <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-emerald-500/20 text-emerald-300">
+                  <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                  </svg>
+                </span>
+                <h4 className="font-extrabold text-lg text-emerald-300 font-heading">Fully Insured</h4>
+              </div>
+              <p className="text-sm text-slate-300 leading-relaxed">Complete property protection with full public liability insurance ($20 million cover).</p>
             </div>
-            <div className="space-y-2 p-6 rounded-2xl bg-[#036829]/20 border border-emerald-700/30 backdrop-blur-sm">
-              <h4 className="font-extrabold text-lg text-emerald-300 font-heading">✓ Council Permit Experts</h4>
-              <p className="text-sm text-slate-200">Expert guidance on Victoria's council laws and planning permit applications.</p>
+
+            {/* Card 2 */}
+            <div className="space-y-4 p-6 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-sm hover:border-emerald-500/40 hover:bg-white/10 transition-all duration-300">
+              <div className="flex items-center gap-3">
+                <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-emerald-500/20 text-emerald-300">
+                  <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" />
+                  </svg>
+                </span>
+                <h4 className="font-extrabold text-lg text-emerald-300 font-heading">Council Permit Experts</h4>
+              </div>
+              <p className="text-sm text-slate-300 leading-relaxed">Expert guidance on Victoria's council laws and planning permit applications.</p>
             </div>
-            <div className="space-y-2 p-6 rounded-2xl bg-[#036829]/20 border border-emerald-700/30 backdrop-blur-sm">
-              <h4 className="font-extrabold text-lg text-emerald-300 font-heading">✓ Safety First</h4>
-              <p className="text-sm text-slate-200">Rigorous safety assessments before climbing or starting any rigging operations.</p>
+
+            {/* Card 3 */}
+            <div className="space-y-4 p-6 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-sm hover:border-emerald-500/40 hover:bg-white/10 transition-all duration-300">
+              <div className="flex items-center gap-3">
+                <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-emerald-500/20 text-emerald-300">
+                  <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+                  </svg>
+                </span>
+                <h4 className="font-extrabold text-lg text-emerald-300 font-heading">Safety First</h4>
+              </div>
+              <p className="text-sm text-slate-300 leading-relaxed">Rigorous safety assessments before climbing or starting any rigging operations.</p>
             </div>
-            <div className="space-y-2 p-6 rounded-2xl bg-[#036829]/20 border border-emerald-700/30 backdrop-blur-sm">
-              <h4 className="font-extrabold text-lg text-emerald-300 font-heading">✓ Qualified Arborists</h4>
-              <p className="text-sm text-slate-200">Expertise in tree health, pruning standards (AS4373), and emergency felling.</p>
+
+            {/* Card 4 */}
+            <div className="space-y-4 p-6 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-sm hover:border-emerald-500/40 hover:bg-white/10 transition-all duration-300">
+              <div className="flex items-center gap-3">
+                <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-emerald-500/20 text-emerald-300">
+                  <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
+                  </svg>
+                </span>
+                <h4 className="font-extrabold text-lg text-emerald-300 font-heading">Qualified Arborists</h4>
+              </div>
+              <p className="text-sm text-slate-300 leading-relaxed">Expertise in tree health, pruning standards (AS4373), and emergency felling.</p>
             </div>
-            <div className="space-y-2 p-6 rounded-2xl bg-[#036829]/20 border border-emerald-700/30 backdrop-blur-sm">
-              <h4 className="font-extrabold text-lg text-emerald-300 font-heading">✓ Eco-Friendly Recycling</h4>
-              <p className="text-sm text-slate-200">We recycle tree material into nutrient-rich mulches for gardens and community spaces.</p>
+
+            {/* Card 5 */}
+            <div className="space-y-4 p-6 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-sm hover:border-emerald-500/40 hover:bg-white/10 transition-all duration-300">
+              <div className="flex items-center gap-3">
+                <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-emerald-500/20 text-emerald-300">
+                  <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M4 4v5h.582m15.356 2A8.001 8.001 0 1121.21 7.89M9 11l3 3L22 4" />
+                  </svg>
+                </span>
+                <h4 className="font-extrabold text-lg text-emerald-300 font-heading">Eco-Friendly Recycling</h4>
+              </div>
+              <p className="text-sm text-slate-300 leading-relaxed">We recycle tree material into nutrient-rich mulches for gardens and community spaces.</p>
             </div>
-            <div className="space-y-2 p-6 rounded-2xl bg-[#036829]/20 border border-emerald-700/30 backdrop-blur-sm">
-              <h4 className="font-extrabold text-lg text-emerald-300 font-heading">✓ High-End Equipment</h4>
-              <p className="text-sm text-slate-200">Modern chippers, high-access platforms, and heavy transport trucks.</p>
+
+            {/* Card 6 */}
+            <div className="space-y-4 p-6 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-sm hover:border-emerald-500/40 hover:bg-white/10 transition-all duration-300">
+              <div className="flex items-center gap-3">
+                <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-emerald-500/20 text-emerald-300">
+                  <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                  </svg>
+                </span>
+                <h4 className="font-extrabold text-lg text-emerald-300 font-heading">High-End Equipment</h4>
+              </div>
+              <p className="text-sm text-slate-300 leading-relaxed">Modern chippers, high-access platforms, and heavy transport trucks.</p>
             </div>
           </div>
         </div>
