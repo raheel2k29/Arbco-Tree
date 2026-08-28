@@ -404,131 +404,100 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Our Valued Customers Section (Dark Green Background with Edge Fades) */}
-      <section className="py-16 bg-[#023011] text-white border-t border-b border-white/5 relative overflow-hidden">
-        <div className="mx-auto max-w-[1440px] px-4 lg:px-8 text-center space-y-12">
-          <div className="text-center max-w-3xl mx-auto space-y-4">
-            <span className="text-[#7cc043] font-black uppercase tracking-wider text-xs">Our Clients</span>
-            <h2 className="text-3xl font-extrabold tracking-tight sm:text-4xl text-white font-heading">
-              Our Valued Customers
-            </h2>
-            <p className="text-slate-300 text-base sm:text-lg leading-relaxed font-sans">
-              Proudly delivering professional arborist and tree management solutions for municipal councils, civil contractors, and commercial developers.
-            </p>
-          </div>
-          
-          <div className="space-y-6 overflow-hidden py-2 relative w-full">
-            {/* Left Side Fade Overlay (inside the overflow wrapper) */}
-            <div className="absolute left-0 top-0 bottom-0 w-16 sm:w-28 bg-gradient-to-r from-[#023011] to-transparent pointer-events-none z-20" />
-            {/* Right Side Fade Overlay (inside the overflow wrapper) */}
-            <div className="absolute right-0 top-0 bottom-0 w-16 sm:w-28 bg-gradient-to-l from-[#023011] to-transparent pointer-events-none z-20" />
+      {/* Trusted Tree Experts Block (Dark Green Background with Forest Overlay) */}
+      <section className="bg-gradient-to-b from-[#0a2514] to-[#041209] text-white py-24 text-center relative overflow-hidden">
+        <div className="absolute inset-0 opacity-25">
+          <Image
+            src="https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&q=80&w=2000"
+            alt="Forest overlay"
+            fill
+            className="object-cover"
+            priority
+          />
+        </div>
+        <div className="relative z-10 mx-auto max-w-[1440px] px-4 lg:px-8 space-y-12">
+          <h2 className="text-3xl font-extrabold tracking-tight sm:text-4xl font-heading">
+            What makes Arbco Tree the trusted experts?
+          </h2>
 
-            {/* Top Row: Scrolls Left */}
-            <div className="logos-track-left gap-8 flex items-center">
-              {[
-                { type: "downer" },
-                { type: "citywide" },
-                { type: "barryplant" },
-                { type: "avington" },
-                { type: "eco" },
-                { type: "arcare" },
-                { type: "johnholland" }
-              ].concat([
-                { type: "downer" },
-                { type: "citywide" },
-                { type: "barryplant" },
-                { type: "avington" },
-                { type: "eco" },
-                { type: "arcare" },
-                { type: "johnholland" }
-              ]).map((logo, idx) => (
-                <div key={`top-${idx}`} className="w-[140px] sm:w-[180px] shrink-0 flex items-center justify-center select-none opacity-60 hover:opacity-100 transition-opacity duration-300">
-                  {logo.type === "downer" && (
-                    <div className="flex items-center gap-1">
-                      <span className="font-heading font-black tracking-tighter text-base sm:text-lg text-white">Downer</span>
-                      <span className="h-2 w-2 sm:h-2.5 sm:w-2.5 bg-orange-500 rotate-45 transform"></span>
-                    </div>
-                  )}
-                  {logo.type === "citywide" && (
-                    <div className="flex flex-col items-center">
-                      <span className="text-[8px] font-bold tracking-widest text-white leading-none">▲</span>
-                      <span className="font-heading font-black tracking-tight text-xs sm:text-sm text-white">CITYWIDE</span>
-                    </div>
-                  )}
-                  {logo.type === "barryplant" && (
-                    <span className="font-serif italic font-bold text-base sm:text-lg text-white">BarryPlant</span>
-                  )}
-                  {logo.type === "avington" && (
-                    <div className="flex flex-col items-center">
-                      <svg className="h-3.5 w-3.5 sm:h-4 sm:w-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
-                      </svg>
-                      <span className="text-[9px] font-bold tracking-widest text-white mt-1">AVINGTON</span>
-                    </div>
-                  )}
-                  {logo.type === "eco" && (
-                    <span className="text-[10px] sm:text-xs text-white leading-tight font-sans text-left">🌿 Australian<br/><span className="text-[7px] sm:text-[8px] tracking-widest font-bold">ECOSYSTEMS</span></span>
-                  )}
-                  {logo.type === "arcare" && (
-                    <div className="flex items-center gap-1">
-                      <span className="h-3.5 w-3.5 sm:h-4 sm:w-4 rounded-full border-2 border-white flex items-center justify-center text-[6px] sm:text-[7px] font-bold text-white shrink-0">O</span>
-                      <span className="text-xs font-bold text-white tracking-wide">arcare</span>
-                    </div>
-                  )}
-                  {logo.type === "johnholland" && (
-                    <div className="flex flex-col items-center">
-                      <span className="font-sans font-black tracking-wide text-[10px] sm:text-xs text-white uppercase leading-none">JOHN HOLLAND</span>
-                      <div className="h-[2px] w-full bg-red-600 mt-1" />
-                    </div>
-                  )}
-                </div>
-              ))}
+          <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3 text-left font-sans">
+            {/* Card 1 */}
+            <div className="space-y-4 p-6 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-sm hover:border-emerald-500/40 hover:bg-white/10 transition-all duration-300">
+              <div className="flex items-center gap-3">
+                <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-emerald-500/20 text-emerald-300">
+                  <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                  </svg>
+                </span>
+                <h4 className="font-extrabold text-lg text-emerald-300 font-heading">Fully Insured</h4>
+              </div>
+              <p className="text-sm text-slate-300 leading-relaxed">Complete property protection with full public liability insurance ($20 million cover).</p>
             </div>
 
-            {/* Bottom Row: Scrolls Right */}
-            <div className="logos-track-right gap-8 flex items-center">
-              {[
-                { type: "manheim" },
-                { type: "airport" },
-                { type: "mercy" },
-                { type: "miepol" },
-                { type: "raywhite" },
-                { type: "sunshine" }
-              ].concat([
-                { type: "manheim" },
-                { type: "airport" },
-                { type: "mercy" },
-                { type: "miepol" },
-                { type: "raywhite" },
-                { type: "sunshine" }
-              ]).map((logo, idx) => (
-                <div key={`bottom-${idx}`} className="w-[140px] sm:w-[180px] shrink-0 flex items-center justify-center select-none opacity-60 hover:opacity-100 transition-opacity duration-300">
-                  {logo.type === "manheim" && (
-                    <span className="font-serif font-black text-base sm:text-lg text-white">Manheim</span>
-                  )}
-                  {logo.type === "airport" && (
-                    <div className="flex items-center gap-1">
-                      <span className="text-white text-xs">🚄</span>
-                      <span className="text-[8px] sm:text-[9px] font-black tracking-tight leading-none text-white text-left">MELBOURNE<br/>AIRPORT RAIL</span>
-                    </div>
-                  )}
-                  {logo.type === "mercy" && (
-                    <div className="flex flex-col items-center">
-                      <span className="font-sans font-extrabold text-[10px] sm:text-xs text-white">Mercy Health</span>
-                      <span className="text-[6px] sm:text-[7px] italic text-slate-300">Care first</span>
-                    </div>
-                  )}
-                  {logo.type === "miepol" && (
-                    <span className="font-heading font-black text-sm sm:text-base text-white tracking-tighter">miepol</span>
-                  )}
-                  {logo.type === "raywhite" && (
-                    <span className="font-serif font-black text-sm sm:text-base text-white">Ray White.</span>
-                  )}
-                  {logo.type === "sunshine" && (
-                    <span className="text-[8px] sm:text-[9px] font-bold tracking-tight text-white leading-none font-sans text-left">☀️ Sunshine<br/><span className="text-[6px] sm:text-[7px] font-normal text-slate-300">SPECIAL SCHOOL</span></span>
-                  )}
-                </div>
-              ))}
+            {/* Card 2 */}
+            <div className="space-y-4 p-6 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-sm hover:border-emerald-500/40 hover:bg-white/10 transition-all duration-300">
+              <div className="flex items-center gap-3">
+                <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-emerald-500/20 text-emerald-300">
+                  <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" />
+                  </svg>
+                </span>
+                <h4 className="font-extrabold text-lg text-emerald-300 font-heading">Council Permit Experts</h4>
+              </div>
+              <p className="text-sm text-slate-300 leading-relaxed">Expert guidance on Victoria's council laws and planning permit applications.</p>
+            </div>
+
+            {/* Card 3 */}
+            <div className="space-y-4 p-6 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-sm hover:border-emerald-500/40 hover:bg-white/10 transition-all duration-300">
+              <div className="flex items-center gap-3">
+                <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-emerald-500/20 text-emerald-300">
+                  <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+                  </svg>
+                </span>
+                <h4 className="font-extrabold text-lg text-emerald-300 font-heading">Safety First</h4>
+              </div>
+              <p className="text-sm text-slate-300 leading-relaxed">Rigorous safety assessments before climbing or starting any rigging operations.</p>
+            </div>
+
+            {/* Card 4 */}
+            <div className="space-y-4 p-6 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-sm hover:border-emerald-500/40 hover:bg-white/10 transition-all duration-300">
+              <div className="flex items-center gap-3">
+                <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-emerald-500/20 text-emerald-300">
+                  <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
+                  </svg>
+                </span>
+                <h4 className="font-extrabold text-lg text-emerald-300 font-heading">Qualified Arborists</h4>
+              </div>
+              <p className="text-sm text-slate-300 leading-relaxed">Expertise in tree health, pruning standards (AS4373), and emergency felling.</p>
+            </div>
+
+            {/* Card 5 */}
+            <div className="space-y-4 p-6 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-sm hover:border-emerald-500/40 hover:bg-white/10 transition-all duration-300">
+              <div className="flex items-center gap-3">
+                <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-emerald-500/20 text-emerald-300">
+                  <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M4 4v5h.582m15.356 2A8.001 8.001 0 1121.21 7.89M9 11l3 3L22 4" />
+                  </svg>
+                </span>
+                <h4 className="font-extrabold text-lg text-emerald-300 font-heading">Eco-Friendly Recycling</h4>
+              </div>
+              <p className="text-sm text-slate-300 leading-relaxed">We recycle tree material into nutrient-rich mulches for gardens and community spaces.</p>
+            </div>
+
+            {/* Card 6 */}
+            <div className="space-y-4 p-6 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-sm hover:border-emerald-500/40 hover:bg-white/10 transition-all duration-300">
+              <div className="flex items-center gap-3">
+                <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-emerald-500/20 text-emerald-300">
+                  <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                  </svg>
+                </span>
+                <h4 className="font-extrabold text-lg text-emerald-300 font-heading">High-End Equipment</h4>
+              </div>
+              <p className="text-sm text-slate-300 leading-relaxed">Modern chippers, high-access platforms, and heavy transport trucks.</p>
             </div>
           </div>
         </div>
@@ -683,100 +652,131 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Trusted Tree Experts Block (Dark Green Background with Forest Overlay) */}
-      <section className="bg-gradient-to-b from-[#0a2514] to-[#041209] text-white py-24 text-center relative overflow-hidden">
-        <div className="absolute inset-0 opacity-25">
-          <Image
-            src="https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&q=80&w=2000"
-            alt="Forest overlay"
-            fill
-            className="object-cover"
-            priority
-          />
-        </div>
-        <div className="relative z-10 mx-auto max-w-[1440px] px-4 lg:px-8 space-y-12">
-          <h2 className="text-3xl font-extrabold tracking-tight sm:text-4xl font-heading">
-            What makes Arbco Tree the trusted experts?
-          </h2>
+      {/* Our Valued Customers Section (Dark Green Background with Edge Fades) */}
+      <section className="py-16 bg-[#023011] text-white border-t border-b border-white/5 relative overflow-hidden">
+        <div className="mx-auto max-w-[1440px] px-4 lg:px-8 text-center space-y-12">
+          <div className="text-center max-w-3xl mx-auto space-y-4">
+            <span className="text-[#7cc043] font-black uppercase tracking-wider text-xs">Our Clients</span>
+            <h2 className="text-3xl font-extrabold tracking-tight sm:text-4xl text-white font-heading">
+              Our Valued Customers
+            </h2>
+            <p className="text-slate-300 text-base sm:text-lg leading-relaxed font-sans">
+              Proudly delivering professional arborist and tree management solutions for municipal councils, civil contractors, and commercial developers.
+            </p>
+          </div>
+          
+          <div className="space-y-6 overflow-hidden py-2 relative w-full">
+            {/* Left Side Fade Overlay (inside the overflow wrapper) */}
+            <div className="absolute left-0 top-0 bottom-0 w-16 sm:w-28 bg-gradient-to-r from-[#023011] to-transparent pointer-events-none z-20" />
+            {/* Right Side Fade Overlay (inside the overflow wrapper) */}
+            <div className="absolute right-0 top-0 bottom-0 w-16 sm:w-28 bg-gradient-to-l from-[#023011] to-transparent pointer-events-none z-20" />
 
-          <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3 text-left font-sans">
-            {/* Card 1 */}
-            <div className="space-y-4 p-6 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-sm hover:border-emerald-500/40 hover:bg-white/10 transition-all duration-300">
-              <div className="flex items-center gap-3">
-                <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-emerald-500/20 text-emerald-300">
-                  <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-                  </svg>
-                </span>
-                <h4 className="font-extrabold text-lg text-emerald-300 font-heading">Fully Insured</h4>
-              </div>
-              <p className="text-sm text-slate-300 leading-relaxed">Complete property protection with full public liability insurance ($20 million cover).</p>
+            {/* Top Row: Scrolls Left */}
+            <div className="logos-track-left gap-8 flex items-center">
+              {[
+                { type: "downer" },
+                { type: "citywide" },
+                { type: "barryplant" },
+                { type: "avington" },
+                { type: "eco" },
+                { type: "arcare" },
+                { type: "johnholland" }
+              ].concat([
+                { type: "downer" },
+                { type: "citywide" },
+                { type: "barryplant" },
+                { type: "avington" },
+                { type: "eco" },
+                { type: "arcare" },
+                { type: "johnholland" }
+              ]).map((logo, idx) => (
+                <div key={`top-${idx}`} className="w-[140px] sm:w-[180px] shrink-0 flex items-center justify-center select-none opacity-60 hover:opacity-100 transition-opacity duration-300">
+                  {logo.type === "downer" && (
+                    <div className="flex items-center gap-1">
+                      <span className="font-heading font-black tracking-tighter text-base sm:text-lg text-white">Downer</span>
+                      <span className="h-2 w-2 sm:h-2.5 sm:w-2.5 bg-orange-500 rotate-45 transform"></span>
+                    </div>
+                  )}
+                  {logo.type === "citywide" && (
+                    <div className="flex flex-col items-center">
+                      <span className="text-[8px] font-bold tracking-widest text-white leading-none">▲</span>
+                      <span className="font-heading font-black tracking-tight text-xs sm:text-sm text-white">CITYWIDE</span>
+                    </div>
+                  )}
+                  {logo.type === "barryplant" && (
+                    <span className="font-serif italic font-bold text-base sm:text-lg text-white">BarryPlant</span>
+                  )}
+                  {logo.type === "avington" && (
+                    <div className="flex flex-col items-center">
+                      <svg className="h-3.5 w-3.5 sm:h-4 sm:w-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+                      </svg>
+                      <span className="text-[9px] font-bold tracking-widest text-white mt-1">AVINGTON</span>
+                    </div>
+                  )}
+                  {logo.type === "eco" && (
+                    <span className="text-[10px] sm:text-xs text-white leading-tight font-sans text-left">🌿 Australian<br/><span className="text-[7px] sm:text-[8px] tracking-widest font-bold">ECOSYSTEMS</span></span>
+                  )}
+                  {logo.type === "arcare" && (
+                    <div className="flex items-center gap-1">
+                      <span className="h-3.5 w-3.5 sm:h-4 sm:w-4 rounded-full border-2 border-white flex items-center justify-center text-[6px] sm:text-[7px] font-bold text-white shrink-0">O</span>
+                      <span className="text-xs font-bold text-white tracking-wide">arcare</span>
+                    </div>
+                  )}
+                  {logo.type === "johnholland" && (
+                    <div className="flex flex-col items-center">
+                      <span className="font-sans font-black tracking-wide text-[10px] sm:text-xs text-white uppercase leading-none">JOHN HOLLAND</span>
+                      <div className="h-[2px] w-full bg-red-600 mt-1" />
+                    </div>
+                  )}
+                </div>
+              ))}
             </div>
 
-            {/* Card 2 */}
-            <div className="space-y-4 p-6 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-sm hover:border-emerald-500/40 hover:bg-white/10 transition-all duration-300">
-              <div className="flex items-center gap-3">
-                <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-emerald-500/20 text-emerald-300">
-                  <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" />
-                  </svg>
-                </span>
-                <h4 className="font-extrabold text-lg text-emerald-300 font-heading">Council Permit Experts</h4>
-              </div>
-              <p className="text-sm text-slate-300 leading-relaxed">Expert guidance on Victoria's council laws and planning permit applications.</p>
-            </div>
-
-            {/* Card 3 */}
-            <div className="space-y-4 p-6 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-sm hover:border-emerald-500/40 hover:bg-white/10 transition-all duration-300">
-              <div className="flex items-center gap-3">
-                <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-emerald-500/20 text-emerald-300">
-                  <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
-                  </svg>
-                </span>
-                <h4 className="font-extrabold text-lg text-emerald-300 font-heading">Safety First</h4>
-              </div>
-              <p className="text-sm text-slate-300 leading-relaxed">Rigorous safety assessments before climbing or starting any rigging operations.</p>
-            </div>
-
-            {/* Card 4 */}
-            <div className="space-y-4 p-6 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-sm hover:border-emerald-500/40 hover:bg-white/10 transition-all duration-300">
-              <div className="flex items-center gap-3">
-                <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-emerald-500/20 text-emerald-300">
-                  <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
-                  </svg>
-                </span>
-                <h4 className="font-extrabold text-lg text-emerald-300 font-heading">Qualified Arborists</h4>
-              </div>
-              <p className="text-sm text-slate-300 leading-relaxed">Expertise in tree health, pruning standards (AS4373), and emergency felling.</p>
-            </div>
-
-            {/* Card 5 */}
-            <div className="space-y-4 p-6 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-sm hover:border-emerald-500/40 hover:bg-white/10 transition-all duration-300">
-              <div className="flex items-center gap-3">
-                <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-emerald-500/20 text-emerald-300">
-                  <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M4 4v5h.582m15.356 2A8.001 8.001 0 1121.21 7.89M9 11l3 3L22 4" />
-                  </svg>
-                </span>
-                <h4 className="font-extrabold text-lg text-emerald-300 font-heading">Eco-Friendly Recycling</h4>
-              </div>
-              <p className="text-sm text-slate-300 leading-relaxed">We recycle tree material into nutrient-rich mulches for gardens and community spaces.</p>
-            </div>
-
-            {/* Card 6 */}
-            <div className="space-y-4 p-6 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-sm hover:border-emerald-500/40 hover:bg-white/10 transition-all duration-300">
-              <div className="flex items-center gap-3">
-                <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-emerald-500/20 text-emerald-300">
-                  <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-                  </svg>
-                </span>
-                <h4 className="font-extrabold text-lg text-emerald-300 font-heading">High-End Equipment</h4>
-              </div>
-              <p className="text-sm text-slate-300 leading-relaxed">Modern chippers, high-access platforms, and heavy transport trucks.</p>
+            {/* Bottom Row: Scrolls Right */}
+            <div className="logos-track-right gap-8 flex items-center">
+              {[
+                { type: "manheim" },
+                { type: "airport" },
+                { type: "mercy" },
+                { type: "miepol" },
+                { type: "raywhite" },
+                { type: "sunshine" }
+              ].concat([
+                { type: "manheim" },
+                { type: "airport" },
+                { type: "mercy" },
+                { type: "miepol" },
+                { type: "raywhite" },
+                { type: "sunshine" }
+              ]).map((logo, idx) => (
+                <div key={`bottom-${idx}`} className="w-[140px] sm:w-[180px] shrink-0 flex items-center justify-center select-none opacity-60 hover:opacity-100 transition-opacity duration-300">
+                  {logo.type === "manheim" && (
+                    <span className="font-serif font-black text-base sm:text-lg text-white">Manheim</span>
+                  )}
+                  {logo.type === "airport" && (
+                    <div className="flex items-center gap-1">
+                      <span className="text-white text-xs">🚄</span>
+                      <span className="text-[8px] sm:text-[9px] font-black tracking-tight leading-none text-white text-left">MELBOURNE<br/>AIRPORT RAIL</span>
+                    </div>
+                  )}
+                  {logo.type === "mercy" && (
+                    <div className="flex flex-col items-center">
+                      <span className="font-sans font-extrabold text-[10px] sm:text-xs text-white">Mercy Health</span>
+                      <span className="text-[6px] sm:text-[7px] italic text-slate-300">Care first</span>
+                    </div>
+                  )}
+                  {logo.type === "miepol" && (
+                    <span className="font-heading font-black text-sm sm:text-base text-white tracking-tighter">miepol</span>
+                  )}
+                  {logo.type === "raywhite" && (
+                    <span className="font-serif font-black text-sm sm:text-base text-white">Ray White.</span>
+                  )}
+                  {logo.type === "sunshine" && (
+                    <span className="text-[8px] sm:text-[9px] font-bold tracking-tight text-white leading-none font-sans text-left">☀️ Sunshine<br/><span className="text-[6px] sm:text-[7px] font-normal text-slate-300">SPECIAL SCHOOL</span></span>
+                  )}
+                </div>
+              ))}
             </div>
           </div>
         </div>
