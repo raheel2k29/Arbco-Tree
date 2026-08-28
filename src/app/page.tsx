@@ -410,7 +410,7 @@ export default function Home() {
         <div className="absolute left-[-5%] bottom-0 w-[50%] h-[110%] pointer-events-none z-0 select-none">
           <div 
             style={{ 
-              transform: `rotate(${rotation}deg)`, 
+              transform: `rotate(${rotation}deg) translate(${-rotation * 0.8}px, ${rotation * 1.3}px)`, 
               transformOrigin: '20% 100%',
               transition: 'transform 0.05s ease-out'
             }}
