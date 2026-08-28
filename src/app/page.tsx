@@ -900,7 +900,7 @@ export default function Home() {
               <div className="pt-4">
                 <Link
                   href="/service-areas"
-                  className="inline-flex items-center justify-center rounded-full bg-[#036829] hover:bg-emerald-800 text-white font-extrabold px-8 py-3.5 shadow-md transition-all font-heading"
+                  className="quote-btn-gradient inline-flex items-center justify-center rounded-xl text-white font-extrabold px-8 py-4 shadow-md transition-all font-heading hover:opacity-95"
                 >
                   Explore Service Areas
                 </Link>
