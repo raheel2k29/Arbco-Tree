@@ -406,24 +406,21 @@ export default function Home() {
 
       {/* Why Choose Us */}
       <section ref={sectionRef} className="py-24 bg-white relative overflow-hidden">
-        {/* Large Falling Tree Animation in Left Gutter (Outside content boundaries) */}
-        <div className="hidden xl:block absolute bottom-16 left-[2vw] 2xl:left-[calc((100vw-1440px)/2-180px)] w-44 h-44 pointer-events-none z-10">
-          {/* Stump base */}
-          <div className="absolute bottom-0 left-[calc(50%-8px)] w-4 h-3 bg-amber-800 rounded-t-sm z-0" />
-          {/* Falling tree */}
+        {/* Animated Background Silhouette Tree */}
+        <div className="absolute left-[-5%] bottom-0 w-[50%] h-[110%] pointer-events-none z-0 select-none">
           <div 
             style={{ 
               transform: `rotate(${rotation}deg)`, 
-              transformOrigin: 'bottom center',
+              transformOrigin: '20% 100%',
               transition: 'transform 0.05s ease-out'
             }}
-            className="absolute bottom-[-2px] left-0 right-0 h-[160px] z-10"
+            className="w-full h-full relative opacity-[0.08]"
           >
             <Image
-              src="/tree image.png"
-              alt="Falling tree animation"
+              src="/silhouette-tree.png"
+              alt="Background silhouette tree animation"
               fill
-              className="object-contain object-bottom"
+              className="object-contain object-left-bottom"
               priority
             />
           </div>
