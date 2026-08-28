@@ -912,12 +912,38 @@ export default function Home() {
 
       {/* Rounded Pre-footer CTA Callout Card */}
       <div className="mx-auto max-w-[1440px] px-4 lg:px-8 -mb-16 relative z-30">
-        <div className="bg-[#0b1f10] border border-[#7cc043]/20 rounded-3xl p-6 lg:p-8 flex flex-col lg:flex-row items-center justify-between gap-6 shadow-2xl relative overflow-hidden">
+        <div className="bg-[#051c0e] border border-[#7cc043]/20 rounded-3xl p-6 lg:p-8 flex flex-col lg:flex-row items-center justify-between gap-6 shadow-2xl relative overflow-hidden">
           {/* Leaf background texture overlay */}
           <div className="absolute inset-0 opacity-[0.05] pointer-events-none select-none bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-emerald-500 via-transparent to-transparent" />
           
-          <div className="flex items-center gap-4 text-left w-full lg:w-auto">
-            <div className="h-14 w-14 rounded-full bg-[#036829]/20 border border-[#7cc043]/30 flex items-center justify-center text-white shrink-0 shadow-inner">
+          {/* Hanging leaf branch top-left */}
+          <div className="absolute top-0 left-0 w-36 h-36 opacity-30 pointer-events-none select-none">
+            <svg className="w-full h-full text-[#7cc043]" viewBox="0 0 100 100" fill="currentColor">
+              <path d="M0,0 Q 30,10 50,40" stroke="currentColor" strokeWidth="2.5" fill="none" />
+              <path d="M15,8 C 22,5 25,12 22,16 C 18,18 12,14 15,8 Z" />
+              <path d="M28,16 C 36,12 38,20 34,24 C 30,26 24,22 28,16 Z" />
+              <path d="M38,28 C 46,24 48,32 44,36 C 40,38 34,34 38,28 Z" />
+              <path d="M8,18 C 12,25 5,28 2,24 C 0,20 5,14 8,18 Z" />
+              <path d="M18,30 C 22,37 15,40 12,36 C 9,32 14,26 18,30 Z" />
+              <path d="M28,42 C 32,49 25,52 22,48 C 19,44 24,38 28,42 Z" />
+            </svg>
+          </div>
+          
+          {/* Hanging leaf branch top-right */}
+          <div className="absolute top-0 right-0 w-36 h-36 opacity-30 pointer-events-none select-none scale-x-[-1]">
+            <svg className="w-full h-full text-[#7cc043]" viewBox="0 0 100 100" fill="currentColor">
+              <path d="M0,0 Q 30,10 50,40" stroke="currentColor" strokeWidth="2.5" fill="none" />
+              <path d="M15,8 C 22,5 25,12 22,16 C 18,18 12,14 15,8 Z" />
+              <path d="M28,16 C 36,12 38,20 34,24 C 30,26 24,22 28,16 Z" />
+              <path d="M38,28 C 46,24 48,32 44,36 C 40,38 34,34 38,28 Z" />
+              <path d="M8,18 C 12,25 5,28 2,24 C 0,20 5,14 8,18 Z" />
+              <path d="M18,30 C 22,37 15,40 12,36 C 9,32 14,26 18,30 Z" />
+              <path d="M28,42 C 32,49 25,52 22,48 C 19,44 24,38 28,42 Z" />
+            </svg>
+          </div>
+
+          <div className="flex items-center gap-4 text-left w-full lg:w-auto relative z-10">
+            <div className="h-14 w-14 rounded-full bg-[#041a0d]/80 border-2 border-[#7cc043]/30 flex items-center justify-center text-white shrink-0 shadow-md">
               <svg className="h-6 w-6 text-[#7cc043]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.2}>
                 <path strokeLinecap="round" strokeLinejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.94.725l.548 2.2a1 1 0 01-.321.988l-1.305.98a10.582 10.582 0 004.872 4.872l.98-1.305a1 1 0 01.988-.321l2.2.548a1 1 0 01.725.94V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
               </svg>
@@ -929,7 +955,7 @@ export default function Home() {
           </div>
 
           {/* Features columns */}
-          <div className="hidden lg:flex items-center justify-between gap-6 lg:gap-8 flex-1 max-w-2xl px-6 border-l border-r border-emerald-950/40 text-left text-xs text-slate-300">
+          <div className="hidden lg:flex items-center justify-between gap-6 lg:gap-8 flex-1 max-w-2xl px-6 border-l border-r border-[#7cc043]/10 text-left text-xs text-slate-300 relative z-10">
             <div className="flex items-start gap-2.5">
               <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-emerald-500/10 text-[#7cc043] mt-0.5">
                 <svg className="h-4.5 w-4.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.2}>
@@ -942,7 +968,7 @@ export default function Home() {
               </div>
             </div>
 
-            <div className="h-8 w-[1px] bg-emerald-950/40" />
+            <div className="h-8 w-[1px] bg-[#7cc043]/10" />
 
             <div className="flex items-start gap-2.5">
               <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-emerald-500/10 text-[#7cc043] mt-0.5">
@@ -956,7 +982,7 @@ export default function Home() {
               </div>
             </div>
 
-            <div className="h-8 w-[1px] bg-emerald-950/40" />
+            <div className="h-8 w-[1px] bg-[#7cc043]/10" />
 
             <div className="flex items-start gap-2.5">
               <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-emerald-500/10 text-[#7cc043] mt-0.5">
@@ -972,7 +998,7 @@ export default function Home() {
           </div>
 
           {/* CTA Button */}
-          <div className="shrink-0 w-full lg:w-auto">
+          <div className="shrink-0 w-full lg:w-auto relative z-10">
             <Link
               href="/book-quote"
               className="quote-btn-gradient rounded-xl px-6 py-4 text-sm font-extrabold text-white flex items-center justify-center gap-1.5 shadow-md shadow-black/20 w-full lg:w-auto hover:opacity-95 transition-opacity"
@@ -984,9 +1010,9 @@ export default function Home() {
       </div>
 
       {/* Footer */}
-      <footer className="bg-[#030d05] text-slate-400 pt-28 pb-12 border-t border-emerald-950 relative overflow-hidden font-sans">
-        {/* Left Side Tree Watermark */}
-        <div className="absolute left-0 bottom-0 top-0 w-[450px] opacity-[0.03] pointer-events-none select-none z-0 hidden lg:block">
+      <footer className="bg-[#051c0e] text-slate-400 pt-28 pb-12 border-t border-emerald-950/60 relative overflow-hidden font-sans">
+        {/* Left Side Tree Watermark (Enhanced Opacity & Tint) */}
+        <div className="absolute left-[-2%] bottom-[-5%] w-[45%] h-[110%] opacity-[0.09] pointer-events-none select-none z-0 hidden lg:block">
           <Image src="/silhouette-tree.png" alt="watermark tree" fill className="object-contain object-left-bottom" />
         </div>
 
@@ -994,14 +1020,26 @@ export default function Home() {
           {/* Column 1: Info & Brand */}
           <div className="lg:col-span-3 space-y-5">
             <div className="flex items-center gap-3 select-none">
-              <svg className="h-14 w-14 text-white shrink-0" viewBox="0 0 100 100" fill="none" stroke="currentColor">
-                {/* Trunk */}
-                <path d="M50 82 V 55 M50 68 L 40 58 M50 63 L 60 53 M40 58 L 32 54 M60 53 L 68 49 M50 55 L 48 42 M50 55 L 52 42" strokeWidth="4.5" strokeLinecap="round" />
-                {/* Leaf circles */}
-                <circle cx="50" cy="32" r="16" fill="currentColor" fillOpacity="0.15" stroke="currentColor" strokeWidth="2" />
-                <circle cx="34" cy="42" r="14" fill="currentColor" fillOpacity="0.15" stroke="currentColor" strokeWidth="2" />
-                <circle cx="66" cy="42" r="14" fill="currentColor" fillOpacity="0.15" stroke="currentColor" strokeWidth="2" />
-                <circle cx="50" cy="48" r="12" fill="currentColor" fillOpacity="0.15" stroke="currentColor" strokeWidth="2" />
+              <svg className="h-14 w-14 text-white shrink-0" viewBox="0 0 100 100" fill="currentColor">
+                {/* Outer leafy ring */}
+                <path d="M50 10 C 27.9 10 10 27.9 10 50 C 10 72.1 27.9 90 50 90 C 72.1 90 90 72.1 90 50 C 90 27.9 72.1 10 50 10 Z M 50 86 C 30.1 86 14 69.9 14 50 C 14 30.1 30.1 14 50 14 C 69.9 14 86 30.1 86 50 C 86 69.9 69.9 86 50 86 Z" />
+                {/* Detailed tree trunk */}
+                <path d="M49 80 V 58 L 41 50 L 33 46 M51 80 V 58 L 59 50 L 67 46 M50 54 V 42 L 44 34 M50 48 L 56 38" stroke="currentColor" strokeWidth="3" strokeLinecap="round" />
+                {/* Tiny leaf clusters */}
+                <circle cx="50" cy="26" r="3" />
+                <circle cx="45" cy="28" r="2.5" />
+                <circle cx="55" cy="28" r="2.5" />
+                <circle cx="39" cy="32" r="2.5" />
+                <circle cx="61" cy="32" r="2.5" />
+                <circle cx="34" cy="38" r="2" />
+                <circle cx="66" cy="38" r="2" />
+                <circle cx="30" cy="45" r="2" />
+                <circle cx="70" cy="45" r="2" />
+                <circle cx="50" cy="36" r="3" />
+                <circle cx="44" cy="40" r="2.5" />
+                <circle cx="56" cy="40" r="2.5" />
+                <circle cx="37" cy="47" r="2" />
+                <circle cx="63" cy="47" r="2" />
               </svg>
               <div className="flex flex-col text-left">
                 <span className="font-heading font-black text-2xl tracking-wide text-white leading-none">MILONES</span>
@@ -1017,7 +1055,7 @@ export default function Home() {
                 <a
                   key={soc}
                   href="#"
-                  className="h-9 w-9 rounded-full border border-slate-800 hover:border-[#7cc043] text-slate-400 hover:text-white flex items-center justify-center transition-all bg-[#0b1f10]/10 hover:bg-[#0b1f10]/50"
+                  className="h-9 w-9 rounded-full border border-[#7cc043]/30 hover:border-[#7cc043] text-slate-400 hover:text-white flex items-center justify-center transition-all bg-[#0b1f10]/20 hover:bg-[#0b1f10]/50"
                 >
                   {soc === 'facebook' && <span className="text-sm font-black font-sans">f</span>}
                   {soc === 'instagram' && <span className="text-xs font-black font-sans">ig</span>}
@@ -1070,22 +1108,22 @@ export default function Home() {
           </div>
 
           {/* Column 5: Right side Contact Card Widget */}
-          <div className="lg:col-span-3 bg-[#0b1f10]/20 border border-emerald-950/60 rounded-3xl p-6 space-y-4 text-left relative overflow-hidden backdrop-blur-sm">
+          <div className="lg:col-span-3 bg-[#0b1f10]/40 border border-[#7cc043]/15 rounded-3xl p-6 space-y-4 text-left relative overflow-hidden backdrop-blur-sm">
             {/* Leaf watermark inside card */}
-            <div className="absolute right-0 bottom-0 opacity-[0.03] pointer-events-none select-none w-24 h-24">
-              <Image src="/silhouette-tree.png" alt="Leaf watermark" fill className="object-contain" />
+            <div className="absolute right-[-10%] bottom-[-10%] opacity-[0.06] pointer-events-none select-none w-32 h-32">
+              <Image src="/silhouette-tree.png" alt="Leaf watermark" fill className="object-contain object-right-bottom" />
             </div>
 
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-2 relative z-10">
               <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-emerald-500/10 text-[#7cc043] text-sm shrink-0">
                 🌿
               </span>
               <h4 className="text-white font-extrabold text-base font-heading">Let's talk about <span className="text-[#7cc043]">your trees.</span></h4>
             </div>
             
-            <p className="text-slate-400 text-xs">Free quotes. Fast response. No obligation.</p>
+            <p className="text-slate-400 text-xs relative z-10">Free quotes. Fast response. No obligation.</p>
             
-            <div className="space-y-3 pt-2">
+            <div className="space-y-3 pt-2 relative z-10">
               <a href="tel:0385379657" className="flex items-center gap-3 text-white hover:text-[#7cc043] transition-colors group">
                 <span className="flex h-9 w-9 items-center justify-center rounded-full bg-[#0b1f10]/30 group-hover:bg-[#036829] border border-emerald-900/30 text-[#7cc043] group-hover:text-white transition-all shrink-0">
                   <svg className="h-4.5 w-4.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
@@ -1106,7 +1144,7 @@ export default function Home() {
 
             <Link
               href="/book-quote"
-              className="w-full inline-flex items-center justify-center gap-1.5 rounded-xl border border-[#7cc043]/30 hover:border-[#7cc043] hover:bg-[#7cc043]/10 text-white font-extrabold text-xs py-3.5 transition-all font-heading"
+              className="w-full inline-flex items-center justify-center gap-1.5 rounded-xl border border-[#7cc043]/30 hover:border-[#7cc043] hover:bg-[#7cc043]/10 text-white font-extrabold text-xs py-3.5 transition-all font-heading relative z-10"
             >
               Request a Free Quote <span className="text-[10px]">→</span>
             </Link>
