@@ -993,14 +993,21 @@ export default function Home() {
         <div className="mx-auto max-w-[1440px] px-4 lg:px-8 grid gap-8 lg:grid-cols-12 relative z-10">
           {/* Column 1: Info & Brand */}
           <div className="lg:col-span-3 space-y-5">
-            <Image
-              src="/logo.png"
-              alt="Arbco Tree Logo"
-              width={160}
-              height={160}
-              priority
-              className="brightness-0 invert object-contain h-14 w-auto"
-            />
+            <div className="flex items-center gap-3 select-none">
+              <svg className="h-14 w-14 text-white shrink-0" viewBox="0 0 100 100" fill="none" stroke="currentColor">
+                {/* Trunk */}
+                <path d="M50 82 V 55 M50 68 L 40 58 M50 63 L 60 53 M40 58 L 32 54 M60 53 L 68 49 M50 55 L 48 42 M50 55 L 52 42" strokeWidth="4.5" strokeLinecap="round" />
+                {/* Leaf circles */}
+                <circle cx="50" cy="32" r="16" fill="currentColor" fillOpacity="0.15" stroke="currentColor" strokeWidth="2" />
+                <circle cx="34" cy="42" r="14" fill="currentColor" fillOpacity="0.15" stroke="currentColor" strokeWidth="2" />
+                <circle cx="66" cy="42" r="14" fill="currentColor" fillOpacity="0.15" stroke="currentColor" strokeWidth="2" />
+                <circle cx="50" cy="48" r="12" fill="currentColor" fillOpacity="0.15" stroke="currentColor" strokeWidth="2" />
+              </svg>
+              <div className="flex flex-col text-left">
+                <span className="font-heading font-black text-2xl tracking-wide text-white leading-none">MILONES</span>
+                <span className="font-heading font-bold text-[10px] tracking-widest text-[#7cc043] mt-1.5 leading-none">TREE SERVICES</span>
+              </div>
+            </div>
             <p className="text-xs text-slate-400 leading-relaxed max-w-sm">
               Professional tree removal and arborist services across Melbourne. Safety, reliability and customer satisfaction is our top priority.
             </p>
@@ -1079,21 +1086,21 @@ export default function Home() {
             <p className="text-slate-400 text-xs">Free quotes. Fast response. No obligation.</p>
             
             <div className="space-y-3 pt-2">
-              <a href="tel:0426204514" className="flex items-center gap-3 text-white hover:text-[#7cc043] transition-colors group">
+              <a href="tel:0385379657" className="flex items-center gap-3 text-white hover:text-[#7cc043] transition-colors group">
                 <span className="flex h-9 w-9 items-center justify-center rounded-full bg-[#0b1f10]/30 group-hover:bg-[#036829] border border-emerald-900/30 text-[#7cc043] group-hover:text-white transition-all shrink-0">
                   <svg className="h-4.5 w-4.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                     <path strokeLinecap="round" strokeLinejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.94.725l.548 2.2a1 1 0 01-.321.988l-1.305.98a10.582 10.582 0 004.872 4.872l.98-1.305a1 1 0 01.988-.321l2.2.548a1 1 0 01.725.94V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                   </svg>
                 </span>
-                <span className="font-extrabold text-sm font-heading">0426 204 514</span>
+                <span className="font-extrabold text-sm font-heading">03 8537 9657</span>
               </a>
-              <a href="mailto:milonesgroup@gmail.com" className="flex items-center gap-3 text-slate-300 hover:text-white transition-colors group">
+              <a href="mailto:info@milones.com.au" className="flex items-center gap-3 text-slate-300 hover:text-white transition-colors group">
                 <span className="flex h-9 w-9 items-center justify-center rounded-full bg-[#0b1f10]/30 group-hover:bg-[#036829] border border-emerald-900/30 text-[#7cc043] group-hover:text-white transition-all shrink-0">
                   <svg className="h-4.5 w-4.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                     <path strokeLinecap="round" strokeLinejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                   </svg>
                 </span>
-                <span className="text-xs truncate font-sans font-medium">milonesgroup@gmail.com</span>
+                <span className="text-xs truncate font-sans font-medium">info@milones.com.au</span>
               </a>
             </div>
 
@@ -1108,7 +1115,7 @@ export default function Home() {
 
         {/* Bottom Bar: Copyright & Terms */}
         <div className="mx-auto max-w-[1440px] px-4 lg:px-8 mt-16 pt-8 border-t border-slate-900 flex flex-col md:flex-row items-center justify-between gap-4 text-[11px] text-slate-500 font-sans z-10 relative">
-          <p>&copy; {new Date().getFullYear()} Arbco Tree Solutions. All Rights Reserved.</p>
+          <p>&copy; {new Date().getFullYear()} Milones Tree Services. All Rights Reserved.</p>
           
           <div className="flex items-center gap-2 justify-center">
             <span className="text-[#7cc043] text-xs">🌿</span>
