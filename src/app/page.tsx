@@ -1019,32 +1019,15 @@ export default function Home() {
         <div className="mx-auto max-w-[1440px] px-4 lg:px-8 grid gap-8 lg:grid-cols-12 relative z-10">
           {/* Column 1: Info & Brand */}
           <div className="lg:col-span-3 space-y-5">
-            <div className="flex items-center gap-3 select-none">
-              <svg className="h-14 w-14 text-white shrink-0" viewBox="0 0 100 100" fill="currentColor">
-                {/* Outer leafy ring */}
-                <path d="M50 10 C 27.9 10 10 27.9 10 50 C 10 72.1 27.9 90 50 90 C 72.1 90 90 72.1 90 50 C 90 27.9 72.1 10 50 10 Z M 50 86 C 30.1 86 14 69.9 14 50 C 14 30.1 30.1 14 50 14 C 69.9 14 86 30.1 86 50 C 86 69.9 69.9 86 50 86 Z" />
-                {/* Detailed tree trunk */}
-                <path d="M49 80 V 58 L 41 50 L 33 46 M51 80 V 58 L 59 50 L 67 46 M50 54 V 42 L 44 34 M50 48 L 56 38" stroke="currentColor" strokeWidth="3" strokeLinecap="round" />
-                {/* Tiny leaf clusters */}
-                <circle cx="50" cy="26" r="3" />
-                <circle cx="45" cy="28" r="2.5" />
-                <circle cx="55" cy="28" r="2.5" />
-                <circle cx="39" cy="32" r="2.5" />
-                <circle cx="61" cy="32" r="2.5" />
-                <circle cx="34" cy="38" r="2" />
-                <circle cx="66" cy="38" r="2" />
-                <circle cx="30" cy="45" r="2" />
-                <circle cx="70" cy="45" r="2" />
-                <circle cx="50" cy="36" r="3" />
-                <circle cx="44" cy="40" r="2.5" />
-                <circle cx="56" cy="40" r="2.5" />
-                <circle cx="37" cy="47" r="2" />
-                <circle cx="63" cy="47" r="2" />
-              </svg>
-              <div className="flex flex-col text-left">
-                <span className="font-heading font-black text-2xl tracking-wide text-white leading-none">ARBCO</span>
-                <span className="font-heading font-bold text-[10px] tracking-widest text-[#7cc043] mt-1.5 leading-none">TREE SERVICES</span>
-              </div>
+            <div className="flex items-center select-none">
+              <Image
+                src="/logo.png"
+                alt="Arbco Tree Logo"
+                width={180}
+                height={60}
+                priority
+                className="brightness-0 invert object-contain h-16 w-auto"
+              />
             </div>
             <p className="text-xs text-slate-400 leading-relaxed max-w-sm">
               Professional tree removal and arborist services across Melbourne. Safety, reliability and customer satisfaction is our top priority.
