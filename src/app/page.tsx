@@ -1023,10 +1023,10 @@ export default function Home() {
               <Image
                 src="/logo.png"
                 alt="Arbco Tree Logo"
-                width={180}
-                height={60}
+                width={240}
+                height={80}
                 priority
-                className="brightness-0 invert object-contain h-16 w-auto"
+                className="brightness-0 invert object-contain h-22 w-auto"
               />
             </div>
             <p className="text-xs text-slate-400 leading-relaxed max-w-sm">
