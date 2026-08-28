@@ -910,85 +910,215 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Pre-footer Callout Banner */}
-      <section className="relative py-28 bg-[#023313] text-white text-center overflow-hidden">
-        <div className="absolute inset-0">
-          <Image
-            src="https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&q=80&w=2000"
-            alt="Tall trees background"
-            fill
-            className="object-cover opacity-20 mix-blend-overlay"
-          />
-        </div>
-        
-        <div className="relative z-10 mx-auto max-w-4xl px-4 space-y-6">
-          <h2 className="text-3xl font-extrabold sm:text-5xl font-heading">Reach out to Arbco Tree today!</h2>
-          <p className="text-emerald-100 text-lg max-w-xl mx-auto font-sans">Get absolute peace of mind for your tree issues. Get a quote or talk to an arborist now.</p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4 font-heading">
-            <Link href="/book-quote" className="rounded-full bg-emerald-500 hover:bg-emerald-400 px-8 py-4 font-extrabold text-emerald-950 shadow-lg hover:scale-105 transition-all">Request a Free Quote</Link>
-            <a href="tel:0426204514" className="rounded-full border-2 border-white px-8 py-4 font-bold hover:bg-white/10 transition-colors">Call 0426 204 514</a>
+      {/* Rounded Pre-footer CTA Callout Card */}
+      <div className="mx-auto max-w-[1440px] px-4 lg:px-8 -mb-16 relative z-30">
+        <div className="bg-[#0b1f10] border border-[#7cc043]/20 rounded-3xl p-6 lg:p-8 flex flex-col lg:flex-row items-center justify-between gap-6 shadow-2xl relative overflow-hidden">
+          {/* Leaf background texture overlay */}
+          <div className="absolute inset-0 opacity-[0.05] pointer-events-none select-none bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-emerald-500 via-transparent to-transparent" />
+          
+          <div className="flex items-center gap-4 text-left w-full lg:w-auto">
+            <div className="h-14 w-14 rounded-full bg-[#036829]/20 border border-[#7cc043]/30 flex items-center justify-center text-white shrink-0 shadow-inner">
+              <svg className="h-6 w-6 text-[#7cc043]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.2}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.94.725l.548 2.2a1 1 0 01-.321.988l-1.305.98a10.582 10.582 0 004.872 4.872l.98-1.305a1 1 0 01.988-.321l2.2.548a1 1 0 01.725.94V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+              </svg>
+            </div>
+            <div>
+              <h3 className="text-xl sm:text-2xl font-black text-white font-heading tracking-tight">Need a <span className="text-[#7cc043]">Tree Expert?</span></h3>
+              <p className="text-slate-300 text-xs sm:text-sm font-sans mt-0.5">Get professional tree services across Melbourne.</p>
+            </div>
+          </div>
+
+          {/* Features columns */}
+          <div className="hidden lg:flex items-center justify-between gap-6 lg:gap-8 flex-1 max-w-2xl px-6 border-l border-r border-emerald-950/40 text-left text-xs text-slate-300">
+            <div className="flex items-start gap-2.5">
+              <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-emerald-500/10 text-[#7cc043] mt-0.5">
+                <svg className="h-4.5 w-4.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.2}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                </svg>
+              </span>
+              <div>
+                <h4 className="font-extrabold text-white leading-none">Fully Insured</h4>
+                <p className="text-[10px] text-slate-400 mt-1">Your property is in safe hands.</p>
+              </div>
+            </div>
+
+            <div className="h-8 w-[1px] bg-emerald-950/40" />
+
+            <div className="flex items-start gap-2.5">
+              <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-emerald-500/10 text-[#7cc043] mt-0.5">
+                <svg className="h-4.5 w-4.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.2}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                </svg>
+              </span>
+              <div>
+                <h4 className="font-extrabold text-white leading-none">Qualified Arborists</h4>
+                <p className="text-[10px] text-slate-400 mt-1">Experts in tree care and maintenance.</p>
+              </div>
+            </div>
+
+            <div className="h-8 w-[1px] bg-emerald-950/40" />
+
+            <div className="flex items-start gap-2.5">
+              <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-emerald-500/10 text-[#7cc043] mt-0.5">
+                <svg className="h-4.5 w-4.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.2}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+              </span>
+              <div>
+                <h4 className="font-extrabold text-white leading-none">Fast Response</h4>
+                <p className="text-[10px] text-slate-400 mt-1">We respond quickly when you need us.</p>
+              </div>
+            </div>
+          </div>
+
+          {/* CTA Button */}
+          <div className="shrink-0 w-full lg:w-auto">
+            <Link
+              href="/book-quote"
+              className="quote-btn-gradient rounded-xl px-6 py-4 text-sm font-extrabold text-white flex items-center justify-center gap-1.5 shadow-md shadow-black/20 w-full lg:w-auto hover:opacity-95 transition-opacity"
+            >
+              Get a Free Quote <span className="text-xs">→</span>
+            </Link>
           </div>
         </div>
-      </section>
+      </div>
 
       {/* Footer */}
-      <footer className="bg-emerald-950 text-slate-300 py-16 border-t border-emerald-900/60 font-sans">
-        <div className="mx-auto max-w-[1440px] px-4 lg:px-8 grid gap-12 md:grid-cols-2 lg:grid-cols-4">
-          {/* Column 1: Info */}
-          <div className="space-y-4">
+      <footer className="bg-[#030d05] text-slate-400 pt-28 pb-12 border-t border-emerald-950 relative overflow-hidden font-sans">
+        {/* Left Side Tree Watermark */}
+        <div className="absolute left-0 bottom-0 top-0 w-[450px] opacity-[0.03] pointer-events-none select-none z-0 hidden lg:block">
+          <Image src="/silhouette-tree.png" alt="watermark tree" fill className="object-contain object-left-bottom" />
+        </div>
+
+        <div className="mx-auto max-w-[1440px] px-4 lg:px-8 grid gap-8 lg:grid-cols-12 relative z-10">
+          {/* Column 1: Info & Brand */}
+          <div className="lg:col-span-3 space-y-5">
             <Image
               src="/logo.png"
               alt="Arbco Tree Logo"
-              width={180}
-              height={45}
-              className="brightness-0 invert object-contain"
+              width={160}
+              height={160}
+              priority
+              className="brightness-0 invert object-contain h-14 w-auto"
             />
-            <p className="text-xs text-slate-400 mt-4 leading-relaxed">
-              Arbco Tree Solutions is Melbourne's leading arborist and tree removal services provider. We deliver gold-standard safety and quality.
+            <p className="text-xs text-slate-400 leading-relaxed max-w-sm">
+              Professional tree removal and arborist services across Melbourne. Safety, reliability and customer satisfaction is our top priority.
             </p>
+            {/* Social Icons with circular borders */}
+            <div className="flex items-center gap-2.5 pt-2">
+              {['facebook', 'instagram', 'google', 'leaf'].map((soc) => (
+                <a
+                  key={soc}
+                  href="#"
+                  className="h-9 w-9 rounded-full border border-slate-800 hover:border-[#7cc043] text-slate-400 hover:text-white flex items-center justify-center transition-all bg-[#0b1f10]/10 hover:bg-[#0b1f10]/50"
+                >
+                  {soc === 'facebook' && <span className="text-sm font-black font-sans">f</span>}
+                  {soc === 'instagram' && <span className="text-xs font-black font-sans">ig</span>}
+                  {soc === 'google' && <span className="text-xs font-black font-sans">G</span>}
+                  {soc === 'leaf' && <span className="text-xs">🌿</span>}
+                </a>
+              ))}
+            </div>
           </div>
 
-          {/* Column 2: Navigation */}
-          <div>
-            <h4 className="text-white font-extrabold mb-4 text-sm uppercase tracking-wider font-heading">Quick Navigation</h4>
-            <ul className="space-y-2 text-xs">
-              <li><Link href="/" className="hover:text-white transition-colors">Home Page</Link></li>
-              <li><Link href="/about" className="hover:text-white transition-colors">About Our Team</Link></li>
-              <li><Link href="/services" className="hover:text-white transition-colors">Tree Services</Link></li>
-              <li><Link href="/faq" className="hover:text-white transition-colors">Frequently Asked Questions</Link></li>
-              <li><Link href="/contact" className="hover:text-white transition-colors">Contact Us</Link></li>
-            </ul>
-          </div>
-
-          {/* Column 3: Services */}
-          <div>
-            <h4 className="text-white font-extrabold mb-4 text-sm uppercase tracking-wider font-heading">Our Core Services</h4>
-            <ul className="space-y-2 text-xs">
-              <li><Link href="/services/tree-removal" className="hover:text-white transition-colors">Tree Removal</Link></li>
-              <li><Link href="/services/stump-grinding" className="hover:text-white transition-colors">Stump Grinding</Link></li>
-              <li><Link href="/services/palm-tree-removal" className="hover:text-white transition-colors">Palm Tree Care</Link></li>
-              <li><Link href="/services/arborist-reports" className="hover:text-white transition-colors">Arborist Reports</Link></li>
-              <li><Link href="/services/tree-pruning-lopping" className="hover:text-white transition-colors">Tree Lopping & Pruning</Link></li>
-            </ul>
-          </div>
-
-          {/* Column 4: Contact info */}
-          <div>
-            <h4 className="text-white font-extrabold mb-4 text-sm uppercase tracking-wider font-heading">Contact Information</h4>
+          {/* Column 2: Navigation Links */}
+          <div className="lg:col-span-2">
+            <h4 className="text-white font-extrabold mb-4 text-xs uppercase tracking-widest font-heading pb-1 border-b border-slate-900 w-fit">Company</h4>
             <ul className="space-y-3 text-xs">
-              <li>📍 Factory 8 61/65 Russell St, Werribee VIC 3030</li>
-              <li>📞 Phone: <a href="tel:0426204514" className="hover:text-white font-semibold">0426 204 514</a></li>
-              <li>✉️ Email: <a href="mailto:milonesgroup@gmail.com" className="hover:text-white">milonesgroup@gmail.com</a></li>
+              <li><Link href="/about" className="hover:text-white transition-colors flex items-center gap-1.5"><span className="text-[#7cc043] text-[9px]">❯</span> About Us</Link></li>
+              <li><Link href="/gallery" className="hover:text-white transition-colors flex items-center gap-1.5"><span className="text-[#7cc043] text-[9px]">❯</span> Gallery</Link></li>
+              <li><Link href="/reviews" className="hover:text-white transition-colors flex items-center gap-1.5"><span className="text-[#7cc043] text-[9px]">❯</span> Reviews</Link></li>
+              <li><Link href="/services" className="hover:text-white transition-colors flex items-center gap-1.5"><span className="text-[#7cc043] text-[9px]">❯</span> Our Team</Link></li>
+              <li><Link href="/contact" className="hover:text-white transition-colors flex items-center gap-1.5"><span className="text-[#7cc043] text-[9px]">❯</span> Contact Us</Link></li>
             </ul>
+          </div>
+
+          {/* Column 3: Services Navigation */}
+          <div className="lg:col-span-2">
+            <h4 className="text-white font-extrabold mb-4 text-xs uppercase tracking-widest font-heading pb-1 border-b border-slate-900 w-fit">Services</h4>
+            <ul className="space-y-3 text-xs">
+              <li><Link href="/services/tree-removal" className="hover:text-white transition-colors flex items-center gap-1.5"><span className="text-[#7cc043] text-[9px]">❯</span> Tree Removal</Link></li>
+              <li><Link href="/services/tree-pruning-lopping" className="hover:text-white transition-colors flex items-center gap-1.5"><span className="text-[#7cc043] text-[9px]">❯</span> Tree Pruning</Link></li>
+              <li><Link href="/services/stump-grinding" className="hover:text-white transition-colors flex items-center gap-1.5"><span className="text-[#7cc043] text-[9px]">❯</span> Stump Grinding</Link></li>
+              <li><Link href="/services/land-clearing" className="hover:text-white transition-colors flex items-center gap-1.5"><span className="text-[#7cc043] text-[9px]">❯</span> Land Clearing</Link></li>
+              <li><Link href="/services/hedge-trimming" className="hover:text-white transition-colors flex items-center gap-1.5"><span className="text-[#7cc043] text-[9px]">❯</span> Hedge Trimming</Link></li>
+              <li><Link href="/services/emergency-work" className="hover:text-white transition-colors flex items-center gap-1.5"><span className="text-[#7cc043] text-[9px]">❯</span> Emergency Services</Link></li>
+              <li><Link href="/services/arborist-reports" className="hover:text-white transition-colors flex items-center gap-1.5"><span className="text-[#7cc043] text-[9px]">❯</span> Tree Health Assessments</Link></li>
+              <li><Link href="/services/wood-chipping" className="hover:text-white transition-colors flex items-center gap-1.5"><span className="text-[#7cc043] text-[9px]">❯</span> Mulching & Wood Chipping</Link></li>
+            </ul>
+          </div>
+
+          {/* Column 4: Areas We Serve */}
+          <div className="lg:col-span-2">
+            <h4 className="text-white font-extrabold mb-4 text-xs uppercase tracking-widest font-heading pb-1 border-b border-slate-900 w-fit">Areas We Serve</h4>
+            <ul className="space-y-3 text-xs">
+              <li><Link href="/service-areas" className="hover:text-white transition-colors flex items-center gap-1.5"><span className="text-[#7cc043] text-[9px]">❯</span> Melbourne</Link></li>
+              <li><Link href="/service-areas/eastern-suburbs" className="hover:text-white transition-colors flex items-center gap-1.5"><span className="text-[#7cc043] text-[9px]">❯</span> Eastern Suburbs</Link></li>
+              <li><Link href="/service-areas/northern-suburbs" className="hover:text-white transition-colors flex items-center gap-1.5"><span className="text-[#7cc043] text-[9px]">❯</span> Northern Suburbs</Link></li>
+              <li><Link href="/service-areas/southern-suburbs" className="hover:text-white transition-colors flex items-center gap-1.5"><span className="text-[#7cc043] text-[9px]">❯</span> Southern Suburbs</Link></li>
+              <li><Link href="/service-areas/western-suburbs" className="hover:text-white transition-colors flex items-center gap-1.5"><span className="text-[#7cc043] text-[9px]">❯</span> Western Suburbs</Link></li>
+              <li><Link href="/service-areas/mornington-peninsula" className="hover:text-white transition-colors flex items-center gap-1.5"><span className="text-[#7cc043] text-[9px]">❯</span> Mornington Peninsula</Link></li>
+              <li><Link href="/service-areas/yarra-ranges" className="hover:text-white transition-colors flex items-center gap-1.5"><span className="text-[#7cc043] text-[9px]">❯</span> Yarra Ranges</Link></li>
+            </ul>
+          </div>
+
+          {/* Column 5: Right side Contact Card Widget */}
+          <div className="lg:col-span-3 bg-[#0b1f10]/20 border border-emerald-950/60 rounded-3xl p-6 space-y-4 text-left relative overflow-hidden backdrop-blur-sm">
+            {/* Leaf watermark inside card */}
+            <div className="absolute right-0 bottom-0 opacity-[0.03] pointer-events-none select-none w-24 h-24">
+              <Image src="/silhouette-tree.png" alt="Leaf watermark" fill className="object-contain" />
+            </div>
+
+            <div className="flex items-center gap-2">
+              <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-emerald-500/10 text-[#7cc043] text-sm shrink-0">
+                🌿
+              </span>
+              <h4 className="text-white font-extrabold text-base font-heading">Let's talk about <span className="text-[#7cc043]">your trees.</span></h4>
+            </div>
+            
+            <p className="text-slate-400 text-xs">Free quotes. Fast response. No obligation.</p>
+            
+            <div className="space-y-3 pt-2">
+              <a href="tel:0426204514" className="flex items-center gap-3 text-white hover:text-[#7cc043] transition-colors group">
+                <span className="flex h-9 w-9 items-center justify-center rounded-full bg-[#0b1f10]/30 group-hover:bg-[#036829] border border-emerald-900/30 text-[#7cc043] group-hover:text-white transition-all shrink-0">
+                  <svg className="h-4.5 w-4.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.94.725l.548 2.2a1 1 0 01-.321.988l-1.305.98a10.582 10.582 0 004.872 4.872l.98-1.305a1 1 0 01.988-.321l2.2.548a1 1 0 01.725.94V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                  </svg>
+                </span>
+                <span className="font-extrabold text-sm font-heading">0426 204 514</span>
+              </a>
+              <a href="mailto:milonesgroup@gmail.com" className="flex items-center gap-3 text-slate-300 hover:text-white transition-colors group">
+                <span className="flex h-9 w-9 items-center justify-center rounded-full bg-[#0b1f10]/30 group-hover:bg-[#036829] border border-emerald-900/30 text-[#7cc043] group-hover:text-white transition-all shrink-0">
+                  <svg className="h-4.5 w-4.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                  </svg>
+                </span>
+                <span className="text-xs truncate font-sans font-medium">milonesgroup@gmail.com</span>
+              </a>
+            </div>
+
+            <Link
+              href="/book-quote"
+              className="w-full inline-flex items-center justify-center gap-1.5 rounded-xl border border-[#7cc043]/30 hover:border-[#7cc043] hover:bg-[#7cc043]/10 text-white font-extrabold text-xs py-3.5 transition-all font-heading"
+            >
+              Request a Free Quote <span className="text-[10px]">→</span>
+            </Link>
           </div>
         </div>
 
-        {/* Bottom Bar: Copyright & Badges */}
-        <div className="mx-auto max-w-[1440px] px-4 lg:px-8 mt-16 pt-8 border-t border-emerald-900/60 flex flex-col md:flex-row items-center justify-between gap-4 text-xs">
-          <p>&copy; {new Date().getFullYear()} Arbco Tree Solutions. All rights reserved. Created in Next.js.</p>
+        {/* Bottom Bar: Copyright & Terms */}
+        <div className="mx-auto max-w-[1440px] px-4 lg:px-8 mt-16 pt-8 border-t border-slate-900 flex flex-col md:flex-row items-center justify-between gap-4 text-[11px] text-slate-500 font-sans z-10 relative">
+          <p>&copy; {new Date().getFullYear()} Arbco Tree Solutions. All Rights Reserved.</p>
+          
+          <div className="flex items-center gap-2 justify-center">
+            <span className="text-[#7cc043] text-xs">🌿</span>
+            <span className="italic text-[#7cc043] font-serif text-[13px] font-semibold tracking-wide">Caring for trees. Caring for Melbourne.</span>
+          </div>
+
           <div className="flex gap-4">
-            <span className="text-slate-400">ABN: 67 608 227 343</span>
-            <span className="text-slate-400 font-heading">Fully Certified</span>
+            <Link href="/privacy" className="hover:text-white transition-colors">Privacy Policy</Link>
+            <span className="text-slate-800">|</span>
+            <Link href="/terms" className="hover:text-white transition-colors">Terms & Conditions</Link>
           </div>
         </div>
       </footer>
