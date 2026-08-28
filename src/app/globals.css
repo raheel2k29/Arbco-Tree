@@ -97,3 +97,43 @@ body {
   100% { transform: translateX(0); }
 }
 
+/* Scroll Entrance Animations (Reveal System) */
+.reveal-fade-in {
+  opacity: 0;
+  transition: opacity 0.8s ease-out;
+}
+.reveal-fade-in.active {
+  opacity: 1;
+}
+
+.reveal-slide-up {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease-out, transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.reveal-slide-up.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal-zoom-in {
+  opacity: 0;
+  transform: scale(0.96);
+  transition: opacity 0.8s ease-out, transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.reveal-zoom-in.active {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Delay Helpers */
+.delay-75  { transition-delay: 75ms !important; }
+.delay-100 { transition-delay: 100ms !important; }
+.delay-150 { transition-delay: 150ms !important; }
+.delay-200 { transition-delay: 200ms !important; }
+.delay-250 { transition-delay: 250ms !important; }
+.delay-300 { transition-delay: 300ms !important; }
+.delay-400 { transition-delay: 400ms !important; }
+.delay-500 { transition-delay: 500ms !important; }
+
+

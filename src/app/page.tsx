@@ -10,11 +10,11 @@ export default function Home() {
   const sectionRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    // 1. Falling Tree Scroll Handler
     const handleScroll = () => {
       if (!sectionRef.current) return;
       const rect = sectionRef.current.getBoundingClientRect();
       const sectionHeight = rect.height;
-      const viewportHeight = window.innerHeight;
       
       const elementTop = rect.top;
       const startTrigger = 0; // Starts falling only when the section top reaches the top of the viewport
@@ -32,7 +32,33 @@ export default function Home() {
 
     window.addEventListener("scroll", handleScroll);
     handleScroll();
-    return () => window.removeEventListener("scroll", handleScroll);
+
+    // 2. Intersection Observer for Scroll Entrance Animations
+    const revealElements = document.querySelectorAll(
+      ".reveal-fade-in, .reveal-slide-up, .reveal-zoom-in"
+    );
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("active");
+            observer.unobserve(entry.target); // Lock in place once animated
+          }
+        });
+      },
+      {
+        threshold: 0.08,
+        rootMargin: "0px 0px -40px 0px",
+      }
+    );
+
+    revealElements.forEach((el) => observer.observe(el));
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      revealElements.forEach((el) => observer.unobserve(el));
+    };
   }, []);
 
   return (
@@ -154,10 +180,10 @@ export default function Home() {
           <div className="grid gap-12 lg:grid-cols-12 lg:items-center">
             {/* Left Column: Heading and info */}
             <div className="lg:col-span-7 space-y-6">
-              <span className="text-[#7cc043] font-black uppercase tracking-widest text-xs sm:text-sm block font-heading">
+              <span className="text-[#7cc043] font-black uppercase tracking-widest text-xs sm:text-sm block font-heading reveal-fade-in">
                 SAFE. RELIABLE. PROFESSIONAL.
               </span>
-              <h1 className="text-4xl font-extrabold tracking-tight sm:text-5xl lg:text-6xl leading-tight font-heading text-white">
+              <h1 className="text-4xl font-extrabold tracking-tight sm:text-5xl lg:text-6xl leading-tight font-heading text-white reveal-slide-up delay-75">
                 Expert Tree <br />
                 Removal & Arborist <br />
                 Services in{" "}
@@ -166,11 +192,11 @@ export default function Home() {
                   <span className="absolute -bottom-1 left-0 right-0 h-[3px] bg-[#7cc043] rounded-full transform -rotate-2" />
                 </span>
               </h1>
-              <p className="max-w-xl text-base sm:text-lg text-slate-300 leading-relaxed font-sans">
+              <p className="max-w-xl text-base sm:text-lg text-slate-300 leading-relaxed font-sans reveal-slide-up delay-150">
                 Arbco Tree Solutions provides professional tree removal, pruning, stump grinding and arborist solutions with a focus on safety, care and customer satisfaction.
               </p>
               
-              <div className="flex flex-wrap gap-4 pt-2">
+              <div className="flex flex-wrap gap-4 pt-2 reveal-slide-up delay-200">
                 <Link
                   href="/book-quote"
                   className="quote-btn-gradient inline-flex items-center gap-2 rounded-lg px-6 py-3.5 text-sm font-extrabold text-white"
@@ -186,7 +212,7 @@ export default function Home() {
               </div>
 
               {/* Bottom Trust Badges row */}
-              <div className="flex flex-row flex-nowrap items-center justify-between gap-3 pt-6 border-t border-white/10 text-[10px] sm:text-xs lg:text-sm font-bold text-white font-heading w-full overflow-x-auto lg:overflow-visible">
+              <div className="flex flex-row flex-nowrap items-center justify-between gap-3 pt-6 border-t border-white/10 text-[10px] sm:text-xs lg:text-sm font-bold text-white font-heading w-full overflow-x-auto lg:overflow-visible reveal-slide-up delay-300">
                 <div className="flex items-center gap-2.5 whitespace-nowrap flex-shrink-0">
                   <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border-2 border-[#7cc043] bg-transparent text-[#7cc043]">
                     <svg className="h-5.5 w-5.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.2}>
@@ -223,7 +249,7 @@ export default function Home() {
             </div>
 
             {/* Right Column: Floating White Widget Card */}
-            <div className="lg:col-span-5">
+            <div className="lg:col-span-5 reveal-zoom-in delay-250">
               <div className="rounded-3xl bg-white p-8 text-slate-800 shadow-2xl relative border border-slate-100/80 max-w-[450px] mx-auto lg:ml-auto lg:mr-0">
                 {/* Floating Green Circle Badge */}
                 <div className="absolute -top-6 left-1/2 -translate-x-1/2 h-12 w-12 rounded-full bg-[#036829] border-4 border-white flex items-center justify-center text-white text-lg font-bold shadow-md">
@@ -232,34 +258,54 @@ export default function Home() {
 
                 <div className="text-center mt-2 mb-6">
                   <h3 className="text-xl font-extrabold text-slate-900 tracking-tight font-heading">Get a Free Quote Today!</h3>
-                  <p className="text-xs text-slate-500 font-medium font-sans mt-1">Fast. No obligation.</p>
+                  <p className="text-slate-500 text-xs mt-1">Get custom arborist pricing sent to your inbox.</p>
                 </div>
 
-                <form className="space-y-4">
-                  <div>
+                <form className="space-y-4" onSubmit={(e) => e.preventDefault()}>
+                  <div className="space-y-1">
+                    <label className="text-[10px] font-extrabold uppercase tracking-wider text-slate-400 font-heading">Full Name</label>
                     <input
                       type="text"
-                      className="w-full rounded-xl bg-slate-50 border border-slate-200 px-4 py-3.5 text-sm placeholder-slate-400 focus:outline-none focus:border-[#036829] focus:bg-white transition-all font-sans"
-                      placeholder="Your Name"
+                      placeholder="e.g. John Doe"
+                      className="w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-xs focus:border-[#036829] focus:bg-white focus:outline-none transition-colors"
+                      required
                     />
                   </div>
-                  <div>
+                  <div className="space-y-1">
+                    <label className="text-[10px] font-extrabold uppercase tracking-wider text-slate-400 font-heading">Phone Number</label>
                     <input
-                      type="text"
-                      className="w-full rounded-xl bg-slate-50 border border-slate-200 px-4 py-3.5 text-sm placeholder-slate-400 focus:outline-none focus:border-[#036829] focus:bg-white transition-all font-sans"
-                      placeholder="Phone Number"
+                      type="tel"
+                      placeholder="e.g. 0400 000 000"
+                      className="w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-xs focus:border-[#036829] focus:bg-white focus:outline-none transition-colors"
+                      required
                     />
                   </div>
-                  <div>
+                  <div className="space-y-1">
+                    <label className="text-[10px] font-extrabold uppercase tracking-wider text-slate-400 font-heading">Your Suburb</label>
                     <input
                       type="text"
-                      className="w-full rounded-xl bg-slate-50 border border-slate-200 px-4 py-3.5 text-sm placeholder-slate-400 focus:outline-none focus:border-[#036829] focus:bg-white transition-all font-sans"
-                      placeholder="Suburb"
+                      placeholder="e.g. Box Hill, VIC"
+                      className="w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-xs focus:border-[#036829] focus:bg-white focus:outline-none transition-colors"
+                      required
                     />
+                  </div>
+                  <div className="space-y-1">
+                    <label className="text-[10px] font-extrabold uppercase tracking-wider text-slate-400 font-heading">Service Needed</label>
+                    <select
+                      className="w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-xs focus:border-[#036829] focus:bg-white focus:outline-none transition-colors appearance-none"
+                      required
+                    >
+                      <option value="">Select a service...</option>
+                      <option value="removal">Tree Removal</option>
+                      <option value="pruning">Tree Pruning & Lopping</option>
+                      <option value="stump">Stump Grinding</option>
+                      <option value="report">Arborist Report</option>
+                      <option value="emergency">Emergency Tree Work</option>
+                    </select>
                   </div>
                   <button
                     type="submit"
-                    className="quote-btn-gradient w-full rounded-lg text-white font-extrabold py-4 font-heading cursor-pointer"
+                    className="w-full rounded-xl bg-gradient-to-r from-[#036829] to-[#7cc043] py-3.5 text-xs font-extrabold text-white shadow-md shadow-emerald-950/20 hover:opacity-95 transition-opacity font-heading"
                   >
                     Get My Free Quote
                   </button>
@@ -277,7 +323,7 @@ export default function Home() {
       {/* Services Grid Section */}
       <section className="py-24 bg-white">
         <div className="mx-auto max-w-[1440px] px-4 lg:px-8">
-          <div className="text-center max-w-3xl mx-auto space-y-4 mb-16">
+          <div className="text-center max-w-3xl mx-auto space-y-4 mb-16 reveal-slide-up">
             <span className="text-[#036829] font-black uppercase tracking-wider text-xs">Arbco Services</span>
             <h2 className="text-3xl font-extrabold tracking-tight sm:text-4xl text-slate-900 font-heading">
               Our Professional Arborist Solutions
@@ -290,7 +336,7 @@ export default function Home() {
           {/* 8 Card Grid */}
           <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
             {/* Card 1 */}
-            <div className="overflow-hidden rounded-3xl bg-slate-50 border border-slate-100 hover:shadow-xl transition-all group flex flex-col justify-between">
+            <div className="overflow-hidden rounded-3xl bg-slate-50 border border-slate-100 hover:shadow-xl transition-all group flex flex-col justify-between reveal-zoom-in">
               <div className="relative h-48 w-full">
                 <Image src="https://images.unsplash.com/photo-1502082553048-f009c37129b9?auto=format&fit=crop&q=80&w=600" alt="Tree Removal" fill className="object-cover group-hover:scale-105 transition-all duration-500" />
               </div>
@@ -304,7 +350,7 @@ export default function Home() {
             </div>
 
             {/* Card 2 */}
-            <div className="overflow-hidden rounded-3xl bg-slate-50 border border-slate-100 hover:shadow-xl transition-all group flex flex-col justify-between">
+            <div className="overflow-hidden rounded-3xl bg-slate-50 border border-slate-100 hover:shadow-xl transition-all group flex flex-col justify-between reveal-zoom-in delay-75">
               <div className="relative h-48 w-full">
                 <Image src="https://images.unsplash.com/photo-1518531933037-91b2f5f229cc?auto=format&fit=crop&q=80&w=600" alt="Stump Grinding" fill className="object-cover group-hover:scale-105 transition-all duration-500" />
               </div>
@@ -318,7 +364,7 @@ export default function Home() {
             </div>
 
             {/* Card 3 */}
-            <div className="overflow-hidden rounded-3xl bg-slate-50 border border-slate-100 hover:shadow-xl transition-all group flex flex-col justify-between">
+            <div className="overflow-hidden rounded-3xl bg-slate-50 border border-slate-100 hover:shadow-xl transition-all group flex flex-col justify-between reveal-zoom-in delay-150">
               <div className="relative h-48 w-full">
                 <Image src="https://images.unsplash.com/photo-1508193638397-1c4234db14d8?auto=format&fit=crop&q=80&w=600" alt="Palm Tree Care" fill className="object-cover group-hover:scale-105 transition-all duration-500" />
               </div>
@@ -332,7 +378,7 @@ export default function Home() {
             </div>
 
             {/* Card 4 */}
-            <div className="overflow-hidden rounded-3xl bg-slate-50 border border-slate-100 hover:shadow-xl transition-all group flex flex-col justify-between">
+            <div className="overflow-hidden rounded-3xl bg-slate-50 border border-slate-100 hover:shadow-xl transition-all group flex flex-col justify-between reveal-zoom-in delay-200">
               <div className="relative h-48 w-full">
                 <Image src="https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&q=80&w=600" alt="Pruning" fill className="object-cover group-hover:scale-105 transition-all duration-500" />
               </div>
@@ -346,7 +392,7 @@ export default function Home() {
             </div>
 
             {/* Card 5 */}
-            <div className="overflow-hidden rounded-3xl bg-slate-50 border border-slate-100 hover:shadow-xl transition-all group flex flex-col justify-between">
+            <div className="overflow-hidden rounded-3xl bg-slate-50 border border-slate-100 hover:shadow-xl transition-all group flex flex-col justify-between reveal-zoom-in">
               <div className="relative h-48 w-full">
                 <Image src="https://images.unsplash.com/photo-1473448912268-2022ce9509d8?auto=format&fit=crop&q=80&w=600" alt="Arborist Report" fill className="object-cover group-hover:scale-105 transition-all duration-500" />
               </div>
@@ -360,7 +406,7 @@ export default function Home() {
             </div>
 
             {/* Card 6 */}
-            <div className="overflow-hidden rounded-3xl bg-slate-50 border border-slate-100 hover:shadow-xl transition-all group flex flex-col justify-between">
+            <div className="overflow-hidden rounded-3xl bg-slate-50 border border-slate-100 hover:shadow-xl transition-all group flex flex-col justify-between reveal-zoom-in delay-75">
               <div className="relative h-48 w-full">
                 <Image src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&q=80&w=600" alt="Emergency Services" fill className="object-cover group-hover:scale-105 transition-all duration-500" />
               </div>
@@ -374,7 +420,7 @@ export default function Home() {
             </div>
 
             {/* Card 7 */}
-            <div className="overflow-hidden rounded-3xl bg-slate-50 border border-slate-100 hover:shadow-xl transition-all group flex flex-col justify-between">
+            <div className="overflow-hidden rounded-3xl bg-slate-50 border border-slate-100 hover:shadow-xl transition-all group flex flex-col justify-between reveal-zoom-in delay-150">
               <div className="relative h-48 w-full">
                 <Image src="https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?auto=format&fit=crop&q=80&w=600" alt="Mulching" fill className="object-cover group-hover:scale-105 transition-all duration-500" />
               </div>
@@ -388,7 +434,7 @@ export default function Home() {
             </div>
 
             {/* Card 8 */}
-            <div className="overflow-hidden rounded-3xl bg-slate-50 border border-slate-100 hover:shadow-xl transition-all group flex flex-col justify-between">
+            <div className="overflow-hidden rounded-3xl bg-slate-50 border border-slate-100 hover:shadow-xl transition-all group flex flex-col justify-between reveal-zoom-in delay-200">
               <div className="relative h-48 w-full">
                 <Image src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&q=80&w=600" alt="Block Clearing" fill className="object-cover group-hover:scale-105 transition-all duration-500" />
               </div>
@@ -429,7 +475,7 @@ export default function Home() {
         <div className="mx-auto max-w-[1440px] px-4 lg:px-8">
           <div className="grid gap-12 lg:grid-cols-12 lg:items-center">
             {/* Left side: Checklist content */}
-            <div className="lg:col-span-7 space-y-6">
+            <div className="lg:col-span-7 space-y-6 reveal-slide-up">
               <span className="text-[#036829] font-black uppercase tracking-wider text-xs">Arbco Standards</span>
               <h2 className="text-3xl font-extrabold tracking-tight sm:text-4xl text-slate-900 font-heading">
                 Melbourne’s Gold Standard in Certified Arborist Work
@@ -438,7 +484,7 @@ export default function Home() {
                 At **Arbco Tree Solutions**, we care about maintaining a standard of absolute safety and property protection.
               </p>
               
-              <div className="grid gap-6 sm:grid-cols-2 pt-4">
+              <div className="grid gap-6 sm:grid-cols-2 pt-4 reveal-slide-up delay-150">
                 <div className="flex items-start gap-3">
                   <svg className="h-6 w-6 text-[#036829] shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                     <path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
@@ -483,7 +529,7 @@ export default function Home() {
             </div>
 
             {/* Right side: High-End Image */}
-            <div className="lg:col-span-5">
+            <div className="lg:col-span-5 reveal-zoom-in delay-200">
               <div className="relative h-[480px] w-full overflow-hidden rounded-3xl shadow-xl border border-slate-100">
                 <Image
                   src="https://images.unsplash.com/photo-1502082553048-f009c37129b9?auto=format&fit=crop&q=80&w=800"
@@ -509,13 +555,13 @@ export default function Home() {
           />
         </div>
         <div className="relative z-10 mx-auto max-w-[1440px] px-4 lg:px-8 space-y-12">
-          <h2 className="text-3xl font-extrabold tracking-tight sm:text-4xl font-heading">
+          <h2 className="text-3xl font-extrabold tracking-tight sm:text-4xl font-heading reveal-slide-up">
             What makes Arbco Tree the trusted experts?
           </h2>
 
           <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3 text-left font-sans">
             {/* Card 1 */}
-            <div className="space-y-4 p-6 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-sm hover:border-emerald-500/40 hover:bg-white/10 transition-all duration-300">
+            <div className="space-y-4 p-6 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-sm hover:border-emerald-500/40 hover:bg-white/10 transition-all duration-300 reveal-zoom-in">
               <div className="flex items-center gap-3">
                 <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-emerald-500/20 text-emerald-300">
                   <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
@@ -528,7 +574,7 @@ export default function Home() {
             </div>
 
             {/* Card 2 */}
-            <div className="space-y-4 p-6 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-sm hover:border-emerald-500/40 hover:bg-white/10 transition-all duration-300">
+            <div className="space-y-4 p-6 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-sm hover:border-emerald-500/40 hover:bg-white/10 transition-all duration-300 reveal-zoom-in delay-100">
               <div className="flex items-center gap-3">
                 <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-emerald-500/20 text-emerald-300">
                   <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
@@ -541,7 +587,7 @@ export default function Home() {
             </div>
 
             {/* Card 3 */}
-            <div className="space-y-4 p-6 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-sm hover:border-emerald-500/40 hover:bg-white/10 transition-all duration-300">
+            <div className="space-y-4 p-6 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-sm hover:border-emerald-500/40 hover:bg-white/10 transition-all duration-300 reveal-zoom-in delay-200">
               <div className="flex items-center gap-3">
                 <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-emerald-500/20 text-emerald-300">
                   <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
@@ -554,7 +600,7 @@ export default function Home() {
             </div>
 
             {/* Card 4 */}
-            <div className="space-y-4 p-6 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-sm hover:border-emerald-500/40 hover:bg-white/10 transition-all duration-300">
+            <div className="space-y-4 p-6 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-sm hover:border-emerald-500/40 hover:bg-white/10 transition-all duration-300 reveal-zoom-in">
               <div className="flex items-center gap-3">
                 <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-emerald-500/20 text-emerald-300">
                   <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
@@ -567,7 +613,7 @@ export default function Home() {
             </div>
 
             {/* Card 5 */}
-            <div className="space-y-4 p-6 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-sm hover:border-emerald-500/40 hover:bg-white/10 transition-all duration-300">
+            <div className="space-y-4 p-6 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-sm hover:border-emerald-500/40 hover:bg-white/10 transition-all duration-300 reveal-zoom-in delay-100">
               <div className="flex items-center gap-3">
                 <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-emerald-500/20 text-emerald-300">
                   <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
@@ -580,7 +626,7 @@ export default function Home() {
             </div>
 
             {/* Card 6 */}
-            <div className="space-y-4 p-6 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-sm hover:border-emerald-500/40 hover:bg-white/10 transition-all duration-300">
+            <div className="space-y-4 p-6 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-sm hover:border-emerald-500/40 hover:bg-white/10 transition-all duration-300 reveal-zoom-in delay-200">
               <div className="flex items-center gap-3">
                 <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-emerald-500/20 text-emerald-300">
                   <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
@@ -599,7 +645,7 @@ export default function Home() {
       {/* 4-Step Process Timeline */}
       <section className="py-20 lg:py-28 bg-slate-50 border-t border-b border-slate-100">
         <div className="mx-auto max-w-[1440px] px-4 lg:px-8">
-          <div className="text-center max-w-3xl mx-auto space-y-4 mb-20">
+          <div className="text-center max-w-3xl mx-auto space-y-4 mb-20 reveal-slide-up">
             <span className="text-[#036829] font-black uppercase tracking-wider text-xs">How We Work</span>
             <h2 className="text-3xl font-extrabold tracking-tight sm:text-4xl text-slate-900 font-heading">
               Our Effortless 4-Step Process
@@ -611,7 +657,7 @@ export default function Home() {
 
           <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4 relative">
             {/* Step 1 */}
-            <div className="bg-white p-8 rounded-3xl border border-slate-200/50 shadow-sm relative group hover:border-[#036829] transition-all">
+            <div className="bg-white p-8 rounded-3xl border border-slate-200/50 shadow-sm relative group hover:border-[#036829] transition-all reveal-zoom-in">
               <div className="absolute -top-6 left-8 h-12 w-12 rounded-2xl bg-[#036829] text-white flex items-center justify-center font-bold text-lg shadow-md font-heading">
                 1
               </div>
@@ -620,7 +666,7 @@ export default function Home() {
             </div>
 
             {/* Step 2 */}
-            <div className="bg-white p-8 rounded-3xl border border-slate-200/50 shadow-sm relative group hover:border-[#036829] transition-all">
+            <div className="bg-white p-8 rounded-3xl border border-slate-200/50 shadow-sm relative group hover:border-[#036829] transition-all reveal-zoom-in delay-75">
               <div className="absolute -top-6 left-8 h-12 w-12 rounded-2xl bg-[#036829] text-white flex items-center justify-center font-bold text-lg shadow-md font-heading">
                 2
               </div>
@@ -629,7 +675,7 @@ export default function Home() {
             </div>
 
             {/* Step 3 */}
-            <div className="bg-white p-8 rounded-3xl border border-slate-200/50 shadow-sm relative group hover:border-[#036829] transition-all">
+            <div className="bg-white p-8 rounded-3xl border border-slate-200/50 shadow-sm relative group hover:border-[#036829] transition-all reveal-zoom-in delay-150">
               <div className="absolute -top-6 left-8 h-12 w-12 rounded-2xl bg-[#036829] text-white flex items-center justify-center font-bold text-lg shadow-md font-heading">
                 3
               </div>
@@ -638,7 +684,7 @@ export default function Home() {
             </div>
 
             {/* Step 4 */}
-            <div className="bg-white p-8 rounded-3xl border border-slate-200/50 shadow-sm relative group hover:border-[#036829] transition-all">
+            <div className="bg-white p-8 rounded-3xl border border-slate-200/50 shadow-sm relative group hover:border-[#036829] transition-all reveal-zoom-in delay-200">
               <div className="absolute -top-6 left-8 h-12 w-12 rounded-2xl bg-[#036829] text-white flex items-center justify-center font-bold text-lg shadow-md font-heading">
                 4
               </div>
@@ -652,7 +698,7 @@ export default function Home() {
       {/* Our Valued Customers Section (Dark Green Background with Edge Fades) */}
       <section className="py-16 bg-[#023011] text-white border-t border-b border-white/5 relative overflow-hidden">
         <div className="mx-auto max-w-[1440px] px-4 lg:px-8 text-center space-y-12">
-          <div className="text-center max-w-3xl mx-auto space-y-4">
+          <div className="text-center max-w-3xl mx-auto space-y-4 reveal-slide-up">
             <span className="text-[#7cc043] font-black uppercase tracking-wider text-xs">Our Clients</span>
             <h2 className="text-3xl font-extrabold tracking-tight sm:text-4xl text-white font-heading">
               Our Valued Customers
@@ -662,7 +708,7 @@ export default function Home() {
             </p>
           </div>
           
-          <div className="space-y-6 overflow-hidden py-2 relative w-full">
+          <div className="space-y-6 overflow-hidden py-2 relative w-full reveal-zoom-in delay-150">
             {/* Left Side Fade Overlay (inside the overflow wrapper) */}
             <div className="absolute left-0 top-0 bottom-0 w-16 sm:w-28 bg-gradient-to-r from-[#023011] to-transparent pointer-events-none z-20" />
             {/* Right Side Fade Overlay (inside the overflow wrapper) */}
@@ -782,7 +828,7 @@ export default function Home() {
       {/* Google Reviews Section */}
       <section className="py-24 bg-white">
         <div className="mx-auto max-w-[1440px] px-4 lg:px-8 text-center space-y-12">
-          <div className="max-w-3xl mx-auto space-y-4">
+          <div className="max-w-3xl mx-auto space-y-4 reveal-slide-up">
             <span className="text-[#036829] font-black uppercase tracking-wider text-xs">Testimonials</span>
             <h2 className="text-3xl font-extrabold tracking-tight sm:text-4xl text-slate-900 font-heading">
               Meet Our Happy Customers
@@ -792,7 +838,7 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="overflow-hidden w-full py-4 relative">
+          <div className="overflow-hidden w-full py-4 relative reveal-zoom-in delay-150">
             <div className="reviews-marquee-track gap-6 flex">
               {[
                 {
