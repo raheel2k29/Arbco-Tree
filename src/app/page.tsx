@@ -406,10 +406,16 @@ export default function Home() {
 
       {/* Our Valued Customers Section (Dark Green Background with Edge Fades) */}
       <section className="py-16 bg-[#023011] text-white border-t border-b border-white/5 relative overflow-hidden">
-        <div className="mx-auto max-w-[1440px] px-4 lg:px-8 text-center space-y-8">
-          <h3 className="text-[#7cc043] font-extrabold text-sm sm:text-base tracking-widest uppercase font-heading">
-            Our Valued Customers
-          </h3>
+        <div className="mx-auto max-w-[1440px] px-4 lg:px-8 text-center space-y-12">
+          <div className="text-center max-w-3xl mx-auto space-y-4">
+            <span className="text-[#7cc043] font-black uppercase tracking-wider text-xs">Our Clients</span>
+            <h2 className="text-3xl font-extrabold tracking-tight sm:text-4xl text-white font-heading">
+              Our Valued Customers
+            </h2>
+            <p className="text-slate-300 text-base sm:text-lg leading-relaxed font-sans">
+              Proudly delivering professional arborist and tree management solutions for municipal councils, civil contractors, and commercial developers.
+            </p>
+          </div>
           
           <div className="space-y-6 overflow-hidden py-2 relative w-full">
             {/* Left Side Fade Overlay (inside the overflow wrapper) */}
