@@ -404,6 +404,102 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Why Choose Us */}
+      <section ref={sectionRef} className="py-24 bg-white relative overflow-hidden">
+        {/* Large Falling Tree Animation in Left Gutter (Outside content boundaries) */}
+        <div className="hidden xl:block absolute bottom-16 left-[2vw] 2xl:left-[calc((100vw-1440px)/2-180px)] w-44 h-44 pointer-events-none z-10">
+          {/* Stump base */}
+          <div className="absolute bottom-0 left-[calc(50%-8px)] w-4 h-3 bg-amber-800 rounded-t-sm z-0" />
+          {/* Falling tree */}
+          <div 
+            style={{ 
+              transform: `rotate(${rotation}deg)`, 
+              transformOrigin: 'bottom center',
+              transition: 'transform 0.05s ease-out'
+            }}
+            className="absolute bottom-[-2px] left-0 right-0 h-[160px] z-10"
+          >
+            <Image
+              src="/tree image.png"
+              alt="Falling tree animation"
+              fill
+              className="object-contain object-bottom"
+              priority
+            />
+          </div>
+        </div>
+
+        <div className="mx-auto max-w-[1440px] px-4 lg:px-8">
+          <div className="grid gap-12 lg:grid-cols-12 lg:items-center">
+            {/* Left side: Checklist content */}
+            <div className="lg:col-span-7 space-y-6">
+              <span className="text-[#036829] font-black uppercase tracking-wider text-xs">Arbco Standards</span>
+              <h2 className="text-3xl font-extrabold tracking-tight sm:text-4xl text-slate-900 font-heading">
+                Melbourne’s Gold Standard in Certified Arborist Work
+              </h2>
+              <p className="text-slate-600 text-lg leading-relaxed">
+                At **Arbco Tree Solutions**, we care about maintaining a standard of absolute safety and property protection.
+              </p>
+              
+              <div className="grid gap-6 sm:grid-cols-2 pt-4">
+                <div className="flex items-start gap-3">
+                  <svg className="h-6 w-6 text-[#036829] shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                  </svg>
+                  <div className="space-y-1">
+                    <h4 className="font-extrabold text-slate-900 text-base font-heading">$20M Public Liability</h4>
+                    <p className="text-slate-500 text-sm">Full insurance protection coverage across all domestic and commercial sites.</p>
+                  </div>
+                </div>
+                
+                <div className="flex items-start gap-3">
+                  <svg className="h-6 w-6 text-[#036829] shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707m0-12.728l.707.707m12.728 12.728l.707-.707M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                  <div className="space-y-1">
+                    <h4 className="font-extrabold text-slate-900 text-base font-heading">Eco-Friendly Practices</h4>
+                    <p className="text-slate-500 text-sm">We process organic tree material into garden mulch to prevent waste.</p>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-3">
+                  <svg className="h-6 w-6 text-[#036829] shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                  </svg>
+                  <div className="space-y-1">
+                    <h4 className="font-extrabold text-slate-900 text-base font-heading">Council Planning Permit Reports</h4>
+                    <p className="text-slate-500 text-sm">We prepare arborist planning reports for all Melbourne councils.</p>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-3">
+                  <svg className="h-6 w-6 text-[#036829] shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                  </svg>
+                  <div className="space-y-1">
+                    <h4 className="font-extrabold text-slate-900 text-base font-heading">Advanced Machinery</h4>
+                    <p className="text-slate-500 text-sm">Equipped with tower platforms, wood chippers, and stump grinders.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Right side: High-End Image */}
+            <div className="lg:col-span-5">
+              <div className="relative h-[480px] w-full overflow-hidden rounded-3xl shadow-xl border border-slate-100">
+                <Image
+                  src="https://images.unsplash.com/photo-1502082553048-f009c37129b9?auto=format&fit=crop&q=80&w=800"
+                  alt="Professional arborist climbing palm tree safely"
+                  fill
+                  className="object-cover hover:scale-[1.02] transition-transform duration-500"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Trusted Tree Experts Block (Dark Green Background with Forest Overlay) */}
       <section className="bg-gradient-to-b from-[#0a2514] to-[#041209] text-white py-24 text-center relative overflow-hidden">
         <div className="absolute inset-0 opacity-25">
@@ -551,102 +647,6 @@ export default function Home() {
               </div>
               <h3 className="text-xl font-bold text-slate-900 mt-4 font-heading">Zero-Mess Cleanup</h3>
               <p className="text-slate-500 text-sm mt-3 leading-relaxed">We process tree debris into garden mulch and sweep up leaving your property spotless.</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Why Choose Us */}
-      <section ref={sectionRef} className="py-24 bg-white relative overflow-hidden">
-        {/* Large Falling Tree Animation in Left Gutter (Outside content boundaries) */}
-        <div className="hidden xl:block absolute bottom-16 left-[2vw] 2xl:left-[calc((100vw-1440px)/2-180px)] w-44 h-44 pointer-events-none z-10">
-          {/* Stump base */}
-          <div className="absolute bottom-0 left-[calc(50%-8px)] w-4 h-3 bg-amber-800 rounded-t-sm z-0" />
-          {/* Falling tree */}
-          <div 
-            style={{ 
-              transform: `rotate(${rotation}deg)`, 
-              transformOrigin: 'bottom center',
-              transition: 'transform 0.05s ease-out'
-            }}
-            className="absolute bottom-[-2px] left-0 right-0 h-[160px] z-10"
-          >
-            <Image
-              src="/tree image.png"
-              alt="Falling tree animation"
-              fill
-              className="object-contain object-bottom"
-              priority
-            />
-          </div>
-        </div>
-
-        <div className="mx-auto max-w-[1440px] px-4 lg:px-8">
-          <div className="grid gap-12 lg:grid-cols-12 lg:items-center">
-            {/* Left side: Checklist content */}
-            <div className="lg:col-span-7 space-y-6">
-              <span className="text-[#036829] font-black uppercase tracking-wider text-xs">Arbco Standards</span>
-              <h2 className="text-3xl font-extrabold tracking-tight sm:text-4xl text-slate-900 font-heading">
-                Melbourne’s Gold Standard in Certified Arborist Work
-              </h2>
-              <p className="text-slate-600 text-lg leading-relaxed">
-                At **Arbco Tree Solutions**, we care about maintaining a standard of absolute safety and property protection.
-              </p>
-              
-              <div className="grid gap-6 sm:grid-cols-2 pt-4">
-                <div className="flex items-start gap-3">
-                  <svg className="h-6 w-6 text-[#036829] shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-                  </svg>
-                  <div className="space-y-1">
-                    <h4 className="font-extrabold text-slate-900 text-base font-heading">$20M Public Liability</h4>
-                    <p className="text-slate-500 text-sm">Full insurance protection coverage across all domestic and commercial sites.</p>
-                  </div>
-                </div>
-                
-                <div className="flex items-start gap-3">
-                  <svg className="h-6 w-6 text-[#036829] shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707m0-12.728l.707.707m12.728 12.728l.707-.707M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                  </svg>
-                  <div className="space-y-1">
-                    <h4 className="font-extrabold text-slate-900 text-base font-heading">Eco-Friendly Practices</h4>
-                    <p className="text-slate-500 text-sm">We process organic tree material into garden mulch to prevent waste.</p>
-                  </div>
-                </div>
-
-                <div className="flex items-start gap-3">
-                  <svg className="h-6 w-6 text-[#036829] shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                  </svg>
-                  <div className="space-y-1">
-                    <h4 className="font-extrabold text-slate-900 text-base font-heading">Council Planning Permit Reports</h4>
-                    <p className="text-slate-500 text-sm">We prepare arborist planning reports for all Melbourne councils.</p>
-                  </div>
-                </div>
-
-                <div className="flex items-start gap-3">
-                  <svg className="h-6 w-6 text-[#036829] shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-                  </svg>
-                  <div className="space-y-1">
-                    <h4 className="font-extrabold text-slate-900 text-base font-heading">Advanced Machinery</h4>
-                    <p className="text-slate-500 text-sm">Equipped with tower platforms, wood chippers, and stump grinders.</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Right side: High-End Image */}
-            <div className="lg:col-span-5">
-              <div className="relative h-[480px] w-full overflow-hidden rounded-3xl shadow-xl border border-slate-100">
-                <Image
-                  src="https://images.unsplash.com/photo-1502082553048-f009c37129b9?auto=format&fit=crop&q=80&w=800"
-                  alt="Professional arborist climbing palm tree safely"
-                  fill
-                  className="object-cover hover:scale-[1.02] transition-transform duration-500"
-                />
-              </div>
             </div>
           </div>
         </div>
