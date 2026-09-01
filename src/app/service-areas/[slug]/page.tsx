@@ -185,7 +185,7 @@ export default async function ServiceAreaPage({ params }: { params: Promise<{ sl
         </div>
 
         {/* Sidebar */}
-        <div className="lg:col-span-4 space-y-8">
+        <div className="lg:col-span-4 space-y-8 lg:sticky lg:top-32 self-start">
           {/* Service Links for this Suburb */}
           <div className="bg-white rounded-3xl p-8 shadow-sm border border-slate-100">
             <h3 className="text-xl font-extrabold text-emerald-950 font-heading mb-6 border-b border-slate-100 pb-4">Other Services in {suburbName}</h3>
