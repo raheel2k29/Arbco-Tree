@@ -25,6 +25,9 @@ export const metadata: Metadata = {
   description: "Specialising in safe tree removal, stump grinding, tree pruning, and arborist assessments across Townsville and Queensland. Fully insured with 15+ years experience.",
 };
 
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
+
 export default function RootLayout({
   children,
 }: {
@@ -35,7 +38,11 @@ export default function RootLayout({
       lang="en"
       className={`${montserrat.variable} ${poppins.variable} ${caveat.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col font-sans">{children}</body>
+      <body className="min-h-full flex flex-col font-sans">
+        <Header />
+        {children}
+        <Footer />
+      </body>
     </html>
   );
 }
