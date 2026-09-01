@@ -930,7 +930,7 @@ export default function Home() {
               <div className="absolute inset-0 flex flex-col items-center justify-center p-6 text-center text-slate-900">
                 <span className="text-4xl mb-3">📍</span>
                 <h4 className="font-extrabold text-2xl text-emerald-950 font-heading">Greater Townsville Coverage</h4>
-                <p className="text-sm mt-2 text-slate-800 max-w-xs font-semibold font-sans">95+ target suburbs serviced with fast-response arborist teams.</p>
+                <p className="text-sm mt-2 text-slate-800 max-w-xs font-semibold font-sans">97 target suburbs serviced with fast-response arborist teams.</p>
               </div>
             </div>
 
