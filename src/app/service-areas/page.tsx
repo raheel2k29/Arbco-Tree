@@ -71,7 +71,7 @@ export default function ServiceAreasPage() {
   }, []);
 
   return (
-    <main className="min-h-screen bg-slate-50 pt-24 pb-20">
+    <main className="min-h-screen bg-slate-50 pb-20">
       {/* Hero Section */}
       <div className="bg-[#023011] text-white py-20 px-4 relative overflow-hidden">
         <div className="absolute inset-0 opacity-10 bg-[radial-gradient(circle_at_top_right,_var(--tw-gradient-stops))] from-[#7cc043] via-transparent to-transparent" />
