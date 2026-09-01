@@ -2,6 +2,7 @@ import React from 'react';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import { allSuburbs, services, slugify } from '@/lib/locationData';
+import { generateSpintaxContent } from '@/lib/spintax';
 
 // Generate static params for all 291 routes at build time
 export function generateStaticParams() {
@@ -60,6 +61,8 @@ export default async function ServiceAreaPage({ params }: { params: Promise<{ sl
     notFound();
   }
 
+  const spintax = generateSpintaxContent(resolvedParams.slug, serviceData.name, suburbName);
+
   // Get other services for this suburb for cross-linking
   const otherServices = services.filter(s => s.id !== serviceData.id);
 
@@ -112,18 +115,14 @@ export default async function ServiceAreaPage({ params }: { params: Promise<{ sl
         <div className="lg:col-span-8 space-y-8">
           <div className="bg-white rounded-3xl p-8 lg:p-12 shadow-sm border border-slate-100 prose prose-lg prose-slate max-w-none font-sans leading-relaxed">
             
-            <h2 className="text-3xl font-extrabold text-emerald-950 font-heading mb-6">Expert {serviceData.name} in {suburbName}</h2>
-            <p>
-              Are you dealing with an overgrown, hazardous, or simply unwanted tree? Arbco Tree Solutions is your trusted local provider for professional <strong>{serviceData.name.toLowerCase()}</strong> throughout {suburbName}. As a locally owned and operated business, we pride ourselves on delivering prompt, efficient, and exceptionally safe tree care solutions tailored specifically to the unique environment of {suburbName}.
-            </p>
+            <h2 className="text-3xl font-extrabold text-emerald-950 font-heading mb-6">{spintax.h2}</h2>
+            {spintax.intro}
             
             <div className="my-8 rounded-2xl overflow-hidden shadow-md">
               <img src={serviceData.contentImage1} alt={`${serviceData.name} in ${suburbName}`} className="w-full h-auto object-cover max-h-[400px]" />
             </div>
 
-            <p>
-              Whether it's the aftermath of a severe Townsville storm, a tree encroaching on your property's foundations, or general landscape clearing, our qualified arborists arrive fully equipped to handle projects of any scale. We understand that every property in {suburbName} is different, which is why we conduct thorough site assessments before beginning any {serviceData.name.toLowerCase()} work to ensure maximum safety for your home and family.
-            </p>
+            {spintax.body}
 
             <h3 className="text-2xl font-extrabold text-emerald-950 font-heading mt-10 mb-4">Why Choose Us For {suburbName} Properties?</h3>
             <p>
