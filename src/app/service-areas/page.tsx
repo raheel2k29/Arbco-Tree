@@ -2,54 +2,7 @@
 import React, { useEffect } from "react";
 import Link from "next/link";
 
-const regions = [
-  {
-    name: "Townsville City",
-    suburbs: [
-      "Aitkenvale", "Annandale", "Belgian Gardens", "Castle Hill", "Cluden", 
-      "Cosgrove", "Cranbrook", "Currajong", "Douglas", "Garbutt", "Gulliver", 
-      "Heatley", "Hermit Park", "Hyde Park", "Idalia", "Mount Louisa", 
-      "Mount St John", "Mount Stuart", "Mundingburra", "Murray", "Mysterton", 
-      "North Ward", "Oonoonba", "Pallarenda", "Pimlico", "Railway Estate", 
-      "Rosslea", "Rowes Bay", "South Townsville", "Stuart", "Town Common", 
-      "Townsville West", "Vincent", "West End", "Wulguru"
-    ]
-  },
-  {
-    name: "Rural Townsville",
-    suburbs: [
-      "Alligator Creek", "Barringha", "Beach Holm", "Blue Hills", "Brookhill", 
-      "Calcium", "Cape Cleveland", "Clemant", "Crimea", "Crystal Creek", 
-      "Cungulla", "Granite Vale", "Gumlow", "Hervey Range", "Julago", "Lynam", 
-      "Majors Creek", "Mount Elliot", "Nome", "Oak Valley", "Partington", 
-      "Purono Park", "Rangewood", "Roseneath", "Ross River", "Rupertswood", 
-      "Toonpan", "Woodstock"
-    ]
-  },
-  {
-    name: "Urban Thuringowa",
-    suburbs: [
-      "Alice River", "Bluewater", "Bohle", "Bohle Plains", "Bushland Beach", 
-      "Condon", "Deeragun", "Kelso", "Kirwan", "Pinnacles", "Rasmussen", 
-      "Thuringowa Central"
-    ]
-  },
-  {
-    name: "Rural Thuringowa",
-    suburbs: [
-      "Balgal Beach", "Black River", "Bluewater Park", "Burdell", "Jensen", 
-      "Mount Low", "Mutarnee", "Paluma", "Rollingstone", "Saunders Beach", 
-      "Shaw", "Toolakea", "Toomulla", "Yabulu"
-    ]
-  },
-  {
-    name: "Islands",
-    suburbs: [
-      "Arcadia", "Florence Bay", "Horseshoe Bay", "Magnetic Island", 
-      "Nelly Bay", "Orpheus Island", "Palm Island", "Picnic Bay"
-    ]
-  }
-];
+import { regions, slugify, services } from "@/lib/locationData";
 
 export default function ServiceAreasPage() {
   useEffect(() => {
@@ -104,14 +57,14 @@ export default function ServiceAreasPage() {
             </h2>
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-y-4 gap-x-6">
               {region.suburbs.sort().map((suburb, sIdx) => (
-                <div key={sIdx} className="flex items-center gap-2 group cursor-default">
-                  <svg className="w-4 h-4 text-[#7cc043] opacity-60 group-hover:opacity-100 transition-opacity" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                  </svg>
-                  <span className="text-slate-700 font-medium font-sans text-sm md:text-base group-hover:text-slate-900 transition-colors">
-                    {suburb}
-                  </span>
-                </div>
+                  <Link key={sIdx} href={`/service-areas/tree-removal-${slugify(suburb)}`} className="flex items-center gap-2 group cursor-pointer w-full">
+                    <svg className="w-4 h-4 text-[#7cc043] opacity-60 group-hover:opacity-100 group-hover:translate-x-1 transition-all" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                    </svg>
+                    <span className="text-slate-700 font-medium font-sans text-sm md:text-base group-hover:text-[#036829] transition-colors">
+                      {suburb}
+                    </span>
+                  </Link>
               ))}
             </div>
           </div>
