@@ -188,7 +188,7 @@ export default function Home() {
                 Removal & Arborist <br />
                 Services in{" "}
                 <span className="text-[#7cc043] font-cursive normal-case font-normal text-5xl lg:text-7xl ml-1 relative inline-block">
-                  Melbourne
+                  Townsville
                   <span className="absolute -bottom-1 left-0 right-0 h-[3px] bg-[#7cc043] rounded-full transform -rotate-2" />
                 </span>
               </h1>
@@ -284,7 +284,7 @@ export default function Home() {
                     <label className="text-[10px] font-extrabold uppercase tracking-wider text-slate-400 font-heading">Your Suburb</label>
                     <input
                       type="text"
-                      placeholder="e.g. Box Hill, VIC"
+                      placeholder="e.g. Annandale, VIC"
                       className="w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-xs focus:border-[#036829] focus:bg-white focus:outline-none transition-colors"
                       required
                     />
@@ -478,7 +478,7 @@ export default function Home() {
             <div className="lg:col-span-7 space-y-6 reveal-slide-up">
               <span className="text-[#036829] font-black uppercase tracking-wider text-xs">Arbco Standards</span>
               <h2 className="text-3xl font-extrabold tracking-tight sm:text-4xl text-slate-900 font-heading">
-                Melbourne’s Gold Standard in Certified Arborist Work
+                Townsville’s Gold Standard in Certified Arborist Work
               </h2>
               <p className="text-slate-600 text-lg leading-relaxed">
                 At **Arbco Tree Solutions**, we care about maintaining a standard of absolute safety and property protection.
@@ -511,7 +511,7 @@ export default function Home() {
                   </svg>
                   <div className="space-y-1">
                     <h4 className="font-extrabold text-slate-900 text-base font-heading">Council Planning Permit Reports</h4>
-                    <p className="text-slate-500 text-sm">We prepare arborist planning reports for all Melbourne councils.</p>
+                    <p className="text-slate-500 text-sm">We prepare arborist planning reports for all Townsville councils.</p>
                   </div>
                 </div>
 
@@ -583,7 +583,7 @@ export default function Home() {
                 </span>
                 <h4 className="font-extrabold text-lg text-emerald-300 font-heading">Council Permit Experts</h4>
               </div>
-              <p className="text-sm text-slate-300 leading-relaxed">Expert guidance on Victoria's council laws and planning permit applications.</p>
+              <p className="text-sm text-slate-300 leading-relaxed">Expert guidance on Queensland's council laws and planning permit applications.</p>
             </div>
 
             {/* Card 3 */}
@@ -800,7 +800,7 @@ export default function Home() {
                   {logo.type === "airport" && (
                     <div className="flex items-center gap-1">
                       <span className="text-white text-xs">🚄</span>
-                      <span className="text-[8px] sm:text-[9px] font-black tracking-tight leading-none text-white text-left">MELBOURNE<br/>AIRPORT RAIL</span>
+                      <span className="text-[8px] sm:text-[9px] font-black tracking-tight leading-none text-white text-left">TOWNSVILLE<br/>AIRPORT RAIL</span>
                     </div>
                   )}
                   {logo.type === "mercy" && (
@@ -922,15 +922,15 @@ export default function Home() {
             <div className="lg:col-span-6 h-[400px] rounded-3xl overflow-hidden relative shadow-inner">
               <Image
                 src="https://images.unsplash.com/photo-1524661135-423995f22d0b?auto=format&fit=crop&q=80&w=1200"
-                alt="Map of Greater Melbourne Victoria"
+                alt="Map of Greater Townsville Queensland"
                 fill
                 className="object-cover opacity-60 mix-blend-multiply"
               />
               <div className="absolute inset-0 bg-emerald-950/20" />
               <div className="absolute inset-0 flex flex-col items-center justify-center p-6 text-center text-slate-900">
                 <span className="text-4xl mb-3">📍</span>
-                <h4 className="font-extrabold text-2xl text-emerald-950 font-heading">Greater Melbourne Coverage</h4>
-                <p className="text-sm mt-2 text-slate-800 max-w-xs font-semibold font-sans">104+ target suburbs serviced with fast-response arborist teams.</p>
+                <h4 className="font-extrabold text-2xl text-emerald-950 font-heading">Greater Townsville Coverage</h4>
+                <p className="text-sm mt-2 text-slate-800 max-w-xs font-semibold font-sans">95+ target suburbs serviced with fast-response arborist teams.</p>
               </div>
             </div>
 
@@ -938,10 +938,10 @@ export default function Home() {
             <div className="lg:col-span-6 space-y-6">
               <span className="text-[#036829] font-black uppercase tracking-wider text-xs">Service Radius</span>
               <h2 className="text-3xl font-extrabold tracking-tight text-slate-900 font-heading">
-                Rapid Response Tree Services Across All Melbourne Suburbs
+                Rapid Response Tree Services Across All Townsville Suburbs
               </h2>
               <p className="text-slate-600 text-lg leading-relaxed font-sans">
-                Whether you need tree removal in Werribee, stump grinding in Geelong, or emergency pruning in Box Hill, we have localized crews ready to respond.
+                Whether you need tree removal in Kirwan, stump grinding in Aitkenvale, or emergency pruning in Annandale, we have localized crews ready to respond.
               </p>
               <div className="pt-4">
                 <Link
@@ -996,7 +996,7 @@ export default function Home() {
             </div>
             <div>
               <h3 className="text-xl sm:text-2xl font-black text-white font-heading tracking-tight">Need a <span className="text-[#7cc043]">Tree Expert?</span></h3>
-              <p className="text-slate-300 text-xs sm:text-sm font-sans mt-0.5">Get professional tree services across Melbourne.</p>
+              <p className="text-slate-300 text-xs sm:text-sm font-sans mt-0.5">Get professional tree services across Townsville.</p>
             </div>
           </div>
 
@@ -1076,7 +1076,7 @@ export default function Home() {
               />
             </div>
             <p className="text-xs text-slate-400 leading-relaxed max-w-sm">
-              Professional tree removal and arborist services across Melbourne. Safety, reliability and customer satisfaction is our top priority.
+              Professional tree removal and arborist services across Townsville. Safety, reliability and customer satisfaction is our top priority.
             </p>
             {/* Social Icons with circular borders */}
             <div className="flex items-center gap-2.5 pt-2">
@@ -1126,7 +1126,7 @@ export default function Home() {
           <div className="lg:col-span-2">
             <h4 className="text-white font-extrabold mb-4 text-xs uppercase tracking-widest font-heading pb-1 border-b border-slate-900 w-fit">Areas We Serve</h4>
             <ul className="space-y-3 text-xs">
-              <li><Link href="/service-areas" className="hover:text-white transition-colors flex items-center gap-1.5"><span className="text-[#7cc043] text-[9px]">❯</span> Melbourne</Link></li>
+              <li><Link href="/service-areas" className="hover:text-white transition-colors flex items-center gap-1.5"><span className="text-[#7cc043] text-[9px]">❯</span> Townsville</Link></li>
               <li><Link href="/service-areas/eastern-suburbs" className="hover:text-white transition-colors flex items-center gap-1.5"><span className="text-[#7cc043] text-[9px]">❯</span> Eastern Suburbs</Link></li>
               <li><Link href="/service-areas/northern-suburbs" className="hover:text-white transition-colors flex items-center gap-1.5"><span className="text-[#7cc043] text-[9px]">❯</span> Northern Suburbs</Link></li>
               <li><Link href="/service-areas/southern-suburbs" className="hover:text-white transition-colors flex items-center gap-1.5"><span className="text-[#7cc043] text-[9px]">❯</span> Southern Suburbs</Link></li>
@@ -1186,7 +1186,7 @@ export default function Home() {
           
           <div className="flex items-center gap-2 justify-center">
             <span className="text-[#7cc043] text-xs">🌿</span>
-            <span className="italic text-[#7cc043] font-serif text-[13px] font-semibold tracking-wide">Caring for trees. Caring for Melbourne.</span>
+            <span className="italic text-[#7cc043] font-serif text-[13px] font-semibold tracking-wide">Caring for trees. Caring for Townsville.</span>
           </div>
 
           <div className="flex gap-4">

@@ -21,8 +21,8 @@ const caveat = Caveat({
 });
 
 export const metadata: Metadata = {
-  title: "Arbco Tree Solutions | Melbourne's Trusted Arborists",
-  description: "Specialising in safe tree removal, stump grinding, tree pruning, and arborist assessments across Melbourne and Victoria. Fully insured with 15+ years experience.",
+  title: "Arbco Tree Solutions | Townsville's Trusted Arborists",
+  description: "Specialising in safe tree removal, stump grinding, tree pruning, and arborist assessments across Townsville and Queensland. Fully insured with 15+ years experience.",
 };
 
 export default function RootLayout({
