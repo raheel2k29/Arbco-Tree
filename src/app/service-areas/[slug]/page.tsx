@@ -111,16 +111,25 @@ export default async function ServiceAreaPage({ params }: { params: Promise<{ sl
       <div className="max-w-[1440px] mx-auto px-4 lg:px-8 py-12 grid grid-cols-1 lg:grid-cols-12 gap-12">
         <div className="lg:col-span-8 space-y-8">
           <div className="bg-white rounded-3xl p-8 lg:p-12 shadow-sm border border-slate-100 prose prose-lg prose-slate max-w-none font-sans leading-relaxed">
-            <h2 className="text-3xl font-extrabold text-emerald-950 font-heading mb-6">Trusted {serviceData.name} in {suburbName}</h2>
+            
+            <h2 className="text-3xl font-extrabold text-emerald-950 font-heading mb-6">Expert {serviceData.name} in {suburbName}</h2>
             <p>
-              Looking for professional <strong>{serviceData.name.toLowerCase()}</strong> in {suburbName}? Arbco Tree Solutions provides expert, reliable, and safe tree care tailored specifically for the {suburbName} environment. With years of experience operating across the Greater Townsville region, our qualified arborists understand the local climate, soil conditions, and native tree species perfectly.
-            </p>
-            <p>
-              Whether you need urgent assistance after a storm, routine maintenance to keep your property looking immaculate, or safe removal of hazardous trees, we bring the right equipment and the highest safety standards to every single job in {suburbName}.
+              Are you dealing with an overgrown, hazardous, or simply unwanted tree? Arbco Tree Solutions is your trusted local provider for professional <strong>{serviceData.name.toLowerCase()}</strong> throughout {suburbName}. As a locally owned and operated business, we pride ourselves on delivering prompt, efficient, and exceptionally safe tree care solutions tailored specifically to the unique environment of {suburbName}.
             </p>
             
+            <div className="my-8 rounded-2xl overflow-hidden shadow-md">
+              <img src={serviceData.contentImage1} alt={`${serviceData.name} in ${suburbName}`} className="w-full h-auto object-cover max-h-[400px]" />
+            </div>
+
+            <p>
+              Whether it's the aftermath of a severe Townsville storm, a tree encroaching on your property's foundations, or general landscape clearing, our qualified arborists arrive fully equipped to handle projects of any scale. We understand that every property in {suburbName} is different, which is why we conduct thorough site assessments before beginning any {serviceData.name.toLowerCase()} work to ensure maximum safety for your home and family.
+            </p>
+
             <h3 className="text-2xl font-extrabold text-emerald-950 font-heading mt-10 mb-4">Why Choose Us For {suburbName} Properties?</h3>
-            <ul className="space-y-3 list-none pl-0">
+            <p>
+              When you search for <em>{serviceData.name.toLowerCase()} near me</em>, you want a team that doesn't just cut corners. We are committed to industry best practices, environmental sustainability, and uncompromising safety standards.
+            </p>
+            <ul className="space-y-3 list-none pl-0 my-6">
               <li className="flex gap-3">
                 <span className="text-[#7cc043] shrink-0 mt-1">✔</span>
                 <span><strong>Fully Insured & Qualified:</strong> We carry $20M Public Liability Insurance for your complete peace of mind.</span>
@@ -135,13 +144,43 @@ export default async function ServiceAreaPage({ params }: { params: Promise<{ sl
               </li>
               <li className="flex gap-3">
                 <span className="text-[#7cc043] shrink-0 mt-1">✔</span>
-                <span><strong>Clean & Tidy:</strong> We don't just complete the {serviceData.name.toLowerCase()} – we leave your property spotless.</span>
+                <span><strong>Clean & Tidy:</strong> We don't just complete the {serviceData.name.toLowerCase()} – we leave your property spotless, chipping and removing all debris.</span>
               </li>
             </ul>
 
-            <div className="mt-10 p-6 bg-[#f4fbf6] rounded-2xl border border-[#7cc043]/20">
-              <h4 className="text-xl font-bold text-emerald-900 mb-2 font-heading">Ready for your free assessment in {suburbName}?</h4>
-              <p className="text-base text-emerald-800 mb-0">Contact our friendly team today. We can usually provide a free, no-obligation quote on the very same day for {suburbName} residents.</p>
+            <div className="my-8 rounded-2xl overflow-hidden shadow-md">
+              <img src={serviceData.contentImage2} alt={`Professional Arborists in ${suburbName}`} className="w-full h-auto object-cover max-h-[400px]" />
+            </div>
+
+            <h2 className="text-3xl font-extrabold text-emerald-950 font-heading mt-12 mb-6">Our {serviceData.name} Process</h2>
+            <p>
+              We believe in transparent communication and seamless execution. Our process for {serviceData.name.toLowerCase()} in {suburbName} is designed to be completely stress-free for you:
+            </p>
+            <ol className="list-decimal pl-5 space-y-4 my-6 font-semibold text-slate-800">
+              <li><strong className="text-emerald-900">Free Site Assessment:</strong> We visit your {suburbName} property to evaluate the tree's health, structural integrity, and proximity to hazards.</li>
+              <li><strong className="text-emerald-900">Transparent Quoting:</strong> You receive a clear, upfront quote with no hidden fees.</li>
+              <li><strong className="text-emerald-900">Safe Execution:</strong> Using advanced rigging techniques, our arborists perform the {serviceData.name.toLowerCase()} safely, section by section if necessary.</li>
+              <li><strong className="text-emerald-900">Comprehensive Clean-up:</strong> All branches, timber, and debris are removed or mulched, leaving your yard immaculate.</li>
+            </ol>
+
+            <h3 className="text-2xl font-extrabold text-emerald-950 font-heading mt-10 mb-4">Frequently Asked Questions</h3>
+            <div className="space-y-6 mt-6">
+              <div>
+                <h4 className="font-bold text-lg text-emerald-900">Do I need council approval for {serviceData.name.toLowerCase()} in {suburbName}?</h4>
+                <p className="text-slate-600 mt-2">Regulations vary depending on the tree species, size, and your exact location within {suburbName}. Our team is highly experienced with local council bylaws and can advise you on whether a permit is required during our initial assessment.</p>
+              </div>
+              <div>
+                <h4 className="font-bold text-lg text-emerald-900">How much does it cost?</h4>
+                <p className="text-slate-600 mt-2">The cost of {serviceData.name.toLowerCase()} depends on the tree's size, location, and accessibility. We offer free, on-site quotes to provide you with an accurate and highly competitive price.</p>
+              </div>
+            </div>
+
+            <div className="mt-12 p-8 bg-[#f4fbf6] rounded-2xl border border-[#7cc043]/20 text-center">
+              <h4 className="text-2xl font-extrabold text-emerald-950 mb-4 font-heading">Ready for your free assessment in {suburbName}?</h4>
+              <p className="text-lg text-emerald-800 mb-6">Contact our friendly team today. We can usually provide a free, no-obligation quote on the very same day for {suburbName} residents.</p>
+              <a href="tel:0426204514" className="inline-flex items-center justify-center rounded-xl bg-[#036829] text-white font-extrabold px-8 py-4 shadow-md hover:bg-[#024a1d] transition-colors font-heading">
+                Call Us Now: 0426 204 514
+              </a>
             </div>
           </div>
         </div>

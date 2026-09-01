@@ -55,19 +55,25 @@ export const services = [
     id: "tree-removal",
     name: "Tree Removal",
     description: "Professional, safe, and efficient tree removal services.",
-    heroImage: "https://images.unsplash.com/photo-1524661135-423995f22d0b?auto=format&fit=crop&q=80&w=1200"
+    heroImage: "https://images.unsplash.com/photo-1524661135-423995f22d0b?auto=format&fit=crop&q=80&w=1200",
+    contentImage1: "https://images.unsplash.com/photo-1622383563227-04401ab4e5ea?auto=format&fit=crop&q=80&w=800",
+    contentImage2: "https://images.unsplash.com/photo-1543878087-0b1a13fb1eb8?auto=format&fit=crop&q=80&w=800"
   },
   {
     id: "stump-removal-grinding",
     name: "Stump Removal & Grinding",
     description: "Complete stump grinding to leave your property clear and safe.",
-    heroImage: "https://images.unsplash.com/photo-1588698188164-3e9a53bcfae9?auto=format&fit=crop&q=80&w=1200"
+    heroImage: "https://images.unsplash.com/photo-1588698188164-3e9a53bcfae9?auto=format&fit=crop&q=80&w=1200",
+    contentImage1: "https://images.unsplash.com/photo-1588698188164-3e9a53bcfae9?auto=format&fit=crop&q=80&w=800",
+    contentImage2: "https://images.unsplash.com/photo-1502082553048-f009c37129b9?auto=format&fit=crop&q=80&w=800"
   },
   {
     id: "palm-tree-removal",
     name: "Palm Tree Removal",
     description: "Specialised palm tree removal, pruning, and maintenance.",
-    heroImage: "https://images.unsplash.com/photo-1498522271744-cdd435c13f24?auto=format&fit=crop&q=80&w=1200"
+    heroImage: "https://images.unsplash.com/photo-1498522271744-cdd435c13f24?auto=format&fit=crop&q=80&w=1200",
+    contentImage1: "https://images.unsplash.com/photo-1622152349386-778396cddda4?auto=format&fit=crop&q=80&w=800",
+    contentImage2: "https://images.unsplash.com/photo-1550535300-3168d18f5042?auto=format&fit=crop&q=80&w=800"
   }
 ];
 
