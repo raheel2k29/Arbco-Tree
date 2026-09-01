@@ -74,7 +74,7 @@ export default async function ServiceAreaPage({ params }: { params: Promise<{ sl
         />
         <div className="absolute inset-0 bg-gradient-to-t from-[#051c0e] via-[#051c0e]/80 to-transparent" />
         
-        <div className="max-w-[1440px] mx-auto text-center relative z-10 reveal-slide-up">
+        <div className="max-w-[1440px] mx-auto text-center relative z-10">
           <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#7cc043]/20 border border-[#7cc043]/30 text-[#7cc043] text-xs font-bold tracking-widest uppercase mb-6">
             <span>🌿</span> Townsville Area Service
           </div>
