@@ -118,7 +118,7 @@ export default function Home() {
               </div>
 
               {/* Bottom Trust Badges row */}
-              <div className="flex flex-row flex-nowrap items-center justify-between gap-3 pt-6 border-t border-white/10 text-[10px] sm:text-xs lg:text-sm font-bold text-white font-heading w-full overflow-x-auto lg:overflow-visible reveal-slide-up delay-300">
+              <div className="flex flex-row flex-nowrap items-center justify-between gap-3 pt-6 border-t border-white/10 text-[10px] sm:text-xs lg:text-sm font-bold text-white font-heading w-full overflow-x-auto lg:overflow-visible scrollbar-hide reveal-slide-up delay-300">
                 <div className="flex items-center gap-2.5 whitespace-nowrap flex-shrink-0">
                   <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border-2 border-[#7cc043] bg-transparent text-[#7cc043]">
                     <svg className="h-5.5 w-5.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.2}>
