@@ -85,7 +85,7 @@ export default function Home() {
         <div className="relative z-10 mx-auto max-w-[1440px] px-4 lg:px-8">
           <div className="grid gap-12 lg:grid-cols-12 lg:items-center">
             {/* Left Column: Heading and info */}
-            <div className="lg:col-span-7 space-y-6">
+            <div className="lg:col-span-7 space-y-6 min-w-0">
               <span className="text-[#7cc043] font-black uppercase tracking-widest text-xs sm:text-sm block font-heading reveal-fade-in">
                 SAFE. RELIABLE. PROFESSIONAL.
               </span>
@@ -155,8 +155,8 @@ export default function Home() {
             </div>
 
             {/* Right Column: Floating White Widget Card */}
-            <div className="lg:col-span-5 reveal-zoom-in delay-250">
-              <div className="rounded-3xl bg-white p-8 text-slate-800 shadow-2xl relative border border-slate-100/80 max-w-[450px] mx-auto lg:ml-auto lg:mr-0">
+            <div className="lg:col-span-5 reveal-zoom-in delay-250 min-w-0 w-full">
+              <div className="rounded-3xl bg-white p-6 sm:p-8 text-slate-800 shadow-2xl relative border border-slate-100/80 w-full max-w-[450px] mx-auto lg:ml-auto lg:mr-0">
                 {/* Floating Green Circle Badge */}
                 <div className="absolute -top-6 left-1/2 -translate-x-1/2 h-12 w-12 rounded-full bg-[#036829] border-4 border-white flex items-center justify-center text-white text-lg font-bold shadow-md">
                   📋
