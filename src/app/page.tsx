@@ -442,8 +442,8 @@ export default function Home() {
             <div className="lg:col-span-5 reveal-zoom-in delay-200">
               <div className="relative h-[480px] w-full overflow-hidden rounded-3xl shadow-xl border border-slate-100">
                 <Image
-                  src="https://images.unsplash.com/photo-1502082553048-f009c37129b9?auto=format&fit=crop&q=80&w=800"
-                  alt="Professional arborist climbing palm tree safely"
+                  src="/home-sec-img.png"
+                  alt="Arbco Tree Solutions Professional Standards"
                   fill
                   className="object-cover hover:scale-[1.02] transition-transform duration-500"
                 />
