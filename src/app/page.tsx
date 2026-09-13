@@ -338,6 +338,24 @@ export default function Home() {
                 <Link href="/services/land-clearing" className="mt-6 inline-flex items-center gap-1 text-sm font-bold text-[#036829] hover:underline font-heading">Read More →</Link>
               </div>
             </div>
+
+            {/* Card 8 - CTA Contact Box */}
+            <div className="overflow-hidden rounded-3xl bg-[#0b1f10] border border-[#0b1f10] shadow-xl transition-all flex flex-col justify-center items-center text-center p-8 reveal-zoom-in delay-200 relative">
+              <div className="absolute -right-8 -bottom-8 opacity-10 w-40 h-40 pointer-events-none text-emerald-500">
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12 2L2 22h20L12 2zm0 3.8l6.2 12.2H5.8L12 5.8z"/>
+                </svg>
+              </div>
+              <div className="flex-1 flex flex-col justify-center">
+                <h3 className="font-extrabold text-white text-2xl font-heading mb-4 relative z-10">Need an Arborist Fast?</h3>
+                <p className="text-emerald-100/70 text-sm leading-relaxed mb-6 relative z-10">
+                  Don't see exactly what you're looking for? Contact our certified experts today to discuss your specific tree care needs.
+                </p>
+              </div>
+              <Link href="/#quote" className="quote-btn-gradient inline-flex items-center gap-2 rounded-xl px-6 py-3.5 text-sm font-extrabold text-white shadow-lg relative z-10 w-full justify-center">
+                Contact Us Now <span className="text-xs">→</span>
+              </Link>
+            </div>
           </div>
         </div>
       </section>
