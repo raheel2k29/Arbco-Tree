@@ -60,13 +60,12 @@ export default function Footer() {
             <h4 className="text-white font-extrabold mb-4 text-xs uppercase tracking-widest font-heading pb-1 border-b border-slate-900 w-fit">Services</h4>
             <ul className="space-y-3 text-xs">
               <li><Link href="/services/tree-removal" className="hover:text-white transition-colors flex items-center gap-1.5"><span className="text-[#7cc043] text-[9px]">❯</span> Tree Removal</Link></li>
-              <li><Link href="/services/tree-pruning-lopping" className="hover:text-white transition-colors flex items-center gap-1.5"><span className="text-[#7cc043] text-[9px]">❯</span> Tree Pruning</Link></li>
               <li><Link href="/services/stump-grinding" className="hover:text-white transition-colors flex items-center gap-1.5"><span className="text-[#7cc043] text-[9px]">❯</span> Stump Grinding</Link></li>
+              <li><Link href="/services/palm-tree-removal" className="hover:text-white transition-colors flex items-center gap-1.5"><span className="text-[#7cc043] text-[9px]">❯</span> Palm Tree Removal</Link></li>
+              <li><Link href="/services/tree-pruning-lopping" className="hover:text-white transition-colors flex items-center gap-1.5"><span className="text-[#7cc043] text-[9px]">❯</span> Pruning & Lopping</Link></li>
+              <li><Link href="/services/emergency-tree-removal" className="hover:text-white transition-colors flex items-center gap-1.5"><span className="text-[#7cc043] text-[9px]">❯</span> Emergency Work</Link></li>
+              <li><Link href="/services/wood-chipping-mulching" className="hover:text-white transition-colors flex items-center gap-1.5"><span className="text-[#7cc043] text-[9px]">❯</span> Mulching</Link></li>
               <li><Link href="/services/land-clearing" className="hover:text-white transition-colors flex items-center gap-1.5"><span className="text-[#7cc043] text-[9px]">❯</span> Land Clearing</Link></li>
-              <li><Link href="/services/hedge-trimming" className="hover:text-white transition-colors flex items-center gap-1.5"><span className="text-[#7cc043] text-[9px]">❯</span> Hedge Trimming</Link></li>
-              <li><Link href="/services/emergency-work" className="hover:text-white transition-colors flex items-center gap-1.5"><span className="text-[#7cc043] text-[9px]">❯</span> Emergency Services</Link></li>
-              <li><Link href="/services/arborist-reports" className="hover:text-white transition-colors flex items-center gap-1.5"><span className="text-[#7cc043] text-[9px]">❯</span> Tree Health Assessments</Link></li>
-              <li><Link href="/services/wood-chipping" className="hover:text-white transition-colors flex items-center gap-1.5"><span className="text-[#7cc043] text-[9px]">❯</span> Mulching & Wood Chipping</Link></li>
             </ul>
           </div>
 

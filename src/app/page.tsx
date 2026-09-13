@@ -239,12 +239,12 @@ export default function Home() {
             </p>
           </div>
 
-          {/* 8 Card Grid */}
+          {/* Services Grid */}
           <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
             {/* Card 1 */}
             <div className="overflow-hidden rounded-3xl bg-slate-50 border border-slate-100 hover:shadow-xl transition-all group flex flex-col justify-between reveal-zoom-in">
               <div className="relative h-48 w-full">
-                <Image src="https://images.unsplash.com/photo-1502082553048-f009c37129b9?auto=format&fit=crop&q=80&w=600" alt="Tree Removal" fill className="object-cover group-hover:scale-105 transition-all duration-500" />
+                <Image src="/Tree Removal.png" alt="Tree Removal" fill className="object-cover group-hover:scale-105 transition-all duration-500" />
               </div>
               <div className="p-6 flex-1 flex flex-col justify-between">
                 <div>
@@ -258,7 +258,7 @@ export default function Home() {
             {/* Card 2 */}
             <div className="overflow-hidden rounded-3xl bg-slate-50 border border-slate-100 hover:shadow-xl transition-all group flex flex-col justify-between reveal-zoom-in delay-75">
               <div className="relative h-48 w-full">
-                <Image src="https://images.unsplash.com/photo-1518531933037-91b2f5f229cc?auto=format&fit=crop&q=80&w=600" alt="Stump Grinding" fill className="object-cover group-hover:scale-105 transition-all duration-500" />
+                <Image src="/stump grinding.png" alt="Stump Grinding" fill className="object-cover group-hover:scale-105 transition-all duration-500" />
               </div>
               <div className="p-6 flex-1 flex flex-col justify-between">
                 <div>
@@ -272,7 +272,7 @@ export default function Home() {
             {/* Card 3 */}
             <div className="overflow-hidden rounded-3xl bg-slate-50 border border-slate-100 hover:shadow-xl transition-all group flex flex-col justify-between reveal-zoom-in delay-150">
               <div className="relative h-48 w-full">
-                <Image src="https://images.unsplash.com/photo-1508193638397-1c4234db14d8?auto=format&fit=crop&q=80&w=600" alt="Palm Tree Care" fill className="object-cover group-hover:scale-105 transition-all duration-500" />
+                <Image src="/Palm Tree Removal.png" alt="Palm Tree Care" fill className="object-cover group-hover:scale-105 transition-all duration-500" />
               </div>
               <div className="p-6 flex-1 flex flex-col justify-between">
                 <div>
@@ -286,7 +286,7 @@ export default function Home() {
             {/* Card 4 */}
             <div className="overflow-hidden rounded-3xl bg-slate-50 border border-slate-100 hover:shadow-xl transition-all group flex flex-col justify-between reveal-zoom-in delay-200">
               <div className="relative h-48 w-full">
-                <Image src="https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&q=80&w=600" alt="Pruning" fill className="object-cover group-hover:scale-105 transition-all duration-500" />
+                <Image src="/Tree Pruning and tree lopping.png" alt="Pruning" fill className="object-cover group-hover:scale-105 transition-all duration-500" />
               </div>
               <div className="p-6 flex-1 flex flex-col justify-between">
                 <div>
@@ -300,21 +300,7 @@ export default function Home() {
             {/* Card 5 */}
             <div className="overflow-hidden rounded-3xl bg-slate-50 border border-slate-100 hover:shadow-xl transition-all group flex flex-col justify-between reveal-zoom-in">
               <div className="relative h-48 w-full">
-                <Image src="https://images.unsplash.com/photo-1473448912268-2022ce9509d8?auto=format&fit=crop&q=80&w=600" alt="Arborist Report" fill className="object-cover group-hover:scale-105 transition-all duration-500" />
-              </div>
-              <div className="p-6 flex-1 flex flex-col justify-between">
-                <div>
-                  <h3 className="font-bold text-slate-900 text-lg group-hover:text-[#036829] transition-colors font-heading">Arborist Reports</h3>
-                  <p className="text-slate-600 text-sm mt-2 leading-relaxed">Official diagnostic assessments for council planning permits.</p>
-                </div>
-                <Link href="/services/arborist-reports" className="mt-6 inline-flex items-center gap-1 text-sm font-bold text-[#036829] hover:underline font-heading">Read More →</Link>
-              </div>
-            </div>
-
-            {/* Card 6 */}
-            <div className="overflow-hidden rounded-3xl bg-slate-50 border border-slate-100 hover:shadow-xl transition-all group flex flex-col justify-between reveal-zoom-in delay-75">
-              <div className="relative h-48 w-full">
-                <Image src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&q=80&w=600" alt="Emergency Services" fill className="object-cover group-hover:scale-105 transition-all duration-500" />
+                <Image src="/Emergency Work.png" alt="Emergency Services" fill className="object-cover group-hover:scale-105 transition-all duration-500" />
               </div>
               <div className="p-6 flex-1 flex flex-col justify-between">
                 <div>
@@ -325,28 +311,28 @@ export default function Home() {
               </div>
             </div>
 
-            {/* Card 7 */}
-            <div className="overflow-hidden rounded-3xl bg-slate-50 border border-slate-100 hover:shadow-xl transition-all group flex flex-col justify-between reveal-zoom-in delay-150">
+            {/* Card 6 */}
+            <div className="overflow-hidden rounded-3xl bg-slate-50 border border-slate-100 hover:shadow-xl transition-all group flex flex-col justify-between reveal-zoom-in delay-75">
               <div className="relative h-48 w-full">
-                <Image src="https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?auto=format&fit=crop&q=80&w=600" alt="Mulching" fill className="object-cover group-hover:scale-105 transition-all duration-500" />
+                <Image src="/Mulching.png" alt="Mulching" fill className="object-cover group-hover:scale-105 transition-all duration-500" />
               </div>
               <div className="p-6 flex-1 flex flex-col justify-between">
                 <div>
-                  <h3 className="font-bold text-slate-900 text-lg group-hover:text-[#036829] transition-colors font-heading">Wood Chipping</h3>
+                  <h3 className="font-bold text-slate-900 text-lg group-hover:text-[#036829] transition-colors font-heading">Mulching</h3>
                   <p className="text-slate-600 text-sm mt-2 leading-relaxed">Processing green tree waste on-site into valuable organic garden mulch.</p>
                 </div>
                 <Link href="/services/wood-chipping-mulching" className="mt-6 inline-flex items-center gap-1 text-sm font-bold text-[#036829] hover:underline font-heading">Read More →</Link>
               </div>
             </div>
 
-            {/* Card 8 */}
-            <div className="overflow-hidden rounded-3xl bg-slate-50 border border-slate-100 hover:shadow-xl transition-all group flex flex-col justify-between reveal-zoom-in delay-200">
+            {/* Card 7 */}
+            <div className="overflow-hidden rounded-3xl bg-slate-50 border border-slate-100 hover:shadow-xl transition-all group flex flex-col justify-between reveal-zoom-in delay-150">
               <div className="relative h-48 w-full">
-                <Image src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&q=80&w=600" alt="Block Clearing" fill className="object-cover group-hover:scale-105 transition-all duration-500" />
+                <Image src="/Land Clearing.png" alt="Land Clearing" fill className="object-cover group-hover:scale-105 transition-all duration-500" />
               </div>
               <div className="p-6 flex-1 flex flex-col justify-between">
                 <div>
-                  <h3 className="font-bold text-slate-900 text-lg group-hover:text-[#036829] transition-colors font-heading">Block Clearing</h3>
+                  <h3 className="font-bold text-slate-900 text-lg group-hover:text-[#036829] transition-colors font-heading">Land Clearing</h3>
                   <p className="text-slate-600 text-sm mt-2 leading-relaxed">Full subdivision and commercial block clearing services.</p>
                 </div>
                 <Link href="/services/land-clearing" className="mt-6 inline-flex items-center gap-1 text-sm font-bold text-[#036829] hover:underline font-heading">Read More →</Link>
