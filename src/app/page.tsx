@@ -104,7 +104,7 @@ export default function Home() {
               
               <div className="flex flex-wrap gap-4 pt-2 reveal-slide-up delay-200">
                 <Link
-                  href="/book-quote"
+                  href="#quote"
                   className="quote-btn-gradient inline-flex items-center gap-2 rounded-lg px-6 py-3.5 text-sm font-extrabold text-white"
                 >
                   Request a Free Quote <span className="text-xs">→</span>
@@ -156,7 +156,7 @@ export default function Home() {
 
             {/* Right Column: Floating White Widget Card */}
             <div className="lg:col-span-5 reveal-zoom-in delay-250 min-w-0 w-full">
-              <div className="rounded-3xl bg-white p-6 sm:p-8 text-slate-800 shadow-2xl relative border border-slate-100/80 w-full max-w-[450px] mx-auto lg:ml-auto lg:mr-0">
+              <div id="quote" className="rounded-3xl bg-white p-6 sm:p-8 text-slate-800 shadow-2xl relative border border-slate-100/80 w-full max-w-[450px] mx-auto lg:ml-auto lg:mr-0">
                 {/* Floating Green Circle Badge */}
                 <div className="absolute -top-6 left-1/2 -translate-x-1/2 h-12 w-12 rounded-full bg-[#036829] border-4 border-white flex items-center justify-center text-white text-lg font-bold shadow-md">
                   📋
@@ -229,7 +229,7 @@ export default function Home() {
       </section>
 
       {/* Services Grid Section */}
-      <section className="py-24 bg-white">
+      <section id="services" className="py-24 bg-white">
         <div className="mx-auto max-w-[1440px] px-4 lg:px-8">
           <div className="text-center max-w-3xl mx-auto space-y-4 mb-16 reveal-slide-up">
             <span className="text-[#036829] font-black uppercase tracking-wider text-xs">Arbco Services</span>
@@ -363,7 +363,7 @@ export default function Home() {
       </section>
 
       {/* Why Choose Us */}
-      <section ref={sectionRef} className="py-24 bg-white relative overflow-hidden">
+      <section id="about" ref={sectionRef} className="py-24 bg-white relative overflow-hidden">
         {/* Animated Background Silhouette Tree */}
         <div className="absolute left-[-5%] bottom-0 w-[50%] h-[110%] pointer-events-none z-0 select-none">
           <div 
@@ -608,7 +608,7 @@ export default function Home() {
       </section>
 
       {/* Our Valued Customers Section (Dark Green Background with Edge Fades) */}
-      <section className="py-16 bg-[#023011] text-white border-t border-b border-white/5 relative overflow-hidden">
+      <section id="gallery" className="py-16 bg-[#023011] text-white border-t border-b border-white/5 relative overflow-hidden">
         <div className="mx-auto max-w-[1440px] px-4 lg:px-8 text-center space-y-12">
           <div className="text-center max-w-3xl mx-auto space-y-4 reveal-slide-up">
             <span className="text-[#7cc043] font-black uppercase tracking-wider text-xs">Our Clients</span>
@@ -738,7 +738,7 @@ export default function Home() {
       </section>
 
       {/* Google Reviews Section */}
-      <section className="py-24 bg-white">
+      <section id="testimonials" className="py-24 bg-white">
         <div className="mx-auto max-w-[1440px] px-4 lg:px-8 text-center space-y-12">
           <div className="max-w-3xl mx-auto space-y-4 reveal-slide-up">
             <span className="text-[#036829] font-black uppercase tracking-wider text-xs">Testimonials</span>
@@ -870,7 +870,7 @@ export default function Home() {
 
       {/* Rounded Pre-footer CTA Callout Card */}
       <div className="mx-auto max-w-[1440px] px-4 lg:px-8 -mb-16 relative z-30">
-        <div className="bg-[#051c0e] border border-[#7cc043]/20 rounded-3xl p-6 lg:p-8 flex flex-col lg:flex-row items-center justify-between gap-6 shadow-2xl relative overflow-hidden">
+        <div id="contact" className="bg-[#051c0e] border border-[#7cc043]/20 rounded-3xl p-6 lg:p-8 flex flex-col lg:flex-row items-center justify-between gap-6 shadow-2xl relative overflow-hidden">
           {/* Leaf background texture overlay */}
           <div className="absolute inset-0 opacity-[0.05] pointer-events-none select-none bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-emerald-500 via-transparent to-transparent" />
           
@@ -958,7 +958,7 @@ export default function Home() {
           {/* CTA Button */}
           <div className="shrink-0 w-full lg:w-auto relative z-10">
             <Link
-              href="/book-quote"
+              href="#quote"
               className="quote-btn-gradient rounded-xl px-6 py-4 text-sm font-extrabold text-white flex items-center justify-center gap-1.5 shadow-md shadow-black/20 w-full lg:w-auto hover:opacity-95 transition-opacity"
             >
               Get a Free Quote <span className="text-xs">→</span>

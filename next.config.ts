@@ -8,6 +8,14 @@ const nextConfig: NextConfig = {
         hostname: "images.unsplash.com",
       },
     ],
+  async redirects() {
+    return [
+      {
+        source: "/book-quote",
+        destination: "/#quote",
+        permanent: true,
+      },
+    ];
   },
 };
 
