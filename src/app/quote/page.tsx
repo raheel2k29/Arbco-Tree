@@ -175,7 +175,7 @@ function QuoteFormContent() {
                         list="townsville-suburbs"
                         value={formData.suburb}
                         onChange={(e) => setFormData({ ...formData, suburb: e.target.value })}
-                        placeholder="e.g. Annandale, Kirwan, Aitkenvale..."
+                        placeholder="e.g. Annandale, QLD"
                         className="w-full px-4 py-3 rounded-xl border border-slate-200 bg-slate-50 focus:bg-white focus:border-[#036829] focus:outline-none text-sm transition-colors"
                       />
                       <datalist id="townsville-suburbs">

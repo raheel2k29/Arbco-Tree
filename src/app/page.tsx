@@ -4,6 +4,7 @@
 import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { allSuburbs } from "@/lib/locationData";
 
 export default function Home() {
   const [rotation, setRotation] = useState(0);
@@ -228,11 +229,18 @@ export default function Home() {
                       <input
                         type="text"
                         required
+                        list="homepage-suburbs"
                         value={quoteData.suburb}
                         onChange={(e) => setQuoteData({ ...quoteData, suburb: e.target.value })}
                         placeholder="e.g. Annandale, QLD"
                         className="w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-xs focus:border-[#036829] focus:bg-white focus:outline-none transition-colors"
                       />
+                      <datalist id="homepage-suburbs">
+                        <option value="Annandale, QLD" />
+                        {allSuburbs.map((sub, i) => (
+                          <option key={i} value={`${sub}, QLD`} />
+                        ))}
+                      </datalist>
                     </div>
                     <div className="space-y-1">
                       <label className="text-[10px] font-extrabold uppercase tracking-wider text-slate-400 font-heading">Service Needed</label>
