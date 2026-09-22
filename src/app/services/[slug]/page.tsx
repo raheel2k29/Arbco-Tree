@@ -3,6 +3,7 @@ import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import Image from 'next/image';
 import { services, regions, slugify, allSuburbs } from '@/lib/locationData';
+import ServiceQuoteForm from '@/components/ServiceQuoteForm';
 
 // Generate static routes for all 7 core services
 export function generateStaticParams() {
@@ -701,103 +702,7 @@ export default async function ServiceDetailPage({
       {/* Quote Form Section */}
       <section id="quote-form" className="py-20 bg-slate-50">
         <div className="max-w-[1000px] mx-auto px-4">
-          <div className="bg-[#051c0e] text-white rounded-3xl p-8 lg:p-12 shadow-2xl border border-[#7cc043]/20 relative overflow-hidden">
-            <div className="relative z-10 max-w-2xl mx-auto text-center space-y-4 mb-8">
-              <span className="text-[#7cc043] font-bold text-xs uppercase tracking-widest">
-                Fast Response Guaranteed
-              </span>
-              <h3 className="text-3xl sm:text-4xl font-extrabold font-heading">
-                Request a Free Quote for {service.name}
-              </h3>
-              <p className="text-slate-300 text-sm">
-                Fill in your details below and our team will get in touch promptly with an accurate
-                estimate.
-              </p>
-            </div>
-
-            <form
-              action="mailto:info@arbcotree.com.au"
-              method="POST"
-              encType="text/plain"
-              className="relative z-10 space-y-4 max-w-xl mx-auto text-left"
-            >
-              <div className="grid sm:grid-cols-2 gap-4">
-                <div>
-                  <label className="block text-xs font-bold text-slate-300 uppercase tracking-wider mb-1.5">
-                    Your Name *
-                  </label>
-                  <input
-                    type="text"
-                    required
-                    placeholder="e.g. David Smith"
-                    className="w-full px-4 py-3 rounded-xl bg-white/10 border border-white/20 text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-[#7cc043] text-sm"
-                  />
-                </div>
-                <div>
-                  <label className="block text-xs font-bold text-slate-300 uppercase tracking-wider mb-1.5">
-                    Phone Number *
-                  </label>
-                  <input
-                    type="tel"
-                    required
-                    placeholder="e.g. 0400 000 000"
-                    className="w-full px-4 py-3 rounded-xl bg-white/10 border border-white/20 text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-[#7cc043] text-sm"
-                  />
-                </div>
-              </div>
-
-              <div className="grid sm:grid-cols-2 gap-4">
-                <div>
-                  <label className="block text-xs font-bold text-slate-300 uppercase tracking-wider mb-1.5">
-                    Your Suburb *
-                  </label>
-                  <input
-                    type="text"
-                    required
-                    placeholder="e.g. Kirwan, Aitkenvale..."
-                    className="w-full px-4 py-3 rounded-xl bg-white/10 border border-white/20 text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-[#7cc043] text-sm"
-                  />
-                </div>
-                <div>
-                  <label className="block text-xs font-bold text-slate-300 uppercase tracking-wider mb-1.5">
-                    Selected Service
-                  </label>
-                  <input
-                    type="text"
-                    readOnly
-                    value={service.name}
-                    className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-[#7cc043] font-bold text-sm cursor-not-allowed"
-                  />
-                </div>
-              </div>
-
-              <div>
-                <label className="block text-xs font-bold text-slate-300 uppercase tracking-wider mb-1.5">
-                  Job Description / Details
-                </label>
-                <textarea
-                  rows={3}
-                  placeholder="Tell us about the tree species, size, location, access restrictions, or urgency..."
-                  className="w-full px-4 py-3 rounded-xl bg-white/10 border border-white/20 text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-[#7cc043] text-sm"
-                />
-              </div>
-
-              <button
-                type="submit"
-                className="w-full quote-btn-gradient rounded-xl py-4 font-extrabold text-sm text-white shadow-xl hover:scale-[1.01] transition-transform flex items-center justify-center gap-2"
-              >
-                <span>Submit Quote Request</span>
-                <span>→</span>
-              </button>
-
-              <p className="text-center text-[11px] text-slate-400 pt-2">
-                Prefer to speak directly? Call{' '}
-                <a href="tel:0426204514" className="text-[#7cc043] font-bold hover:underline">
-                  0426 204 514
-                </a>
-              </p>
-            </form>
-          </div>
+          <ServiceQuoteForm serviceName={service.name} />
         </div>
       </section>
 

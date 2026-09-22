@@ -106,8 +106,8 @@ export default function Header() {
           {/* Call-to-action button */}
           <div className="flex items-center">
             <Link
-              href="/#quote"
-              className="quote-btn-gradient rounded-lg px-5 py-3 text-xs sm:text-sm font-extrabold text-white flex items-center gap-1.5"
+              href="/quote"
+              className="quote-btn-gradient rounded-lg px-5 py-3 text-xs sm:text-sm font-extrabold text-white flex items-center gap-1.5 shadow-md hover:scale-[1.02] transition-transform"
             >
               Get a Free Quote <span className="text-xs">→</span>
             </Link>

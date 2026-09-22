@@ -118,8 +118,8 @@ export default function Footer() {
             </div>
 
             <Link
-              href="/#quote"
-              className="w-full inline-flex items-center justify-center gap-1.5 rounded-xl border border-[#7cc043]/30 hover:border-[#7cc043] hover:bg-[#7cc043]/10 text-white font-extrabold text-xs py-3.5 transition-all font-heading relative z-10"
+              href="/quote"
+              className="w-full inline-flex items-center justify-center gap-1.5 rounded-xl border border-[#7cc043]/30 hover:border-[#7cc043] hover:bg-[#7cc043]/10 text-white font-extrabold text-xs py-3.5 transition-all font-heading relative z-10 shadow-sm"
             >
               Request a Free Quote <span className="text-[10px]">→</span>
             </Link>

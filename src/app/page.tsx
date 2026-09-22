@@ -7,7 +7,19 @@ import Link from "next/link";
 
 export default function Home() {
   const [rotation, setRotation] = useState(0);
+  const [quoteSubmitted, setQuoteSubmitted] = useState(false);
+  const [quoteLoading, setQuoteLoading] = useState(false);
+  const [quoteData, setQuoteData] = useState({ name: '', phone: '', suburb: '', service: '' });
   const sectionRef = useRef<HTMLDivElement>(null);
+
+  const handleQuoteSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    setQuoteLoading(true);
+    setTimeout(() => {
+      setQuoteLoading(false);
+      setQuoteSubmitted(true);
+    }, 600);
+  };
 
   useEffect(() => {
     // 1. Falling Tree Scroll Handler
@@ -167,57 +179,88 @@ export default function Home() {
                   <p className="text-slate-500 text-xs mt-1">Get custom arborist pricing sent to your inbox.</p>
                 </div>
 
-                <form className="space-y-4" onSubmit={(e) => e.preventDefault()}>
-                  <div className="space-y-1">
-                    <label className="text-[10px] font-extrabold uppercase tracking-wider text-slate-400 font-heading">Full Name</label>
-                    <input
-                      type="text"
-                      placeholder="e.g. John Doe"
-                      className="w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-xs focus:border-[#036829] focus:bg-white focus:outline-none transition-colors"
-                      required
-                    />
-                  </div>
-                  <div className="space-y-1">
-                    <label className="text-[10px] font-extrabold uppercase tracking-wider text-slate-400 font-heading">Phone Number</label>
-                    <input
-                      type="tel"
-                      placeholder="e.g. 0400 000 000"
-                      className="w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-xs focus:border-[#036829] focus:bg-white focus:outline-none transition-colors"
-                      required
-                    />
-                  </div>
-                  <div className="space-y-1">
-                    <label className="text-[10px] font-extrabold uppercase tracking-wider text-slate-400 font-heading">Your Suburb</label>
-                    <input
-                      type="text"
-                      placeholder="e.g. Annandale, QLD"
-                      className="w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-xs focus:border-[#036829] focus:bg-white focus:outline-none transition-colors"
-                      required
-                    />
-                  </div>
-                  <div className="space-y-1">
-                    <label className="text-[10px] font-extrabold uppercase tracking-wider text-slate-400 font-heading">Service Needed</label>
-                    <select
-                      className="w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-xs focus:border-[#036829] focus:bg-white focus:outline-none transition-colors appearance-none"
-                      required
+                {quoteSubmitted ? (
+                  <div className="py-8 text-center space-y-4">
+                    <div className="w-14 h-14 bg-emerald-100 text-[#036829] rounded-full flex items-center justify-center mx-auto text-2xl font-bold shadow-inner">
+                      ✓
+                    </div>
+                    <h4 className="text-xl font-extrabold text-slate-900 font-heading">Quote Request Received!</h4>
+                    <p className="text-xs text-slate-600 leading-relaxed max-w-xs mx-auto">
+                      Thank you, <span className="font-bold text-slate-900">{quoteData.name}</span>. One of our qualified Townsville arborists will review your request and call you shortly at <span className="font-bold text-slate-900">{quoteData.phone}</span>.
+                    </p>
+                    <button
+                      type="button"
+                      onClick={() => {
+                        setQuoteSubmitted(false);
+                        setQuoteData({ name: '', phone: '', suburb: '', service: '' });
+                      }}
+                      className="text-xs text-[#036829] font-bold hover:underline block mx-auto pt-2"
                     >
-                      <option value="">Select a service...</option>
-                      <option value="tree-removal">Tree Removal</option>
-                      <option value="stump-grinding">Stump Grinding</option>
-                      <option value="palm-tree-removal">Palm Tree Removal</option>
-                      <option value="tree-pruning-lopping">Tree Pruning & Lopping</option>
-                      <option value="emergency-tree-removal">24/7 Emergency Tree Work</option>
-                      <option value="wood-chipping-mulching">Wood Chipping & Mulching</option>
-                      <option value="land-clearing">Land Clearing</option>
-                    </select>
+                      Submit another inquiry
+                    </button>
                   </div>
-                  <button
-                    type="submit"
-                    className="w-full rounded-xl bg-gradient-to-r from-[#036829] to-[#7cc043] py-3.5 text-xs font-extrabold text-white shadow-md shadow-emerald-950/20 hover:opacity-95 transition-opacity font-heading"
-                  >
-                    Get My Free Quote
-                  </button>
-                </form>
+                ) : (
+                  <form className="space-y-4" onSubmit={handleQuoteSubmit}>
+                    <div className="space-y-1">
+                      <label className="text-[10px] font-extrabold uppercase tracking-wider text-slate-400 font-heading">Full Name *</label>
+                      <input
+                        type="text"
+                        required
+                        value={quoteData.name}
+                        onChange={(e) => setQuoteData({ ...quoteData, name: e.target.value })}
+                        placeholder="e.g. John Doe"
+                        className="w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-xs focus:border-[#036829] focus:bg-white focus:outline-none transition-colors"
+                      />
+                    </div>
+                    <div className="space-y-1">
+                      <label className="text-[10px] font-extrabold uppercase tracking-wider text-slate-400 font-heading">Phone Number *</label>
+                      <input
+                        type="tel"
+                        required
+                        value={quoteData.phone}
+                        onChange={(e) => setQuoteData({ ...quoteData, phone: e.target.value })}
+                        placeholder="e.g. 0400 000 000"
+                        className="w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-xs focus:border-[#036829] focus:bg-white focus:outline-none transition-colors"
+                      />
+                    </div>
+                    <div className="space-y-1">
+                      <label className="text-[10px] font-extrabold uppercase tracking-wider text-slate-400 font-heading">Your Suburb *</label>
+                      <input
+                        type="text"
+                        required
+                        value={quoteData.suburb}
+                        onChange={(e) => setQuoteData({ ...quoteData, suburb: e.target.value })}
+                        placeholder="e.g. Annandale, QLD"
+                        className="w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-xs focus:border-[#036829] focus:bg-white focus:outline-none transition-colors"
+                      />
+                    </div>
+                    <div className="space-y-1">
+                      <label className="text-[10px] font-extrabold uppercase tracking-wider text-slate-400 font-heading">Service Needed</label>
+                      <select
+                        value={quoteData.service}
+                        onChange={(e) => setQuoteData({ ...quoteData, service: e.target.value })}
+                        className="w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-xs focus:border-[#036829] focus:bg-white focus:outline-none transition-colors appearance-none"
+                        required
+                      >
+                        <option value="">Select a service...</option>
+                        <option value="tree-removal">Tree Removal</option>
+                        <option value="stump-grinding">Stump Grinding</option>
+                        <option value="palm-tree-removal">Palm Tree Removal</option>
+                        <option value="tree-pruning-lopping">Tree Pruning & Lopping</option>
+                        <option value="emergency-tree-removal">24/7 Emergency Tree Work</option>
+                        <option value="wood-chipping-mulching">Wood Chipping & Mulching</option>
+                        <option value="land-clearing">Land Clearing</option>
+                      </select>
+                    </div>
+                    <button
+                      type="submit"
+                      disabled={quoteLoading}
+                      className="w-full rounded-xl bg-gradient-to-r from-[#036829] to-[#7cc043] py-3.5 text-xs font-extrabold text-white shadow-md shadow-emerald-950/20 hover:opacity-95 transition-opacity font-heading cursor-pointer disabled:opacity-60"
+                    >
+                      {quoteLoading ? 'Sending Request...' : 'Get My Free Quote'}
+                    </button>
+                  </form>
+                )}
 
                 <div className="text-center mt-4 text-[10px] text-slate-400 font-medium flex items-center justify-center gap-1">
                   <span className="text-[#398018] text-xs">🛡️</span> 100% Secure. We respect your privacy.
