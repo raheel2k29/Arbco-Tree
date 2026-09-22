@@ -60,6 +60,17 @@ function parseSlug(slug: string) {
     }
   }
 
+  // Backward-compatibility alias for bluewater-park -> Bluewater
+  if (!matchedSuburb && slug.endsWith('-bluewater-park')) {
+    for (const service of services) {
+      if (slug.startsWith(service.id + '-')) {
+        matchedService = service;
+        matchedSuburb = 'Bluewater';
+        break;
+      }
+    }
+  }
+
   return { suburbName: matchedSuburb, serviceData: matchedService };
 }
 

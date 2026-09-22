@@ -73,11 +73,11 @@ export default function Footer() {
           <div className="lg:col-span-2">
             <h4 className="text-white font-extrabold mb-4 text-xs uppercase tracking-widest font-heading pb-1 border-b border-slate-900 w-fit">Areas We Serve</h4>
             <ul className="space-y-3 text-xs">
-              <li><Link href="/service-areas" className="hover:text-white transition-colors flex items-center gap-1.5"><span className="text-[#7cc043] text-[9px]">❯</span> Townsville City</Link></li>
-              <li><Link href="/service-areas" className="hover:text-white transition-colors flex items-center gap-1.5"><span className="text-[#7cc043] text-[9px]">❯</span> Rural Townsville</Link></li>
-              <li><Link href="/service-areas" className="hover:text-white transition-colors flex items-center gap-1.5"><span className="text-[#7cc043] text-[9px]">❯</span> Urban Thuringowa</Link></li>
-              <li><Link href="/service-areas" className="hover:text-white transition-colors flex items-center gap-1.5"><span className="text-[#7cc043] text-[9px]">❯</span> Rural Thuringowa</Link></li>
-              <li><Link href="/service-areas" className="hover:text-white transition-colors flex items-center gap-1.5"><span className="text-[#7cc043] text-[9px]">❯</span> Magnetic & Islands</Link></li>
+              <li><Link href="/service-areas#townsville-city" className="hover:text-white transition-colors flex items-center gap-1.5"><span className="text-[#7cc043] text-[9px]">❯</span> Townsville City</Link></li>
+              <li><Link href="/service-areas#rural-townsville" className="hover:text-white transition-colors flex items-center gap-1.5"><span className="text-[#7cc043] text-[9px]">❯</span> Rural Townsville</Link></li>
+              <li><Link href="/service-areas#urban-thuringowa" className="hover:text-white transition-colors flex items-center gap-1.5"><span className="text-[#7cc043] text-[9px]">❯</span> Urban Thuringowa</Link></li>
+              <li><Link href="/service-areas#rural-thuringowa" className="hover:text-white transition-colors flex items-center gap-1.5"><span className="text-[#7cc043] text-[9px]">❯</span> Rural Thuringowa</Link></li>
+              <li><Link href="/service-areas#islands" className="hover:text-white transition-colors flex items-center gap-1.5"><span className="text-[#7cc043] text-[9px]">❯</span> Magnetic & Islands</Link></li>
               <li className="pt-1"><Link href="/service-areas" className="text-[#7cc043] hover:underline font-semibold flex items-center gap-1">All 97 Suburbs →</Link></li>
             </ul>
           </div>

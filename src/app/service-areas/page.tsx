@@ -88,13 +88,18 @@ export default function ServiceAreasPage() {
       <div className="max-w-[1440px] mx-auto px-4 lg:px-8 py-8 space-y-16">
         {filteredRegions.length > 0 ? (
           filteredRegions.map((region, idx) => (
-            <div key={idx} className="bg-white rounded-3xl p-8 lg:p-12 shadow-sm border border-slate-200/60 reveal-slide-up" style={{ animationDelay: `${idx * 50}ms` }}>
+            <div 
+              key={idx} 
+              id={slugify(region.name)} 
+              className="bg-white rounded-3xl p-8 lg:p-12 shadow-sm border border-slate-200/60 reveal-slide-up scroll-mt-24" 
+              style={{ animationDelay: `${idx * 50}ms` }}
+            >
               <h2 className="text-2xl lg:text-3xl font-extrabold text-[#036829] font-heading mb-8 flex items-center gap-3">
                 <span className="h-8 w-2 bg-[#7cc043] rounded-full inline-block"></span>
                 {region.name}
               </h2>
               <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-y-4 gap-x-6">
-                {region.suburbs.sort().map((suburb, sIdx) => (
+                {[...region.suburbs].sort().map((suburb, sIdx) => (
                   <Link key={sIdx} href={`/service-areas/tree-removal-${slugify(suburb)}`} className="flex items-center gap-2 group cursor-pointer w-full">
                     <svg className="w-4 h-4 text-[#7cc043] opacity-60 group-hover:opacity-100 group-hover:translate-x-1 transition-all" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />

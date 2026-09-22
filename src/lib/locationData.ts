@@ -25,7 +25,7 @@ export const regions = [
   {
     name: "Urban Thuringowa",
     suburbs: [
-      "Alice River", "Bluewater", "Bohle", "Bohle Plains", "Bushland Beach", 
+      "Alice River", "Bohle", "Bohle Plains", "Burdell", "Bushland Beach", 
       "Condon", "Deeragun", "Kelso", "Kirwan", "Pinnacles", "Rasmussen", 
       "Thuringowa Central"
     ]
@@ -33,8 +33,8 @@ export const regions = [
   {
     name: "Rural Thuringowa",
     suburbs: [
-      "Balgal Beach", "Black River", "Bluewater Park", "Burdell", "Jensen", 
-      "Mount Low", "Mutarnee", "Paluma", "Rollingstone", "Saunders Beach", 
+      "Balgal Beach", "Black River", "Bluewater", "Jensen", "Mount Low", 
+      "Mutarnee", "Paluma", "Reid River", "Rollingstone", "Saunders Beach", 
       "Shaw", "Toolakea", "Toomulla", "Yabulu"
     ]
   },
