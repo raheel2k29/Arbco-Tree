@@ -1,11 +1,15 @@
 "use client";
 
-import React, { useState } from 'react';
+import React, { useState, useEffect, Suspense } from 'react';
+import { useSearchParams } from 'next/navigation';
 import Link from 'next/link';
 import Image from 'next/image';
 import { services, allSuburbs } from '@/lib/locationData';
 
-export default function QuotePage() {
+function QuoteFormContent() {
+  const searchParams = useSearchParams();
+  const serviceParam = searchParams.get('service');
+
   const [formData, setFormData] = useState({
     name: '',
     phone: '',
@@ -15,6 +19,12 @@ export default function QuotePage() {
     urgency: 'normal',
     details: '',
   });
+
+  useEffect(() => {
+    if (serviceParam && services.some(s => s.id === serviceParam)) {
+      setFormData(prev => ({ ...prev, service: serviceParam }));
+    }
+  }, [serviceParam]);
 
   const [loading, setLoading] = useState(false);
   const [submitted, setSubmitted] = useState(false);
@@ -165,7 +175,7 @@ export default function QuotePage() {
                         list="townsville-suburbs"
                         value={formData.suburb}
                         onChange={(e) => setFormData({ ...formData, suburb: e.target.value })}
-                        placeholder="e.g. Kirwan, Annandale, Aitkenvale..."
+                        placeholder="e.g. Annandale, Kirwan, Aitkenvale..."
                         className="w-full px-4 py-3 rounded-xl border border-slate-200 bg-slate-50 focus:bg-white focus:border-[#036829] focus:outline-none text-sm transition-colors"
                       />
                       <datalist id="townsville-suburbs">
@@ -267,5 +277,13 @@ export default function QuotePage() {
         </div>
       </div>
     </main>
+  );
+}
+
+export default function QuotePage() {
+  return (
+    <Suspense fallback={<div className="min-h-screen bg-slate-50 flex items-center justify-center font-heading text-slate-500">Loading quote form...</div>}>
+      <QuoteFormContent />
+    </Suspense>
   );
 }
