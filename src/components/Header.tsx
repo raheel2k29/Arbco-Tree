@@ -76,11 +76,25 @@ export default function Header() {
           {/* Navigation Links */}
           <nav className="hidden lg:flex items-center gap-7 text-sm font-bold text-slate-700 font-heading">
             <Link href="/" className="text-[#036829] border-b-2 border-[#036829] pb-1">Home</Link>
-            <div className="relative group cursor-pointer flex items-center gap-1 hover:text-[#036829] transition-colors">
-              <Link href="/#services">Services</Link>
-              <svg className="h-3.5 w-3.5 text-slate-400 group-hover:text-[#036829] transition-colors mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
-                <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
-              </svg>
+            <div className="relative group flex items-center gap-1 hover:text-[#036829] transition-colors py-2">
+              <Link href="/services" className="flex items-center gap-1">
+                <span>Services</span>
+                <svg className="h-3.5 w-3.5 text-slate-400 group-hover:text-[#036829] transition-colors mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+                </svg>
+              </Link>
+              {/* Dropdown Menu */}
+              <div className="absolute top-full left-0 hidden group-hover:block w-64 bg-white shadow-xl rounded-2xl border border-slate-100 p-2 z-50">
+                <Link href="/services/tree-removal" className="block px-3.5 py-2 text-xs font-semibold text-slate-700 hover:bg-emerald-50 hover:text-[#036829] rounded-xl transition-colors">Tree Removal</Link>
+                <Link href="/services/stump-grinding" className="block px-3.5 py-2 text-xs font-semibold text-slate-700 hover:bg-emerald-50 hover:text-[#036829] rounded-xl transition-colors">Stump Grinding</Link>
+                <Link href="/services/palm-tree-removal" className="block px-3.5 py-2 text-xs font-semibold text-slate-700 hover:bg-emerald-50 hover:text-[#036829] rounded-xl transition-colors">Palm Tree Removal</Link>
+                <Link href="/services/tree-pruning-lopping" className="block px-3.5 py-2 text-xs font-semibold text-slate-700 hover:bg-emerald-50 hover:text-[#036829] rounded-xl transition-colors">Pruning & Lopping</Link>
+                <Link href="/services/emergency-tree-removal" className="block px-3.5 py-2 text-xs font-semibold text-red-700 hover:bg-red-50 rounded-xl transition-colors">24/7 Emergency Work</Link>
+                <Link href="/services/wood-chipping-mulching" className="block px-3.5 py-2 text-xs font-semibold text-slate-700 hover:bg-emerald-50 hover:text-[#036829] rounded-xl transition-colors">Wood Chipping & Mulching</Link>
+                <Link href="/services/land-clearing" className="block px-3.5 py-2 text-xs font-semibold text-slate-700 hover:bg-emerald-50 hover:text-[#036829] rounded-xl transition-colors">Land Clearing</Link>
+                <div className="border-t border-slate-100 my-1" />
+                <Link href="/services" className="block px-3.5 py-2 text-xs font-extrabold text-[#036829] hover:bg-emerald-50 rounded-xl transition-colors">All Services Overview →</Link>
+              </div>
             </div>
             <Link href="/#about" className="hover:text-[#036829] transition-colors">About Us</Link>
             <Link href="/service-areas" className="hover:text-[#036829] transition-colors">Areas We Serve</Link>

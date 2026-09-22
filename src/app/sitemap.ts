@@ -17,9 +17,21 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'weekly',
       priority: 0.9,
     },
+    {
+      url: `${baseUrl}/services`,
+      lastModified: new Date(),
+      changeFrequency: 'weekly',
+      priority: 0.9,
+    },
+    ...services.map((service) => ({
+      url: `${baseUrl}/services/${service.id}`,
+      lastModified: new Date(),
+      changeFrequency: 'weekly' as const,
+      priority: 0.85,
+    })),
   ]
 
-  // Generate sitemap entries for all 291 programmatic pages
+  // Generate sitemap entries for all 679 programmatic suburb pages
   const serviceAreaRoutes: MetadataRoute.Sitemap = []
   
   for (const suburb of allSuburbs) {

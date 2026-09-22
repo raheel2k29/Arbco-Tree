@@ -54,15 +54,21 @@ export const services = [
   {
     id: "tree-removal",
     name: "Tree Removal",
-    description: "Professional, safe, and efficient tree removal services.",
+    shortName: "Tree Removal",
+    tag: "SAFE & CONTROLLED DISMANTLING",
+    description: "Professional, safe, and efficient tree removal services for residential, commercial, and rural properties in Townsville.",
+    localImage: "/Tree Removal.png",
     heroImage: "https://images.unsplash.com/photo-1524661135-423995f22d0b?auto=format&fit=crop&q=80&w=1200",
     contentImage1: "https://images.unsplash.com/photo-1622383563227-04401ab4e5ea?auto=format&fit=crop&q=80&w=800",
     contentImage2: "https://images.unsplash.com/photo-1543878087-0b1a13fb1eb8?auto=format&fit=crop&q=80&w=800"
   },
   {
-    id: "stump-removal-grinding",
-    name: "Stump Removal & Grinding",
-    description: "Complete stump grinding to leave your property clear and safe.",
+    id: "stump-grinding",
+    name: "Stump Grinding",
+    shortName: "Stump Grinding",
+    tag: "TERMITE & HAZARD PREVENTION",
+    description: "Complete precision mechanical stump grinding below surface level to eliminate termite hubs and reclaim your yard.",
+    localImage: "/stump grinding.png",
     heroImage: "https://images.unsplash.com/photo-1588698188164-3e9a53bcfae9?auto=format&fit=crop&q=80&w=1200",
     contentImage1: "https://images.unsplash.com/photo-1588698188164-3e9a53bcfae9?auto=format&fit=crop&q=80&w=800",
     contentImage2: "https://images.unsplash.com/photo-1502082553048-f009c37129b9?auto=format&fit=crop&q=80&w=800"
@@ -70,10 +76,57 @@ export const services = [
   {
     id: "palm-tree-removal",
     name: "Palm Tree Removal",
-    description: "Specialised palm tree removal, pruning, and maintenance.",
+    shortName: "Palm Tree Care",
+    tag: "TROPICAL PALM SPECIALISTS",
+    description: "Specialised tropical palm pruning, dead frond removal, skinning, and complete palm tree removal across Townsville.",
+    localImage: "/Palm Tree Removal.png",
     heroImage: "https://images.unsplash.com/photo-1498522271744-cdd435c13f24?auto=format&fit=crop&q=80&w=1200",
     contentImage1: "https://images.unsplash.com/photo-1622152349386-778396cddda4?auto=format&fit=crop&q=80&w=800",
     contentImage2: "https://images.unsplash.com/photo-1550535300-3168d18f5042?auto=format&fit=crop&q=80&w=800"
+  },
+  {
+    id: "tree-pruning-lopping",
+    name: "Tree Pruning & Lopping",
+    shortName: "Pruning & Lopping",
+    tag: "CANOPY HEALTH & CLEARANCE",
+    description: "Structural canopy pruning, deadwood removal, powerline clearing, and crown thinning to Australian Standards AS4373-2007.",
+    localImage: "/Tree Pruning and tree lopping.png",
+    heroImage: "https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?auto=format&fit=crop&q=80&w=1200",
+    contentImage1: "https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?auto=format&fit=crop&q=80&w=800",
+    contentImage2: "https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&q=80&w=800"
+  },
+  {
+    id: "emergency-tree-removal",
+    name: "Emergency Tree Removal",
+    shortName: "Emergency Work",
+    tag: "24/7 RAPID STORM RESPONSE",
+    description: "24/7 priority emergency arborist response for storm-damaged, fallen, or dangerously unstable trees across Townsville.",
+    localImage: "/Emergency Work.png",
+    heroImage: "https://images.unsplash.com/photo-1516214104703-d870798883c5?auto=format&fit=crop&q=80&w=1200",
+    contentImage1: "https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?auto=format&fit=crop&q=80&w=800",
+    contentImage2: "https://images.unsplash.com/photo-1524661135-423995f22d0b?auto=format&fit=crop&q=80&w=800"
+  },
+  {
+    id: "wood-chipping-mulching",
+    name: "Wood Chipping & Mulching",
+    shortName: "Mulching & Chipping",
+    tag: "ORGANIC GARDEN MULCH",
+    description: "High-capacity on-site wood chipping converting tree limbs and garden waste into clean, nutrient-dense organic mulch.",
+    localImage: "/Mulching.png",
+    heroImage: "https://images.unsplash.com/photo-1473448912268-2022ce9509d8?auto=format&fit=crop&q=80&w=1200",
+    contentImage1: "https://images.unsplash.com/photo-1502082553048-f009c37129b9?auto=format&fit=crop&q=80&w=800",
+    contentImage2: "https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&q=80&w=800"
+  },
+  {
+    id: "land-clearing",
+    name: "Land Clearing",
+    shortName: "Land Clearing",
+    tag: "SITE PREPARATION & CIVIL",
+    description: "Comprehensive site preparation and vegetation clearing for subdivisions, acreage properties, firebreaks, and commercial builds.",
+    localImage: "/Land Clearing.png",
+    heroImage: "https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&q=80&w=1200",
+    contentImage1: "https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?auto=format&fit=crop&q=80&w=800",
+    contentImage2: "https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?auto=format&fit=crop&q=80&w=800"
   }
 ];
 

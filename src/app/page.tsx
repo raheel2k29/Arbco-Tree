@@ -190,7 +190,7 @@ export default function Home() {
                     <label className="text-[10px] font-extrabold uppercase tracking-wider text-slate-400 font-heading">Your Suburb</label>
                     <input
                       type="text"
-                      placeholder="e.g. Annandale, VIC"
+                      placeholder="e.g. Annandale, QLD"
                       className="w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-xs focus:border-[#036829] focus:bg-white focus:outline-none transition-colors"
                       required
                     />
@@ -202,11 +202,13 @@ export default function Home() {
                       required
                     >
                       <option value="">Select a service...</option>
-                      <option value="removal">Tree Removal</option>
-                      <option value="pruning">Tree Pruning & Lopping</option>
-                      <option value="stump">Stump Grinding</option>
-                      <option value="report">Arborist Report</option>
-                      <option value="emergency">Emergency Tree Work</option>
+                      <option value="tree-removal">Tree Removal</option>
+                      <option value="stump-grinding">Stump Grinding</option>
+                      <option value="palm-tree-removal">Palm Tree Removal</option>
+                      <option value="tree-pruning-lopping">Tree Pruning & Lopping</option>
+                      <option value="emergency-tree-removal">24/7 Emergency Tree Work</option>
+                      <option value="wood-chipping-mulching">Wood Chipping & Mulching</option>
+                      <option value="land-clearing">Land Clearing</option>
                     </select>
                   </div>
                   <button

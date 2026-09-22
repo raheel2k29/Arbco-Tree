@@ -50,6 +50,16 @@ function parseSlug(slug: string) {
     }
   }
 
+  // Backward-compatibility alias for stump-removal-grinding
+  if (!matchedService && slug.startsWith('stump-removal-grinding-')) {
+    const suburbSlug = slug.replace('stump-removal-grinding-', '');
+    const found = allSuburbs.find(s => slugify(s) === suburbSlug);
+    if (found) {
+      matchedService = services.find(s => s.id === 'stump-grinding') || null;
+      matchedSuburb = found;
+    }
+  }
+
   return { suburbName: matchedSuburb, serviceData: matchedService };
 }
 
