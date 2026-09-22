@@ -539,12 +539,12 @@ export default async function ServiceDetailPage({
                   </svg>
                   Call 0426 204 514
                 </a>
-                <a
-                  href="#quote-form"
+                <Link
+                  href={`/quote?service=${service.id}`}
                   className="rounded-xl px-7 py-4 text-sm font-extrabold text-white border border-[#7cc043]/40 hover:bg-[#7cc043]/15 transition-all"
                 >
-                  Request Fast Quote ↓
-                </a>
+                  Request a Free Quote →
+                </Link>
               </div>
             </div>
 

@@ -107,7 +107,7 @@ export default function ServicesPage() {
                 Call 0426 204 514
               </a>
               <Link
-                href="/#quote"
+                href="/quote"
                 className="w-full inline-flex items-center justify-center py-3 text-xs font-bold text-slate-300 hover:text-white border border-white/20 rounded-xl hover:bg-white/5 transition-all"
               >
                 Request an On-Site Quote →

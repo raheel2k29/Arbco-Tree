@@ -13,7 +13,7 @@ const nextConfig: NextConfig = {
     return [
       {
         source: "/book-quote",
-        destination: "/#quote",
+        destination: "/quote",
         permanent: true,
       },
     ];

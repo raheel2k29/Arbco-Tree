@@ -131,7 +131,7 @@ export default function ServiceAreasPage() {
           We service all of Greater Townsville. Contact us today to check availability in your specific area.
         </p>
         <Link 
-          href="/#quote"
+          href="/quote"
           className="quote-btn-gradient inline-flex items-center justify-center rounded-xl text-white font-extrabold px-8 py-4 shadow-md transition-all font-heading hover:opacity-95"
         >
           Request a Free Quote

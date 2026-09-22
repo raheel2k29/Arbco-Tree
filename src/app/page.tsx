@@ -116,7 +116,7 @@ export default function Home() {
               
               <div className="flex flex-wrap gap-4 pt-2 reveal-slide-up delay-200">
                 <Link
-                  href="#quote"
+                  href="/quote"
                   className="quote-btn-gradient inline-flex items-center gap-2 rounded-lg px-6 py-3.5 text-sm font-extrabold text-white"
                 >
                   Request a Free Quote <span className="text-xs">→</span>
@@ -397,7 +397,7 @@ export default function Home() {
                   Don't see exactly what you're looking for? Contact our certified experts today to discuss your specific tree care needs.
                 </p>
               </div>
-              <Link href="/#quote" className="quote-btn-gradient inline-flex items-center gap-2 rounded-xl px-6 py-3.5 text-sm font-extrabold text-white shadow-lg relative z-10 w-full justify-center">
+              <Link href="/quote" className="quote-btn-gradient inline-flex items-center gap-2 rounded-xl px-6 py-3.5 text-sm font-extrabold text-white shadow-lg relative z-10 w-full justify-center">
                 Contact Us Now <span className="text-xs">→</span>
               </Link>
             </div>
@@ -1001,7 +1001,7 @@ export default function Home() {
           {/* CTA Button */}
           <div className="shrink-0 w-full lg:w-auto relative z-10">
             <Link
-              href="#quote"
+              href="/quote"
               className="quote-btn-gradient rounded-xl px-6 py-4 text-sm font-extrabold text-white flex items-center justify-center gap-1.5 shadow-md shadow-black/20 w-full lg:w-auto hover:opacity-95 transition-opacity"
             >
               Get a Free Quote <span className="text-xs">→</span>
