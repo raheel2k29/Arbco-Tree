@@ -4,7 +4,7 @@ import React, { useState, useEffect, Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
 import Link from 'next/link';
 import Image from 'next/image';
-import { services, allSuburbs } from '@/lib/locationData';
+import { services } from '@/lib/locationData';
 
 function QuoteFormContent() {
   const searchParams = useSearchParams();
@@ -172,17 +172,11 @@ function QuoteFormContent() {
                       <input
                         type="text"
                         required
-                        list="townsville-suburbs"
                         value={formData.suburb}
                         onChange={(e) => setFormData({ ...formData, suburb: e.target.value })}
                         placeholder="e.g. Annandale, QLD"
                         className="w-full px-4 py-3 rounded-xl border border-slate-200 bg-slate-50 focus:bg-white focus:border-[#036829] focus:outline-none text-sm transition-colors"
                       />
-                      <datalist id="townsville-suburbs">
-                        {allSuburbs.map((sub, i) => (
-                          <option key={i} value={sub} />
-                        ))}
-                      </datalist>
                     </div>
 
                     <div className="space-y-1">
