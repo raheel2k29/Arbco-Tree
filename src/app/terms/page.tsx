@@ -56,7 +56,7 @@ export default function TermsPage() {
             </p>
             <p className="font-semibold text-slate-800">
               Arbco Tree Solutions<br />
-              Email: <a href="mailto:info@arbcotree.com.au" className="text-[#036829] hover:underline">info@arbcotree.com.au</a><br />
+              Email: <a href="mailto:info@arbco.com.au" className="text-[#036829] hover:underline">info@arbco.com.au</a><br />
               Phone: <a href="tel:0426204514" className="text-[#036829] hover:underline">0426 204 514</a><br />
               Townsville, Queensland, Australia
             </p>

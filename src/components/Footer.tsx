@@ -107,13 +107,13 @@ export default function Footer() {
                 </span>
                 <span className="font-extrabold text-sm font-heading">0426 204 514</span>
               </a>
-              <a href="mailto:info@arbcotree.com.au" className="flex items-center gap-3 text-slate-300 hover:text-white transition-colors group">
+              <a href="mailto:info@arbco.com.au" className="flex items-center gap-3 text-slate-300 hover:text-white transition-colors group">
                 <span className="flex h-9 w-9 items-center justify-center rounded-full bg-[#0b1f10]/30 group-hover:bg-[#036829] border border-emerald-900/30 text-[#7cc043] group-hover:text-white transition-all shrink-0">
                   <svg className="h-4.5 w-4.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                     <path strokeLinecap="round" strokeLinejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                   </svg>
                 </span>
-                <span className="text-xs truncate font-sans font-medium">info@arbcotree.com.au</span>
+                <span className="text-xs truncate font-sans font-medium">info@arbco.com.au</span>
               </a>
             </div>
 
