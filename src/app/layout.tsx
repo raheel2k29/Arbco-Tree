@@ -21,7 +21,7 @@ const caveat = Caveat({
 });
 
 export const metadata: Metadata = {
-  title: "Arbco Tree Solutions | Townsville's Trusted Arborists",
+  title: "Arbco Tree Services | Townsville's Trusted Arborists",
   description: "Specialising in safe tree removal, stump grinding, tree pruning, and arborist assessments across Townsville and Queensland. Fully insured with 15+ years experience.",
 };
 

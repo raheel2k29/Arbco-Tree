@@ -111,7 +111,7 @@ export default function Home() {
                 </span>
               </h1>
               <p className="max-w-xl text-base sm:text-lg text-slate-300 leading-relaxed font-sans reveal-slide-up delay-150">
-                Arbco Tree Solutions provides professional tree removal, pruning, stump grinding and arborist solutions with a focus on safety, care and customer satisfaction.
+                Arbco Tree Services provides professional tree removal, pruning, stump grinding and arborist solutions with a focus on safety, care and customer satisfaction.
               </p>
               
               <div className="flex flex-wrap gap-4 pt-2 reveal-slide-up delay-200">
@@ -436,7 +436,7 @@ export default function Home() {
                 Townsville’s Gold Standard in Certified Arborist Work
               </h2>
               <p className="text-slate-600 text-lg leading-relaxed">
-                At **Arbco Tree Solutions**, we care about maintaining a standard of absolute safety and property protection.
+                At **Arbco Tree Services**, we care about maintaining a standard of absolute safety and property protection.
               </p>
               
               <div className="grid gap-6 sm:grid-cols-2 pt-4 reveal-slide-up delay-150">
@@ -488,7 +488,7 @@ export default function Home() {
               <div className="relative h-[480px] w-full overflow-hidden rounded-3xl shadow-xl border border-slate-100">
                 <Image
                   src="/home-sec-img.png"
-                  alt="Arbco Tree Solutions Professional Standards"
+                  alt="Arbco Tree Services Professional Standards"
                   fill
                   className="object-cover hover:scale-[1.02] transition-transform duration-500"
                 />
@@ -799,7 +799,7 @@ export default function Home() {
                 {
                   name: "David K.",
                   initials: "DK",
-                  text: "Highly recommend Arbco Tree Solutions. They removed 3 large trees from my backyard. Safe, clean, and very competitively priced!",
+                  text: "Highly recommend Arbco Tree Services. They removed 3 large trees from my backyard. Safe, clean, and very competitively priced!",
                 },
                 {
                   name: "Sarah M.",
@@ -825,7 +825,7 @@ export default function Home() {
                 {
                   name: "David K.",
                   initials: "DK",
-                  text: "Highly recommend Arbco Tree Solutions. They removed 3 large trees from my backyard. Safe, clean, and very competitively priced!",
+                  text: "Highly recommend Arbco Tree Services. They removed 3 large trees from my backyard. Safe, clean, and very competitively priced!",
                 },
                 {
                   name: "Sarah M.",

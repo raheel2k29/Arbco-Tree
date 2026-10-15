@@ -2,8 +2,8 @@ import React from 'react';
 import Link from 'next/link';
 
 export const metadata = {
-  title: 'Privacy Policy | Arbco Tree Solutions',
-  description: 'Privacy Policy for Arbco Tree Solutions. Learn how we handle and protect your personal information.',
+  title: 'Privacy Policy | Arbco Tree Services',
+  description: 'Privacy Policy for Arbco Tree Services. Learn how we handle and protect your personal information.',
 };
 
 export default function PrivacyPolicyPage() {
@@ -24,7 +24,7 @@ export default function PrivacyPolicyPage() {
           <section className="space-y-2">
             <h2 className="text-lg font-bold text-slate-900 font-heading">1. Introduction</h2>
             <p>
-              Arbco Tree Solutions (“we”, “us”, or “our”) is committed to protecting the privacy of our customers and website visitors. This policy outlines how we collect, use, and protect your personal information in accordance with the Australian Privacy Principles (APPs) and the Privacy Act 1988 (Cth).
+              Arbco Tree Services (“we”, “us”, or “our”) is committed to protecting the privacy of our customers and website visitors. This policy outlines how we collect, use, and protect your personal information in accordance with the Australian Privacy Principles (APPs) and the Privacy Act 1988 (Cth).
             </p>
           </section>
 
@@ -56,7 +56,7 @@ export default function PrivacyPolicyPage() {
               If you have any questions about this Privacy Policy or wish to access or update your information, please contact us at:
             </p>
             <p className="font-semibold text-slate-800">
-              Arbco Tree Solutions<br />
+              Arbco Tree Services<br />
               Email: <a href="mailto:info@arbco.com.au" className="text-[#036829] hover:underline">info@arbco.com.au</a><br />
               Phone: <a href="tel:0456579811" className="text-[#036829] hover:underline">0456 579 811</a><br />
               Townsville, Queensland, Australia

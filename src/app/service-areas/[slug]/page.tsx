@@ -31,7 +31,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const content = getSuburbPageContent(suburbName, serviceData.id, serviceData.name);
   
   return {
-    title: `${serviceData.name} ${suburbName} | Arbco Tree Solutions Townsville`,
+    title: `${serviceData.name} ${suburbName} | Arbco Tree Services Townsville`,
     description: `Professional, fully insured ${serviceData.name.toLowerCase()} in ${suburbName}. Level 5 arborists handling ${content.environmentalProfile.zoneName.toLowerCase()} conditions, tight access, and storm preparation. Call 0456 579 811.`,
   };
 }

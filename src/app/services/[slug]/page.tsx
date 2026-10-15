@@ -36,7 +36,7 @@ const serviceDetails: Record<
       'Complete Debris Chipping & Site Rake-Out',
     ],
     overview: [
-      'Removing trees in tropical North Queensland requires specialized rigging knowledge, heavy-duty machinery, and deep understanding of native tree anatomy. At Arbco Tree Solutions, we provide full-service tree removal for hazardous, storm-damaged, dead, or structurally compromised trees.',
+      'Removing trees in tropical North Queensland requires specialized rigging knowledge, heavy-duty machinery, and deep understanding of native tree anatomy. At Arbco Tree Services, we provide full-service tree removal for hazardous, storm-damaged, dead, or structurally compromised trees.',
       'Our team uses precision sectional dismantling (climbing and rigging block by block) or mechanical crane assistance to safely lower large limbs in tight residential backyards, adjacent to powerlines, swimming pools, or neighbouring fences.',
     ],
     features: [
@@ -75,7 +75,7 @@ const serviceDetails: Record<
       {
         question: 'Are you fully insured for damage?',
         answer:
-          'Yes, Arbco Tree Solutions carries comprehensive $20 Million Public Liability Insurance and all workers are covered under WorkCover Queensland.',
+          'Yes, Arbco Tree Services carries comprehensive $20 Million Public Liability Insurance and all workers are covered under WorkCover Queensland.',
       },
     ],
   },
@@ -90,7 +90,7 @@ const serviceDetails: Record<
       'Nutrient-Rich Mulch Backfill Included',
     ],
     overview: [
-      'Leaving a tree stump behind invites termites, fungal rot, and creates ongoing lawn mowing obstacles. Arbco Tree Solutions uses high-horsepower, compact commercial stump grinders capable of reaching tight residential yards.',
+      'Leaving a tree stump behind invites termites, fungal rot, and creates ongoing lawn mowing obstacles. Arbco Tree Services uses high-horsepower, compact commercial stump grinders capable of reaching tight residential yards.',
       'We grind the stump, root flare, and surface lateral roots well below the soil surface, allowing you to replant grass, pave, or install garden beds immediately.',
     ],
     features: [
@@ -145,7 +145,7 @@ const serviceDetails: Record<
     ],
     overview: [
       'Palm trees are a staple of tropical Townsville living, but neglected palms present serious safety hazards. Heavy fronds crashing into pool fences, falling seed pods, and bat or rat nesting can quickly turn a backyard palm into a liability.',
-      'Arbco Tree Solutions specializes in climbing and rigging palms in tight spaces. Whether you need a seasonal clean (removing dead fronds and flowers) or complete removal and stump grinding of unwanted palms, we have the specialized equipment to do it cleanly.',
+      'Arbco Tree Services specializes in climbing and rigging palms in tight spaces. Whether you need a seasonal clean (removing dead fronds and flowers) or complete removal and stump grinding of unwanted palms, we have the specialized equipment to do it cleanly.',
     ],
     features: [
       {
@@ -253,7 +253,7 @@ const serviceDetails: Record<
     ],
     overview: [
       'Severe weather, tropical lows, and intense summer storms can strike Townsville with little warning, causing large branches or entire trees to crash onto roofs, vehicles, driveways, and power connections.',
-      'Arbco Tree Solutions maintains rapid-response emergency crews equipped with chain saws, rigging, wood chippers, and lighting rigs to secure your property immediately, prevent secondary water damage, and restore safety.',
+      'Arbco Tree Services maintains rapid-response emergency crews equipped with chain saws, rigging, wood chippers, and lighting rigs to secure your property immediately, prevent secondary water damage, and restore safety.',
     ],
     features: [
       {
@@ -276,7 +276,7 @@ const serviceDetails: Record<
       {
         question: 'What should I do if a tree falls on my house or power lines?',
         answer:
-          'Immediately evacuate the affected area and keep everyone clear. If power lines are involved, call Ergon Energy immediately on 13 22 96. Then call Arbco Tree Solutions at 0456 579 811 for urgent stabilization.',
+          'Immediately evacuate the affected area and keep everyone clear. If power lines are involved, call Ergon Energy immediately on 13 22 96. Then call Arbco Tree Services at 0456 579 811 for urgent stabilization.',
       },
       {
         question: 'Do you bill insurance companies directly?',
@@ -360,7 +360,7 @@ const serviceDetails: Record<
       'Environmental & Council Native Tree Audits',
     ],
     overview: [
-      'Preparing raw land for construction, fencing, agriculture, or bushfire protection demands experienced operators and heavy-duty machinery. Arbco Tree Solutions undertakes complete site preparation across Greater Townsville and surrounding rural areas.',
+      'Preparing raw land for construction, fencing, agriculture, or bushfire protection demands experienced operators and heavy-duty machinery. Arbco Tree Services undertakes complete site preparation across Greater Townsville and surrounding rural areas.',
       'We clear scrub, unwanted vegetation, deadfall, and massive trees, followed by complete root ball grubbing and earth leveling so your builders or earthmovers can step onto a pristine site immediately.',
     ],
     features: [
@@ -414,11 +414,11 @@ export async function generateMetadata({
   const service = services.find((s) => s.id === resolvedParams.slug);
 
   if (!service) {
-    return { title: 'Service Not Found | Arbco Tree Solutions' };
+    return { title: 'Service Not Found | Arbco Tree Services' };
   }
 
   const details = serviceDetails[service.id];
-  const pageTitle = `${service.name} Townsville | Arbco Tree Solutions`;
+  const pageTitle = `${service.name} Townsville | Arbco Tree Services`;
   const pageDesc = details
     ? `${details.heroTagline}. Fully insured Level 5 arborists servicing all Townsville suburbs. Call 0456 579 811 for a free quote.`
     : `${service.description} Servicing all 97 Greater Townsville suburbs.`;

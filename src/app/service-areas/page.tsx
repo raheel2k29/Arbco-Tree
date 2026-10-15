@@ -121,7 +121,7 @@ function ServiceAreasContent() {
             Our Service Areas
           </h1>
           <p className="text-lg md:text-xl text-slate-300 max-w-2xl mx-auto font-sans leading-relaxed">
-            Arbco Tree Solutions delivers fully insured, professional tree lopping, removal, stump grinding, and palm management across all 97 Greater Townsville suburbs.
+            Arbco Tree Services delivers fully insured, professional tree lopping, removal, stump grinding, and palm management across all 97 Greater Townsville suburbs.
           </p>
         </div>
       </div>

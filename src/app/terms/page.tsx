@@ -2,8 +2,8 @@ import React from 'react';
 import Link from 'next/link';
 
 export const metadata = {
-  title: 'Terms & Conditions | Arbco Tree Solutions',
-  description: 'Terms & Conditions for Arbco Tree Solutions arborist, tree removal, and site maintenance services in Townsville QLD.',
+  title: 'Terms & Conditions | Arbco Tree Services',
+  description: 'Terms & Conditions for Arbco Tree Services arborist, tree removal, and site maintenance services in Townsville QLD.',
 };
 
 export default function TermsPage() {
@@ -24,7 +24,7 @@ export default function TermsPage() {
           <section className="space-y-2">
             <h2 className="text-lg font-bold text-slate-900 font-heading">1. General Terms</h2>
             <p>
-              By accessing our website or engaging Arbco Tree Solutions for tree removal, lopping, stump grinding, pruning, or land clearing services, you agree to comply with and be bound by these terms and conditions.
+              By accessing our website or engaging Arbco Tree Services for tree removal, lopping, stump grinding, pruning, or land clearing services, you agree to comply with and be bound by these terms and conditions.
             </p>
           </section>
 
@@ -38,14 +38,14 @@ export default function TermsPage() {
           <section className="space-y-2">
             <h2 className="text-lg font-bold text-slate-900 font-heading">3. Council Approvals & Permits</h2>
             <p>
-              While Arbco Tree Solutions can assist in advising on Townsville City Council guidelines and tree preservation orders, the property owner is ultimately responsible for ensuring any legally mandatory vegetation permits or neighbor boundary approvals are in place prior to commencement.
+              While Arbco Tree Services can assist in advising on Townsville City Council guidelines and tree preservation orders, the property owner is ultimately responsible for ensuring any legally mandatory vegetation permits or neighbor boundary approvals are in place prior to commencement.
             </p>
           </section>
 
           <section className="space-y-2">
             <h2 className="text-lg font-bold text-slate-900 font-heading">4. Insurance & Liability</h2>
             <p>
-              Arbco Tree Solutions holds current $20 Million Public Liability Insurance and WorkCover Queensland insurance. All operations are conducted in strict accordance with Australian Standards (AS4373-2007) and Workplace Health & Safety regulations.
+              Arbco Tree Services holds current $20 Million Public Liability Insurance and WorkCover Queensland insurance. All operations are conducted in strict accordance with Australian Standards (AS4373-2007) and Workplace Health & Safety regulations.
             </p>
           </section>
 
@@ -55,7 +55,7 @@ export default function TermsPage() {
               For inquiries regarding service contracts or our terms:
             </p>
             <p className="font-semibold text-slate-800">
-              Arbco Tree Solutions<br />
+              Arbco Tree Services<br />
               Email: <a href="mailto:info@arbco.com.au" className="text-[#036829] hover:underline">info@arbco.com.au</a><br />
               Phone: <a href="tel:0456579811" className="text-[#036829] hover:underline">0456 579 811</a><br />
               Townsville, Queensland, Australia

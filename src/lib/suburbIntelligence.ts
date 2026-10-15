@@ -1727,7 +1727,7 @@ function generateProceduralSuburbProfile(suburbName: string, env: SuburbEnvironm
     headlineContext: `Situated within the distinct ${env.zoneName.toLowerCase()} sector of Greater Townsville, ${suburbName} features properties shaped by native vegetation and regional terrain.`,
     localHistoryAndCanopy: `Properties across ${suburbName} are surrounded by native and introduced trees adapted to local conditions, including ${env.dominantCanopy.slice(0, 3).join(', ')}. Over years of growth in ${env.soilType.toLowerCase()}, mature trees establish expansive canopy spreads that provide vital shade but require active management to remain safe during severe weather.`,
     environmentalRealities: `The micro-climate in ${suburbName} experiences ${env.windExposure.toLowerCase()}. During the dry winter months, subsoils dry out, leaving heavy hardwood branches brittle; when the wet season monsoon arrives, rapid waterlogging can loosen root anchorage and trigger sudden limb shed.`,
-    accessAndPropertyTypologies: `Allotments in ${suburbName} present unique site conditions where ${env.accessConstraint.toLowerCase()}. Arbco Tree Solutions operates specialized equipment—including compact tracked machinery, agile stump grinders, and technical friction lowering devices—that can access tight easements or traverse open rural tracks without damaging property infrastructure.`,
+    accessAndPropertyTypologies: `Allotments in ${suburbName} present unique site conditions where ${env.accessConstraint.toLowerCase()}. Arbco Tree Services operates specialized equipment—including compact tracked machinery, agile stump grinders, and technical friction lowering devices—that can access tight easements or traverse open rural tracks without damaging property infrastructure.`,
     treeRemovalSpecifics: `Tree removal projects in ${suburbName} are approached with tailored rigging strategies. Whether dismantling a hazardous eucalypt overhanging a boundary fence or clearing storm-damaged timber, our qualified arborists rig each section down with surgical precision.`,
     stumpGrindingSpecifics: `Tree stumps left behind in ${suburbName} create prime harborage for destructive subterranean termites. Our operators grind the central root crown and lateral surface roots 200mm to 350mm below grade, leaving the ground level and ready for new turf or building work.`,
     palmTreeSpecifics: `Unmanaged palms in ${suburbName} produce heavy fronds and dense fruit clusters that present severe projectile hazards in storm season. We provide complete palm dismantling, frond cleaning, and root-ball extraction.`,
@@ -2133,7 +2133,7 @@ function getServiceSpecificFocus(
       processSteps,
       heroDescription: `Commercial-grade stump grinding in ${suburbName}. Eradicating termite hubs, grinding 300mm below grade, and protecting domestic structures. Call 0456 579 811.`,
       ctaHeadline: `Need a Tree Stump Removed in ${suburbName}?`,
-      ctaText: `Don't let rotting tree stumps attract termites to your ${suburbName} home. Contact Arbco Tree Solutions today for a fast, fixed-price stump grinding quote.`,
+      ctaText: `Don't let rotting tree stumps attract termites to your ${suburbName} home. Contact Arbco Tree Services today for a fast, fixed-price stump grinding quote.`,
       sidebarHeading: `Stump Grinding in ${suburbName}`,
       sidebarPitch: `Operating compact, high-torque grinders across ${suburbName}. Sub-800mm gate access, complete termite prevention, and spotless site cleanup.`
     };
@@ -2169,7 +2169,7 @@ function getServiceSpecificFocus(
       processSteps,
       heroDescription: `Certified tree pruning, crown thinning, and cyclone preparation in ${suburbName}. AS4373-compliant arborists protecting homes and solar arrays. Call 0456 579 811.`,
       ctaHeadline: `Need Tree Pruning or Canopy Thinning in ${suburbName}?`,
-      ctaText: `Prepare your trees for North Queensland weather. Contact Arbco Tree Solutions for professional, AS4373-compliant tree pruning in ${suburbName}.`,
+      ctaText: `Prepare your trees for North Queensland weather. Contact Arbco Tree Services for professional, AS4373-compliant tree pruning in ${suburbName}.`,
       sidebarHeading: `Tree Pruning in ${suburbName}`,
       sidebarPitch: `Qualified arborists providing canopy pruning and hazard reduction across ${suburbName}. Full compliance with Australian Standards and zero property damage.`
     };
@@ -2205,7 +2205,7 @@ function getServiceSpecificFocus(
       processSteps,
       heroDescription: `Commercial on-site wood chipping and organic mulch production in ${suburbName}. Turn green waste into premium garden mulch or complete haul-away. Call 0456 579 811.`,
       ctaHeadline: `Have Green Waste or Need Mulch in ${suburbName}?`,
-      ctaText: `Clear your piles fast with our high-volume wood chippers. Contact Arbco Tree Solutions for on-site chipping and mulch services in ${suburbName}.`,
+      ctaText: `Clear your piles fast with our high-volume wood chippers. Contact Arbco Tree Services for on-site chipping and mulch services in ${suburbName}.`,
       sidebarHeading: `Wood Chipping in ${suburbName}`,
       sidebarPitch: `High-capacity wood chippers operating across ${suburbName}. Rapid pile reduction, clean arborist mulch, and prompt local service.`
     };
@@ -2223,7 +2223,7 @@ function getServiceSpecificFocus(
       processSteps,
       heroDescription: `Professional land clearing and site preparation across ${suburbName}. Residential block clearing, acreage firebreaks, and civil earthworks. Call 0456 579 811.`,
       ctaHeadline: `Planning Site Works or Land Clearing in ${suburbName}?`,
-      ctaText: `Get your ${suburbName} block ready for building or fire season. Contact Arbco Tree Solutions for a comprehensive on-site clearing assessment.`,
+      ctaText: `Get your ${suburbName} block ready for building or fire season. Contact Arbco Tree Services for a comprehensive on-site clearing assessment.`,
       sidebarHeading: `Land Clearing in ${suburbName}`,
       sidebarPitch: `Equipped for acreage and residential block clearing in ${suburbName}. Forestry mulching, firebreak establishment, and full council compliance.`
     };
@@ -2233,7 +2233,7 @@ function getServiceSpecificFocus(
   return {
     heading: `Safe, Precision Tree Removal Services in ${suburbName}`,
     paragraphs: [
-      `Safe tree removal in ${suburbName} requires disciplined arboricultural planning, heavy rigging systems, and an in-depth understanding of local tropical tree anatomy. Whether you are dealing with a storm-strained ${env.dominantCanopy[0] || 'canopy tree'}, invasive root systems lifting foundations, or an aging hardwood showing internal decay, Arbco Tree Solutions delivers controlled, zero-damage removals across ${suburbName}.`,
+      `Safe tree removal in ${suburbName} requires disciplined arboricultural planning, heavy rigging systems, and an in-depth understanding of local tropical tree anatomy. Whether you are dealing with a storm-strained ${env.dominantCanopy[0] || 'canopy tree'}, invasive root systems lifting foundations, or an aging hardwood showing internal decay, Arbco Tree Services delivers controlled, zero-damage removals across ${suburbName}.`,
       data.treeRemovalSpecifics,
       `Trees growing across ${suburbName}'s ${env.soilType.toLowerCase()} face intense tropical environmental stressors, alternating between prolonged dry winter periods and rapid cyclonic wind-loading. Our certified Level 5 arborists evaluate timber soundboard integrity, branch weight distributions, and nearby hazards to execute precision sectional dismantling, lowering massive limbs in tight residential yards without disturbing surrounding structures.`
     ],
@@ -2241,7 +2241,7 @@ function getServiceSpecificFocus(
     processSteps,
     heroDescription: `Specialist tree removal tailored to the terrain, canopy species, and property access challenges of ${suburbName}. Fully insured Level 5 qualified arborists. Call 0456 579 811.`,
     ctaHeadline: `Need Professional Tree Removal in ${suburbName}?`,
-    ctaText: `Our certified arborists are active daily across ${suburbName} and surrounding suburbs. Contact Arbco Tree Solutions today for a free on-site hazard assessment and transparent quote.`,
+    ctaText: `Our certified arborists are active daily across ${suburbName} and surrounding suburbs. Contact Arbco Tree Services today for a free on-site hazard assessment and transparent quote.`,
     sidebarHeading: `Need an Arborist in ${suburbName}?`,
     sidebarPitch: `Operating daily across ${suburbName} and the greater ${env.zoneName} district. Fully insured ($20M) Level 5 arborists ready to respond.`
   };
@@ -2284,7 +2284,7 @@ function generateIntroParagraphs(
 
   if (serviceId === 'emergency-tree-removal') {
     return [
-      `${data.headlineContext} When severe monsoonal squalls, convective storms, or tropical lows strike ${suburbName}, Arbco Tree Solutions provides rapid 24/7 priority emergency response.`,
+      `${data.headlineContext} When severe monsoonal squalls, convective storms, or tropical lows strike ${suburbName}, Arbco Tree Services provides rapid 24/7 priority emergency response.`,
       `During high-wind weather events in ${suburbName}, ground saturation in ${env.soilType.toLowerCase()} combined with severe wind gusts (${env.windExposure.toLowerCase()}) can cause sudden whole-tree uprooting or heavy limb fractures directly onto houses, sheds, vehicles, and boundary fences.`,
       `Our dedicated emergency crews remain on standby 24 hours a day with heavy-duty winches, commercial chainsaws, mobile floodlighting, and crane support. We prioritize structural weight relief, eliminate immediate life-safety hazards, secure roof punctures with emergency weatherproofing tarps, and provide comprehensive insurance documentation.`
     ];

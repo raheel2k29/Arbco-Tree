@@ -4,7 +4,7 @@ import Image from 'next/image';
 import { services } from '@/lib/locationData';
 
 export const metadata = {
-  title: 'Arborist Services Townsville | Arbco Tree Solutions',
+  title: 'Arborist Services Townsville | Arbco Tree Services',
   description:
     'Comprehensive tree care, removal, stump grinding, palm maintenance, and land clearing across all 97 Greater Townsville suburbs. Fully insured Level 5 qualified arborists.',
 };
