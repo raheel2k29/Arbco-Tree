@@ -65,7 +65,7 @@ export default function Header() {
           <Link href="/" className="flex items-center">
             <Image
               src="/logo.png"
-              alt="Arbco Tree Logo"
+              alt="Arbco Tree Services Logo"
               width={120}
               height={120}
               priority

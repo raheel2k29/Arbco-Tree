@@ -813,7 +813,7 @@ export default async function ServiceDetailPage({
         <div className="max-w-[1440px] mx-auto px-4 lg:px-8">
           <div className="text-center max-w-2xl mx-auto space-y-3 mb-12">
             <span className="text-[#036829] font-black uppercase tracking-wider text-xs">
-              Complete Tree Solutions
+              Complete Tree Services
             </span>
             <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 font-heading">
               Other Arborist Services We Offer

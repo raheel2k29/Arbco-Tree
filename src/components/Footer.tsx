@@ -16,7 +16,7 @@ export default function Footer() {
             <div className="flex items-center select-none">
               <Image
                 src="/logo.png"
-                alt="Arbco Tree Logo"
+                alt="Arbco Tree Services Logo"
                 width={240}
                 height={80}
                 priority

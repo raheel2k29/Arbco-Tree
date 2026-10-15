@@ -31,7 +31,7 @@ export default function ServicesPage() {
             Our Professional Tree Services
           </h1>
           <p className="text-base sm:text-lg text-slate-300 max-w-2xl mx-auto leading-relaxed">
-            From tight-access residential palm trimming to large-scale commercial land clearing and 24/7 storm response, we provide certified, fully insured arborist solutions across North Queensland.
+            From tight-access residential palm trimming to large-scale commercial land clearing and 24/7 storm response, we provide certified, fully insured arborist services across North Queensland.
           </p>
         </div>
       </section>
@@ -124,7 +124,7 @@ export default function ServicesPage() {
             Looking for Services in Your Specific Suburb?
           </h2>
           <p className="text-slate-600 max-w-2xl mx-auto text-sm">
-            We provide prompt arborist solutions across all 97 Greater Townsville suburbs, from Castle Hill and Belgian Gardens to Kirwan, Bushland Beach, and Magnetic Island.
+            We provide prompt arborist services across all 97 Greater Townsville suburbs, from Castle Hill and Belgian Gardens to Kirwan, Bushland Beach, and Magnetic Island.
           </p>
           <div className="pt-2">
             <Link

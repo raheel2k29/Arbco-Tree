@@ -111,7 +111,7 @@ export default function Home() {
                 </span>
               </h1>
               <p className="max-w-xl text-base sm:text-lg text-slate-300 leading-relaxed font-sans reveal-slide-up delay-150">
-                Arbco Tree Services provides professional tree removal, pruning, stump grinding and arborist solutions with a focus on safety, care and customer satisfaction.
+                Arbco Tree Services provides professional tree removal, pruning, stump grinding and arborist services with a focus on safety, care and customer satisfaction.
               </p>
               
               <div className="flex flex-wrap gap-4 pt-2 reveal-slide-up delay-200">
@@ -277,7 +277,7 @@ export default function Home() {
           <div className="text-center max-w-3xl mx-auto space-y-4 mb-16 reveal-slide-up">
             <span className="text-[#036829] font-black uppercase tracking-wider text-xs">Arbco Services</span>
             <h2 className="text-3xl font-extrabold tracking-tight sm:text-4xl text-slate-900 font-heading">
-              Our Professional Arborist Solutions
+              Our Professional Arborist Services
             </h2>
             <p className="text-slate-600 text-lg leading-relaxed font-sans">
               We provide state-of-the-art tree care services tailored to commercial property developers, local councils, and private homeowners.
@@ -511,7 +511,7 @@ export default function Home() {
         </div>
         <div className="relative z-10 mx-auto max-w-[1440px] px-4 lg:px-8 space-y-12">
           <h2 className="text-3xl font-extrabold tracking-tight sm:text-4xl font-heading reveal-slide-up">
-            What makes Arbco Tree the trusted experts?
+            What makes Arbco Tree Services the trusted experts?
           </h2>
 
           <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3 text-left font-sans">
@@ -659,7 +659,7 @@ export default function Home() {
               Our Valued Customers
             </h2>
             <p className="text-slate-300 text-base sm:text-lg leading-relaxed font-sans">
-              Proudly delivering professional arborist and tree management solutions for municipal councils, civil contractors, and commercial developers.
+              Proudly delivering professional arborist and tree management services for municipal councils, civil contractors, and commercial developers.
             </p>
           </div>
           

@@ -1,8 +1,9 @@
 import { MetadataRoute } from 'next'
 import { allSuburbs, services, slugify } from '@/lib/locationData'
+import { SITE_URL } from '@/lib/schemaStructuredData'
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://arbcotreesolutions.com.au' // Base URL
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || SITE_URL // Base URL
 
   const baseRoutes: MetadataRoute.Sitemap = [
     {
