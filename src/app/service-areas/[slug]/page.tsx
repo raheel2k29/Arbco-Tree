@@ -108,7 +108,7 @@ export default async function ServiceAreaPage({ params }: { params: Promise<{ sl
             {serviceData.name} <span className="text-[#7cc043]">{suburbName}</span>
           </h1>
           <p className="text-lg md:text-xl text-slate-300 max-w-3xl mx-auto font-sans leading-relaxed">
-            Specialist {serviceData.name.toLowerCase()} tailored to the terrain, soil conditions, and property access challenges of {suburbName}. Fully insured Level 5 qualified arborists.
+            {content.heroDescription}
           </p>
           
           <div className="mt-8 flex items-center justify-center gap-4 flex-wrap">
@@ -224,7 +224,7 @@ export default async function ServiceAreaPage({ params }: { params: Promise<{ sl
 
             {/* Tailored Why Choose Us */}
             <h3 className="text-2xl font-extrabold text-emerald-950 font-heading mt-12 mb-6">
-              Why Choose Arbco for {serviceData.name} in {suburbName}?
+              {content.whyChooseHeading}
             </h3>
             <div className="not-prose grid grid-cols-1 sm:grid-cols-2 gap-4 my-6">
               {content.whyChoosePoints.map((pt, idx) => (
@@ -244,7 +244,7 @@ export default async function ServiceAreaPage({ params }: { params: Promise<{ sl
 
             {/* Tailored Service Process */}
             <h3 className="text-2xl font-extrabold text-emerald-950 font-heading mt-12 mb-6">
-              Our {serviceData.name} Process in {suburbName}
+              {content.processHeading}
             </h3>
             <div className="not-prose space-y-4 my-6">
               {content.processSteps.map((step, idx) => (
@@ -262,7 +262,7 @@ export default async function ServiceAreaPage({ params }: { params: Promise<{ sl
 
             {/* Localized Frequently Asked Questions */}
             <h3 className="text-2xl font-extrabold text-emerald-950 font-heading mt-12 mb-6">
-              Frequently Asked Questions for {suburbName} Residents
+              {content.faqHeading}
             </h3>
             <div className="not-prose space-y-4 mt-6">
               {content.faqs.map((faq, idx) => (
@@ -330,9 +330,9 @@ export default async function ServiceAreaPage({ params }: { params: Promise<{ sl
                 <path d="M12 2L2 22h20L12 2zm0 3.8l6.2 12.2H5.8L12 5.8z"/>
               </svg>
             </div>
-            <h3 className="text-xl font-extrabold font-heading mb-3 relative z-10">Need an Arborist in {suburbName}?</h3>
+            <h3 className="text-xl font-extrabold font-heading mb-3 relative z-10">{content.sidebarHeading}</h3>
             <p className="text-slate-400 text-sm mb-6 relative z-10 leading-relaxed">
-              We operate daily across {suburbName} and the greater {content.environmentalProfile.zoneName} district. Fully insured and ready to respond.
+              {content.sidebarPitch}
             </p>
             <a href="tel:0456579811" className="w-full inline-flex items-center justify-center rounded-xl bg-white text-[#036829] font-extrabold px-6 py-4 shadow-md transition-all font-heading hover:bg-slate-50 relative z-10">
               Call 0456 579 811
