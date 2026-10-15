@@ -3,6 +3,7 @@ import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import { allSuburbs, services, slugify } from '@/lib/locationData';
 import { getSuburbPageContent } from '@/lib/suburbIntelligence';
+import { generateSuburbJsonLd } from '@/lib/schemaStructuredData';
 
 // Generate static params for all programmatic routes at build time
 export function generateStaticParams() {
@@ -85,12 +86,19 @@ export default async function ServiceAreaPage({ params }: { params: Promise<{ sl
   }
 
   const content = getSuburbPageContent(suburbName, serviceData.id, serviceData.name);
+  const jsonLdSchemas = generateSuburbJsonLd(suburbName, serviceData, content);
 
   // Get other services for this suburb for cross-linking
   const otherServices = services.filter(s => s.id !== serviceData.id);
 
   return (
     <main className="min-h-screen bg-slate-50 pb-20">
+      {/* Schema.org Structured Data (JSON-LD) */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdSchemas) }}
+      />
+
       {/* Dynamic Hero Section */}
       <div className="relative pt-32 pb-24 px-4 overflow-hidden bg-[#051c0e] text-white">
         {/* Background Image */}

@@ -4,6 +4,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { services, regions, slugify, allSuburbs } from '@/lib/locationData';
 import ServiceQuoteForm from '@/components/ServiceQuoteForm';
+import { generateCoreServiceJsonLd } from '@/lib/schemaStructuredData';
 
 // Generate static routes for all 7 core services
 export function generateStaticParams() {
@@ -464,8 +465,16 @@ export default async function ServiceDetailPage({
   // Other services for navigation
   const otherServices = services.filter((s) => s.id !== service.id);
 
+  const jsonLdSchemas = generateCoreServiceJsonLd(service, details);
+
   return (
     <main className="min-h-screen bg-slate-50 font-sans text-slate-800">
+      {/* Schema.org Structured Data (JSON-LD) */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdSchemas) }}
+      />
+
       {/* Hero Section */}
       <section className="relative pt-32 pb-24 px-4 overflow-hidden bg-[#051c0e] text-white">
         {/* Background Image Overlay */}
