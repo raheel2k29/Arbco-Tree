@@ -76,7 +76,7 @@ export default function ServicesPage() {
                   <span>→</span>
                 </Link>
                 <a
-                  href="tel:0426204514"
+                  href="tel:0456579811"
                   className="text-xs text-slate-400 hover:text-[#036829] transition-colors flex items-center gap-1 font-medium"
                 >
                   <span>Call Us</span>
@@ -101,10 +101,10 @@ export default function ServicesPage() {
 
             <div className="pt-6 relative z-10 space-y-3">
               <a
-                href="tel:0426204514"
+                href="tel:0456579811"
                 className="w-full quote-btn-gradient rounded-xl py-3.5 text-xs sm:text-sm font-extrabold text-white flex items-center justify-center gap-2 shadow-lg"
               >
-                Call 0426 204 514
+                Call 0456 579 811
               </a>
               <Link
                 href="/quote"

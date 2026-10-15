@@ -92,10 +92,10 @@ function QuoteFormContent() {
 
                 <div className="pt-6 border-t border-slate-100 flex flex-col sm:flex-row items-center justify-center gap-4">
                   <a
-                    href="tel:0426204514"
+                    href="tel:0456579811"
                     className="quote-btn-gradient rounded-xl px-7 py-3.5 text-sm font-extrabold text-white flex items-center gap-2 shadow-md"
                   >
-                    <span>Need Immediate Response? Call 0426 204 514</span>
+                    <span>Need Immediate Response? Call 0456 579 811</span>
                   </a>
                   <button
                     onClick={() => {
@@ -143,7 +143,7 @@ function QuoteFormContent() {
                         required
                         value={formData.phone}
                         onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                        placeholder="e.g. 0426 000 000"
+                        placeholder="e.g. 0456 000 000"
                         className="w-full px-4 py-3 rounded-xl border border-slate-200 bg-slate-50 focus:bg-white focus:border-[#036829] focus:outline-none text-sm transition-colors"
                       />
                     </div>
@@ -260,8 +260,8 @@ function QuoteFormContent() {
                   <p>🔒 Your personal details are completely private and safe with us.</p>
                   <p>
                     Prefer to speak with an arborist right away? Call{' '}
-                    <a href="tel:0426204514" className="text-[#036829] font-bold hover:underline">
-                      0426 204 514
+                    <a href="tel:0456579811" className="text-[#036829] font-bold hover:underline">
+                      0456 579 811
                     </a>
                   </p>
                 </div>

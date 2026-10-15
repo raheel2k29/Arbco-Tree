@@ -110,11 +110,11 @@ export default async function ServiceAreaPage({ params }: { params: Promise<{ sl
           </p>
           
           <div className="mt-8 flex items-center justify-center gap-4">
-            <a href="tel:0426204514" className="quote-btn-gradient rounded-xl px-8 py-4 text-sm font-extrabold text-white flex items-center gap-2 transition-transform hover:scale-105 shadow-xl">
+            <a href="tel:0456579811" className="quote-btn-gradient rounded-xl px-8 py-4 text-sm font-extrabold text-white flex items-center gap-2 transition-transform hover:scale-105 shadow-xl">
               <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.94.725l.548 2.2a1 1 0 01-.321.988l-1.305.98a10.582 10.582 0 004.872 4.872l.98-1.305a1 1 0 01.988-.321l2.2.548a1 1 0 01.725.94V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
               </svg>
-              Call 0426 204 514
+              Call 0456 579 811
             </a>
           </div>
         </div>
@@ -198,8 +198,8 @@ export default async function ServiceAreaPage({ params }: { params: Promise<{ sl
             <div className="mt-12 p-8 bg-[#f4fbf6] rounded-2xl border border-[#7cc043]/20 text-center">
               <h4 className="text-2xl font-extrabold text-emerald-950 mb-4 font-heading">Ready for your free assessment in {suburbName}?</h4>
               <p className="text-lg text-emerald-800 mb-6">Contact our friendly team today. We can usually provide a free, no-obligation quote on the very same day for {suburbName} residents.</p>
-              <a href="tel:0426204514" className="inline-flex items-center justify-center rounded-xl bg-[#036829] text-white font-extrabold px-8 py-4 shadow-md hover:bg-[#024a1d] transition-colors font-heading">
-                Call Us Now: 0426 204 514
+              <a href="tel:0456579811" className="inline-flex items-center justify-center rounded-xl bg-[#036829] text-white font-extrabold px-8 py-4 shadow-md hover:bg-[#024a1d] transition-colors font-heading">
+                Call Us Now: 0456 579 811
               </a>
             </div>
           </div>
@@ -235,8 +235,8 @@ export default async function ServiceAreaPage({ params }: { params: Promise<{ sl
             </div>
             <h3 className="text-xl font-extrabold font-heading mb-3 relative z-10">Need an Arborist Fast?</h3>
             <p className="text-slate-400 text-sm mb-6 relative z-10">We have crews operating near {suburbName} right now. Call us for rapid response.</p>
-            <a href="tel:0426204514" className="w-full inline-flex items-center justify-center rounded-xl bg-white text-[#036829] font-extrabold px-6 py-4 shadow-md transition-all font-heading hover:bg-slate-50 relative z-10">
-              Call 0426 204 514
+            <a href="tel:0456579811" className="w-full inline-flex items-center justify-center rounded-xl bg-white text-[#036829] font-extrabold px-6 py-4 shadow-md transition-all font-heading hover:bg-slate-50 relative z-10">
+              Call 0456 579 811
             </a>
           </div>
         </div>

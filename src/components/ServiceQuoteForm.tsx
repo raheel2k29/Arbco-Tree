@@ -145,8 +145,8 @@ export default function ServiceQuoteForm({ serviceName }: { serviceName: string 
 
           <p className="text-center text-[11px] text-slate-400 pt-2">
             Prefer to speak directly? Call{' '}
-            <a href="tel:0426204514" className="text-[#7cc043] font-bold hover:underline">
-              0426 204 514
+            <a href="tel:0456579811" className="text-[#7cc043] font-bold hover:underline">
+              0456 579 811
             </a>
           </p>
         </form>

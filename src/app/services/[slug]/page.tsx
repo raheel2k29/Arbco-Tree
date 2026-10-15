@@ -275,7 +275,7 @@ const serviceDetails: Record<
       {
         question: 'What should I do if a tree falls on my house or power lines?',
         answer:
-          'Immediately evacuate the affected area and keep everyone clear. If power lines are involved, call Ergon Energy immediately on 13 22 96. Then call Arbco Tree Solutions at 0426 204 514 for urgent stabilization.',
+          'Immediately evacuate the affected area and keep everyone clear. If power lines are involved, call Ergon Energy immediately on 13 22 96. Then call Arbco Tree Solutions at 0456 579 811 for urgent stabilization.',
       },
       {
         question: 'Do you bill insurance companies directly?',
@@ -419,7 +419,7 @@ export async function generateMetadata({
   const details = serviceDetails[service.id];
   const pageTitle = `${service.name} Townsville | Arbco Tree Solutions`;
   const pageDesc = details
-    ? `${details.heroTagline}. Fully insured Level 5 arborists servicing all Townsville suburbs. Call 0426 204 514 for a free quote.`
+    ? `${details.heroTagline}. Fully insured Level 5 arborists servicing all Townsville suburbs. Call 0456 579 811 for a free quote.`
     : `${service.description} Servicing all 97 Greater Townsville suburbs.`;
 
   return {
@@ -526,7 +526,7 @@ export default async function ServiceDetailPage({
               {/* Call to Actions */}
               <div className="pt-4 flex flex-wrap items-center gap-4">
                 <a
-                  href="tel:0426204514"
+                  href="tel:0456579811"
                   className="quote-btn-gradient rounded-xl px-7 py-4 text-sm font-extrabold text-white flex items-center gap-2 transition-transform hover:scale-105 shadow-xl"
                 >
                   <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -537,7 +537,7 @@ export default async function ServiceDetailPage({
                       d="M3 5a2 2 0 012-2h3.28a1 1 0 01.94.725l.548 2.2a1 1 0 01-.321.988l-1.305.98a10.582 10.582 0 004.872 4.872l.98-1.305a1 1 0 01.988-.321l2.2.548a1 1 0 01.725.94V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
                     />
                   </svg>
-                  Call 0426 204 514
+                  Call 0456 579 811
                 </a>
                 <Link
                   href={`/quote?service=${service.id}`}
