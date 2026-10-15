@@ -157,7 +157,7 @@ export default async function ServiceAreaPage({ params }: { params: Promise<{ sl
               <div className="flex items-center gap-2 mb-4">
                 <span className="text-2xl">🌱</span>
                 <h3 className="text-xl font-extrabold text-emerald-950 font-heading">
-                  {suburbName} Environmental & Arboricultural Snapshot
+                  {suburbName} {serviceData.name} & Environmental Snapshot
                 </h3>
               </div>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs sm:text-sm">
@@ -178,8 +178,14 @@ export default async function ServiceAreaPage({ params }: { params: Promise<{ sl
                   <span className="text-slate-600">{content.environmentalProfile.accessConstraint}</span>
                 </div>
                 <div className="bg-white p-4 rounded-xl border border-emerald-100/60 shadow-xs md:col-span-2">
-                  <span className="font-bold text-emerald-900 block mb-1">🌳 Dominant Local Tree Canopy</span>
-                  <span className="text-slate-600">{content.environmentalProfile.dominantCanopy.join(', ')}</span>
+                  <span className="font-bold text-emerald-900 block mb-1">
+                    {serviceData.id === 'palm-tree-removal' ? '🌴 Dominant Local Palms & Species' : '🌳 Dominant Local Tree Canopy'}
+                  </span>
+                  <span className="text-slate-600">
+                    {serviceData.id === 'palm-tree-removal' 
+                      ? content.environmentalProfile.dominantPalms.join(', ')
+                      : content.environmentalProfile.dominantCanopy.join(', ')}
+                  </span>
                 </div>
                 <div className="bg-white p-4 rounded-xl border border-emerald-100/60 shadow-xs md:col-span-2">
                   <span className="font-bold text-emerald-900 block mb-1">📜 Relevant Planning Overlay</span>

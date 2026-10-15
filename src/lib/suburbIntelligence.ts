@@ -1737,7 +1737,7 @@ function generateProceduralSuburbProfile(suburbName: string, env: SuburbEnvironm
 }
 
 // ============================================================================
-// Localized FAQs Generator (Includes Mandatory Pricing & Council Overlays)
+// Localized FAQs Generator for All 7 Services
 // ============================================================================
 
 function generateLocalizedFaqs(
@@ -1792,7 +1792,91 @@ function generateLocalizedFaqs(
     ];
   }
 
-  // Default: tree-removal (and other general services)
+  if (serviceId === 'tree-pruning-lopping') {
+    return [
+      {
+        question: `How much does professional tree pruning cost in ${suburbName}?`,
+        answer: `Tree pruning costs in ${suburbName} typically range from $350 to $750 for routine maintenance pruning, deadwooding, or structure clearance on small-to-medium trees. Substantial canopy reductions on large, mature trees or overhead powerline clearances range from $800 to $1,600+. All quotes are upfront and fixed after a free on-site arborist assessment.`
+      },
+      {
+        question: `What is the difference between AS4373 pruning and tree lopping?`,
+        answer: `Australian Standard AS4373-2007 (Pruning of Amenity Trees) requires selective cuts at the branch collar, preserving the tree's natural defense zones and preventing decay. In contrast, 'lopping' or 'topping' indiscriminately shears branches between nodes, creating large rotting stubs and stimulating weak, hazardous epicormic regrowth that easily snaps in tropical winds.`
+      },
+      {
+        question: `How does canopy pruning prepare trees for Townsville cyclone season?`,
+        answer: `In ${suburbName}, cyclone winds place extreme sail pressure on dense canopies. Selective crown thinning removes up to 20% of inner branches, allowing gale-force winds to pass cleanly through the canopy instead of acting as a solid sail. This drastically reduces the likelihood of whole-tree blowover or catastrophic limb failure.`
+      },
+      {
+        question: `Can I trim tree branches hanging over my fence from a neighbor in ${suburbName}?`,
+        answer: `Under the Queensland Neighbourhood Disputes (Dividing Fences and Trees) Act, you have the legal right to prune overhanging branches back to your boundary line. Our arborists can carry out this boundary trimming cleanly and safely, ensuring compliance with Queensland law while maintaining tree health.`
+      }
+    ];
+  }
+
+  if (serviceId === 'emergency-tree-removal') {
+    return [
+      {
+        question: `How fast can Arbco respond to an emergency tree failure in ${suburbName}?`,
+        answer: `We maintain 24/7 priority emergency response crews across Greater Townsville. For critical situations in ${suburbName} where a tree or large branch has fallen on a house, vehicle, driveway, or powerline, our emergency team dispatches immediately to stabilize the structure and make the area safe.`
+      },
+      {
+        question: `Will my home insurance cover emergency tree removal in ${suburbName}?`,
+        answer: `In most cases, yes. When a tree damages an insured structure (such as a roof, shed, carport, or fence) or poses an active imminent threat during a storm event, standard Australian home insurance policies cover the emergency removal and stabilization costs. We provide itemized invoices, photo logs, and certified arborist incident reports directly for your claim.`
+      },
+      {
+        question: `What should I do if a tree falls on power lines in ${suburbName}?`,
+        answer: `Stay at least 10 meters away from the tree and any fallen wires, and assume all lines are live and lethal. Call Ergon Energy immediately on 13 22 96 to report the emergency. Once Ergon isolates the power, call Arbco on 0456 579 811 to safely dismantle and remove the timber.`
+      },
+      {
+        question: `Can you provide emergency weatherproofing tarps after tree impact?`,
+        answer: `Yes. Once the hazardous timber is safely lifted off your roof, our emergency crew can secure heavy-duty weatherproofing tarps over damaged tiles, tin sheets, or ceiling breaches to prevent secondary water ingress and storm damage until permanent repairs are made.`
+      }
+    ];
+  }
+
+  if (serviceId === 'wood-chipping-mulching') {
+    return [
+      {
+        question: `How much does on-site commercial wood chipping cost in ${suburbName}?`,
+        answer: `Commercial wood chipping in ${suburbName} is typically priced between $250 and $450 per hour (including our high-capacity chipper, chip truck, and a qualified two-man crew) or quoted as a fixed flat rate for pre-stacked green waste piles. Contact us for a fast, free estimate.`
+      },
+      {
+        question: `How does arborist wood mulch benefit Townsville gardens?`,
+        answer: `Arborist wood mulch provides vital moisture retention in North Queensland's dry climate, reducing soil water evaporation by up to 60%. A 75mm–100mm layer insulates delicate plant root systems from blistering heat, suppresses invasive weeds, and slowly breaks down to enrich depleted soils.`
+      },
+      {
+        question: `Can you chip fibrous palm fronds and palm trunks?`,
+        answer: `Yes. While standard domestic chippers clog on fibrous palm strings, our commercial-grade wood chippers are engineered with high-torque steel drum cutters that easily process palm fronds, seed pods, and palm trunk segments.`
+      },
+      {
+        question: `Can you haul all the wood chips away if I don't want them?`,
+        answer: `Yes. You have total flexibility: we can blow the fresh mulch directly into your garden beds, leave it in a tidy pile for future use, or transport 100% of the green waste completely off your ${suburbName} property at no additional cost.`
+      }
+    ];
+  }
+
+  if (serviceId === 'land-clearing') {
+    return [
+      {
+        question: `How is land clearing priced in ${suburbName}?`,
+        answer: `Land clearing pricing in ${suburbName} depends on acreage size, vegetation density, terrain slope, and whether whole-tree extraction or forestry mulching is required. We provide transparent fixed-price quotes following a free on-site site survey.`
+      },
+      {
+        question: `What council approvals or permits do I need for land clearing in ${suburbName}?`,
+        answer: `Permit requirements depend on your property zoning, Townsville City Council (TCC) planning scheme overlays (${env.councilOverlay}), and the Queensland Vegetation Management Act. We assess your allotment and assist with all necessary council documentation and exempt clearing pathways.`
+      },
+      {
+        question: `What is a Bushfire Asset Protection Zone (APZ)?`,
+        answer: `A Bushfire Asset Protection Zone is a fuel-reduced 20-metre buffer around dwellings and commercial buildings designed to minimize radiant heat exposure and direct flame contact during dry-season grass and bush fires. We clear undergrowth and thin canopy trees to create compliant, defensible APZ boundaries.`
+      },
+      {
+        question: `Do you provide wildlife spotter-catchers before clearing?`,
+        answer: `Yes. Under Queensland environmental legislation, habitat clearing often requires pre-clearing inspections. We work with certified wildlife spotter-catchers to inspect tree hollows and safely relocate any native fauna prior to mechanical clearing.`
+      }
+    ];
+  }
+
+  // Default: tree-removal
   return [
     {
       question: `Do I need Townsville City Council approval to remove a tree in ${suburbName}?`,
@@ -1814,7 +1898,207 @@ function generateLocalizedFaqs(
 }
 
 // ============================================================================
-// Service Focus & Content Matrix
+// Service-Specific Value Points & Process Steps Matrix
+// ============================================================================
+
+function getWhyChooseForService(
+  zoneKey: string,
+  serviceId: string,
+  suburbName: string,
+  env: SuburbEnvironmentalProfile
+): WhyChooseItem[] {
+  const zoneWhy = zoneWhyChooseMap[zoneKey] || zoneWhyChooseMap['alluvial-floodplain'];
+  if (zoneWhy && zoneWhy[serviceId]) {
+    return zoneWhy[serviceId];
+  }
+
+  if (serviceId === 'tree-pruning-lopping') {
+    return [
+      {
+        title: 'AS4373-2007 Certified Pruning',
+        desc: 'Precision cuts executed at natural branch collars, preserving tree defense systems and preventing internal decay.'
+      },
+      {
+        title: 'Cyclone Wind-Load Reduction',
+        desc: `Strategic crown thinning reducing aerodynamic sail drag by up to 50%, letting severe monsoonal squalls pass safely through ${suburbName} canopies.`
+      },
+      {
+        title: 'Zero-Spur Ascension Systems',
+        desc: 'Non-damaging rope ascension systems ensuring retained live trees never suffer trunk wounds or fungal infections from climbing spikes.'
+      },
+      {
+        title: 'Overhead Wire & Solar Clearance',
+        desc: 'Systematic canopy trimming clearing branches away from Ergon service lines, roof gutters, and solar panel arrays to maximize generation.'
+      }
+    ];
+  }
+
+  if (serviceId === 'emergency-tree-removal') {
+    return [
+      {
+        title: '24/7 Priority Emergency Dispatch',
+        desc: `Rapid-response mobile crews on standby 24 hours a day, 365 days a year across ${suburbName} during severe storm and cyclone events.`
+      },
+      {
+        title: 'Structural Hazard Stabilization',
+        desc: 'Specialized winching and crane rigging that relieves timber weight off damaged roofs, walls, and vehicles without inflicting secondary collapse.'
+      },
+      {
+        title: 'Ergon Energy Powerline Liaison',
+        desc: 'Trained emergency arborists working safely around tangled overhead power drops and coordinating with Ergon Energy to restore safety.'
+      },
+      {
+        title: 'Direct Insurance Photo & Claim Logs',
+        desc: 'Certified incident assessments, time-stamped photo evidence, and comprehensive arborist reports to accelerate insurance claim approval.'
+      }
+    ];
+  }
+
+  if (serviceId === 'wood-chipping-mulching') {
+    return [
+      {
+        title: 'High-Volume 18" Commercial Chippers',
+        desc: 'Industrial processing power capable of turning bulky branch piles, palm debris, and hardwood limbs into fine mulch in minutes.'
+      },
+      {
+        title: '100% Recycled Water-Saving Mulch',
+        desc: `Clean organic arborist wood chips that reduce garden soil moisture evaporation by up to 60% during Townsville's intense dry season.`
+      },
+      {
+        title: 'Heavy-Duty Turf & Driveway Protection',
+        desc: 'Composite ground mats protecting concrete driveways, pavers, and residential lawns from heavy equipment wheel ruts.'
+      },
+      {
+        title: 'Flexible Green Waste Options',
+        desc: 'Keep all the nutrient-dense organic mulch on-site for your landscaping, or let our crews haul 100% of the green waste away free.'
+      }
+    ];
+  }
+
+  if (serviceId === 'land-clearing') {
+    return [
+      {
+        title: 'Heavy Machinery Fleet Capacity',
+        desc: 'Excavators with forestry mulchers, shears, and commercial chippers equipped to handle both dense residential blocks and broad acreage.'
+      },
+      {
+        title: '20m Bushfire Asset Protection (APZ)',
+        desc: 'Establishing compliant fire fuel-reduction buffers around homes and boundary lines in accordance with Queensland Fire & Emergency guidelines.'
+      },
+      {
+        title: 'TCC & Vegetation Act Compliance',
+        desc: 'Strict adherence to Townsville City Council development approvals (DA), erosion control standards, and protected flora management.'
+      },
+      {
+        title: 'Certified Wildlife Spotter Protocols',
+        desc: 'Pre-clearing inspections safeguarding native arboreal marsupials, bird nests, and reptiles prior to mechanical clearing.'
+      }
+    ];
+  }
+
+  return zoneWhy['tree-removal'];
+}
+
+function getProcessStepsForService(
+  zoneKey: string,
+  serviceId: string,
+  suburbName: string,
+  env: SuburbEnvironmentalProfile
+): ProcessStep[] {
+  const zoneProc = zoneProcessMap[zoneKey] || zoneProcessMap['alluvial-floodplain'];
+  if (zoneProc && zoneProc[serviceId]) {
+    return zoneProc[serviceId];
+  }
+
+  if (serviceId === 'tree-pruning-lopping') {
+    return [
+      {
+        title: 'Canopy Architecture & Health Survey',
+        desc: 'We inspect branch attachments, evaluate tree vitality, identify deadwood, and plan AS4373-compliant target pruning cuts.'
+      },
+      {
+        title: 'Aerial Positioning & Rope Ascent',
+        desc: 'Our climbing arborists ascend into the crown using non-damaging rope friction systems, establishing aerial work stations across the canopy.'
+      },
+      {
+        title: 'Crown Thinning & Structural Clearance',
+        desc: 'Targeted branches are pruned cleanly at the branch bark ridge, thinning the canopy to reduce storm wind resistance and clear structures.'
+      },
+      {
+        title: 'Chipping, Mulch Production & Site Rake',
+        desc: 'All prunings are immediately fed through our wood chipper, pathways are blown clean, and surrounding lawns and gutters are raked spotless.'
+      }
+    ];
+  }
+
+  if (serviceId === 'emergency-tree-removal') {
+    return [
+      {
+        title: '24/7 Triage & Hazard Cordon',
+        desc: `Our rapid crew arrives on site in ${suburbName}, cordons off the impact zone, and assesses structural tension on roofs, vehicles, or wires.`
+      },
+      {
+        title: 'Mechanical Tie-Back & Stabilization',
+        desc: 'We secure fallen limbs using heavy-duty winches, crane slings, or tension straps to prevent further structural displacement.'
+      },
+      {
+        title: 'Controlled Sectional Dismantling',
+        desc: 'Using surgical chain-saw techniques, dangerous limbs are relieved piece by piece under friction control, removing weight off buildings.'
+      },
+      {
+        title: 'Emergency Weatherproofing & Documentation',
+        desc: 'We secure roof breaches with heavy weather-resistant tarps, clear driveway access, and provide complete documentation for your insurance provider.'
+      }
+    ];
+  }
+
+  if (serviceId === 'wood-chipping-mulching') {
+    return [
+      {
+        title: 'Green Waste Staging & Safety Audit',
+        desc: 'We stage branch piles near designated access paths, screening for foreign metals, wires, or stones to ensure clean organic processing.'
+      },
+      {
+        title: 'High-Speed Commercial Chipping',
+        desc: 'Limbs and vegetation are mechanically fed into our high-capacity commercial chipper, processing large volumes in minutes.'
+      },
+      {
+        title: 'Precision Mulch Discharge & Spreading',
+        desc: 'Our 360-degree directional chute directs fresh wood mulch straight into garden beds, trailers, or a neat pile on your property.'
+      },
+      {
+        title: 'Final Turf Blow & Driveway Clean',
+        desc: 'Driveways, pathways, and surrounding lawns are thoroughly blown with high-velocity leaf blowers, leaving your property immaculate.'
+      }
+    ];
+  }
+
+  if (serviceId === 'land-clearing') {
+    return [
+      {
+        title: 'Boundary Demarcation & Fauna Scan',
+        desc: 'We flag clearing perimeters, identify trees marked for retention, and conduct certified wildlife spotter-catcher surveys.'
+      },
+      {
+        title: 'Mechanical Felling & Forestry Mulching',
+        desc: 'Heavy excavators and high-torque mulchers systematically clear woody scrub, fallen timber, and invasive weed species.'
+      },
+      {
+        title: 'Root Flare Grubbing & Subgrade Prep',
+        desc: 'Excavator ripper tines extract deep root flares, leveling the allotment and creating a clean, stable building or firebreak pad.'
+      },
+      {
+        title: 'Erosion Control & Silt Fencing',
+        desc: `We contour drainage swales, install sediment silt barriers, and finish the site to prevent wet-season soil erosion on ${env.soilType.toLowerCase()}.`
+      }
+    ];
+  }
+
+  return zoneProc['tree-removal'];
+}
+
+// ============================================================================
+// Service-Specific Core Focus Details
 // ============================================================================
 
 function getServiceSpecificFocus(
@@ -1834,8 +2118,8 @@ function getServiceSpecificFocus(
   sidebarHeading: string;
   sidebarPitch: string;
 } {
-  const zoneWhy = zoneWhyChooseMap[zoneKey] || zoneWhyChooseMap['alluvial-floodplain'];
-  const zoneProc = zoneProcessMap[zoneKey] || zoneProcessMap['alluvial-floodplain'];
+  const whyChoosePoints = getWhyChooseForService(zoneKey, serviceId, suburbName, env);
+  const processSteps = getProcessStepsForService(zoneKey, serviceId, suburbName, env);
 
   if (serviceId === 'stump-grinding') {
     return {
@@ -1845,8 +2129,8 @@ function getServiceSpecificFocus(
         data.stumpGrindingSpecifics,
         `Our commercial high-torque stump grinders access tight residential backyards through standard side gates (${env.accessConstraint}). We grind both the central core and lateral buttress root flares 200mm to 350mm below grade, severing the root system completely. This eliminates termite habitats, prevents lawnmower trip hazards, and creates a level surface ready for immediate turfing or construction.`
       ],
-      whyChoosePoints: zoneWhy['stump-grinding'] || zoneWhy['tree-removal'],
-      processSteps: zoneProc['stump-grinding'] || zoneProc['tree-removal'],
+      whyChoosePoints,
+      processSteps,
       heroDescription: `Commercial-grade stump grinding in ${suburbName}. Eradicating termite hubs, grinding 300mm below grade, and protecting domestic structures. Call 0456 579 811.`,
       ctaHeadline: `Need a Tree Stump Removed in ${suburbName}?`,
       ctaText: `Don't let rotting tree stumps attract termites to your ${suburbName} home. Contact Arbco Tree Solutions today for a fast, fixed-price stump grinding quote.`,
@@ -1863,8 +2147,8 @@ function getServiceSpecificFocus(
         data.palmTreeSpecifics,
         `Furthermore, the fibrous skirts of neglected palms in ${suburbName} harbor nesting flying foxes, rodents, and snakes right next to bedrooms and patios. Palm root balls are dense and invasive; as they expand in ${env.soilType.toLowerCase()}, they lift concrete driveways, crack pool shells, and penetrate underground stormwater pipes. Arbco provides complete palm felling, root ball grinding, trunk skinning, and crown de-nutting.`
       ],
-      whyChoosePoints: zoneWhy['palm-tree-removal'] || zoneWhy['tree-removal'],
-      processSteps: zoneProc['palm-tree-removal'] || zoneProc['tree-removal'],
+      whyChoosePoints,
+      processSteps,
       heroDescription: `Certified palm tree removal, pruning, and de-nutting in ${suburbName}. Safeguarding roofs, pools, and solar panels against falling fronds. Call 0456 579 811.`,
       ctaHeadline: `Dangerous or Overgrown Palms in ${suburbName}?`,
       ctaText: `Protect your ${suburbName} property before storm season. Get in touch with our certified climbing arborists for fast, affordable palm removals and de-nutting.`,
@@ -1873,7 +2157,79 @@ function getServiceSpecificFocus(
     };
   }
 
-  // Default: tree-removal (and standard fallback for other services)
+  if (serviceId === 'tree-pruning-lopping') {
+    return {
+      heading: `Canopy Pruning, Deadwooding & Cyclone Wind-Loading Reduction in ${suburbName}`,
+      paragraphs: [
+        `Pruning in tropical Townsville is vital for cyclone preparation and canopy health. In ${suburbName}, unpruned trees develop dense, sail-like crowns that capture intense monsoonal wind gusts, transferring immense mechanical strain to trunk branch unions and root systems in ${env.soilType.toLowerCase()}.`,
+        `Arbco adheres strictly to Australian Standard AS4373-2007 (Pruning of Amenity Trees). Rather than harmful lopping or topping—which produces weak epicormic shoots prone to snapping in storms—our qualified climbing arborists execute selective crown thinning, deadwood removal, and structural weight reduction.`,
+        `We maintain safe clearances over roofs, gutters, solar panel arrays, and boundary fences across ${suburbName}, increasing natural light and improving aerodynamic wind flow through the tree during summer storms while preserving its natural vitality.`
+      ],
+      whyChoosePoints,
+      processSteps,
+      heroDescription: `Certified tree pruning, crown thinning, and cyclone preparation in ${suburbName}. AS4373-compliant arborists protecting homes and solar arrays. Call 0456 579 811.`,
+      ctaHeadline: `Need Tree Pruning or Canopy Thinning in ${suburbName}?`,
+      ctaText: `Prepare your trees for North Queensland weather. Contact Arbco Tree Solutions for professional, AS4373-compliant tree pruning in ${suburbName}.`,
+      sidebarHeading: `Tree Pruning in ${suburbName}`,
+      sidebarPitch: `Qualified arborists providing canopy pruning and hazard reduction across ${suburbName}. Full compliance with Australian Standards and zero property damage.`
+    };
+  }
+
+  if (serviceId === 'emergency-tree-removal') {
+    return {
+      heading: `24/7 Rapid Response Emergency Tree Removal & Storm Recovery in ${suburbName}`,
+      paragraphs: [
+        `Severe weather, wet-season monsoons, and convective storm squalls can strike ${suburbName} with rapid force. When waterlogged ${env.soilType.toLowerCase()} combines with severe wind gusts, mature branches or entire trees can fail suddenly across roofs, driveways, vehicles, and power connections.`,
+        `Arbco operates rapid-response emergency crews on call 24 hours a day, 7 days a week across ${suburbName}. Our trucks are equipped with specialized rigging, high-capacity winches, heavy chainsaws, and flood lighting to handle high-risk structural emergencies at any hour.`,
+        `We prioritize human safety and secondary damage prevention. Once tree weight is safely relieved from buildings, we provide complete photo documentation and written arborist reports to streamline your insurance claim processing.`
+      ],
+      whyChoosePoints,
+      processSteps,
+      heroDescription: `24/7 emergency tree removal and urgent storm damage response in ${suburbName}. Rapid mobilization, structure stabilization, and insurance assistance. Call 0456 579 811.`,
+      ctaHeadline: `Emergency Tree Fallen or Threatening in ${suburbName}?`,
+      ctaText: `Do not wait. Our 24/7 emergency response team is ready to dispatch immediately across ${suburbName} to make your property safe.`,
+      sidebarHeading: `24/7 Emergency Work in ${suburbName}`,
+      sidebarPitch: `Immediate priority dispatch across ${suburbName}. Specialized storm damage rigging, building stabilization, and direct insurance documentation.`
+    };
+  }
+
+  if (serviceId === 'wood-chipping-mulching') {
+    return {
+      heading: `High-Volume On-Site Wood Chipping & Organic Mulch Supply in ${suburbName}`,
+      paragraphs: [
+        `Tropical vegetation growth in ${suburbName} generates massive volumes of green waste that quickly overwhelm regular council bins and garden trailers. Hauling bulky tree limbs to transfer stations is expensive and exhausting.`,
+        `Arbco’s industrial commercial wood chippers process massive piles of branches, prunings, and logs directly on your ${suburbName} property in minutes, swallowing limbs up to 18 inches in diameter.`,
+        `Fresh organic arborist wood mulch is invaluable in Townsville’s dry, sun-scorched climate. Spreading a 75mm–100mm mulch layer insulates plant root systems, reduces soil water evaporation by up to 60%, and prevents weed germination. You can retain 100% of the mulch for your landscaping or have us haul it away completely free.`
+      ],
+      whyChoosePoints,
+      processSteps,
+      heroDescription: `Commercial on-site wood chipping and organic mulch production in ${suburbName}. Turn green waste into premium garden mulch or complete haul-away. Call 0456 579 811.`,
+      ctaHeadline: `Have Green Waste or Need Mulch in ${suburbName}?`,
+      ctaText: `Clear your piles fast with our high-volume wood chippers. Contact Arbco Tree Solutions for on-site chipping and mulch services in ${suburbName}.`,
+      sidebarHeading: `Wood Chipping in ${suburbName}`,
+      sidebarPitch: `High-capacity wood chippers operating across ${suburbName}. Rapid pile reduction, clean arborist mulch, and prompt local service.`
+    };
+  }
+
+  if (serviceId === 'land-clearing') {
+    return {
+      heading: `Commercial & Residential Land Clearing & Site Preparation in ${suburbName}`,
+      paragraphs: [
+        `Preparing allotments for new construction, driveway installation, or agricultural use in ${suburbName} demands heavy mechanical clearance combined with careful environmental planning.`,
+        `Arbco provides end-to-end vegetation clearing across ${suburbName}, from small residential building envelopes to broad acreage firebreaks and civil subdivisions. Our fleet utilizes heavy excavators, forestry mulchers, and high-tonnage chippers to clear dense woody vegetation, lantana, and invasive weeds like Chinee Apple and Leucaena.`,
+        `We work in full alignment with Townsville City Council development approvals and Queensland vegetation management codes, creating compliant 20-metre Bushfire Asset Protection Zones (APZ) while preserving designated habitat trees and preventing soil erosion on ${env.soilType.toLowerCase()}.`
+      ],
+      whyChoosePoints,
+      processSteps,
+      heroDescription: `Professional land clearing and site preparation across ${suburbName}. Residential block clearing, acreage firebreaks, and civil earthworks. Call 0456 579 811.`,
+      ctaHeadline: `Planning Site Works or Land Clearing in ${suburbName}?`,
+      ctaText: `Get your ${suburbName} block ready for building or fire season. Contact Arbco Tree Solutions for a comprehensive on-site clearing assessment.`,
+      sidebarHeading: `Land Clearing in ${suburbName}`,
+      sidebarPitch: `Equipped for acreage and residential block clearing in ${suburbName}. Forestry mulching, firebreak establishment, and full council compliance.`
+    };
+  }
+
+  // Default: tree-removal
   return {
     heading: `Safe, Precision Tree Removal Services in ${suburbName}`,
     paragraphs: [
@@ -1881,13 +2237,240 @@ function getServiceSpecificFocus(
       data.treeRemovalSpecifics,
       `Trees growing across ${suburbName}'s ${env.soilType.toLowerCase()} face intense tropical environmental stressors, alternating between prolonged dry winter periods and rapid cyclonic wind-loading. Our certified Level 5 arborists evaluate timber soundboard integrity, branch weight distributions, and nearby hazards to execute precision sectional dismantling, lowering massive limbs in tight residential yards without disturbing surrounding structures.`
     ],
-    whyChoosePoints: zoneWhy['tree-removal'],
-    processSteps: zoneProc['tree-removal'],
+    whyChoosePoints,
+    processSteps,
     heroDescription: `Specialist tree removal tailored to the terrain, canopy species, and property access challenges of ${suburbName}. Fully insured Level 5 qualified arborists. Call 0456 579 811.`,
     ctaHeadline: `Need Professional Tree Removal in ${suburbName}?`,
     ctaText: `Our certified arborists are active daily across ${suburbName} and surrounding suburbs. Contact Arbco Tree Solutions today for a free on-site hazard assessment and transparent quote.`,
     sidebarHeading: `Need an Arborist in ${suburbName}?`,
     sidebarPitch: `Operating daily across ${suburbName} and the greater ${env.zoneName} district. Fully insured ($20M) Level 5 arborists ready to respond.`
+  };
+}
+
+// ============================================================================
+// Service-Specific Dynamic Intro Paragraphs
+// ============================================================================
+
+function generateIntroParagraphs(
+  serviceId: string,
+  serviceName: string,
+  suburbName: string,
+  env: SuburbEnvironmentalProfile,
+  data: BespokeSuburbData
+): string[] {
+  if (serviceId === 'stump-grinding') {
+    return [
+      `${data.headlineContext} Following tree felling or storm falls across ${suburbName}, remaining tree stumps create urgent subterranean termite risks and lawn tripping hazards for property owners.`,
+      `In ${suburbName}'s ${env.soilType.toLowerCase()}, decaying timber root networks act as high-moisture incubators for destructive subterranean termites (Coptotermes acinaciformis). As the stump rots beneath the surface, colonies establish nesting hubs that forage through surrounding soils straight toward home foundations and structural framing.`,
+      `Our commercial high-torque stump grinding service eradicates these underground liabilities across ${suburbName}. We grind the central stump core and lateral surface buttress flares 200mm to 350mm below grade, converting decaying timber into clean mulch and leaving your yard level and ready for new turf, paving, or building.`
+    ];
+  }
+
+  if (serviceId === 'palm-tree-removal') {
+    return [
+      `${data.headlineContext} Tropical gardens across ${suburbName} frequently feature prolific palm species such as ${env.dominantPalms.join(', ')}, requiring dedicated specialist management.`,
+      `During North Queensland's wet and storm season, unmaintained palms in ${suburbName} become hazardous liabilities. Heavy dead fronds and dense fruit bunches weighing upwards of 25 kilograms can dislodge in monsoonal wind squalls, causing severe impact damage to tile and colorbond roofs, vehicle windscreens, pool fences, and solar panels.`,
+      `Furthermore, aggressive palm root balls expand laterally in ${suburbName}'s ${env.soilType.toLowerCase()}, cracking nearby pool copings, lifting concrete driveways, and penetrating underground sewer lines. Arbco provides complete palm dismantling, frond cleaning, crown de-nutting, trunk skinning, and mechanical root ball extraction.`
+    ];
+  }
+
+  if (serviceId === 'tree-pruning-lopping') {
+    return [
+      `${data.headlineContext} Proactive canopy pruning and deadwood removal are vital arboricultural practices across ${suburbName} to preserve tree health and safeguard properties before storm season.`,
+      `Established trees in ${suburbName}—including ${env.dominantCanopy.slice(0, 3).join(', ')}—develop vast canopy spreads over residential roofs and boundary fences. Without regular maintenance, dense outer foliage acts as an aerodynamic sail during summer storms, placing immense mechanical stress on branch unions and uplifting root plates in ${env.soilType.toLowerCase()}.`,
+      `Arbco’s certified arborists prune in strict adherence to Australian Standard AS4373-2007 (Pruning of Amenity Trees). We selectively thin dense canopies to allow high winds to pass safely through, remove dangerous deadwood, and establish safe clearance over rooflines, solar panel arrays, and Ergon powerlines.`
+    ];
+  }
+
+  if (serviceId === 'emergency-tree-removal') {
+    return [
+      `${data.headlineContext} When severe monsoonal squalls, convective storms, or tropical lows strike ${suburbName}, Arbco Tree Solutions provides rapid 24/7 priority emergency response.`,
+      `During high-wind weather events in ${suburbName}, ground saturation in ${env.soilType.toLowerCase()} combined with severe wind gusts (${env.windExposure.toLowerCase()}) can cause sudden whole-tree uprooting or heavy limb fractures directly onto houses, sheds, vehicles, and boundary fences.`,
+      `Our dedicated emergency crews remain on standby 24 hours a day with heavy-duty winches, commercial chainsaws, mobile floodlighting, and crane support. We prioritize structural weight relief, eliminate immediate life-safety hazards, secure roof punctures with emergency weatherproofing tarps, and provide comprehensive insurance documentation.`
+    ];
+  }
+
+  if (serviceId === 'wood-chipping-mulching') {
+    return [
+      `${data.headlineContext} Vigorous tropical growth throughout ${suburbName} generates large quantities of tree branches and green waste that quickly overwhelm regular council bins and garden trailers.`,
+      `Hauling bulky tree limbs to Townsville waste transfer stations is time-consuming and expensive. Arbco’s industrial wood chippers process massive piles of branches, prunings, and logs directly on your ${suburbName} property in minutes.`,
+      `We recycle 100% of clean green waste into premium, nutrient-dense organic mulch. In ${suburbName}'s hot tropical climate, spreading a thick arborist mulch layer insulates soil, reduces evaporation by up to 60%, suppresses invasive weeds, and enriches garden beds naturally.`
+    ];
+  }
+
+  if (serviceId === 'land-clearing') {
+    return [
+      `${data.headlineContext} Preparing residential building allotments, acreage blocks, or commercial developments across ${suburbName} requires disciplined vegetation management and heavy mechanical clearing.`,
+      `From clearing dense scrub and invasive weed trees—such as Chinee Apple, Leucaena, and lantana—to establishing compliant 20-metre Bushfire Asset Protection Zones (APZ), Arbco delivers efficient site clearance across all property sizes in ${suburbName}.`,
+      `Operating heavy excavators, tracked forestry mulchers, and high-tonnage chippers, our crews clear designated footprints while strictly observing Townsville City Council planning overlays (${env.councilOverlay}), preserving designated mature shade trees, and preventing topsoil erosion on ${env.soilType.toLowerCase()}.`
+    ];
+  }
+
+  // Default: tree-removal
+  return [
+    data.headlineContext,
+    data.localHistoryAndCanopy,
+    data.environmentalRealities
+  ];
+}
+
+// ============================================================================
+// Service-Specific Property Access & Rigging Sections
+// ============================================================================
+
+function generatePropertyAndAccess(
+  serviceId: string,
+  suburbName: string,
+  env: SuburbEnvironmentalProfile,
+  data: BespokeSuburbData
+): { heading: string; paragraphs: string[] } {
+  if (serviceId === 'stump-grinding') {
+    return {
+      heading: `Narrow-Gate Machinery Access & Utility Safety in ${suburbName}`,
+      paragraphs: [
+        `Accessing residential backyards in ${suburbName} often involves navigating narrow pedestrian gates, side passages along air conditioning units, and landscaped pathways. Our compact tracked stump grinders are engineered with an ultra-narrow sub-800mm operating width, allowing us to enter tight yard spaces without unbolting colorbond fence panels or disturbing boundary gates.`,
+        `Before initiating grinding in ${suburbName}, we perform a comprehensive underground utilities check (Dial Before You Dig) to locate shallow telecommunications, electrical conduit, irrigation lines, and stormwater pipes that frequently run near property boundaries and old tree stumps.`
+      ]
+    };
+  }
+
+  if (serviceId === 'palm-tree-removal') {
+    return {
+      heading: `Poolside Access & Confined Palm Rigging in ${suburbName}`,
+      paragraphs: [
+        `Palms in ${suburbName} are frequently situated in high-risk zones: directly alongside swimming pool pavers, tight property boundary lines, or adjacent to high-set timber balconies. Navigating these confined spaces requires specialized rope-ascension climbing techniques or agile mini-access lifts that protect decorative pool copings and underground filtration plumbing.`,
+        `Every palm frond and heavy seed bunch is individually secured with dynamic arborist lowering lines before cutting. This controlled lowering technique ensures that heavy 20kg–30kg falling debris never impacts surrounding pool fencing, colorbond sheeting, or garden pergolas in ${suburbName}.`
+      ]
+    };
+  }
+
+  if (serviceId === 'tree-pruning-lopping') {
+    return {
+      heading: `Aerial Canopy Access & Target Pruning in ${suburbName}`,
+      paragraphs: [
+        `Canopy maintenance in ${suburbName} requires versatile aerial positioning. Our climbers utilize friction hitches, rope redirects, and lightweight climbing systems to maneuver effortlessly through outer canopies without damaging delicate limb collars or adjacent structures.`,
+        `Where driveways or street frontages allow, our cherry pickers and elevated work platforms provide rapid, stable access to high canopies, ensuring clean pruning cuts without spurring (spikes) that could wound live trees.`
+      ]
+    };
+  }
+
+  if (serviceId === 'emergency-tree-removal') {
+    return {
+      heading: `Rapid All-Weather Access & Hazard Stabilization in ${suburbName}`,
+      paragraphs: [
+        `Emergency callouts in ${suburbName} frequently occur during nocturnal storm squalls or amid torrential monsoon downpours when ground conditions are slick and unstable. Our emergency response vehicles are fitted with all-terrain equipment, winch-recovery gear, and mobile high-output LED floodlights to illuminate hazardous work zones safely.`,
+        `We coordinate immediate property access with local homeowners, emergency services, and Ergon Energy when downed wires are entangled, clearing safe ingress routes for residents and restoration contractors.`
+      ]
+    };
+  }
+
+  if (serviceId === 'wood-chipping-mulching') {
+    return {
+      heading: `Chipper Staging & Site Protection in ${suburbName}`,
+      paragraphs: [
+        `Processing large volumes of timber and green waste in ${suburbName} requires efficient site staging. Our commercial chipper and chip-truck combinations can stage on residential driveways, curbsides, or open acreage pads, positioning the directional discharge chute to blow fresh mulch directly into designated garden beds, trailers, or storage heaps.`,
+        `We deploy heavy-duty rubber driveway mats to protect exposed aggregate, pavers, and turf from equipment tire marks and heavy log staging.`
+      ]
+    };
+  }
+
+  if (serviceId === 'land-clearing') {
+    return {
+      heading: `Heavy Machinery Access & Site Demarcation in ${suburbName}`,
+      paragraphs: [
+        `Mobilizing land clearing machinery in ${suburbName} requires coordinated logistics, particularly when moving 15 to 25-tonne excavators, track loaders, and forestry mulchers into residential growth corridors or rural acreage roads.`,
+        `We establish clear site boundaries, demarcate designated tree retention zones with high-visibility flagging, and install temporary silt fencing where needed to safeguard natural watercourses and adjoining properties.`
+      ]
+    };
+  }
+
+  // Default: tree-removal
+  return {
+    heading: `Property Access & Rigging Logistics in ${suburbName}`,
+    paragraphs: [
+      data.accessAndPropertyTypologies,
+      `On-site tree removal in ${suburbName} begins with an exhaustive hazard assessment. We examine ground stability in ${env.soilType.toLowerCase()}, establish clear drop zones, locate underground service easements, and configure specialized friction lowering lines to protect boundary fences, solar panels, and outdoor living areas.`
+    ]
+  };
+}
+
+// ============================================================================
+// Service-Specific Council & Safety Sections
+// ============================================================================
+
+function generateCouncilAndSafety(
+  serviceId: string,
+  suburbName: string,
+  env: SuburbEnvironmentalProfile,
+  data: BespokeSuburbData
+): { heading: string; paragraphs: string[] } {
+  if (serviceId === 'stump-grinding') {
+    return {
+      heading: `Underground Asset Protection & Safety Standards in ${suburbName}`,
+      paragraphs: [
+        `Stump grinding on private freehold property in ${suburbName} generally does not require municipal council permits, as the tree has already been felled. However, strict subterranean safety standards must be maintained. Our operators work in compliance with Safe Work Australia underground asset guidelines, verifying all subsurface services prior to ground penetration.`,
+        `Arbco carries full $20M Public Liability insurance covering subterranean operations. We install heavy ballistic chip guards around every grinding zone in ${suburbName} to stop stones and wood chips from impacting nearby windows, vehicles, or neighboring properties.`
+      ]
+    };
+  }
+
+  if (serviceId === 'palm-tree-removal') {
+    return {
+      heading: `Palm Species Regulations & Non-Spur Safety in ${suburbName}`,
+      paragraphs: [
+        `In Townsville City Council planning regulations, common invasive and nuisance palm species—such as Cocos Palms (Queen Palm - Syagrus romanzoffiana)—are classified as environmental weeds and are exempt from tree protection orders on private freehold land. Native palm species (such as Livistona australis) are evaluated against local vegetation overlays (${env.councilOverlay}).`,
+        `All palm work in ${suburbName} is insured under our $20M commercial policy. Our climbers strictly utilize non-spur ascenders when performing maintenance pruning on palms intended for retention, protecting the trunk from necrotic climbing spike wounds.`
+      ]
+    };
+  }
+
+  if (serviceId === 'tree-pruning-lopping') {
+    return {
+      heading: `Australian Standards AS4373 & Boundary Pruning Guidelines in ${suburbName}`,
+      paragraphs: [
+        `Canopy pruning in ${suburbName} is governed by Australian Standard AS4373-2007 (Pruning of Amenity Trees). Townsville City Council guidelines permit regular maintenance pruning—such as removing deadwood, structural clearance, and up to 10%–20% canopy thinning—without requiring planning permits on standard freehold land.`,
+        `Under Queensland neighborhood dispute laws, residents also have legal rights to prune overhanging branches from neighboring trees back to the boundary line. Arbco provides professional boundary trimming that complies with all legal boundaries and arboricultural health standards, backed by $20M liability insurance.`
+      ]
+    };
+  }
+
+  if (serviceId === 'emergency-tree-removal') {
+    return {
+      heading: `Emergency Exemptions & Insurance Reporting Protocol in ${suburbName}`,
+      paragraphs: [
+        `Under Queensland Disaster Management legislation and Townsville City Council emergency provisions, trees presenting imminent danger to human life, structural integrity, or critical utility infrastructure can be removed immediately without prior administrative permit applications.`,
+        `Our certified Level 5 arborists document the emergency hazard thoroughly, capturing time-stamped photographs, structural failure analyses, and weather correlation reports that fulfill all council compliance requirements and insurance claims.`
+      ]
+    };
+  }
+
+  if (serviceId === 'wood-chipping-mulching') {
+    return {
+      heading: `Biosecurity Compliance & Organic Quality Standards in ${suburbName}`,
+      paragraphs: [
+        `Arbco adheres strictly to Queensland Biosecurity standards and Townsville environmental management guidelines during all chipping and mulching operations in ${suburbName}. We inspect green waste for declared invasive plant seeds and soil-borne pests before mulching, ensuring our organic products remain clean, safe, and beneficial for local gardens.`,
+        `Our commercial chippers operate with integrated safety stop bars, dual emergency shutoffs, and hearing protection buffer zones, maintaining rigorous workplace safety standards in residential neighborhoods.`
+      ]
+    };
+  }
+
+  if (serviceId === 'land-clearing') {
+    return {
+      heading: `TCC Planning Scheme & Vegetation Management Compliance in ${suburbName}`,
+      paragraphs: [
+        `Land clearing projects in ${suburbName} are executed in strict accordance with the Townsville City Council (TCC) Planning Scheme, the Queensland Vegetation Management Act 1999, and the Nature Conservation Act 1992. Where development approvals (DA) or operational works permits are in place, our team ensures every condition is rigorously met.`,
+        `We conduct pre-clearing wildlife spotter-catcher inspections to protect native fauna, establish sediment and erosion control barriers, and create compliant 20-metre Bushfire Asset Protection Zones (APZ) according to Queensland Fire and Emergency Services (QFES) standards.`
+      ]
+    };
+  }
+
+  // Default: tree-removal
+  return {
+    heading: `Council Guidelines & $20M Safety Standards for ${suburbName}`,
+    paragraphs: [
+      data.councilInsights,
+      `Every tree removal in ${suburbName} is conducted under our comprehensive $20M Public Liability insurance policy and completed in strict adherence to Australian Standards and workplace safety codes. Our certified climbing crews combine decades of North Queensland experience with modern safety rigging to guarantee immaculate site cleanliness and structural safety.`
+    ]
   };
 }
 
@@ -1905,38 +2488,26 @@ export function getSuburbPageContent(suburbName: string, serviceId: string, serv
   const serviceFocus = getServiceSpecificFocus(serviceId, suburbName, env, data, zoneKey);
   const faqs = generateLocalizedFaqs(suburbName, serviceId, serviceName, env, data);
 
-  const introParagraphs = [
-    data.headlineContext,
-    data.localHistoryAndCanopy,
-    data.environmentalRealities
-  ];
-
-  const propertyAndAccessParagraphs = [
-    data.accessAndPropertyTypologies,
-    `On-site works in ${suburbName} begin with a detailed hazard assessment. We examine ground stability, establish clear drop zones, identify underground utility easements, and configure specialized arborist friction lowering lines to safeguard boundary fences, solar panels, and outdoor living areas.`
-  ];
-
-  const councilAndSafetyParagraphs = [
-    data.councilInsights,
-    `Every project in ${suburbName} is conducted under our comprehensive $20M Public Liability insurance policy and completed in strict adherence to Australian Standards (AS4373-2007 Pruning of Amenity Trees). Our certified climbing crews combine decades of local North Queensland experience with modern safety rigging to guarantee immaculate site cleanliness and structural safety.`
-  ];
+  const introParagraphs = generateIntroParagraphs(serviceId, serviceName, suburbName, env, data);
+  const propertyAccess = generatePropertyAndAccess(serviceId, suburbName, env, data);
+  const councilSafety = generateCouncilAndSafety(serviceId, suburbName, env, data);
 
   return {
     heroDescription: serviceFocus.heroDescription,
-    h2: `${serviceName} ${suburbName} — Certified Local Tree Specialists`,
+    h2: `${serviceName} ${suburbName} — Certified Local Specialists`,
     introParagraphs,
     environmentalProfile: env,
     serviceFocusHeading: serviceFocus.heading,
     serviceFocusParagraphs: serviceFocus.paragraphs,
-    propertyAndAccessHeading: `Property Access & Operational Realities in ${suburbName}`,
-    propertyAndAccessParagraphs,
-    councilAndSafetyHeading: `Council Guidelines & Safety Standards for ${suburbName}`,
-    councilAndSafetyParagraphs,
+    propertyAndAccessHeading: propertyAccess.heading,
+    propertyAndAccessParagraphs: propertyAccess.paragraphs,
+    councilAndSafetyHeading: councilSafety.heading,
+    councilAndSafetyParagraphs: councilSafety.paragraphs,
     whyChooseHeading: `Why Choose Arbco for ${serviceName} in ${suburbName}?`,
     whyChoosePoints: serviceFocus.whyChoosePoints,
     processHeading: `Our ${serviceName} Process in ${suburbName}`,
     processSteps: serviceFocus.processSteps,
-    faqHeading: `Frequently Asked Questions for ${suburbName} Residents`,
+    faqHeading: `Frequently Asked Questions About ${serviceName} in ${suburbName}`,
     faqs,
     ctaHeadline: serviceFocus.ctaHeadline,
     ctaText: serviceFocus.ctaText,
@@ -1944,3 +2515,4 @@ export function getSuburbPageContent(suburbName: string, serviceId: string, serv
     sidebarPitch: serviceFocus.sidebarPitch
   };
 }
+
