@@ -24,6 +24,9 @@ export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'https://arbco-tree.vercel.app'),
   title: "Arbco Tree Services | Townsville's Trusted Arborists",
   description: "Specialising in safe tree removal, stump grinding, tree pruning, and arborist assessments across Townsville and Queensland. Fully insured with 15+ years experience.",
+  alternates: {
+    canonical: '/',
+  },
 };
 
 import Header from "@/components/Header";

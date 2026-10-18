@@ -6,6 +6,7 @@ import { getSuburbPageContent } from '@/lib/suburbIntelligence';
 import { generateSuburbJsonLd } from '@/lib/schemaStructuredData';
 import { getComplementaryServices, getNearbySuburbs } from '@/lib/internalLinking';
 import { getArticlesForSuburb } from '@/lib/blogData';
+import { generateSuburbSeoTitle, generateSuburbMetaDescription, generateSuburbCanonical } from '@/lib/seoMetadata';
 
 // Generate static params for all programmatic routes at build time
 export function generateStaticParams() {
@@ -27,14 +28,40 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const { suburbName, serviceData } = parseSlug(resolvedParams.slug);
   
   if (!suburbName || !serviceData) {
-    return { title: 'Service Not Found' };
+    return { title: 'Service Not Found | Arbco Tree Services' };
   }
 
   const content = getSuburbPageContent(suburbName, serviceData.id, serviceData.name);
-  
+  const title = generateSuburbSeoTitle(suburbName, serviceData.id, serviceData.name, content.zoneKey);
+  const description = generateSuburbMetaDescription(
+    suburbName,
+    serviceData.id,
+    serviceData.name,
+    content.environmentalProfile,
+    null,
+    content.zoneKey
+  );
+  const canonicalUrl = generateSuburbCanonical(serviceData.id, suburbName);
+
   return {
-    title: `${serviceData.name} ${suburbName} | Arbco Tree Services Townsville`,
-    description: `Professional, fully insured ${serviceData.name.toLowerCase()} in ${suburbName}. Level 5 arborists handling ${content.environmentalProfile.zoneName.toLowerCase()} conditions, tight access, and storm preparation. Call 0456 579 811.`,
+    title,
+    description,
+    alternates: {
+      canonical: canonicalUrl,
+    },
+    openGraph: {
+      title,
+      description,
+      url: canonicalUrl,
+      images: [
+        {
+          url: serviceData.localImage || serviceData.heroImage,
+          width: 1200,
+          height: 630,
+          alt: `${serviceData.name} ${suburbName}`,
+        },
+      ],
+    },
   };
 }
 
@@ -117,9 +144,12 @@ export default async function ServiceAreaPage({ params }: { params: Promise<{ sl
           <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#7cc043]/20 border border-[#7cc043]/30 text-[#7cc043] text-xs font-bold tracking-widest uppercase mb-6">
             <span>🌿</span> {content.environmentalProfile.zoneName}
           </div>
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight font-heading mb-6">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight font-heading mb-3">
             {serviceData.name} <span className="text-[#7cc043]">{suburbName}</span>
           </h1>
+          <p className="text-xl md:text-2xl text-[#7cc043] font-semibold font-heading mb-6 tracking-wide">
+            {content.h1Subtitle}
+          </p>
           <p className="text-lg md:text-xl text-slate-300 max-w-3xl mx-auto font-sans leading-relaxed">
             {content.heroDescription}
           </p>

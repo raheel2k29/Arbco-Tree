@@ -7,6 +7,9 @@ export const metadata = {
   title: 'Arborist Guides & Advice | Arbco Tree Services Townsville',
   description:
     'Expert arborist advice for Townsville homeowners. Pre-cyclone tree safety, Townsville City Council tree permits, stump grinding comparisons, and tropical palm care.',
+  alternates: {
+    canonical: 'https://arbco-tree.vercel.app/blog',
+  },
 };
 
 export default function BlogIndexPage() {

@@ -7,6 +7,7 @@ import ServiceQuoteForm from '@/components/ServiceQuoteForm';
 import { generateCoreServiceJsonLd } from '@/lib/schemaStructuredData';
 import { priorityHubSuburbs } from '@/lib/internalLinking';
 import { getArticlesForService } from '@/lib/blogData';
+import { coreServicesSeo } from '@/lib/seoMetadata';
 
 // Generate static routes for all 7 core services
 export function generateStaticParams() {
@@ -419,18 +420,23 @@ export async function generateMetadata({
     return { title: 'Service Not Found | Arbco Tree Services' };
   }
 
-  const details = serviceDetails[service.id];
-  const pageTitle = `${service.name} Townsville | Arbco Tree Services`;
-  const pageDesc = details
-    ? `${details.heroTagline}. Fully insured Level 5 arborists servicing all Townsville suburbs. Call 0456 579 811 for a free quote.`
+  const seo = coreServicesSeo[service.id];
+  const pageTitle = seo ? seo.title : `${service.name} Townsville | Arbco Tree Services`;
+  const pageDesc = seo
+    ? seo.description
     : `${service.description} Servicing all 97 Greater Townsville suburbs.`;
+  const canonicalUrl = seo ? seo.canonical : `https://arbco-tree.vercel.app/services/${service.id}`;
 
   return {
     title: pageTitle,
     description: pageDesc,
+    alternates: {
+      canonical: canonicalUrl,
+    },
     openGraph: {
       title: pageTitle,
       description: pageDesc,
+      url: canonicalUrl,
       images: [
         {
           url: service.localImage || service.heroImage,

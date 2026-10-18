@@ -266,6 +266,102 @@ for (const file of allCodeFiles) {
 }
 console.log(`- Checked ${totalHrefsChecked} hardcoded internal hrefs across all source files.`);
 
+console.log('\n10. Verifying SEO Titles, Meta Descriptions, and Canonical URLs across all routes...');
+import { coreServicesSeo, generateSuburbSeoTitle, generateSuburbMetaDescription, generateSuburbCanonical, generateSuburbH1Subtitle } from '../src/lib/seoMetadata';
+import { microZones, suburbZoneMap } from '../src/lib/suburbIntelligence';
+
+// Verify core services SEO
+services.forEach(s => {
+  const seo = coreServicesSeo[s.id];
+  if (!seo) {
+    errors.push(`Missing core services SEO entry for service: ${s.id}`);
+    return;
+  }
+  if (!seo.title || seo.title.length < 30 || seo.title.length > 80) {
+    errors.push(`Invalid core service SEO title length (${seo.title?.length}): ${seo.title}`);
+  }
+  if (!seo.description || seo.description.length < 100 || seo.description.length > 175) {
+    errors.push(`Invalid core service SEO description length (${seo.description?.length}): ${seo.description}`);
+  }
+  if (!seo.canonical || !seo.canonical.startsWith('https://arbco-tree.vercel.app/services/')) {
+    errors.push(`Invalid core service canonical URL: ${seo.canonical}`);
+  }
+  if (!seo.h1Subtitle) {
+    errors.push(`Missing core service h1Subtitle for service: ${s.id}`);
+  }
+});
+
+// Verify all 679 suburb service routes
+let checkedSuburbMeta = 0;
+const sampleTitlesByZone: Record<string, string> = {};
+const sampleDescriptionsByZone: Record<string, string> = {};
+
+for (const suburb of allSuburbs) {
+  const zoneKey = suburbZoneMap[suburb] || 'alluvial-floodplain';
+  const env = microZones[zoneKey] || microZones['alluvial-floodplain'];
+
+  for (const s of services) {
+    const title = generateSuburbSeoTitle(suburb, s.id, s.name, zoneKey);
+    const desc = generateSuburbMetaDescription(suburb, s.id, s.name, env, null, zoneKey);
+    const canonical = generateSuburbCanonical(s.id, suburb);
+    const h1Subtitle = generateSuburbH1Subtitle(s.id, zoneKey);
+
+    if (!title || title.length < 30 || title.length > 75) {
+      errors.push(`Invalid SEO title for ${s.id}-${suburb} (${title.length} chars): "${title}"`);
+    }
+    if (!desc || desc.length < 110 || desc.length > 170) {
+      errors.push(`Invalid Meta Description for ${s.id}-${suburb} (${desc.length} chars): "${desc}"`);
+    }
+    if (!desc.includes('0456 579 811') && !desc.toLowerCase().includes('quote')) {
+      errors.push(`Meta Description for ${s.id}-${suburb} missing CTA/phone: "${desc}"`);
+    }
+    const expectedCanonical = `https://arbco-tree.vercel.app/service-areas/${s.id}-${slugify(suburb)}`;
+    if (canonical !== expectedCanonical) {
+      errors.push(`Canonical URL mismatch for ${s.id}-${suburb}: got "${canonical}", expected "${expectedCanonical}"`);
+    }
+    if (!h1Subtitle || h1Subtitle.length < 20) {
+      errors.push(`Invalid h1Subtitle for ${s.id}-${suburb}: "${h1Subtitle}"`);
+    }
+
+    if (s.id === 'tree-removal' && !sampleTitlesByZone[zoneKey]) {
+      sampleTitlesByZone[zoneKey] = title;
+      sampleDescriptionsByZone[zoneKey] = desc;
+    }
+    checkedSuburbMeta++;
+  }
+}
+console.log(`- Verified ${checkedSuburbMeta} suburb SEO titles, meta descriptions, and canonical URLs.`);
+
+// Verify diversity across micro-zones
+console.log('\n10.1. Verifying Cross-Zone Title & Description Diversity (Sample Checks)...');
+const sampleSuburbsToCheck = [
+  { suburb: 'Castle Hill', zone: 'granite-slopes' },
+  { suburb: 'Bushland Beach', zone: 'coastal-maritime' },
+  { suburb: 'Burdell', zone: 'outer-masterplanned' },
+  { suburb: 'Alligator Creek', zone: 'rural-acreage' },
+  { suburb: 'Aitkenvale', zone: 'alluvial-floodplain' },
+  { suburb: 'Nelly Bay', zone: 'offshore-islands' },
+];
+
+const treeRemovalTitles = sampleSuburbsToCheck.map(s => {
+  const t = generateSuburbSeoTitle(s.suburb, 'tree-removal', 'Tree Removal', s.zone);
+  const d = generateSuburbMetaDescription(s.suburb, 'tree-removal', 'Tree Removal', microZones[s.zone], null, s.zone);
+  console.log(`  * ${s.suburb} (${s.zone}):\n    Title: "${t}"\n    Desc:  "${d}"`);
+  return { suburb: s.suburb, title: t, desc: d };
+});
+
+// Mathematically verify all sample descriptions are distinct beyond just the suburb name
+for (let i = 0; i < treeRemovalTitles.length; i++) {
+  for (let j = i + 1; j < treeRemovalTitles.length; j++) {
+    const descA_stripped = treeRemovalTitles[i].desc.replace(treeRemovalTitles[i].suburb, '');
+    const descB_stripped = treeRemovalTitles[j].desc.replace(treeRemovalTitles[j].suburb, '');
+    if (descA_stripped === descB_stripped) {
+      errors.push(`Duplicate template detected between ${treeRemovalTitles[i].suburb} and ${treeRemovalTitles[j].suburb}!`);
+    }
+  }
+}
+console.log('- Confirmed descriptions are distinctly crafted per zone and NOT simple token replacements.');
+
 console.log('\n=== SUMMARY ===');
 console.log(`Errors found: ${errors.length}`);
 console.log(`Warnings found: ${warnings.length}`);

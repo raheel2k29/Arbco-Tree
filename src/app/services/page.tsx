@@ -7,6 +7,9 @@ export const metadata = {
   title: 'Arborist Services Townsville | Arbco Tree Services',
   description:
     'Comprehensive tree care, removal, stump grinding, palm maintenance, and land clearing across all 97 Greater Townsville suburbs. Fully insured Level 5 qualified arborists.',
+  alternates: {
+    canonical: 'https://arbco-tree.vercel.app/services',
+  },
 };
 
 export default function ServicesPage() {

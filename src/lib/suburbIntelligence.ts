@@ -1,4 +1,5 @@
 import React from 'react';
+import { generateSuburbH1Subtitle } from './seoMetadata';
 
 // ============================================================================
 // Types
@@ -35,6 +36,8 @@ export interface SuburbContentResult {
   ctaText: string;
   sidebarHeading: string;
   sidebarPitch: string;
+  zoneKey: string;
+  h1Subtitle: string;
 }
 
 export interface BespokeSuburbData {
@@ -2775,7 +2778,9 @@ export function getSuburbPageContent(suburbName: string, serviceId: string, serv
     ctaHeadline: serviceFocus.ctaHeadline,
     ctaText: serviceFocus.ctaText,
     sidebarHeading: serviceFocus.sidebarHeading,
-    sidebarPitch: serviceFocus.sidebarPitch
+    sidebarPitch: serviceFocus.sidebarPitch,
+    zoneKey,
+    h1Subtitle: generateSuburbH1Subtitle(serviceId, zoneKey)
   };
 }
 
