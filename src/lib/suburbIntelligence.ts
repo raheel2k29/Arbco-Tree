@@ -1737,163 +1737,426 @@ function generateProceduralSuburbProfile(suburbName: string, env: SuburbEnvironm
 }
 
 // ============================================================================
-// Localized FAQs Generator for All 7 Services
 // ============================================================================
+// Localized FAQs Generator for All 7 Services & 8 Micro-Zones
+// ============================================================================
+
+function getUniversalPricingFaq(
+  suburbName: string,
+  serviceId: string,
+  serviceName: string,
+  data: BespokeSuburbData
+): { question: string; answer: string } {
+  let answer = '';
+
+  if (serviceId === 'tree-removal') {
+    answer = `${data.pricingInsight || `Standard residential tree removals in ${suburbName} typically range from $600 to $1,400 for small to medium trees with clear access, while large mature hardwoods requiring friction-controlled rigging or crane assistance range from $1,600 to $3,500+.`} Pricing depends on tree height, canopy spread, species density, proximity to boundary structures, and access conditions. Every quote is fixed and provided after a free on-site arborist assessment.`;
+  } else if (serviceId === 'stump-grinding') {
+    answer = `Stump grinding in ${suburbName} is generally priced from $150 to $280 for small residential stumps (up to 300mm diameter), $290 to $480 for medium stumps (300mm–600mm), and $500 to $900+ for large mature hardwood root systems with expansive lateral root flares. We provide upfront, fixed quotes across ${suburbName} with no hidden disposal fees.`;
+  } else if (serviceId === 'palm-tree-removal') {
+    answer = `Palm tree removal in ${suburbName} typically ranges between $250 and $600 for single or medium palms (such as Cocos or Golden Canes) with good yard access. Large mature Coconut palms or multi-stem clumps requiring rope-assisted lowering near pools and fences range from $650 to $1,400. Seasonal frond trimming and de-nutting starts from $120 to $250 per palm.`;
+  } else if (serviceId === 'tree-pruning-lopping') {
+    answer = `Professional tree pruning in ${suburbName} typically costs between $350 and $750 for routine deadwooding, canopy thinning, or building clearances on small-to-medium amenity trees. Substantial crown reductions on mature hardwoods or Ergon powerline clearances range from $800 to $1,600+. All quotes include full cleanup and on-site chipping.`;
+  } else if (serviceId === 'emergency-tree-removal') {
+    answer = `Emergency callout costs in ${suburbName} depend on severity, equipment needs (such as heavy winches or mechanical crane support), and after-hours mobilization. When storm-damaged trees impact insured dwellings or boundary fences, standard Australian home insurance policies typically cover 100% of emergency stabilization and removal costs. We provide urgent on-site assessments 24/7.`;
+  } else if (serviceId === 'wood-chipping-mulching') {
+    answer = `Commercial wood chipping in ${suburbName} is priced either at an hourly rate ($250 to $450/hr for our high-output commercial chipper, chip truck, and two-man crew) or as a fixed flat fee for pre-stacked green waste piles. Contact us for a fast, free estimate across ${suburbName}.`;
+  } else {
+    // land-clearing
+    answer = `Land clearing pricing in ${suburbName} is determined by acreage size, tree density, ground slope, and whether whole-tree extraction or forestry mulching is required. Standard residential blocks start from $1,200 to $3,500, while multi-acre parcels are quoted on a per-day or per-hectare rate following a free on-site survey.`;
+  }
+
+  return {
+    question: `How much does ${serviceName.toLowerCase()} cost in ${suburbName}?`,
+    answer
+  };
+}
+
+function getMicroZoneTerrainFaq(
+  zoneKey: string,
+  serviceId: string,
+  suburbName: string,
+  env: SuburbEnvironmentalProfile
+): { question: string; answer: string } {
+  // 1. Granite Slopes (Castle Hill, North Ward, Mount Louisa, Wulguru, Yarrawonga)
+  if (zoneKey === 'granite-slopes') {
+    if (serviceId === 'stump-grinding') {
+      return {
+        question: `Can your equipment grind tree stumps embedded directly in granite rock shelves in ${suburbName}?`,
+        answer: `Yes. We operate compact, tracked stump grinders fitted with specialized tungsten-carbide teeth designed to grind hardwood stumps growing between skeletal rock outcrops across ${suburbName}. Our operators carefully trace root flares down to 250mm–300mm below surface grade without throwing hazardous granite rock fragments.`
+      };
+    }
+    if (serviceId === 'palm-tree-removal') {
+      return {
+        question: `How do you access and dismantle tall palms on steep boundary slopes in ${suburbName}?`,
+        answer: `In ${suburbName}'s foothill gardens, palms are frequently planted along terraced boundaries or behind elevated swimming pools. Our climbers use technical rope ascension systems and lower every frond and heavy seed cluster via friction lines, preventing garden terrace blowouts and preserving glass pool balustrades.`
+      };
+    }
+    if (serviceId === 'tree-pruning-lopping') {
+      return {
+        question: `How does thermal ridge wind affect canopy stability on ${suburbName}'s granite ridges?`,
+        answer: `Elevated ridges in ${suburbName} experience intense updrafts and accelerated storm downdrafts. Rather than lopping (which creates dangerous brittle regrowth), we perform aerodynamic crown thinning under AS4373-2007. This allows gale-force winds to filter through the canopy with minimal sail resistance, reducing the risk of catastrophic trunk snapping.`
+      };
+    }
+    if (serviceId === 'wood-chipping-mulching') {
+      return {
+        question: `Can your wood chippers access steep driveways in ${suburbName}?`,
+        answer: `Yes. We utilize four-wheel-drive tow vehicles and self-propelled tracked equipment capable of safely navigating steep, winding residential driveways across ${suburbName} without scorching concrete or losing traction.`
+      };
+    }
+    if (serviceId === 'land-clearing') {
+      return {
+        question: `What challenges exist for slope clearing and firebreaks in ${suburbName}?`,
+        answer: `Hillside clearing in ${suburbName} requires extreme care to prevent slope erosion during the monsoon. We create compliant firebreaks using selective manual clearing and low-impact machinery, retaining deep-rooted native vegetation to stabilize rocky embankments under the TCC Steep Land Overlay.`
+      };
+    }
+    // Default tree-removal / emergency-tree-removal for granite slopes
+    return {
+      question: `How do you safely remove trees on steep granite hillsides and rocky terraces in ${suburbName}?`,
+      answer: `Properties across ${suburbName}'s slopes often exceed 15% to 25% inclines, where traditional mobile cranes cannot set stabilizer outriggers. Our AQF-qualified climbing arborists utilize 3D high-angle rope rigging, friction-brake lowering systems, and reinforced bedrock anchor points to dismantle massive hardwoods piece by piece, ensuring heavy timber never tumbles down hillsides into retaining walls or downstream roofs.`
+    };
+  }
+
+  // 2. Coastal Maritime & Northern Beaches
+  if (zoneKey === 'coastal-maritime' || zoneKey === 'northern-beaches') {
+    if (serviceId === 'palm-tree-removal') {
+      return {
+        question: `Are tall Coconut palms in ${suburbName} a major hazard during cyclone season?`,
+        answer: `Yes. Along the coast in ${suburbName}, a single waterlogged Coconut palm frond can weigh over 20kg, and falling coconuts hit roofs and carports with immense kinetic force. We provide pre-cyclone crown cleaning, complete de-nutting, and controlled rope-assisted felling for overgrown coastal palms.`
+      };
+    }
+    if (serviceId === 'stump-grinding') {
+      return {
+        question: `How do you handle stump grinding in ${suburbName}'s loose coastal sands?`,
+        answer: `Grinding in sandy soil requires careful depth management to avoid disturbing subterranean sand strata. We grind the root plate 250mm–350mm deep and blend the nutrient-dense mulch into the sand backfill, stabilizing the lawn surface and preventing post-grind subsidence.`
+      };
+    }
+    if (serviceId === 'tree-pruning-lopping') {
+      return {
+        question: `How do you protect pruned trees from salt burn along the coast in ${suburbName}?`,
+        answer: `Coastal winds carry corrosive salt spray that can scorch fresh cut wounds. Our certified arborists use targeted collar pruning methods under AS4373-2007, leaving branch defense zones intact so native coastal species can naturally compartmentalize cuts without suffering salt-induced dieback.`
+      };
+    }
+    if (serviceId === 'wood-chipping-mulching') {
+      return {
+        question: `Does arborist mulch help protect sandy gardens in ${suburbName}?`,
+        answer: `Extremely well. Coastal sands in ${suburbName} lose moisture rapidly and lack organic matter. Applying a 75mm–100mm layer of our coarse hardwood mulch locks in ground moisture, prevents weed germination, and insulates shallow plant roots from coastal heat.`
+      };
+    }
+    if (serviceId === 'land-clearing') {
+      return {
+        question: `What environmental rules apply to coastal land clearing in ${suburbName}?`,
+        answer: `Coastal allotments in ${suburbName} are governed by the TCC Coastal Hazard & Marine Erosion Overlay. Clearing must safeguard frontal dune stabilization and protect marine casuarina buffers. Arbco verifies all environmental codes and assists with exempt clearing pathways.`
+      };
+    }
+    // Default tree-removal / emergency for coastal
+    return {
+      question: `Why are coastal trees in ${suburbName} particularly vulnerable to blowover during monsoons?`,
+      answer: `In ${suburbName}, loose marine sands, shallow water tables, and high saline exposure cause coastal trees like Paperbarks, Beach Casuarinas, and Tamarinds to develop wide but shallow root plates. When torrential tropical rain saturates the sandy profile, gale-force winds can easily cause whole-tree root plate heave. We assess root integrity and dismantle compromised coastal trees before storm season.`
+    };
+  }
+
+  // 3. Alluvial Floodplain & Ross River
+  if (zoneKey === 'alluvial-floodplain') {
+    if (serviceId === 'stump-grinding') {
+      return {
+        question: `Why is stump grinding critical for preventing termites in ${suburbName}'s clay soils?`,
+        answer: `Townsville's alluvial corridor along the Ross River has high subterranean termite activity (Coptotermes acinaciformis). Dead stumps left in moist alluvial clay become primary nesting incubators. Grinding the stump 300mm below grade completely eliminates the dead cellulose food source next to your home.`
+      };
+    }
+    if (serviceId === 'palm-tree-removal') {
+      return {
+        question: `Can aggressive palm root balls crack pipes and pool copings in ${suburbName}?`,
+        answer: `Yes. In dense clay soils, the expansive adventitious root mass of palms like Cocos and Date palms expands outward with hydraulic force, frequently dislodging swimming pool surrounds, cracking concrete driveways, and penetrating old earthenware stormwater lines in established ${suburbName} homes.`
+      };
+    }
+    if (serviceId === 'tree-pruning-lopping') {
+      return {
+        question: `Can I trim branches overhanging from a neighbour's yard in ${suburbName}?`,
+        answer: `Yes. Under the Queensland Neighbourhood Disputes (Dividing Fences and Trees) Act, you have the legal right to trim overhanging branches back to the boundary line. Our arborists execute neat, AS4373-compliant boundary cuts without trespassing or leaving ragged tearing wounds that harm the tree.`
+      };
+    }
+    if (serviceId === 'wood-chipping-mulching') {
+      return {
+        question: `How does organic mulch improve heavy clay soils in ${suburbName}?`,
+        answer: `Heavy clay in ${suburbName} bakes rock-hard in summer and turns boggy in the wet. Coarse arborist wood chip mulch prevents topsoil crusting, enhances microbial activity, and gradually integrates organic matter to loosen dense clay structure over time.`
+      };
+    }
+    if (serviceId === 'land-clearing') {
+      return {
+        question: `Do Ross River riparian rules affect clearing in ${suburbName}?`,
+        answer: `Yes. Properties near the Ross River fall under the TCC Riparian Corridor & Waterway Vegetation Protection Scheme. Mature native trees along river banks are protected to prevent bank erosion. Arbco evaluates council zoning and manages all compliance documentation.`
+      };
+    }
+    // Default tree-removal / emergency for alluvial
+    return {
+      question: `How does heavy alluvial clay in ${suburbName} affect mature tree safety during the wet season?`,
+      answer: `In ${suburbName}, heavy alluvial clay soils undergo severe shrink-swell cycles. In prolonged dry periods, clay cracks and stresses roots; during the wet season, saturated clay loses friction holding power, increasing the failure rate of heavy canopies like African Mahoganies and Rain Trees. We perform crown reduction and hazard removals to protect homes along urban and river corridors.`
+    };
+  }
+
+  // 4. Outer Master-Planned Corridors
+  if (zoneKey === 'outer-masterplanned') {
+    if (serviceId === 'stump-grinding') {
+      return {
+        question: `Can your stump grinder fit through standard pedestrian side gates in ${suburbName}?`,
+        answer: `Yes! Our specialized narrow-access stump grinders measure just 740mm wide, easily passing through standard 800mm pedestrian side gates in ${suburbName}. We locate all underground NBN, power, and irrigation lines prior to grinding.`
+      };
+    }
+    if (serviceId === 'palm-tree-removal') {
+      return {
+        question: `What palm maintenance is recommended for smaller residential yards in ${suburbName}?`,
+        answer: `Builder-planted Foxtail and Alexander palms grow rapidly in ${suburbName}. We provide regular de-booting, frond removal, and selective thinning to keep palms proportionate to smaller 400m²–500m² blocks without dropping debris onto patio entertaining zones.`
+      };
+    }
+    if (serviceId === 'tree-pruning-lopping') {
+      return {
+        question: `How do I prevent fast-growing developer gums in ${suburbName} from becoming hazardous?`,
+        answer: `Many modern estates in ${suburbName} feature fast-growing eucalypts planted close to dwellings. We provide early formative pruning—removing co-dominant stems, establishing a single dominant leader, and elevating lower branches—to ensure the tree develops strong, wind-firm branch architecture.`
+      };
+    }
+    if (serviceId === 'wood-chipping-mulching') {
+      return {
+        question: `Can you chip green waste on-site without blocking suburban streets in ${suburbName}?`,
+        answer: `Yes. Our compact chip trucks and trailer chippers occupy minimal street parking in ${suburbName}'s modern residential cul-de-sacs, keeping traffic lanes completely clear while processing green waste efficiently.`
+      };
+    }
+    if (serviceId === 'land-clearing') {
+      return {
+        question: `Do you prepare vacant developer lots for building in ${suburbName}?`,
+        answer: `Yes. We provide complete site preparation for new house pads across ${suburbName}, removing regrowth scrub, extracting subterranean tree stumps, and leveling the envelope ready for earthworks and slab pouring.`
+      };
+    }
+    // Default tree-removal / emergency for master-planned
+    return {
+      question: `How do you remove trees in compact modern ${suburbName} backyards with zero lot lines?`,
+      answer: `Modern home designs in ${suburbName} often have narrow 820mm–900mm side clearances, zero-lot boundary walls, and immediate proximity to neighbouring air conditioning units and fences. Our arborists use precision sectional dismantling and portable rigging systems, guiding each limb down safely without using heavy machinery that could damage driveway pavers.`
+    };
+  }
+
+  // 5. Upper Catchment & Western Suburbs
+  if (zoneKey === 'upper-catchment') {
+    if (serviceId === 'stump-grinding') {
+      return {
+        question: `How deep do you grind tree stumps in ${suburbName} to stop sucker regrowth?`,
+        answer: `We grind stumps 250mm to 350mm below grade across ${suburbName}, thoroughly severing the central taproot and major surface lateral roots. This prevents aggressive suckering from species like Poincianas and Melaleucas while providing a stable foundation for turf or gardens.`
+      };
+    }
+    if (serviceId === 'palm-tree-removal') {
+      return {
+        question: `Why do untrimmed palms attract flying foxes and pests in ${suburbName}?`,
+        answer: `During summer, dense fruit clusters on Cocos and Date palms ferment quickly in ${suburbName}'s heat, attracting noisy colonies of black fruit bats and rodents right beside bedrooms. Crown de-nutting and regular dead frond stripping eliminates this pest food source completely.`
+      };
+    }
+    if (serviceId === 'tree-pruning-lopping') {
+      return {
+        question: `When is the best time of year to prune trees in ${suburbName}?`,
+        answer: `The ideal window in ${suburbName} is late winter through early spring (August to November), just ahead of the wet season. Pruning during this period removes deadwood and lightens heavy branch tips before storm squalls arrive, giving wounds ample time to callus over.`
+      };
+    }
+    if (serviceId === 'wood-chipping-mulching') {
+      return {
+        question: `Can I keep the wood chips for my garden in ${suburbName}?`,
+        answer: `Absolutely. We can blow fresh, nutrient-dense organic mulch directly into a designated pile on your ${suburbName} property, which is ideal for moisture conservation in hot Thuringowa summers. Alternatively, we haul 100% away for free.`
+      };
+    }
+    if (serviceId === 'land-clearing') {
+      return {
+        question: `Do you clear residential firebreaks and overgrown acreage blocks in ${suburbName}?`,
+        answer: `Yes. We handle fence-line clearing, overgrown scrub removal, and firebreak maintenance across larger allotments and semi-rural boundaries in ${suburbName}, creating clean defensible spaces against seasonal bushfire risks.`
+      };
+    }
+    // Default tree-removal / emergency for upper catchment
+    return {
+      question: `How do storms descending from the Hervey Range affect trees in ${suburbName}?`,
+      answer: `Properties across ${suburbName} face direct westerly wind squalls descending from the Hervey Range gap. Brittle species like mature Poincianas and unmanaged African Mahoganies frequently suffer split forks and torn main stems during seasonal convective storms. We selectively reduce heavy limb weight and dismantle high-risk trees before storms strike.`
+    };
+  }
+
+  // 6. Rural Acreage
+  if (zoneKey === 'rural-acreage') {
+    if (serviceId === 'land-clearing') {
+      return {
+        question: `What is a compliant Bushfire Asset Protection Zone (APZ) for acreage in ${suburbName}?`,
+        answer: `Under Queensland rural fire guidelines, an APZ is a fuel-reduced 20-metre defensible buffer surrounding homes, sheds, and commercial structures. We clear combustible undergrowth, elevate canopy skirts, and eliminate ladder fuels to protect rural ${suburbName} properties from bushfire fronts.`
+      };
+    }
+    if (serviceId === 'stump-grinding') {
+      return {
+        question: `Can you grind multiple large hardwood stumps across acreage paddocks in ${suburbName}?`,
+        answer: `Yes. We offer commercial multi-stump rates for rural properties in ${suburbName}. Our high-torque stump grinders pulverize tough Ironbark and Bloodwood stumps below pasture level, preventing livestock tripping hazards and mower blade damage.`
+      };
+    }
+    if (serviceId === 'palm-tree-removal') {
+      return {
+        question: `Can you clear wild self-sown palms and invasive woody weeds in ${suburbName}?`,
+        answer: `Yes. We clear invasive woody weeds, wild date palms, and scrub along fence lines and seasonal creek beds, restoring native pastureland across rural ${suburbName} allotments.`
+      };
+    }
+    if (serviceId === 'tree-pruning-lopping') {
+      return {
+        question: `How do you prune native eucalypts to prevent dry-season limb drop in ${suburbName}?`,
+        answer: `In ${suburbName}'s dry winter months, large eucalypts naturally shed heavy limbs to conserve moisture (sudden branch drop syndrome). Our qualified arborists conduct deadwood removal and tip-weight reduction to safeguard driveways, horse arenas, and outbuildings.`
+      };
+    }
+    if (serviceId === 'wood-chipping-mulching') {
+      return {
+        question: `Can you chip whole fallen trees on-site for farm road stabilization in ${suburbName}?`,
+        answer: `Yes. Our commercial chippers process branches and timber up to 18 inches in diameter. We can spread the coarse wood chips along unsealed farm tracks and muddy gateways in ${suburbName} to provide erosion control and vehicle traction.`
+      };
+    }
+    // Default tree-removal / emergency for rural acreage
+    return {
+      question: `Do you handle large-scale rural tree felling and dead timber clearing in ${suburbName}?`,
+      answer: `Yes. Our rural crews operate high-capacity forestry chainsaws, heavy winches, and directional felling gear capable of dismantling massive Ironbarks, Poplar Box, and River Gums across acreage paddocks, access tracks, and boundary fences in ${suburbName}.`
+    };
+  }
+
+  // 7. Offshore Islands
+  if (zoneKey === 'offshore-islands') {
+    if (serviceId === 'palm-tree-removal') {
+      return {
+        question: `Are Coconut palms permitted to be removed on ${suburbName}?`,
+        answer: `Yes, particularly where tall, unmanaged coconuts overhang tourist accommodation, driveways, or public paths. We offer seasonal crown de-nutting or complete controlled felling using precision climbing systems that respect island aesthetics.`
+      };
+    }
+    if (serviceId === 'stump-grinding') {
+      return {
+        question: `Do you have stump grinders available on ${suburbName}?`,
+        answer: `Yes. We transport compact, high-performance stump grinders over on the vehicular barge to grind stumps on ${suburbName}, eliminating termite food sources in granitic and sandy island soils.`
+      };
+    }
+    if (serviceId === 'tree-pruning-lopping') {
+      return {
+        question: `How do you prune trees in ${suburbName} to withstand oceanic cyclones?`,
+        answer: `We use aerodynamic crown thinning to balance mature native trees on ${suburbName}, allowing Category 3–5 cyclonic winds to pass through with minimal drag while preserving native canopy health.`
+      };
+    }
+    if (serviceId === 'wood-chipping-mulching') {
+      return {
+        question: `What happens to the green waste on ${suburbName}?`,
+        answer: `Because green waste transport off the island can be costly, our high-volume wood chipping converts 100% of branches into organic mulch on-site, providing island homeowners with valuable weed-suppressing, moisture-retaining garden mulch.`
+      };
+    }
+    if (serviceId === 'land-clearing') {
+      return {
+        question: `What permits are needed for site clearing on ${suburbName}?`,
+        answer: `Land clearing on ${suburbName} requires adherence to strict island conservation codes and fauna protection protocols. We prepare comprehensive arborist impact statements and coordinate with regulatory bodies.`
+      };
+    }
+    // Default tree-removal / emergency for offshore islands
+    return {
+      question: `How do you transport tree equipment and chippers to ${suburbName}?`,
+      answer: `We coordinate vehicular barge transport from Townsville harbor to ${suburbName}. Our crews deploy with fully self-contained mobile arboricultural units—including chippers, rigging trailers, and chainsaws—ensuring complete on-island service without logistical delays.`
+    };
+  }
+
+  // Fallback
+  return {
+    question: `How does local soil and weather in ${suburbName} affect tree health?`,
+    answer: `In ${suburbName}, the combination of ${env.soilType.toLowerCase()} and seasonal weather fluctuations places unique stress on tree root systems. Our certified arborists tailor every project to these local conditions.`
+  };
+}
+
+function getCouncilOverlayFaq(
+  suburbName: string,
+  serviceId: string,
+  env: SuburbEnvironmentalProfile
+): { question: string; answer: string } {
+  let answer = '';
+
+  if (env.councilOverlay.includes('Riparian')) {
+    answer = `In ${suburbName}, allotments bordering the Ross River or designated drainage corridors are subject to the TCC Riparian Corridor Vegetation Protection Scheme. Mature trees stabilizing the riverbank are protected to prevent bank erosion and protect water quality. However, trees posing an imminent structural threat or clear exemptions can be managed legally. Arbco's Level 5 arborists inspect your property, determine whether an exemption applies, and handle all council application documentation.`;
+  } else if (env.councilOverlay.includes('Steep Land') || env.councilOverlay.includes('Landslide')) {
+    answer = `Properties situated on ${suburbName}'s hillsides are governed by the TCC Steep Land & Landslide Hazard Overlay. Because tree roots provide vital soil binding on steep granite scree, clearing mature trees requires careful evaluation. Our consulting arborists prepare certified tree risk assessments demonstrating tree health and site stability, ensuring complete council compliance.`;
+  } else if (env.councilOverlay.includes('Coastal') || env.councilOverlay.includes('Marine')) {
+    answer = `Beachfront and coastal properties in ${suburbName} fall under the TCC Coastal Hazard & Marine Erosion Overlay. Coastal casuarinas and dune-stabilizing native trees require adherence to local environmental codes. For dangerous, dying, or structurally compromised trees on private freehold land, straightforward exemption pathways exist, which we verify and handle on your behalf.`;
+  } else if (env.councilOverlay.includes('Magnetic Island') || env.councilOverlay.includes('Island')) {
+    answer = `Properties across ${suburbName} are subject to strict TCC Natural Values and National Park Conservation buffer provisions. Native trees contributing to the island's landscape character (such as mature Hoop Pines and Poplar Gums) require careful arborist substantiation prior to removal. We guide you through the process and prepare all required documentation.`;
+  } else if (env.councilOverlay.includes('Bushfire') || env.councilOverlay.includes('Rural')) {
+    answer = `For rural acreage in ${suburbName}, clearing trees within 20 metres of an approved residential dwelling for bushfire asset protection is generally exempt under the Queensland 10/20 bushfire clearing code. For boundary fence lines and paddock clearing, standard rural vegetation guidelines apply. We confirm all exemptions before commencing work.`;
+  } else {
+    answer = `For standard residential freehold properties across ${suburbName}, trees situated entirely within private boundary lines generally do not require council approval, provided they are not protected by a specific heritage register, historical covenant, or subdivision development approval condition. Our team confirms your property's overlay status during your free on-site assessment.`;
+  }
+
+  return {
+    question: `Do I need Townsville City Council approval to remove a tree or perform work in ${suburbName}?`,
+    answer
+  };
+}
+
+function getServiceProcessFaq(
+  serviceId: string,
+  suburbName: string,
+  env: SuburbEnvironmentalProfile
+): { question: string; answer: string } {
+  if (serviceId === 'tree-removal') {
+    return {
+      question: `How do you protect my fences, lawn, and sheds during tree removal in ${suburbName}?`,
+      answer: `We specialize in confined-space sectional dismantling. Using friction-controlled lowering blocks, high-tensile arborist rigging lines, and ground-protection mats, our arborists rope each branch down in controlled increments. Heavy logs are never dropped freely where they could impact your lawn, gardens, or boundary structures in ${suburbName}.`
+    };
+  }
+  if (serviceId === 'stump-grinding') {
+    return {
+      question: `Do you check for underground power, water, and NBN pipes before grinding in ${suburbName}?`,
+      answer: `Yes, safety is paramount. Before engaging cutter wheels in ${suburbName}, our technicians review property service plans and perform underground utility scans via Dial Before You Dig (BYDA) protocols, ensuring gas lines, Telstra/NBN conduits, and PVC irrigation pipes remain completely undisturbed.`
+    };
+  }
+  if (serviceId === 'palm-tree-removal') {
+    return {
+      question: `Do you remove the entire palm root ball as well as the trunk?`,
+      answer: `Yes. While standard palm felling cuts the trunk flush with the ground, we also offer complete mechanical root ball excavation and stump grinding. This pulverizes the fibrous subterranean bulb 300mm below grade, preventing ground swelling and allowing you to lay turf or pave over the site immediately.`
+    };
+  }
+  if (serviceId === 'tree-pruning-lopping') {
+    return {
+      question: `What is the difference between AS4373 pruning and indiscriminate tree lopping?`,
+      answer: `Australian Standard AS4373-2007 (Pruning of Amenity Trees) requires selective cuts at the branch collar, preserving the tree's natural defense zones and preventing decay. In contrast, 'lopping' or 'topping' indiscriminately shears branches between nodes, creating large rotting stubs and stimulating weak, hazardous epicormic regrowth that easily snaps in tropical winds.`
+    };
+  }
+  if (serviceId === 'emergency-tree-removal') {
+    return {
+      question: `Will my home insurance cover emergency tree removal in ${suburbName}?`,
+      answer: `In most cases, yes. When a tree damages an insured structure (such as a roof, shed, carport, or fence) or poses an active imminent threat during a storm event, standard Australian home insurance policies cover the emergency removal and stabilization costs. We provide itemized invoices, photo logs, and certified arborist incident reports directly for your claim.`
+    };
+  }
+  if (serviceId === 'wood-chipping-mulching') {
+    return {
+      question: `Can you chip fibrous palm fronds and palm trunks?`,
+      answer: `Yes. While standard domestic chippers clog on fibrous palm strings, our commercial-grade wood chippers are engineered with high-torque steel drum cutters that easily process palm fronds, seed pods, and palm trunk segments into clean mulch.`
+    };
+  }
+  // land-clearing
+  return {
+    question: `Do you provide wildlife spotter-catchers before clearing in ${suburbName}?`,
+    answer: `Yes. Under Queensland environmental legislation, habitat clearing often requires pre-clearing inspections. We work with certified wildlife spotter-catchers to inspect tree hollows and safely relocate any native fauna prior to mechanical clearing.`
+  };
+}
+
+function getCleanupAndMulchFaq(
+  suburbName: string,
+  serviceId: string
+): { question: string; answer: string } {
+  return {
+    question: `What happens to the wood chips, logs, and green waste after work in ${suburbName}?`,
+    answer: `You have total flexibility: we can process the timber through our commercial wood chipper and leave nutrient-dense organic mulch on your ${suburbName} property, which reduces soil moisture evaporation by up to 60% in Townsville's hot climate. Alternatively, if you prefer a completely clean yard, our crews haul 100% of green waste away at no additional cost.`
+  };
+}
 
 function generateLocalizedFaqs(
   suburbName: string,
   serviceId: string,
   serviceName: string,
   env: SuburbEnvironmentalProfile,
-  data: BespokeSuburbData
+  data: BespokeSuburbData,
+  zoneKey: string
 ): { question: string; answer: string }[] {
-  const pricingGuide = data.pricingInsight || 
-    `Standard residential jobs in ${suburbName} typically range from $600 to $1,400, while large hazardous trees requiring technical friction rigging or crane support range from $1,600 to $3,500+. Small palm removals start from $250 to $600. Every quote is fixed, transparent, and provided after a free on-site assessment.`;
-
-  if (serviceId === 'stump-grinding') {
-    return [
-      {
-        question: `How much does stump grinding cost in ${suburbName}?`,
-        answer: `Stump grinding pricing in ${suburbName} depends primarily on stump diameter, root flare spread, wood species, and access width. Small stumps (up to 300mm diameter) generally cost between $150 and $280, medium stumps (300mm–600mm) range from $290 to $480, and large hardwood stumps with expansive surface roots range from $500 to $900+. We provide free, upfront, fixed-price on-site quotes across ${suburbName}.`
-      },
-      {
-        question: `How deep do you grind tree stumps in ${suburbName}?`,
-        answer: `We typically grind stumps between 200mm and 350mm below natural ground level throughout ${suburbName}. This depth completely severs the root crown, eradicates subterranean termite harborage, and allows ample room for backfilling, topsoil placement, and healthy new lawn turf or paving.`
-      },
-      {
-        question: `Can your stump grinder fit through narrow side gates in ${suburbName}?`,
-        answer: `Yes. We operate specialized compact, high-torque stump grinders specifically designed to pass through standard residential pedestrian and side gates (down to 750mm–800mm clearance). This allows us to access confined backyards in ${suburbName} without removing boundary fence panels.`
-      },
-      {
-        question: `What happens to the wood chips and mulch left after grinding?`,
-        answer: `The grinding process produces a nutrient-dense mixture of wood mulch and soil. We use this material to completely backfill and mound the excavation hole to account for natural settling, raking the surrounding area neat and tidy. Any excess mulch can be distributed across your ${suburbName} garden beds.`
-      }
-    ];
-  }
-
-  if (serviceId === 'palm-tree-removal') {
-    return [
-      {
-        question: `How much does palm tree removal or pruning cost in ${suburbName}?`,
-        answer: `Palm tree removal in ${suburbName} generally ranges from $250 to $600 for small to medium palms (such as Golden Canes or single Cocos palms with good access). Large, mature coconut palms or multi-stem clumps requiring rope-assisted lowering near pools and fences typically range between $650 and $1,400. Seasonal crown de-nutting and frond cleaning starts from $120 to $250 per palm.`
-      },
-      {
-        question: `Why should I remove or de-nut palms before cyclone season in ${suburbName}?`,
-        answer: `In ${suburbName}, tropical storm winds easily dislodge heavy dead fronds and seed pods weighing up to 25kg from species like Cocos and Coconut palms. These falling items become dangerous airborne projectiles during severe weather, causing extensive roof, vehicle, and solar panel damage.`
-      },
-      {
-        question: `Will palm tree roots damage my pipes or paving in ${suburbName}?`,
-        answer: `Yes. Palms have aggressive, fibrous root balls that expand laterally. In ${suburbName}'s ${env.soilType.toLowerCase()}, expanding palm root masses frequently crack nearby pool shells, bow retaining walls, and penetrate underground stormwater and sewer pipes.`
-      },
-      {
-        question: `Do you remove the entire palm root ball as well?`,
-        answer: `Yes. While standard palm felling cuts the trunk flush with the ground, we also offer complete mechanical root ball excavation and stump grinding to ensure the fibrous base is eradicated, allowing you to replant immediately.`
-      }
-    ];
-  }
-
-  if (serviceId === 'tree-pruning-lopping') {
-    return [
-      {
-        question: `How much does professional tree pruning cost in ${suburbName}?`,
-        answer: `Tree pruning costs in ${suburbName} typically range from $350 to $750 for routine maintenance pruning, deadwooding, or structure clearance on small-to-medium trees. Substantial canopy reductions on large, mature trees or overhead powerline clearances range from $800 to $1,600+. All quotes are upfront and fixed after a free on-site arborist assessment.`
-      },
-      {
-        question: `What is the difference between AS4373 pruning and tree lopping?`,
-        answer: `Australian Standard AS4373-2007 (Pruning of Amenity Trees) requires selective cuts at the branch collar, preserving the tree's natural defense zones and preventing decay. In contrast, 'lopping' or 'topping' indiscriminately shears branches between nodes, creating large rotting stubs and stimulating weak, hazardous epicormic regrowth that easily snaps in tropical winds.`
-      },
-      {
-        question: `How does canopy pruning prepare trees for Townsville cyclone season?`,
-        answer: `In ${suburbName}, cyclone winds place extreme sail pressure on dense canopies. Selective crown thinning removes up to 20% of inner branches, allowing gale-force winds to pass cleanly through the canopy instead of acting as a solid sail. This drastically reduces the likelihood of whole-tree blowover or catastrophic limb failure.`
-      },
-      {
-        question: `Can I trim tree branches hanging over my fence from a neighbor in ${suburbName}?`,
-        answer: `Under the Queensland Neighbourhood Disputes (Dividing Fences and Trees) Act, you have the legal right to prune overhanging branches back to your boundary line. Our arborists can carry out this boundary trimming cleanly and safely, ensuring compliance with Queensland law while maintaining tree health.`
-      }
-    ];
-  }
-
-  if (serviceId === 'emergency-tree-removal') {
-    return [
-      {
-        question: `How fast can Arbco respond to an emergency tree failure in ${suburbName}?`,
-        answer: `We maintain 24/7 priority emergency response crews across Greater Townsville. For critical situations in ${suburbName} where a tree or large branch has fallen on a house, vehicle, driveway, or powerline, our emergency team dispatches immediately to stabilize the structure and make the area safe.`
-      },
-      {
-        question: `Will my home insurance cover emergency tree removal in ${suburbName}?`,
-        answer: `In most cases, yes. When a tree damages an insured structure (such as a roof, shed, carport, or fence) or poses an active imminent threat during a storm event, standard Australian home insurance policies cover the emergency removal and stabilization costs. We provide itemized invoices, photo logs, and certified arborist incident reports directly for your claim.`
-      },
-      {
-        question: `What should I do if a tree falls on power lines in ${suburbName}?`,
-        answer: `Stay at least 10 meters away from the tree and any fallen wires, and assume all lines are live and lethal. Call Ergon Energy immediately on 13 22 96 to report the emergency. Once Ergon isolates the power, call Arbco on 0456 579 811 to safely dismantle and remove the timber.`
-      },
-      {
-        question: `Can you provide emergency weatherproofing tarps after tree impact?`,
-        answer: `Yes. Once the hazardous timber is safely lifted off your roof, our emergency crew can secure heavy-duty weatherproofing tarps over damaged tiles, tin sheets, or ceiling breaches to prevent secondary water ingress and storm damage until permanent repairs are made.`
-      }
-    ];
-  }
-
-  if (serviceId === 'wood-chipping-mulching') {
-    return [
-      {
-        question: `How much does on-site commercial wood chipping cost in ${suburbName}?`,
-        answer: `Commercial wood chipping in ${suburbName} is typically priced between $250 and $450 per hour (including our high-capacity chipper, chip truck, and a qualified two-man crew) or quoted as a fixed flat rate for pre-stacked green waste piles. Contact us for a fast, free estimate.`
-      },
-      {
-        question: `How does arborist wood mulch benefit Townsville gardens?`,
-        answer: `Arborist wood mulch provides vital moisture retention in North Queensland's dry climate, reducing soil water evaporation by up to 60%. A 75mm–100mm layer insulates delicate plant root systems from blistering heat, suppresses invasive weeds, and slowly breaks down to enrich depleted soils.`
-      },
-      {
-        question: `Can you chip fibrous palm fronds and palm trunks?`,
-        answer: `Yes. While standard domestic chippers clog on fibrous palm strings, our commercial-grade wood chippers are engineered with high-torque steel drum cutters that easily process palm fronds, seed pods, and palm trunk segments.`
-      },
-      {
-        question: `Can you haul all the wood chips away if I don't want them?`,
-        answer: `Yes. You have total flexibility: we can blow the fresh mulch directly into your garden beds, leave it in a tidy pile for future use, or transport 100% of the green waste completely off your ${suburbName} property at no additional cost.`
-      }
-    ];
-  }
-
-  if (serviceId === 'land-clearing') {
-    return [
-      {
-        question: `How is land clearing priced in ${suburbName}?`,
-        answer: `Land clearing pricing in ${suburbName} depends on acreage size, vegetation density, terrain slope, and whether whole-tree extraction or forestry mulching is required. We provide transparent fixed-price quotes following a free on-site site survey.`
-      },
-      {
-        question: `What council approvals or permits do I need for land clearing in ${suburbName}?`,
-        answer: `Permit requirements depend on your property zoning, Townsville City Council (TCC) planning scheme overlays (${env.councilOverlay}), and the Queensland Vegetation Management Act. We assess your allotment and assist with all necessary council documentation and exempt clearing pathways.`
-      },
-      {
-        question: `What is a Bushfire Asset Protection Zone (APZ)?`,
-        answer: `A Bushfire Asset Protection Zone is a fuel-reduced 20-metre buffer around dwellings and commercial buildings designed to minimize radiant heat exposure and direct flame contact during dry-season grass and bush fires. We clear undergrowth and thin canopy trees to create compliant, defensible APZ boundaries.`
-      },
-      {
-        question: `Do you provide wildlife spotter-catchers before clearing?`,
-        answer: `Yes. Under Queensland environmental legislation, habitat clearing often requires pre-clearing inspections. We work with certified wildlife spotter-catchers to inspect tree hollows and safely relocate any native fauna prior to mechanical clearing.`
-      }
-    ];
-  }
-
-  // Default: tree-removal
   return [
-    {
-      question: `Do I need Townsville City Council approval to remove a tree in ${suburbName}?`,
-      answer: `In most standard residential zones across ${suburbName}, trees situated wholly on private freehold land do not require council permits unless they are protected under a specific Natural Assets overlay, heritage register, or riparian corridor scheme (${env.councilOverlay}). As qualified Level 5 arborists, we verify your property’s zoning and handle all documentation if a permit is required.`
-    },
-    {
-      question: `How much does professional tree removal cost in ${suburbName}?`,
-      answer: `Tree removal costs in ${suburbName} vary depending on tree height, species density, proximity to structures, and access conditions. ${pricingGuide}`
-    },
-    {
-      question: `How do you protect my fences, lawn, and sheds during tree removal in ${suburbName}?`,
-      answer: `We specialize in confined-space sectional dismantling. Using friction-controlled lowering blocks, high-tensile rigging lines, and ground-protection mats, our arborists rope each branch down in controlled increments. Heavy logs are never dropped freely where they could impact your lawn, gardens, or boundary structures in ${suburbName}.`
-    },
-    {
-      question: `Can I keep the wood chips for my garden in ${suburbName}?`,
-      answer: `Absolutely. We can process the removed branches through our commercial chipper and leave nutrient-dense organic mulch on your ${suburbName} property, which is ideal for moisture retention in North Queensland's dry months. Alternatively, we can haul all green waste away completely free of charge.`
-    }
+    getUniversalPricingFaq(suburbName, serviceId, serviceName, data),
+    getMicroZoneTerrainFaq(zoneKey, serviceId, suburbName, env),
+    getCouncilOverlayFaq(suburbName, serviceId, env),
+    getServiceProcessFaq(serviceId, suburbName, env),
+    getCleanupAndMulchFaq(suburbName, serviceId),
   ];
 }
 
@@ -2486,7 +2749,7 @@ export function getSuburbPageContent(suburbName: string, serviceId: string, serv
   const data = bespokeSuburbs[suburbName] || generateProceduralSuburbProfile(suburbName, env);
 
   const serviceFocus = getServiceSpecificFocus(serviceId, suburbName, env, data, zoneKey);
-  const faqs = generateLocalizedFaqs(suburbName, serviceId, serviceName, env, data);
+  const faqs = generateLocalizedFaqs(suburbName, serviceId, serviceName, env, data, zoneKey);
 
   const introParagraphs = generateIntroParagraphs(serviceId, serviceName, suburbName, env, data);
   const propertyAccess = generatePropertyAndAccess(serviceId, suburbName, env, data);

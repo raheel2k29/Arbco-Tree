@@ -138,13 +138,45 @@ for (const suburb of allSuburbs) {
       if (!str.includes('Arbco Tree Services')) {
         errors.push(`Schema JSON-LD for ${service.id}-${suburb} does not contain "Arbco Tree Services"`);
       }
+      if (!content.faqs || content.faqs.length < 4) {
+        errors.push(`Suburb ${suburb} service ${service.id} has fewer than 4 FAQs (got ${content.faqs?.length})`);
+      }
+      for (const faq of content.faqs) {
+        if (!faq.question || faq.question.includes('undefined')) {
+          errors.push(`Invalid FAQ question in ${suburb} (${service.id}): "${faq.question}"`);
+        }
+        if (!faq.answer || faq.answer.includes('undefined') || faq.answer.length < 20) {
+          errors.push(`Invalid or truncated FAQ answer in ${suburb} (${service.id}): "${faq.answer}"`);
+        }
+      }
       schemaSuccessCount++;
     } catch (e: any) {
       errors.push(`Error generating schema for ${service.id}-${suburb}: ${e.message}`);
     }
   }
 }
-console.log(`- Verified ${schemaSuccessCount} suburb JSON-LD schemas.`);
+console.log(`- Verified ${schemaSuccessCount} suburb JSON-LD schemas and FAQ structures.`);
+
+console.log('\n6.1. Verifying Cross-Zone FAQ Diversity (Sample Checks)...');
+const chFaqs = getSuburbPageContent('Castle Hill', 'tree-removal', 'Tree Removal').faqs;
+const bbFaqs = getSuburbPageContent('Bushland Beach', 'tree-removal', 'Tree Removal').faqs;
+const burdellFaqs = getSuburbPageContent('Burdell', 'tree-removal', 'Tree Removal').faqs;
+const miFaqs = getSuburbPageContent('Magnetic Island', 'tree-removal', 'Tree Removal').faqs;
+
+if (chFaqs[1].question === bbFaqs[1].question) {
+  errors.push(`Castle Hill and Bushland Beach have identical zone FAQ: "${chFaqs[1].question}"`);
+}
+if (chFaqs[1].question === burdellFaqs[1].question) {
+  errors.push(`Castle Hill and Burdell have identical zone FAQ: "${chFaqs[1].question}"`);
+}
+if (bbFaqs[1].question === miFaqs[1].question) {
+  errors.push(`Bushland Beach and Magnetic Island have identical zone FAQ: "${bbFaqs[1].question}"`);
+}
+console.log(`- Confirmed cross-zone FAQ questions are distinctly customized per micro-zone.`);
+console.log(`  * Castle Hill (Granite Slopes): "${chFaqs[1].question}"`);
+console.log(`  * Bushland Beach (Coastal): "${bbFaqs[1].question}"`);
+console.log(`  * Burdell (Outer Master-Planned): "${burdellFaqs[1].question}"`);
+console.log(`  * Magnetic Island (Offshore): "${miFaqs[1].question}"`);
 
 console.log('\n7. Verifying Service Hub JSON-LD for all 7 services...');
 services.forEach(srv => {
