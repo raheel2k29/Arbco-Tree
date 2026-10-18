@@ -215,7 +215,7 @@ export default async function ServiceAreaPage({ params }: { params: Promise<{ sl
             <div className="not-prose my-8 p-6 bg-emerald-50/70 rounded-2xl border border-[#7cc043]/40 shadow-xs">
               <div className="flex items-center gap-2 text-[#036829] font-extrabold font-heading text-base mb-2">
                 <span>🌿</span>
-                <span>Complete Arborist Solutions in {suburbName}</span>
+                <span>Complete Arborist Services in {suburbName}</span>
               </div>
               <p className="text-slate-700 text-sm leading-relaxed mb-3">
                 Planning comprehensive property care in {suburbName}? When removing dangerous or storm-damaged trees, prevent subterranean termite nesting and trip hazards with precision{' '}
