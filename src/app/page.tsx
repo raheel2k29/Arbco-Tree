@@ -281,7 +281,7 @@ export default function Home() {
               Our Professional Arborist Services
             </h2>
             <p className="text-slate-600 text-lg leading-relaxed font-sans">
-              We provide state-of-the-art tree care services tailored to commercial property developers, local councils, and private homeowners.
+              We provide state-of-the-art tree care services tailored to civil contractors, commercial property developers, and private homeowners.
             </p>
           </div>
 
@@ -466,8 +466,8 @@ export default function Home() {
                     <path strokeLinecap="round" strokeLinejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                   </svg>
                   <div className="space-y-1">
-                    <h4 className="font-extrabold text-slate-900 text-base font-heading">Council Planning Permit Reports</h4>
-                    <p className="text-slate-500 text-sm">We prepare arborist planning reports for all Townsville councils.</p>
+                    <h4 className="font-extrabold text-slate-900 text-base font-heading">Townsville City Council Planning Reports</h4>
+                    <p className="text-slate-500 text-sm">We prepare certified Level 5 arborist planning reports for Townsville City Council development and overlay applications.</p>
                   </div>
                 </div>
 
@@ -537,9 +537,9 @@ export default function Home() {
                     <path strokeLinecap="round" strokeLinejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" />
                   </svg>
                 </span>
-                <h4 className="font-extrabold text-lg text-emerald-300 font-heading">Council Permit Experts</h4>
+                <h4 className="font-extrabold text-lg text-emerald-300 font-heading">Townsville City Council Permit Experts</h4>
               </div>
-              <p className="text-sm text-slate-300 leading-relaxed">Expert guidance on Queensland's council laws and planning permit applications.</p>
+              <p className="text-sm text-slate-300 leading-relaxed">Expert guidance on Townsville City Council planning overlays and development permit applications.</p>
             </div>
 
             {/* Card 3 */}
@@ -660,7 +660,7 @@ export default function Home() {
               Our Valued Customers
             </h2>
             <p className="text-slate-300 text-base sm:text-lg leading-relaxed font-sans">
-              Proudly delivering professional arborist and tree management services for municipal councils, civil contractors, and commercial developers.
+              Proudly delivering professional arborist and tree management services for municipal infrastructure managers, civil contractors, and commercial developers.
             </p>
           </div>
           
@@ -936,7 +936,7 @@ export default function Home() {
                 Townsville Arborist Advice & Guides
               </h2>
               <p className="text-slate-600 text-base sm:text-lg font-sans">
-                Stay informed with pre-cyclone readiness checklists, council planning overlays, and tree safety guides written by our certified Level 5 arborists.
+                Stay informed with pre-cyclone readiness checklists, Townsville City Council planning overlays, and tree safety guides written by our certified Level 5 arborists.
               </p>
             </div>
             <Link

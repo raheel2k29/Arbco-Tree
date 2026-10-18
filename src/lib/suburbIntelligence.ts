@@ -88,7 +88,7 @@ export const microZones: Record<string, SuburbEnvironmentalProfile> = {
     dominantCanopy: ['Fast-growing developer-planted Eucalypts', 'Bottle Trees (Brachychiton)', 'Golden Penda (Xanthostemon chrysanthus)', 'Umbrella Trees'],
     dominantPalms: ['Foxtail Palms', 'Alexander Palms', 'Pygmy Date Palms (Phoenix roebelenii)'],
     accessConstraint: 'Zero lot lines, 350-500m² compact allotments, side pedestrian gates (820-900mm), and underground NBN/conduits',
-    councilOverlay: 'TCC Standard Urban Residential Subdivision Building Regulations'
+    councilOverlay: 'Townsville City Council Standard Residential Planning Provisions'
   },
   'upper-catchment': {
     zoneName: 'Upper Catchment & Western Residential Suburbs',
@@ -97,7 +97,7 @@ export const microZones: Record<string, SuburbEnvironmentalProfile> = {
     dominantCanopy: ['Poinciana (Delonix regia)', 'Moreton Bay Ash (Corymbia tessellaris)', 'African Mahogany', 'Broad-Leaved Paperbark'],
     dominantPalms: ['Dense multi-stem Golden Cane clumps', 'Cocos Palms', 'Manila Palms (Adonidia merrillii)'],
     accessConstraint: 'Suburban double-gate access (up to 1.8m), proximity to swimming pools, sheds, and underground drainage easements',
-    councilOverlay: 'TCC Urban Tree Canopy Conservation & Storm Preparedness Guidelines'
+    councilOverlay: 'Townsville City Council Storm Preparedness & Canopy Guidelines'
   },
   'rural-acreage': {
     zoneName: 'Rural Acreage & Dry Sclerophyll Bushland',
@@ -106,7 +106,7 @@ export const microZones: Record<string, SuburbEnvironmentalProfile> = {
     dominantCanopy: ['Poplar Box (Eucalyptus populnea)', 'Ghost Gum (Corymbia aparrerinja)', 'Narrow-Leaved Ironbark', 'Red River Gum (Eucalyptus camaldulensis)', 'Chinee Apple (Ziziphus mauritiana)'],
     dominantPalms: ['Self-sown Date Palms', 'Livistona species'],
     accessConstraint: 'Unsealed rural tracks, barbed-wire boundary fencing, stock paddocks, and heavy equipment access across culverts',
-    councilOverlay: 'TCC Bushfire Hazard Reduction & Rural Vegetation Clearing Exemptions'
+    councilOverlay: 'Townsville City Council Bushfire Hazard Reduction & Rural Clearing Exemptions'
   },
   'northern-beaches': {
     zoneName: 'Northern Beaches Hamlets & Highway Corridor',
@@ -124,7 +124,7 @@ export const microZones: Record<string, SuburbEnvironmentalProfile> = {
     dominantCanopy: ['Native Hoop Pine (Araucaria cunninghamii)', 'White Beech', 'Poplar Gum (Eucalyptus alba)', 'Forest Red Gum (Eucalyptus tereticornis)'],
     dominantPalms: ['Naturalized Coconut Palms', 'Cabbage Tree Palms (Livistona australis)'],
     accessConstraint: 'Vehicular ferry/barge transport logistics from Ross Street, restricted road gross weight limits, and national park interfaces',
-    councilOverlay: 'Magnetic Island Natural Values & National Park Conservation Buffer Overlays'
+    councilOverlay: 'TCC Magnetic Island Natural Values & National Park Conservation Buffer Overlays'
   }
 };
 
@@ -1174,7 +1174,7 @@ export const bespokeSuburbs: Record<string, BespokeSuburbData> = {
     treeRemovalSpecifics: 'Tree removal in Kirwan almost always demands sectional dismantling. When dismantling large African Mahoganies or overgrown figs in confined backyards, our qualified climbing arborists rig each branch back towards the trunk, lowering timber under precise friction control to protect underlying garden beds, fences, and swimming pool enclosures.',
     stumpGrindingSpecifics: 'Stump grinding in Kirwan addresses large, aggressive surface root flares that threaten underground stormwater lines and crack concrete driveways. Our high-torque machines grind the root crown 300mm below lawn level, preventing subterranean termites from establishing nests in dead timber.',
     palmTreeSpecifics: 'Dense multi-stem Golden Cane clumps and tall Cocos palms are common across Kirwan. Without regular maintenance, heavy seed bunches and dying fronds create high fire loads and bat roosts; our palm removal service eliminates these liabilities safely.',
-    councilInsights: 'In Kirwan residential allotments under standard zoning, nuisance or hazardous trees located wholly within private freehold boundaries generally do not require complex council permits unless subject to a specific vegetation protection covenant or heritage register. We verify your exact property zoning against Townsville City Council maps before beginning work.',
+    councilInsights: 'In Kirwan residential allotments under standard Townsville City Council (TCC) zoning, ordinary or hazardous trees located wholly within private freehold boundaries generally do not require council permits unless subject to a specific vegetation protection covenant or heritage register. We verify your exact property zoning against TCC planning maps before beginning work.',
     pricingInsight: 'Tree removal pricing in Kirwan is primarily determined by gate access width and proximity to fences, pools, and sheds. Standard single-stem trees with good access typically range between $650 and $1,400, while complex over-roof mahogany dismantles range upwards of $1,600 to $3,200.'
   },
   'Bushland Beach': {
@@ -1185,7 +1185,7 @@ export const bespokeSuburbs: Record<string, BespokeSuburbData> = {
     treeRemovalSpecifics: 'Tree removals in Bushland Beach often involve leaning casuarinas, salt-damaged eucalypts, or oversized coastal paperbarks threatening colorbond roofs. Our team utilizes specialized non-corrosive rigging lines and compact machinery to execute clean, zero-impact dismantles.',
     stumpGrindingSpecifics: 'Stump grinding in Bushland Beach requires specialized equipment that can handle loose coastal sand without bogging. We grind the fibrous root core 350mm deep, backfilling with clean organic mulch that helps stabilize loose sandy topsoil.',
     palmTreeSpecifics: 'Coconut palms and royal palms are prominent throughout Bushland Beach. Heavy 3kg coconuts and massive 15kg fronds represent dangerous hazards in coastal gales. We provide complete palm felling, root-ball grinding, and seasonal de-nutting.',
-    councilInsights: 'Properties directly bordering the Halifax Bay foreshore or designated marine reserve zones fall under the Townsville City Council Coastal Hazard and Marine Erosion Management Overlay. Arbco handles all required arborist risk assessments for protected marine vegetation.',
+    councilInsights: 'Properties directly bordering the Halifax Bay foreshore fall under the Townsville City Council (TCC) Coastal Hazard and Marine Erosion Management Overlay. For standard freehold residential allotments away from foreshore zones, ordinary yard tree removals do not require council permits. Arbco handles all required TCC risk assessments for protected marine vegetation.',
     pricingInsight: 'Bushland Beach tree removals generally range from $650 to $1,400 for standard residential blocks with good side access, while tall leaning coastal trees or multi-palm removals near pools range from $1,200 to $2,800 depending on drop-zone constraints.'
   },
   'Mount Louisa': {
@@ -1196,7 +1196,7 @@ export const bespokeSuburbs: Record<string, BespokeSuburbData> = {
     treeRemovalSpecifics: 'Dismantling heavy ironbarks and bloodwoods on steep hillside blocks demands specialized friction lowering blocks and redirect pulleys to prevent rolling logs from breaching retaining walls or striking downhill properties.',
     stumpGrindingSpecifics: 'Grinding stumps on Mount Louisa requires agile, low-center-of-gravity tracked grinders capable of ascending sloped yards and grinding between granite rock shelves without throwing stone debris.',
     palmTreeSpecifics: 'Cocos palms and golden cane clumps planted on retaining wall terraces frequently lift stone blocks as they mature. We carefully dismantle palms and grind the root plates flush to protect structural retaining walls.',
-    councilInsights: 'Portions of Mount Louisa properties on upper contours are subject to the TCC Steep Land and Landslide Hazard Overlay. Removals of dead, dying, or structurally dangerous trees posing immediate threat to dwellings are permitted with qualified Level 5 arborist sign-off.',
+    councilInsights: 'Portions of Mount Louisa properties on upper contours are subject to the Townsville City Council (TCC) Steep Land and Landslide Hazard Overlay, where Level 5 arborist evaluations ensure slope root stability. Standard freehold residential blocks on lower contours do not require council permits for ordinary yard trees.',
     pricingInsight: 'Due to slope gradients and technical high-angle rigging requirements, Mount Louisa projects typically range from $750 to $1,600 for standard backyard trees, and $1,800 to $3,500+ for large slope-bound hardwoods requiring complex rope redirects.'
   },
   'Townsville City': {
@@ -1207,7 +1207,7 @@ export const bespokeSuburbs: Record<string, BespokeSuburbData> = {
     treeRemovalSpecifics: 'Precision zero-drop dismantling using hydraulic cranes or internal rope redirects. Every limb is lowered under positive control to prevent impact on pedestrian footpaths, awnings, or parked vehicles.',
     stumpGrindingSpecifics: 'Precision grinding in tight commercial courtyards, carefully tracing underground telecommunication conduits and water lines before grinding.',
     palmTreeSpecifics: 'High-reach de-nutting and palm removal along commercial dining strips and body corporate complexes to eliminate pedestrian injury risks from falling coconuts.',
-    councilInsights: 'Street trees and trees in commercial precincts fall under strict Townsville City Council urban management policies. Private commercial properties require compliant arborist documentation for heritage or significant amenity specimens.',
+    councilInsights: 'All street trees, parklands, and public road reserves fall under strict Townsville City Council (TCC) management. On private commercial and residential properties, ordinary trees have straightforward management pathways, while Level 5 arborist reports are provided for heritage overlays or significant amenity specimens.',
     pricingInsight: 'Commercial and CBD tree removals generally involve traffic control and narrow crane access, with projects ranging from $1,200 for single high-risk palms to $3,500+ for large multi-story crane-assisted removals.'
   },
   'Magnetic Island': {
@@ -1218,7 +1218,7 @@ export const bespokeSuburbs: Record<string, BespokeSuburbData> = {
     treeRemovalSpecifics: 'Dismantling mature storm-damaged trees on rocky headlands without disturbing adjacent national park vegetation or protected koala eucalyptus habitats.',
     stumpGrindingSpecifics: 'Deploying barge-transported compact stump grinders to pulverize hardwood stumps in granite boulder pockets, preventing termite colonies in island timber houses.',
     palmTreeSpecifics: 'Extensive coconut palm management across island holiday resorts and residences: de-nutting 3kg coconuts and full removals of dangerous leaning palms.',
-    councilInsights: 'Strict environmental protections apply across the island under the TCC Magnetic Island Natural Values and National Park Buffer Overlays. Our Level 5 arborists prepare compliant documentation for hazardous tree permits.',
+    councilInsights: 'Administered under Townsville City Council (TCC), strict environmental protections apply across the island under the TCC Magnetic Island Natural Values and National Park Buffer Overlays. Our Level 5 arborists prepare compliant documentation for hazardous tree permits where required.',
     pricingInsight: 'Pricing on Magnetic Island includes barge freight logistics and ferry mobilization. Small palm removals and pruning start around $450 to $850, while full hazardous hardwood removals generally range from $1,800 to $4,000+ depending on crane and barge scheduling.'
   },
   'Annandale': {
@@ -1229,7 +1229,7 @@ export const bespokeSuburbs: Record<string, BespokeSuburbData> = {
     treeRemovalSpecifics: 'Removing storm-weakened eucalypts and invasive root systems threatening swimming pool shells, underground drainage, and boundary fencing.',
     stumpGrindingSpecifics: 'Grinding deep below lawn grade, chasing out invasive roots under driveways and pool pavers, and backfilling with fine organic mulch.',
     palmTreeSpecifics: 'Removing overgrown Golden Cane clumps and tall Alexander palms that have outgrown tight pool perimeters.',
-    councilInsights: 'Properties bordering the Ross River are subject to the TCC Riparian Corridor Protection Scheme; we provide qualified arborist evaluations for council compliance.',
+    councilInsights: 'Under Townsville City Council (TCC) planning regulations, standard freehold residential blocks have no permit requirements for ordinary private trees. Properties directly bordering the Ross River corridor fall under the TCC Riparian Corridor Scheme, where Arbco provides qualified arborist evaluations for TCC compliance.',
     pricingInsight: 'Annandale residential tree removals typically range between $650 and $1,500, with complex pool-perimeter or large rain tree dismantles ranging from $1,800 to $3,200.'
   },
   'Aitkenvale': {
@@ -1240,7 +1240,7 @@ export const bespokeSuburbs: Record<string, BespokeSuburbData> = {
     treeRemovalSpecifics: 'Systematic limb-by-limb lowering using tensioned arborist rigging to navigate tight spaces between houses, overhead powerlines, and boundary fences.',
     stumpGrindingSpecifics: 'Grinding legacy mango and fig stumps 350mm deep to prevent aggressive root regrowths and termite infestation near high-set house stumps.',
     palmTreeSpecifics: 'Dismantling old date palms and overgrown golden canes to open up sunny backyard lawn space and eliminate bat roosts.',
-    councilInsights: 'Standard residential freehold blocks in Aitkenvale have minimal tree removal restrictions unless located within the Ross River drainage corridor.',
+    councilInsights: 'Under Townsville City Council (TCC) planning provisions, standard residential freehold blocks in Aitkenvale do not require council permits for ordinary trees wholly within private property boundaries, unless located directly within the Ross River riparian corridor.',
     pricingInsight: 'Aitkenvale tree removals typically cost between $600 and $1,350 for standard backyard trees, with large 50-year-old mango or fig trees requiring complex overhead wire rigging ranging from $1,600 to $3,000.'
   },
   'Douglas': {
@@ -1251,7 +1251,7 @@ export const bespokeSuburbs: Record<string, BespokeSuburbData> = {
     treeRemovalSpecifics: 'Sectional lowering of overhanging eucalypts near university rental properties, townhouse complexes, and riverside boardwalks.',
     stumpGrindingSpecifics: 'High-speed grinding of tough eucalypt stumps with full utility pre-scans protecting underground internet and irrigation pipes.',
     palmTreeSpecifics: 'Routine pruning and removals of foxtail and cocos palms to protect solar panels and vehicle carports from storm-blown seed pods.',
-    councilInsights: 'River-facing properties are governed by the TCC Riverway Riparian Management Code. Arbco handles all necessary environmental assessments.',
+    councilInsights: 'River-facing properties along the Ross River are governed by the Townsville City Council (TCC) Riparian Corridor Scheme. Standard freehold residential allotments in Douglas do not require council permits for ordinary trees wholly within private boundaries.',
     pricingInsight: 'Douglas residential projects generally average $650 to $1,400 for standard yard removals, while compact townhouse courtyard trees or large riverfront eucalypts range from $1,500 to $2,800.'
   },
   'North Ward': {
@@ -1262,7 +1262,7 @@ export const bespokeSuburbs: Record<string, BespokeSuburbData> = {
     treeRemovalSpecifics: 'High-angle technical climbing and friction rigging to safely dismantle massive canopy trees over multi-million dollar homes and heritage architecture.',
     stumpGrindingSpecifics: 'Operating portable, narrow-access grinders capable of negotiating stone garden steps and elevated terrace garden beds.',
     palmTreeSpecifics: 'Specialist climbing to de-nut and remove tall coconut and royal palms overhanging glass balustrades, infinity pools, and outdoor dining patios.',
-    councilInsights: 'Subject to Castle Hill Foothills Heritage and Landscape Character Overlays. Arbco provides comprehensive Level 5 arborist reports for council approval.',
+    councilInsights: 'Properties in North Ward are subject to Townsville City Council (TCC) Character Residential and Castle Hill Foothills Overlays. Arbco provides comprehensive Level 5 arborist reports for TCC permit approvals, while standard exempt maintenance proceeds without delay.',
     pricingInsight: 'Due to premium architecture, tight streets, and hillside slopes, North Ward tree removals typically range from $850 to $1,800, with complex heritage tree dismantles ranging from $2,000 to $4,500+.'
   },
   'Castle Hill': {
@@ -1273,7 +1273,7 @@ export const bespokeSuburbs: Record<string, BespokeSuburbData> = {
     treeRemovalSpecifics: 'Advanced technical rigging with mechanical advantage pulleys and winches to lift and lower timber sections uphill against gravity.',
     stumpGrindingSpecifics: 'Hand-held and specialized tracked grinding in rocky crevices, shaving stumps flush with granite shelves to allow structural deck construction.',
     palmTreeSpecifics: 'Removing wind-damaged palms on cliff-edge perimeters where falling fronds threaten downhill neighbours and road corridors.',
-    councilInsights: 'Strictly regulated under the TCC Steep Land and Landslide Hazard Overlay. Professional arborist assessment is mandatory to ensure root removal does not destabilize rock shelves.',
+    councilInsights: 'Hillside properties are regulated under the Townsville City Council (TCC) Steep Land and Landslide Hazard Overlay. Professional Level 5 arborist assessments ensure root removal does not destabilize granite rock scree, fulfilling all TCC requirements.',
     pricingInsight: 'Castle Hill removals require specialized high-angle rigging and climbing crews; prices typically range from $950 to $1,900 for standard slope trees and $2,200 to $4,800+ for large cliffside hardwoods.'
   },
   'Burdell': {
@@ -1284,7 +1284,7 @@ export const bespokeSuburbs: Record<string, BespokeSuburbData> = {
     treeRemovalSpecifics: 'Precision dismantling of fast-growing eucalypts planted too close to house footings or boundary fences in newly developed estates.',
     stumpGrindingSpecifics: 'Using compact, gate-friendly stump grinders that pass through 750mm side gates without removing fence panels, grinding 300mm below lawn level.',
     palmTreeSpecifics: 'Removing or thinning foxtail and golden cane palms in tight courtyard settings to stop fronds clogging roof gutters and air conditioning units.',
-    councilInsights: 'Standard residential approvals apply. Fast, straightforward approvals for nuisance or hazardous trees wholly within private freehold boundaries.',
+    councilInsights: 'Under Townsville City Council (TCC) planning provisions, ordinary trees located wholly within private freehold residential boundaries in Burdell do not require council permits. Quick, straightforward verification is completed on-site.',
     pricingInsight: 'Burdell tree removals are generally very affordable due to compact tree sizes, ranging between $450 and $1,100 for typical yard trees, and up to $1,600 for larger gums near fence boundaries.'
   },
   'Bohle Plains': {
@@ -1295,7 +1295,7 @@ export const bespokeSuburbs: Record<string, BespokeSuburbData> = {
     treeRemovalSpecifics: 'Controlled sectional felling of leaning native trees and developer-planted hardwoods threatening roof eaves and outdoor entertainment areas.',
     stumpGrindingSpecifics: 'Precision mechanical grinding below turf grade, destroying root systems to eliminate white ant harborage near modern timber-framed homes.',
     palmTreeSpecifics: 'Clearing overgrown palm clusters and heavy seed bunches before tropical storms create airborne projectile hazards.',
-    councilInsights: 'Governed by standard residential building bylaws; properties bordering environmental corridors must verify native vegetation buffers.',
+    councilInsights: 'Governed under standard Townsville City Council (TCC) residential planning rules, ordinary yard trees on private freehold land require no council permits. Properties bordering designated environmental corridors are verified for native buffer compliance.',
     pricingInsight: 'Bohle Plains residential tree removals typically range from $550 to $1,250, with larger native eucalypt dismantles ranging from $1,400 to $2,400.'
   },
   'Deeragun': {
@@ -1306,7 +1306,7 @@ export const bespokeSuburbs: Record<string, BespokeSuburbData> = {
     treeRemovalSpecifics: 'Dismantling large storm-damaged eucalypts and mature mango trees overhanging sheds, carports, and boundary fences.',
     stumpGrindingSpecifics: 'Grinding deep below turf grade across large backyards, eliminating trip hazards and subterranean termite nesting grounds.',
     palmTreeSpecifics: 'Complete extraction of sprawling golden cane clumps and tall cocos palms that harbor rodents and drop heavy fruit bunches.',
-    councilInsights: 'Standard freehold residential rules apply across Deeragun; no council permits required for standard private freehold residential tree management.',
+    councilInsights: 'Under Townsville City Council (TCC) regulations, standard freehold residential rules apply across Deeragun; no council permits are required for ordinary tree management wholly within private freehold property boundaries.',
     pricingInsight: 'Deeragun tree removal prices generally range from $600 to $1,350 for standard suburban blocks, and $1,400 to $2,800 for large rural-residential legacy hardwoods.'
   },
   'Hermit Park': {
@@ -1317,7 +1317,7 @@ export const bespokeSuburbs: Record<string, BespokeSuburbData> = {
     treeRemovalSpecifics: 'Precision rope rigging redirecting heavy hardwood limbs away from delicate corrugated iron roofs, verandahs, and decorative timber fretwork.',
     stumpGrindingSpecifics: 'Targeted grinding in confined backyards, carefully avoiding underground terra-cotta drainage and boundary fence footings.',
     palmTreeSpecifics: 'Stripping and removing overgrown palm clusters to prevent bats and snakes roosting directly adjacent to high-set bedroom windows.',
-    councilInsights: 'Character Residential zoning applies; our qualified Level 5 arborists ensure full compliance with TCC heritage and neighbourhood amenity standards.',
+    councilInsights: 'Townsville City Council (TCC) Character Residential zoning applies in designated heritage streets; our qualified Level 5 arborists ensure full compliance with TCC heritage and neighbourhood amenity standards.',
     pricingInsight: 'Hermit Park projects typically average $700 to $1,500 for standard yard removals, and $1,800 to $3,200 for large legacy mango or mahogany trees overhanging Queenslander tin roofs.'
   },
   'West End': {
@@ -1328,7 +1328,7 @@ export const bespokeSuburbs: Record<string, BespokeSuburbData> = {
     treeRemovalSpecifics: 'Confined-space sectional dismantling using friction lowering devices and crane assistance where driveway space permits.',
     stumpGrindingSpecifics: 'Maneuvering compact grinders through narrow heritage side paths to grind root systems flush with courtyard paving.',
     palmTreeSpecifics: 'De-nutting and felling tall coconut palms along narrow residential boundary corridors to eliminate personal injury hazards.',
-    councilInsights: 'Heritage character overlays apply in designated precincts; Arbco provides detailed arboricultural assessments for permit approvals.',
+    councilInsights: 'Townsville City Council (TCC) Character Residential overlays apply in historic West End precincts; Arbco provides certified Level 5 arborist assessments for TCC permit applications where required.',
     pricingInsight: 'West End tree removal pricing generally ranges between $650 and $1,450 for standard cottage blocks, and $1,700 to $3,400 for complex hillside boundary trees.'
   },
   'Kelso': {
@@ -1339,7 +1339,7 @@ export const bespokeSuburbs: Record<string, BespokeSuburbData> = {
     treeRemovalSpecifics: 'Dismantling large hollow-bearing eucalypts and storm-damaged branches overhanging suburban carports, chicken coops, and sheds.',
     stumpGrindingSpecifics: 'Deep mechanical grinding across large lawn areas, preventing subterranean termites from colonizing decaying wood near slab-on-ground homes.',
     palmTreeSpecifics: 'Removing overgrown multi-stem golden canes and cocos palms that drop messy seed bunches and attract fruit bats.',
-    councilInsights: 'Properties bordering the Ross River weir corridor fall under TCC Riparian Vegetation Protection guidelines; standard residential blocks have straightforward removal pathways.',
+    councilInsights: 'Properties bordering the Ross River weir corridor fall under Townsville City Council (TCC) Riparian Vegetation Protection guidelines. Standard freehold residential allotments have straightforward removal pathways with no council permits required.',
     pricingInsight: 'Kelso tree removals typically cost between $550 and $1,300 for standard yard trees, with large river-flat eucalypts ranging from $1,400 to $2,600.'
   },
   'Alice River': {
@@ -1350,7 +1350,7 @@ export const bespokeSuburbs: Record<string, BespokeSuburbData> = {
     treeRemovalSpecifics: 'Directional felling and mechanical winching of large dead or termite-damaged acreage hardwoods threatening homesteads, stables, and fences.',
     stumpGrindingSpecifics: 'High-horsepower stump grinding of massive 1m+ hardwood stumps, leveling ground to prevent horse tripping injuries and slasher damage.',
     palmTreeSpecifics: 'Clearing self-sown date palms and wild palm thickets along seasonal drainage lines to reduce combustible bushfire fuel loads.',
-    councilInsights: 'Rural residential zoning allows broad exemptions for bushfire hazard reduction and property protection within 20m of lawful structures.',
+    councilInsights: 'Under Townsville City Council (TCC) and Queensland planning frameworks, rural residential zoning in Alice River allows broad exemptions for bushfire hazard reduction and defensible space clearing within 20m of lawful structures without council permits.',
     pricingInsight: 'Acreage tree removals in Alice River range from $600 for single clear-felling trees to $1,800–$3,500+ for large dead ironbarks requiring heavy winch directional control.'
   },
   'Alligator Creek': {
@@ -1361,7 +1361,7 @@ export const bespokeSuburbs: Record<string, BespokeSuburbData> = {
     treeRemovalSpecifics: 'Large-scale sectional felling of decaying eucalyptus trees threatening rural dwellings, solar arrays, and high-value livestock.',
     stumpGrindingSpecifics: 'Heavy-duty grinding of massive tropical hardwood stumps, backfilling holes with organic mulch across paddocks and house yards.',
     palmTreeSpecifics: 'Clearing tall coconut palms and wild palm groves around dams and outdoor entertaining areas to reduce storm projectile risks.',
-    councilInsights: 'Bordering Bowling Green Bay National Park, native vegetation clearing must respect designated conservation boundaries; home protection clearing is permitted.',
+    councilInsights: 'Operating under Townsville City Council (TCC) and Queensland conservation frameworks, clearing bordering Bowling Green Bay National Park must respect buffer zones, while 20m bushfire defensible space clearing around dwellings is permitted without council permits.',
     pricingInsight: 'Alligator Creek acreage removals generally range from $700 to $1,600 for standard paddock trees, and $1,800 to $3,800 for massive multi-trunk creek hardwoods.'
   },
   'Balgal Beach': {
@@ -1372,7 +1372,7 @@ export const bespokeSuburbs: Record<string, BespokeSuburbData> = {
     treeRemovalSpecifics: 'Removing salt-damaged, leaning coastal trees and clearing heavy paperbark limbs hanging over holiday home roofs.',
     stumpGrindingSpecifics: 'Grinding fibrous coastal tree stumps in soft sand, preventing white ant colonies near timber beach houses.',
     palmTreeSpecifics: 'Extensive coconut palm de-nutting and tree removal to eliminate dangerous falling coconut risks over popular holiday yards.',
-    councilInsights: 'Subject to TCC Coastal Protection and Significant Coastal Vegetation Overlays; Arbco verifies all environmental parameters before starting work.',
+    councilInsights: 'Beachfront properties are subject to Townsville City Council (TCC) Coastal Protection and Significant Coastal Vegetation Overlays. Standard residential village allotments away from the foreshore have straightforward exemptions for ordinary private yard trees.',
     pricingInsight: 'Balgal Beach projects include northern transit and range from $650 to $1,450 for standard residential removals, with full multi-palm or coastal paperbark projects ranging up to $2,800.'
   },
   'Bluewater': {
@@ -1383,7 +1383,7 @@ export const bespokeSuburbs: Record<string, BespokeSuburbData> = {
     treeRemovalSpecifics: 'Clearing storm-damaged paperbarks and leaning eucalypts along creek boundaries and long acreage driveways.',
     stumpGrindingSpecifics: 'High-power grinding of sprawling root systems to keep acreage lawns smooth and safe for tractors and ride-on mowers.',
     palmTreeSpecifics: 'Removing overgrown palm groves that harbor cane toads, snakes, and flying foxes right near domestic outdoor areas.',
-    councilInsights: 'Acreage bushfire buffer exemptions apply; riparian corridors along Bluewater Creek are managed under environmental conservation rules.',
+    councilInsights: 'Under Townsville City Council (TCC) planning regulations, acreage bushfire buffer exemptions apply for clearing within 20m of dwellings, while riparian corridors along Bluewater Creek are managed under TCC environmental conservation guidelines.',
     pricingInsight: 'Bluewater tree removals generally cost between $650 and $1,400 for residential yards, and $1,500 to $3,200 for large acreage hardwood felling.'
   },
   'Black River': {
@@ -1394,7 +1394,7 @@ export const bespokeSuburbs: Record<string, BespokeSuburbData> = {
     treeRemovalSpecifics: 'Felling large hazardous eucalypts and clearing deadwood branches that threaten homes, solar panels, and perimeter fences during storms.',
     stumpGrindingSpecifics: 'Deep grinding of dense hardwood stumps to stop subterranean white ants from targeting nearby timber-framed homesteads.',
     palmTreeSpecifics: 'Thinning out self-sown date palms and wild palm clumps around seasonal dams and creek lines.',
-    councilInsights: 'Standard rural residential exemptions permit clearing within 20m of houses for bushfire safety without requiring council permits.',
+    councilInsights: 'Under Townsville City Council (TCC) and Queensland State codes, standard rural residential exemptions permit clearing within 20m of lawful dwellings for bushfire safety without requiring council permits.',
     pricingInsight: 'Black River tree removals typically range from $650 to $1,500 for standard yard clearing, and $1,600 to $3,200 for complex or dead multi-stem gum trees.'
   },
   'Condon': {
@@ -1405,7 +1405,7 @@ export const bespokeSuburbs: Record<string, BespokeSuburbData> = {
     treeRemovalSpecifics: 'Sectional lowering of overhanging hardwood limbs near outdoor pools, patio roofs, and colorbond boundary fences.',
     stumpGrindingSpecifics: 'Grinding deep below lawn grade, chasing lateral surface roots to prevent damage to lawnmowers and paving.',
     palmTreeSpecifics: 'Removing tall cocos palms and multi-stem golden canes that drop slippery fruit and create bat nesting corridors.',
-    councilInsights: 'Standard TCC residential regulations apply; hazardous trees wholly within private freehold boundaries have straightforward removal pathways.',
+    councilInsights: 'Standard Townsville City Council (TCC) residential regulations apply across Condon; ordinary or hazardous trees located wholly within private freehold boundaries have straightforward removal pathways with no council permits required.',
     pricingInsight: 'Condon tree removals average $550 to $1,300 for standard residential blocks, with complex pool-adjacent or over-roof tree removals ranging from $1,500 to $2,800.'
   },
   'Cranbrook': {
@@ -1416,7 +1416,7 @@ export const bespokeSuburbs: Record<string, BespokeSuburbData> = {
     treeRemovalSpecifics: 'Precision dismantling of oversized mango and fig trees overhanging powerlines, garages, and shared boundary fences.',
     stumpGrindingSpecifics: 'Grinding stumps flush below turf level to eliminate subterranean white ant food sources near slab-on-ground homes.',
     palmTreeSpecifics: 'Removing overgrown palm skirts and tall cocos palms that drop heavy fronds onto parked vehicles and patio roofs.',
-    councilInsights: 'Standard freehold residential rules apply; riverfront properties bordering Ross River corridor verify riparian buffers.',
+    councilInsights: 'Under Townsville City Council (TCC) regulations, standard freehold residential rules apply across Cranbrook with no permits needed for private yard trees; riverfront properties bordering the Ross River corridor are checked against TCC riparian buffers.',
     pricingInsight: 'Cranbrook projects typically range between $550 and $1,250 for typical yard trees, and $1,400 to $2,800 for large 40-year-old mango or fig trees.'
   },
   'Currajong': {
@@ -1427,7 +1427,7 @@ export const bespokeSuburbs: Record<string, BespokeSuburbData> = {
     treeRemovalSpecifics: 'Controlled sectional lowering using lowering ropes to maneuver limbs through narrow easements between homes and boundary fences.',
     stumpGrindingSpecifics: 'Operating agile stump grinders that access backyards without damaging concrete pathways, grinding 300mm deep.',
     palmTreeSpecifics: 'Eliminating neglected date and golden cane palms to reclaim sunny lawn areas and eliminate vermin nesting sites.',
-    councilInsights: 'Standard residential freehold land; straightforward removal pathways for dead, dangerous, or nuisance trees.',
+    councilInsights: 'Under Townsville City Council (TCC) planning provisions, standard residential freehold land in Currajong has straightforward removal pathways with no council permits required for ordinary trees wholly on private property.',
     pricingInsight: 'Currajong tree removals typically cost between $550 and $1,300, with tight high-set side access trees ranging from $1,400 to $2,600.'
   },
   'Garbutt': {
@@ -1438,7 +1438,7 @@ export const bespokeSuburbs: Record<string, BespokeSuburbData> = {
     treeRemovalSpecifics: 'Fast, safe removal of storm-damaged trees near commercial warehouses, aircraft flight paths, and residential roofs.',
     stumpGrindingSpecifics: 'High-capacity commercial grinding in industrial hardstands and residential yards, clearing ground for asphalt or turf.',
     palmTreeSpecifics: 'Removing tall palms near airport boundary perimeters to prevent bird/bat strikes and property damage during gales.',
-    councilInsights: 'Aviation height and security overlays apply near airport perimeters; standard residential freehold rules apply elsewhere.',
+    councilInsights: 'Townsville Airport aviation safety height overlays apply near runway perimeters; under Townsville City Council (TCC) rules, standard freehold residential blocks have straightforward tree management pathways with no council permits required.',
     pricingInsight: 'Garbutt tree removals range from $500 to $1,200 for standard residential lots, while commercial and industrial site clearing ranges from $1,400 to $3,200+.'
   },
   'Gulliver': {
@@ -1449,7 +1449,7 @@ export const bespokeSuburbs: Record<string, BespokeSuburbData> = {
     treeRemovalSpecifics: 'Surgical sectional dismantling to remove oversized trees overhanging bedrooms, tin roofs, and neighbor fence lines.',
     stumpGrindingSpecifics: 'Grinding large stump flares 300mm deep, destroying underground termite harborage before white ants threaten timber house stumps.',
     palmTreeSpecifics: 'Removing multi-stem golden canes and unkempt cocos palms to eliminate bat roosts and seasonal frond litter.',
-    councilInsights: 'Freehold residential allotments have standard exemptions for hazardous or nuisance tree management on private land.',
+    councilInsights: 'Under Townsville City Council (TCC) planning provisions, freehold residential allotments in Gulliver have standard exemptions for managing ordinary or hazardous trees on private land without requiring council permits.',
     pricingInsight: 'Gulliver projects generally average $550 to $1,250 for standard backyard trees, and $1,400 to $2,600 for large legacy mango trees.'
   },
   'Heatley': {
@@ -1460,7 +1460,7 @@ export const bespokeSuburbs: Record<string, BespokeSuburbData> = {
     treeRemovalSpecifics: 'Sectional rope dismantling of top-heavy canopy trees overhanging low-set rooflines and backyard outdoor entertaining spaces.',
     stumpGrindingSpecifics: 'Grinding central stumps and surface buttress roots to 300mm depth, allowing immediate lawn reseeding or paving.',
     palmTreeSpecifics: 'Dismantling tall cocos palms and extracting dense root balls that lift poolside pavers and concrete paths.',
-    councilInsights: 'Standard residential planning zoning; straightforward approvals for hazardous trees wholly on private property.',
+    councilInsights: 'Under Townsville City Council (TCC) residential zoning, ordinary or hazardous trees located wholly on private freehold property in Heatley have straightforward removal pathways with no council permits required.',
     pricingInsight: 'Heatley tree removals typically range between $550 and $1,300, with complex pool-perimeter or fence-line tree removals ranging from $1,400 to $2,600.'
   },
   'Hyde Park': {
@@ -1471,7 +1471,7 @@ export const bespokeSuburbs: Record<string, BespokeSuburbData> = {
     treeRemovalSpecifics: 'Precision friction rigging to steer heavy hardwood sections away from tin roofs, decorative verandahs, and heritage fences.',
     stumpGrindingSpecifics: 'Deploying compact grinders through narrow heritage gates to grind tree stumps flush without disturbing garden borders.',
     palmTreeSpecifics: 'De-nutting and removing tall date and coconut palms near residential driveways and medical center parking areas.',
-    councilInsights: 'Character Residential guidelines apply in historic areas; Arbco handles all required Level 5 arborist reports for council compliance.',
+    councilInsights: 'Townsville City Council (TCC) Character Residential guidelines apply in historic Hyde Park precincts; Arbco handles all required Level 5 arborist reports for TCC compliance, while standard exempt garden maintenance proceeds smoothly.',
     pricingInsight: 'Hyde Park tree removals typically range from $650 to $1,450 for standard residential trees, and $1,600 to $3,200 for large legacy hardwoods.'
   },
   'Idalia': {
@@ -1482,7 +1482,7 @@ export const bespokeSuburbs: Record<string, BespokeSuburbData> = {
     treeRemovalSpecifics: 'Micro-rigging and vertical limb lowering in tight residential backyards, ensuring zero impact on pool glass or alfresco pergolas.',
     stumpGrindingSpecifics: 'Compact tracked grinders passing through standard gates to grind root plates below turf level, avoiding buried NBN and irrigation.',
     palmTreeSpecifics: 'Thinning and removing foxtail and golden cane palms that shed heavy fronds into swimming pools and block lake views.',
-    councilInsights: 'Lakeside estates operate under standard urban residential building regulations; straightforward approvals for private freehold blocks.',
+    councilInsights: 'Under Townsville City Council (TCC) residential regulations, lakeside estate allotments in Idalia have straightforward removal pathways with no council permits required for ordinary trees located wholly on private freehold property.',
     pricingInsight: 'Idalia tree removals average $500 to $1,200 for typical modern residential blocks, with pool-side or zero-lot-line trees up to $1,800.'
   },
   'Jensen': {
@@ -1493,7 +1493,7 @@ export const bespokeSuburbs: Record<string, BespokeSuburbData> = {
     treeRemovalSpecifics: 'Directional felling and crane-assisted tree removal of large, hazardous eucalypts threatening acreage homesteads and sheds.',
     stumpGrindingSpecifics: 'High-power commercial stump grinding to eliminate subterranean white ant colonies before they reach rural timber structures.',
     palmTreeSpecifics: 'Clearing overgrown palm clumps and removing wild date palms along fence lines and seasonal drainage easements.',
-    councilInsights: 'Rural residential zoning permits standard 20m bushfire defensible space clearing around approved buildings without council permits.',
+    councilInsights: 'Under Townsville City Council (TCC) and Queensland planning codes, rural residential zoning in Jensen permits standard 20m bushfire defensible space clearing around approved buildings without council permits.',
     pricingInsight: 'Jensen tree removals generally range from $650 to $1,500 for standard yard trees, and $1,600 to $3,500 for large multi-stem native hardwoods.'
   },
   'Mount Low': {
@@ -1504,7 +1504,7 @@ export const bespokeSuburbs: Record<string, BespokeSuburbData> = {
     treeRemovalSpecifics: 'Dismantling fast-growing pioneer trees and storm-strained eucalypts near modern boundary fences and patio roofs.',
     stumpGrindingSpecifics: 'Using gate-friendly stump grinders that access backyards without damaging colorbond fence panels or newly laid turf.',
     palmTreeSpecifics: 'Removing or de-nutting coconut and golden cane palms before tropical storm gusts turn dead fronds into airborne hazards.',
-    councilInsights: 'Standard residential development bylaws apply; quick and simple verification for hazardous trees on freehold land.',
+    councilInsights: 'Standard Townsville City Council (TCC) residential planning provisions apply in Mount Low; ordinary or hazardous trees located wholly within private freehold boundaries have straightforward removal pathways with no council permits required.',
     pricingInsight: 'Mount Low tree removal pricing typically ranges from $500 to $1,200 for standard estate blocks, and $1,400 to $2,600 for older remnant acreage trees.'
   },
   'Mundingburra': {
@@ -1515,7 +1515,7 @@ export const bespokeSuburbs: Record<string, BespokeSuburbData> = {
     treeRemovalSpecifics: 'Complex sectional dismantling of giant overhanging canopy trees using friction brakes, redirect blocks, and ground protection mats.',
     stumpGrindingSpecifics: 'Deep grinding of massive hardwood and fig stump flares, preventing white ants from nesting near classic Queenslander stilt footings.',
     palmTreeSpecifics: 'Removing towering old date palms and cleaning dense palm crowns to prevent bat colonies near outdoor entertaining decks.',
-    councilInsights: 'Properties directly fronting Ross River fall under the TCC Riparian Corridor Protection Scheme; Arbco provides Level 5 compliance reports.',
+    councilInsights: 'Properties directly fronting Ross River fall under the Townsville City Council (TCC) Riparian Corridor Protection Scheme, where Arbco provides Level 5 compliance reports. Standard freehold residential blocks away from the river require no council permits.',
     pricingInsight: 'Mundingburra projects typically range from $750 to $1,600 for standard yard trees, and $2,000 to $4,200+ for massive 100-year-old rain trees or figs.'
   },
   'Nelly Bay': {
@@ -1526,7 +1526,7 @@ export const bespokeSuburbs: Record<string, BespokeSuburbData> = {
     treeRemovalSpecifics: 'High-angle climbing and precision rigging to lower timber away from island holiday homes and fragile granite retaining walls.',
     stumpGrindingSpecifics: 'Operating barge-transported compact grinders in rocky island soil, shaving stumps flush with granite shelves.',
     palmTreeSpecifics: 'Extensive seasonal coconut de-nutting and palm removal to eliminate 3kg falling coconut hazards along pedestrian paths and resort pools.',
-    councilInsights: 'Governed by the TCC Magnetic Island Natural Values Overlay. Professional Level 5 arborist evaluations ensure smooth permit approvals.',
+    councilInsights: 'Governed under Townsville City Council (TCC) planning provisions, Magnetic Island properties are subject to the TCC Magnetic Island Natural Values Overlay. Professional Level 5 arborist evaluations ensure smooth permit approvals where required.',
     pricingInsight: 'Nelly Bay pricing includes barge mobilization: small palm removals start around $450 to $800, while complex hardwood dismantles range from $1,800 to $3,800+.'
   },
   'Arcadia': {
@@ -1537,7 +1537,7 @@ export const bespokeSuburbs: Record<string, BespokeSuburbData> = {
     treeRemovalSpecifics: 'Surgical sectional dismantling over holiday cottages, using tensioned ropes to keep timber clear of granite boulders and glass balustrades.',
     stumpGrindingSpecifics: 'Shaving hardwood and palm stumps flush within rocky crevices to allow safe garden paths and outdoor timber deck construction.',
     palmTreeSpecifics: 'Complete coconut palm removals and hazardous frond clearing along guest pathways and seaside holiday homes.',
-    councilInsights: 'Subject to strict National Park Buffer and Coastal Protection Overlays; Arbco handles all required environmental documentation.',
+    councilInsights: 'Subject to Townsville City Council (TCC) Magnetic Island Natural Values and National Park Buffer Overlays; Arbco handles all required Level 5 arborist evaluations and environmental documentation for island residents.',
     pricingInsight: 'Arcadia projects range from $500 for routine palm work to $1,900–$4,000+ for large hoop pines or hardwoods requiring specialized island rigging.'
   },
   'Horseshoe Bay': {
@@ -1548,7 +1548,7 @@ export const bespokeSuburbs: Record<string, BespokeSuburbData> = {
     treeRemovalSpecifics: 'Controlled sectional felling of leaning coastal paperbarks and dead eucalyptus trees over beachfront roofs and tourist areas.',
     stumpGrindingSpecifics: 'Grinding stumps in soft sandy soils, backfilling flush to keep beach holiday lawns smooth and safe.',
     palmTreeSpecifics: 'Routine commercial coconut de-nutting and complete removals of tall, leaning coconuts along beachfront cafes and holiday houses.',
-    councilInsights: 'Lagoon and wetland areas are protected under TCC environmental codes; our qualified arborists provide compliant risk assessments.',
+    councilInsights: 'Administered under Townsville City Council (TCC), lagoon and wetland areas are protected under TCC environmental codes; our qualified Level 5 arborists provide compliant risk assessments while standard private yard exemptions are verified.',
     pricingInsight: 'Horseshoe Bay tree removals generally cost between $500 and $1,200 for palm de-nutting/removal, and $1,800 to $3,800 for complex wetland or beachfront trees.'
   },
   'Picnic Bay': {
@@ -1559,7 +1559,7 @@ export const bespokeSuburbs: Record<string, BespokeSuburbData> = {
     treeRemovalSpecifics: 'Technical rope-assisted dismantling of storm-damaged trees over heritage architecture and narrow island streets.',
     stumpGrindingSpecifics: 'Grinding tough stumps in skeletal granite soils, destroying subterranean termite food sources near island timber cottages.',
     palmTreeSpecifics: 'Removing dangerous coconut palms overhanging public footpaths, open-air cafes, and swimming pool enclosures.',
-    councilInsights: 'Heritage and Natural Values Overlays apply; Arbco ensures all environmental requirements and council paperwork are satisfied.',
+    councilInsights: 'Subject to Townsville City Council (TCC) Heritage and Magnetic Island Natural Values Overlays; Arbco prepares certified Level 5 arborist reports for all required TCC permits, ensuring full environmental compliance.',
     pricingInsight: 'Picnic Bay tree removals range from $450 to $900 for routine palm work, and $1,800 to $3,800+ for major canopy dismantles on steep hillside terrain.'
   },
   'Oonoonba': {
@@ -1570,7 +1570,7 @@ export const bespokeSuburbs: Record<string, BespokeSuburbData> = {
     treeRemovalSpecifics: 'Controlled sectional lowering of mature canopy trees over high-set roofs, modern colorbond fences, and underground services.',
     stumpGrindingSpecifics: 'Deep grinding 300mm below turf grade, eliminating termite food points before white ants target residential timber framing.',
     palmTreeSpecifics: 'Removing overgrown golden cane palms and tall cocos palms that drop messy seed bunches and harbor pests.',
-    councilInsights: 'River-adjacent land falls under TCC riparian management codes; standard residential freehold land has straightforward removal rules.',
+    councilInsights: 'River-adjacent land falls under Townsville City Council (TCC) riparian management codes; standard residential freehold land across Oonoonba has straightforward removal rules with no council permits required.',
     pricingInsight: 'Oonoonba tree removals typically range from $500 to $1,200 for modern estate blocks, and $1,400 to $2,800 for older high-set riverfront properties.'
   },
   'Pallarenda': {
@@ -1581,7 +1581,7 @@ export const bespokeSuburbs: Record<string, BespokeSuburbData> = {
     treeRemovalSpecifics: 'Pre-cyclone tree dismantling and clearing storm-strained coastal trees overhanging swimming pools and beachfront roofs.',
     stumpGrindingSpecifics: 'Grinding fibrous coastal tree and palm stumps in soft marine sands, backfilling with clean organic mulch.',
     palmTreeSpecifics: 'Regular coconut palm maintenance: systematic de-nutting and complete removals to eliminate personal injury and roof damage risks.',
-    councilInsights: 'TCC Coastal Hazard and Marine Erosion Overlays apply along foreshore boundaries; Arbco prepares compliant arborist risk reports.',
+    councilInsights: 'Townsville City Council (TCC) Coastal Hazard and Marine Erosion Overlays apply along foreshore boundaries; Arbco prepares compliant arborist risk reports, while standard residential blocks enjoy straightforward private freehold exemptions.',
     pricingInsight: 'Pallarenda tree removals generally cost between $650 and $1,400 for standard yard trees, with coastal casuarinas or multi-palm pool projects up to $2,800.'
   },
   'Pimlico': {
@@ -1592,7 +1592,7 @@ export const bespokeSuburbs: Record<string, BespokeSuburbData> = {
     treeRemovalSpecifics: 'Surgical sectional dismantling using tensioned arborist ropes to lower heavy timber safely away from heritage roofs and fences.',
     stumpGrindingSpecifics: 'Navigating compact grinders through narrow side driveways to grind legacy stumps 350mm deep, preventing termite infestation.',
     palmTreeSpecifics: 'Clearing overgrown palm thickets and tall cocos palms that drop heavy fronds onto hospital-precinct parking and driveways.',
-    councilInsights: 'Character Residential zoning applies in designated streets; Arbco verifies council guidelines to ensure complete compliance.',
+    councilInsights: 'Townsville City Council (TCC) Character Residential zoning applies in designated Pimlico streets; Arbco verifies TCC guidelines and prepares Level 5 arborist reports where required for character-protected specimens.',
     pricingInsight: 'Pimlico tree removals typically range between $650 and $1,450 for standard residential lots, and $1,600 to $3,200 for large legacy mango or fig trees.'
   },
   'Railway Estate': {
@@ -1603,7 +1603,7 @@ export const bespokeSuburbs: Record<string, BespokeSuburbData> = {
     treeRemovalSpecifics: 'Confined-space sectional lowering of overhanging limbs between high-set homes, powerlines, and colorbond boundary fences.',
     stumpGrindingSpecifics: 'Grinding deep below ground level, chasing surface roots to protect home stumps and underground plumbing.',
     palmTreeSpecifics: 'Removing tall coconut and date palms to prevent heavy fronds from damaging tin roofs and parked vehicles during storms.',
-    councilInsights: 'Standard freehold residential rules apply; properties bordering Ross Creek observe local riparian vegetation buffer rules.',
+    councilInsights: 'Under Townsville City Council (TCC) planning rules, standard freehold residential land in Railway Estate has straightforward pathways with no council permits required, while properties bordering Ross Creek observe TCC riparian buffer guidelines.',
     pricingInsight: 'Railway Estate projects generally range from $550 to $1,300 for standard yard removals, and $1,500 to $2,800 for high-set over-roof dismantles.'
   },
   'Rasmussen': {
@@ -1614,7 +1614,7 @@ export const bespokeSuburbs: Record<string, BespokeSuburbData> = {
     treeRemovalSpecifics: 'Dismantling storm-weakened eucalypts and overgrown hardwoods overhanging low-set roofs and neighbor boundaries.',
     stumpGrindingSpecifics: 'High-power mechanical grinding 300mm deep, eliminating underground wood sources where white ants colonize.',
     palmTreeSpecifics: 'Complete palm tree removals and root-ball extraction to prevent expanding root systems from cracking pool shells and paving.',
-    councilInsights: 'Standard TCC residential planning rules apply; quick, simple verification for private freehold property owners.',
+    councilInsights: 'Standard Townsville City Council (TCC) residential planning rules apply across Rasmussen; quick, simple verification confirms that ordinary private freehold trees require no council permits.',
     pricingInsight: 'Rasmussen tree removals typically cost between $550 and $1,300 for standard suburban blocks, with large multi-stem gums up to $2,500.'
   },
   'Rollingstone': {
@@ -1625,7 +1625,7 @@ export const bespokeSuburbs: Record<string, BespokeSuburbData> = {
     treeRemovalSpecifics: 'Dismantling heavy storm-damaged rainforest trees and waterlogged paperbarks overhanging homes and sheds.',
     stumpGrindingSpecifics: 'High-power grinding of massive tropical hardwood stumps, backfilling with organic mulch.',
     palmTreeSpecifics: 'Extensive coconut palm pruning and removals to eliminate dangerous falling coconut hazards.',
-    councilInsights: 'Riparian vegetation along Rollingstone Creek is protected; we ensure complete compliance with local environmental laws.',
+    councilInsights: 'Riparian vegetation along Rollingstone Creek is protected under Townsville City Council (TCC) environmental codes; standard freehold residential blocks have clear clearing exemptions with no permits required for ordinary yard trees.',
     pricingInsight: 'Rollingstone projects range from $650 to $1,450 for standard village yards, and $1,600 to $3,400 for large rainforest and creek hardwoods.'
   },
   'Rosslea': {
@@ -1636,7 +1636,7 @@ export const bespokeSuburbs: Record<string, BespokeSuburbData> = {
     treeRemovalSpecifics: 'Precision dismantling of large overhanging trees near golf course boundaries, fairways, and swimming pool enclosures.',
     stumpGrindingSpecifics: 'Grinding deep below turf level, backfilling flush so lawn areas can be mowed seamlessly with ride-on mowers.',
     palmTreeSpecifics: 'Removing overgrown palm clumps to restore golf course views and eliminate bat and rodent roosting habitat.',
-    councilInsights: 'River-adjacent properties observe TCC Riparian Corridor rules; standard residential freehold land has straightforward guidelines.',
+    councilInsights: 'River-adjacent properties observe Townsville City Council (TCC) Riparian Corridor rules; standard residential freehold land has straightforward guidelines with no council permits required for ordinary private trees.',
     pricingInsight: 'Rosslea tree removals typically average $600 to $1,400 for standard residential lots, with large golf-course perimeter trees up to $2,800.'
   },
   'Rowes Bay': {
@@ -1647,7 +1647,7 @@ export const bespokeSuburbs: Record<string, BespokeSuburbData> = {
     treeRemovalSpecifics: 'Dismantling salt-damaged coastal casuarinas and heavy leaning paperbarks overhanging homes and outdoor decks.',
     stumpGrindingSpecifics: 'Grinding stumps in loose coastal sands, backfilling with clean mulch that prevents sand dune erosion.',
     palmTreeSpecifics: 'De-nutting and felling tall coconut palms to eliminate dangerous falling coconut hazards along coastal pathways and driveways.',
-    councilInsights: 'Governed by the TCC Coastal Hazard Overlay; Arbco provides compliant Level 5 arborist evaluations for coastal vegetation.',
+    councilInsights: 'Governed by the Townsville City Council (TCC) Coastal Hazard Overlay; Arbco provides compliant Level 5 arborist evaluations for coastal vegetation, while standard freehold residential trees have straightforward exemption pathways.',
     pricingInsight: 'Rowes Bay tree removals generally cost between $650 and $1,450 for standard seaside lots, and $1,600 to $3,200 for large beachfront paperbarks.'
   },
   'Saunders Beach': {
@@ -1658,7 +1658,7 @@ export const bespokeSuburbs: Record<string, BespokeSuburbData> = {
     treeRemovalSpecifics: 'Pre-cyclone tree dismantling, storm-surge hazard removal, and clearing wind-thrown coastal trees.',
     stumpGrindingSpecifics: 'Grinding fibrous palm and paperbark stumps in soft coastal sands, backfilling level with the coastal lawn.',
     palmTreeSpecifics: 'Heavy coconut palm maintenance: systematic de-nutting and complete removals to eliminate personal injury and roof damage risks.',
-    councilInsights: 'Coastal Protection Overlays apply to beachfront properties; our Level 5 arborists evaluate all protected marine vegetation.',
+    councilInsights: 'Townsville City Council (TCC) Coastal Protection Overlays apply to beachfront properties in Saunders Beach; our Level 5 arborists evaluate all protected marine vegetation, while standard residential blocks have straightforward private exemptions.',
     pricingInsight: 'Saunders Beach tree removals range from $650 to $1,400 for typical beach cottages, with tall multi-palm projects or leaning casuarinas up to $2,600.'
   },
   'South Townsville': {
@@ -1669,7 +1669,7 @@ export const bespokeSuburbs: Record<string, BespokeSuburbData> = {
     treeRemovalSpecifics: 'Precision zero-impact sectional rigging to dismantle trees over commercial dining areas, tin roofs, and narrow boundary paths.',
     stumpGrindingSpecifics: 'Using compact, portable grinders to remove stumps from tight courtyard gardens and paved restaurant courtyards.',
     palmTreeSpecifics: 'De-nutting and removing tall coconut palms overhanging public footpaths and outdoor dining verandas.',
-    councilInsights: 'Character Residential and Commercial precinct rules apply; Arbco handles all necessary council permit paperwork.',
+    councilInsights: 'Townsville City Council (TCC) Character Residential and Commercial precinct rules apply in historic South Townsville; Arbco handles all necessary TCC permit documentation for significant or character-listed specimens.',
     pricingInsight: 'South Townsville tree removals typically range between $650 and $1,400 for residential cottages, and $1,600 to $3,200 for commercial dining strip trees.'
   },
   'Stuart': {
@@ -1680,7 +1680,7 @@ export const bespokeSuburbs: Record<string, BespokeSuburbData> = {
     treeRemovalSpecifics: 'Heavy commercial felling of large, hazardous eucalypts and storm-damaged timber threatening industrial buildings and yards.',
     stumpGrindingSpecifics: 'High-torque grinding in rocky soils, pulverizing hardwood stumps to prepare ground for heavy vehicle hardstands.',
     palmTreeSpecifics: 'Clearing self-sown date palms and wild palm clusters along fence lines and drainage channels.',
-    councilInsights: 'Standard industrial and residential planning codes apply; straightforward approvals for private land.',
+    councilInsights: 'Under Townsville City Council (TCC) planning codes, standard industrial and residential allotments in Stuart have straightforward removal pathways with no council permits required for trees wholly on private freehold land.',
     pricingInsight: 'Stuart tree removals range from $550 to $1,250 for residential lots, and $1,400 to $3,200+ for large commercial and industrial hardwood clearings.'
   },
   'Toolakea': {
@@ -1691,7 +1691,7 @@ export const bespokeSuburbs: Record<string, BespokeSuburbData> = {
     treeRemovalSpecifics: 'Removing salt-damaged or leaning coastal trees threatening homes and sheds during cyclone season.',
     stumpGrindingSpecifics: 'Grinding stumps in soft sand dunes, backfilling flush for garden replanting.',
     palmTreeSpecifics: 'Complete coconut palm felling and frond clearing along residential boundaries.',
-    councilInsights: 'Coastal Management Overlays apply; Arbco ensures all environmental requirements are fulfilled.',
+    councilInsights: 'Townsville City Council (TCC) Coastal Management Overlays apply to beachfront properties in Toolakea; Arbco ensures all environmental requirements are fulfilled, while standard residential lots have straightforward private exemptions.',
     pricingInsight: 'Toolakea projects range from $650 to $1,350 for beach village homes, and $1,400 to $2,600 for multi-palm or coastal paperbark projects.'
   },
   'Vincent': {
@@ -1702,7 +1702,7 @@ export const bespokeSuburbs: Record<string, BespokeSuburbData> = {
     treeRemovalSpecifics: 'Controlled sectional lowering using friction rigging to dismantle trees over carports, sheds, and colorbond fences.',
     stumpGrindingSpecifics: 'Grinding large stump flares 300mm below turf grade, preventing subterranean termite infestation.',
     palmTreeSpecifics: 'Removing messy golden cane and cocos palms to eliminate bat roosts and seasonal lawn debris.',
-    councilInsights: 'Standard residential freehold land; straightforward removal rules for nuisance and dangerous trees.',
+    councilInsights: 'Under Townsville City Council (TCC) planning provisions, standard residential freehold land in Vincent has straightforward removal rules with no council permits required for nuisance and dangerous trees wholly within private boundaries.',
     pricingInsight: 'Vincent tree removals typically range between $550 and $1,250 for standard yards, and $1,400 to $2,600 for large legacy mango or fig trees.'
   },
   'Wulguru': {
@@ -1713,9 +1713,9 @@ export const bespokeSuburbs: Record<string, BespokeSuburbData> = {
     treeRemovalSpecifics: 'Dismantling heavy eucalypts on foothill contours, rigging branches away from retaining walls, sheds, and outdoor patios.',
     stumpGrindingSpecifics: 'Operating tracked grinders across sloped foothill yards, grinding between rock shelves 300mm deep.',
     palmTreeSpecifics: 'Removing tall cocos palms planted on retaining walls before expanding root systems crack stone masonry.',
-    councilInsights: 'Upper foothill properties fall under the TCC Steep Land Overlay; Arbco verifies council guidelines for safe, compliant removals.',
+    councilInsights: 'Upper foothill properties in Wulguru fall under the Townsville City Council (TCC) Steep Land Overlay; Arbco verifies TCC guidelines for safe, compliant removals, while standard valley residential blocks require no council permits.',
     pricingInsight: 'Wulguru tree removals typically cost between $600 and $1,350 for standard yard trees, and $1,500 to $2,900 for slope-bound native hardwoods.'
-  }
+  },
 };
 
 // ============================================================================
@@ -1731,7 +1731,7 @@ function generateProceduralSuburbProfile(suburbName: string, env: SuburbEnvironm
     treeRemovalSpecifics: `Tree removal projects in ${suburbName} are approached with tailored rigging strategies. Whether dismantling a hazardous eucalypt overhanging a boundary fence or clearing storm-damaged timber, our qualified arborists rig each section down with surgical precision.`,
     stumpGrindingSpecifics: `Tree stumps left behind in ${suburbName} create prime harborage for destructive subterranean termites. Our operators grind the central root crown and lateral surface roots 200mm to 350mm below grade, leaving the ground level and ready for new turf or building work.`,
     palmTreeSpecifics: `Unmanaged palms in ${suburbName} produce heavy fronds and dense fruit clusters that present severe projectile hazards in storm season. We provide complete palm dismantling, frond cleaning, and root-ball extraction.`,
-    councilInsights: `Works in ${suburbName} must observe Townsville City Council planning regulations, including the ${env.councilOverlay}. While hazardous trees on freehold residential land generally have straightforward approval pathways, our Level 5 arborists evaluate and handle all necessary documentation.`,
+    councilInsights: `All tree operations in ${suburbName} fall under the local-government jurisdiction of Townsville City Council (TCC). On standard private freehold residential land, property owners generally do not require a council permit for ordinary tree removals within property boundaries unless subject to specific planning scheme overlays (such as ${env.councilOverlay}), heritage registers, or prior development conditions. Our Level 5 arborists verify your exact property zoning against TCC planning maps and handle any required documentation.`,
     pricingInsight: `Pricing for tree removal in ${suburbName} is based on tree height, branch spread, and site accessibility, with standard residential trees typically ranging from $600 to $1,400 and complex or hazardous hardwoods ranging upwards from $1,600 to $3,200.`
   };
 }
@@ -1885,7 +1885,7 @@ function getMicroZoneTerrainFaq(
     if (serviceId === 'land-clearing') {
       return {
         question: `Do Ross River riparian rules affect clearing in ${suburbName}?`,
-        answer: `Yes. Properties near the Ross River fall under the TCC Riparian Corridor & Waterway Vegetation Protection Scheme. Mature native trees along river banks are protected to prevent bank erosion. Arbco evaluates council zoning and manages all compliance documentation.`
+        answer: `Yes. Properties near the Ross River fall under the Townsville City Council (TCC) Riparian Corridor & Waterway Vegetation Protection Scheme. Mature native trees along river banks are protected to prevent bank erosion. Arbco evaluates TCC planning scheme overlays and manages all compliance documentation.`
       };
     }
     // Default tree-removal / emergency for alluvial
@@ -2066,17 +2066,17 @@ function getCouncilOverlayFaq(
   let answer = '';
 
   if (env.councilOverlay.includes('Riparian')) {
-    answer = `In ${suburbName}, allotments bordering the Ross River or designated drainage corridors are subject to the TCC Riparian Corridor Vegetation Protection Scheme. Mature trees stabilizing the riverbank are protected to prevent bank erosion and protect water quality. However, trees posing an imminent structural threat or clear exemptions can be managed legally. Arbco's Level 5 arborists inspect your property, determine whether an exemption applies, and handle all council application documentation.`;
+    answer = `All local government matters in ${suburbName} are administered by Townsville City Council (TCC). Allotments bordering the Ross River or designated drainage corridors are subject to the TCC Riparian Corridor Vegetation Protection Scheme. While mature trees stabilizing riverbanks are protected against unauthorized clearing, dangerous trees posing an imminent structural threat can be managed legally under exemption pathways. Arbco's Level 5 arborists inspect your property, verify TCC zoning maps, and manage any required council documentation.`;
   } else if (env.councilOverlay.includes('Steep Land') || env.councilOverlay.includes('Landslide')) {
-    answer = `Properties situated on ${suburbName}'s hillsides are governed by the TCC Steep Land & Landslide Hazard Overlay. Because tree roots provide vital soil binding on steep granite scree, clearing mature trees requires careful evaluation. Our consulting arborists prepare certified tree risk assessments demonstrating tree health and site stability, ensuring complete council compliance.`;
+    answer = `All tree regulations in ${suburbName} fall under Townsville City Council (TCC) jurisdiction. Hillside properties on sloped contours are governed by the TCC Steep Land & Landslide Hazard Overlay. Because mature tree roots provide vital soil binding on steep granite scree, clearing canopy trees requires careful evaluation. Our consulting Level 5 arborists prepare certified tree risk assessments demonstrating site stability, ensuring complete Townsville City Council compliance.`;
   } else if (env.councilOverlay.includes('Coastal') || env.councilOverlay.includes('Marine')) {
-    answer = `Beachfront and coastal properties in ${suburbName} fall under the TCC Coastal Hazard & Marine Erosion Overlay. Coastal casuarinas and dune-stabilizing native trees require adherence to local environmental codes. For dangerous, dying, or structurally compromised trees on private freehold land, straightforward exemption pathways exist, which we verify and handle on your behalf.`;
+    answer = `All local environmental planning in ${suburbName} is governed by Townsville City Council (TCC). Beachfront and coastal properties fall under the TCC Coastal Hazard & Marine Erosion Management Overlay to protect dune stability and foreshore vegetation. For dangerous, dying, or structurally compromised trees located wholly within private freehold boundaries, straightforward exemption pathways exist, which Arbco verifies on your behalf.`;
   } else if (env.councilOverlay.includes('Magnetic Island') || env.councilOverlay.includes('Island')) {
-    answer = `Properties across ${suburbName} are subject to strict TCC Natural Values and National Park Conservation buffer provisions. Native trees contributing to the island's landscape character (such as mature Hoop Pines and Poplar Gums) require careful arborist substantiation prior to removal. We guide you through the process and prepare all required documentation.`;
+    answer = `Magnetic Island operates under Townsville City Council (TCC) with specialized planning overlays, including the TCC Magnetic Island Natural Values and National Park Conservation buffer provisions. Native trees contributing to the island's landscape character (such as mature Hoop Pines and Poplar Gums) require careful arborist substantiation prior to removal. Arbco coordinates directly with TCC requirements to prepare compliant reports.`;
   } else if (env.councilOverlay.includes('Bushfire') || env.councilOverlay.includes('Rural')) {
-    answer = `For rural acreage in ${suburbName}, clearing trees within 20 metres of an approved residential dwelling for bushfire asset protection is generally exempt under the Queensland 10/20 bushfire clearing code. For boundary fence lines and paddock clearing, standard rural vegetation guidelines apply. We confirm all exemptions before commencing work.`;
+    answer = `Under Townsville City Council and Queensland State planning frameworks, rural acreage properties in ${suburbName} benefit from clear bushfire hazard exemptions. Clearing trees within 20 metres of an approved residential dwelling for bushfire asset protection is generally exempt under the Queensland 10/20 bushfire clearing code. For boundary fence lines and paddock clearing, standard rural vegetation guidelines apply, which we verify prior to commencing work.`;
   } else {
-    answer = `For standard residential freehold properties across ${suburbName}, trees situated entirely within private boundary lines generally do not require council approval, provided they are not protected by a specific heritage register, historical covenant, or subdivision development approval condition. Our team confirms your property's overlay status during your free on-site assessment.`;
+    answer = `Under Townsville City Council (TCC) planning regulations, standard residential freehold properties across ${suburbName} generally do not require a council permit to remove ordinary trees located wholly within private property boundaries, provided the land is not subject to a specific environmental overlay, heritage register, or subdivision development approval covenant. Our Level 5 arborists confirm your property's overlay status during your free on-site assessment.`;
   }
 
   return {
@@ -2460,7 +2460,7 @@ function getServiceSpecificFocus(
     return {
       heading: `High-Volume On-Site Wood Chipping & Organic Mulch Supply in ${suburbName}`,
       paragraphs: [
-        `Tropical vegetation growth in ${suburbName} generates massive volumes of green waste that quickly overwhelm regular council bins and garden trailers. Hauling bulky tree limbs to transfer stations is expensive and exhausting.`,
+        `Tropical vegetation growth in ${suburbName} generates massive volumes of green waste that quickly overwhelm regular household wheelie bins and garden trailers. Hauling bulky tree limbs to transfer stations is expensive and exhausting.`,
         `Arbco’s industrial commercial wood chippers process massive piles of branches, prunings, and logs directly on your ${suburbName} property in minutes, swallowing limbs up to 18 inches in diameter.`,
         `Fresh organic arborist wood mulch is invaluable in Townsville’s dry, sun-scorched climate. Spreading a 75mm–100mm mulch layer insulates plant root systems, reduces soil water evaporation by up to 60%, and prevents weed germination. You can retain 100% of the mulch for your landscaping or have us haul it away completely free.`
       ],
@@ -2488,7 +2488,7 @@ function getServiceSpecificFocus(
       ctaHeadline: `Planning Site Works or Land Clearing in ${suburbName}?`,
       ctaText: `Get your ${suburbName} block ready for building or fire season. Contact Arbco Tree Services for a comprehensive on-site clearing assessment.`,
       sidebarHeading: `Land Clearing in ${suburbName}`,
-      sidebarPitch: `Equipped for acreage and residential block clearing in ${suburbName}. Forestry mulching, firebreak establishment, and full council compliance.`
+      sidebarPitch: `Equipped for acreage and residential block clearing in ${suburbName}. Forestry mulching, firebreak establishment, and Townsville City Council compliance.`
     };
   }
 
@@ -2555,7 +2555,7 @@ function generateIntroParagraphs(
 
   if (serviceId === 'wood-chipping-mulching') {
     return [
-      `${data.headlineContext} Vigorous tropical growth throughout ${suburbName} generates large quantities of tree branches and green waste that quickly overwhelm regular council bins and garden trailers.`,
+      `${data.headlineContext} Vigorous tropical growth throughout ${suburbName} generates large quantities of tree branches and green waste that quickly overwhelm regular household wheelie bins and garden trailers.`,
       `Hauling bulky tree limbs to Townsville waste transfer stations is time-consuming and expensive. Arbco’s industrial wood chippers process massive piles of branches, prunings, and logs directly on your ${suburbName} property in minutes.`,
       `We recycle 100% of clean green waste into premium, nutrient-dense organic mulch. In ${suburbName}'s hot tropical climate, spreading a thick arborist mulch layer insulates soil, reduces evaporation by up to 60%, suppresses invasive weeds, and enriches garden beds naturally.`
     ];
@@ -2671,7 +2671,7 @@ function generateCouncilAndSafety(
     return {
       heading: `Underground Asset Protection & Safety Standards in ${suburbName}`,
       paragraphs: [
-        `Stump grinding on private freehold property in ${suburbName} generally does not require municipal council permits, as the tree has already been felled. However, strict subterranean safety standards must be maintained. Our operators work in compliance with Safe Work Australia underground asset guidelines, verifying all subsurface services prior to ground penetration.`,
+        `Stump grinding on private freehold property in ${suburbName} generally does not require Townsville City Council permits, as the tree has already been felled. However, strict subterranean safety standards must be maintained. Our operators work in compliance with Safe Work Australia underground asset guidelines, verifying all subsurface services prior to ground penetration.`,
         `Arbco carries full $20M Public Liability insurance covering subterranean operations. We install heavy ballistic chip guards around every grinding zone in ${suburbName} to stop stones and wood chips from impacting nearby windows, vehicles, or neighboring properties.`
       ]
     };
@@ -2702,7 +2702,7 @@ function generateCouncilAndSafety(
       heading: `Emergency Exemptions & Insurance Reporting Protocol in ${suburbName}`,
       paragraphs: [
         `Under Queensland Disaster Management legislation and Townsville City Council emergency provisions, trees presenting imminent danger to human life, structural integrity, or critical utility infrastructure can be removed immediately without prior administrative permit applications.`,
-        `Our certified Level 5 arborists document the emergency hazard thoroughly, capturing time-stamped photographs, structural failure analyses, and weather correlation reports that fulfill all council compliance requirements and insurance claims.`
+        `Our certified Level 5 arborists document the emergency hazard thoroughly, capturing time-stamped photographs, structural failure analyses, and weather correlation reports that fulfill all Townsville City Council documentation requirements and insurance claims.`
       ]
     };
   }
@@ -2719,7 +2719,7 @@ function generateCouncilAndSafety(
 
   if (serviceId === 'land-clearing') {
     return {
-      heading: `TCC Planning Scheme & Vegetation Management Compliance in ${suburbName}`,
+      heading: `Townsville City Council Planning Scheme & Land Clearing Compliance in ${suburbName}`,
       paragraphs: [
         `Land clearing projects in ${suburbName} are executed in strict accordance with the Townsville City Council (TCC) Planning Scheme, the Queensland Vegetation Management Act 1999, and the Nature Conservation Act 1992. Where development approvals (DA) or operational works permits are in place, our team ensures every condition is rigorously met.`,
         `We conduct pre-clearing wildlife spotter-catcher inspections to protect native fauna, establish sediment and erosion control barriers, and create compliant 20-metre Bushfire Asset Protection Zones (APZ) according to Queensland Fire and Emergency Services (QFES) standards.`
@@ -2729,7 +2729,7 @@ function generateCouncilAndSafety(
 
   // Default: tree-removal
   return {
-    heading: `Council Guidelines & $20M Safety Standards for ${suburbName}`,
+    heading: `Townsville City Council Planning & Tree Safety in ${suburbName}`,
     paragraphs: [
       data.councilInsights,
       `Every tree removal in ${suburbName} is conducted under our comprehensive $20M Public Liability insurance policy and completed in strict adherence to Australian Standards and workplace safety codes. Our certified climbing crews combine decades of North Queensland experience with modern safety rigging to guarantee immaculate site cleanliness and structural safety.`

@@ -226,7 +226,7 @@ function ServiceAreasContent() {
               {activeService.name} Across Greater Townsville
             </h3>
             <p className="text-sm md:text-base text-slate-200 max-w-3xl font-sans leading-relaxed">
-              {activeService.description} Click any suburb below to view tailored local pricing, council compliance, access equipment, and fast quote dispatch.
+              {activeService.description} Click any suburb below to view tailored local pricing, Townsville City Council planning guidance, access equipment, and fast quote dispatch.
             </p>
           </div>
           <div className="shrink-0 flex items-center gap-3">

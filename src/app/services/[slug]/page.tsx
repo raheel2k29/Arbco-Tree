@@ -34,7 +34,7 @@ const serviceDetails: Record<
     highlights: [
       '$20M Public Liability Coverage',
       'Confined Space & Crane Rigging',
-      'Townsville Council Permit Guidance',
+      'Townsville City Council Permit Guidance',
       'Complete Debris Chipping & Site Rake-Out',
     ],
     overview: [
@@ -48,8 +48,8 @@ const serviceDetails: Record<
         icon: '🪓',
       },
       {
-        title: 'Council Compliance',
-        desc: 'We assist with Townsville City Council tree preservation orders and planning permits.',
+        title: 'Townsville City Council Compliance',
+        desc: 'We assist with Townsville City Council planning scheme overlays, character protections, and permit applications.',
         icon: '📋',
       },
       {
@@ -60,9 +60,9 @@ const serviceDetails: Record<
     ],
     faqs: [
       {
-        question: 'Do I need council approval to remove a tree in Townsville?',
+        question: 'Do I need Townsville City Council approval to remove a tree in Townsville?',
         answer:
-          'Council approval depends on your property zoning, local tree preservation orders, and whether the tree is considered an exempt weed species or imminent safety hazard. Our qualified arborists can inspect the tree and assist you with council documentation.',
+          'On standard private residential freehold land in Townsville, property owners generally do not require a council permit for ordinary trees located wholly within their property boundaries. However, approval from Townsville City Council (TCC) is required if your property is covered by specific planning scheme overlays (such as Riparian Corridors, Steep Land / Landslide Hazards, Coastal Hazards, or Character Heritage precincts) or if the tree is on a public road reserve or council nature strip. Our qualified Level 5 arborists verify your property overlay status and assist with all necessary TCC documentation.',
       },
       {
         question: 'How do you remove a large tree in a tight space?',
@@ -359,7 +359,7 @@ const serviceDetails: Record<
       'Acreage & Residential Block Clearing',
       'Bushfire Buffer Zones & Firebreaks',
       'Excavator, Bobcat & Tub Grinder Fleets',
-      'Environmental & Council Native Tree Audits',
+      'Townsville City Council & Environmental Native Tree Audits',
     ],
     overview: [
       'Preparing raw land for construction, fencing, agriculture, or bushfire protection demands experienced operators and heavy-duty machinery. Arbco Tree Services undertakes complete site preparation across Greater Townsville and surrounding rural areas.',
@@ -682,8 +682,8 @@ export default async function ServiceDetailPage({
               },
               {
                 step: '02',
-                title: 'Safety & Council Checks',
-                desc: 'We review utility lines, verify permit requirements, and formulate a controlled rigging plan.',
+                title: 'Safety & Townsville City Council Checks',
+                desc: 'We review utility lines, verify TCC planning overlays or permit exemptions, and formulate a controlled rigging plan.',
               },
               {
                 step: '03',

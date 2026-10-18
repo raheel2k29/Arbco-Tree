@@ -38,7 +38,7 @@ export default function TermsPage() {
           <section className="space-y-2">
             <h2 className="text-lg font-bold text-slate-900 font-heading">3. Council Approvals & Permits</h2>
             <p>
-              While Arbco Tree Services can assist in advising on Townsville City Council guidelines and tree preservation orders, the property owner is ultimately responsible for ensuring any legally mandatory vegetation permits or neighbor boundary approvals are in place prior to commencement.
+              While Arbco Tree Services can assist in advising on Townsville City Council (TCC) planning scheme overlays and permit guidelines, the property owner is ultimately responsible for ensuring any legally mandatory vegetation permits or neighbor boundary approvals are in place prior to commencement.
             </p>
           </section>
 
