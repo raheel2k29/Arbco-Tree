@@ -4,6 +4,8 @@ import Link from 'next/link';
 import { allSuburbs, services, slugify } from '@/lib/locationData';
 import { getSuburbPageContent } from '@/lib/suburbIntelligence';
 import { generateSuburbJsonLd } from '@/lib/schemaStructuredData';
+import { getComplementaryServices, getNearbySuburbs } from '@/lib/internalLinking';
+import { getArticlesForSuburb } from '@/lib/blogData';
 
 // Generate static params for all programmatic routes at build time
 export function generateStaticParams() {
@@ -90,6 +92,9 @@ export default async function ServiceAreaPage({ params }: { params: Promise<{ sl
 
   // Get other services for this suburb for cross-linking
   const otherServices = services.filter(s => s.id !== serviceData.id);
+  const complementaryServices = getComplementaryServices(serviceData.id);
+  const nearbySuburbs = getNearbySuburbs(suburbName, 6);
+  const localArticles = getArticlesForSuburb(suburbName);
 
   return (
     <main className="min-h-screen bg-slate-50 pb-20">
@@ -136,14 +141,18 @@ export default async function ServiceAreaPage({ params }: { params: Promise<{ sl
         </div>
       </div>
 
-      {/* Breadcrumbs */}
+      {/* Breadcrumbs with direct Link Equity to Core Service Hub */}
       <div className="max-w-[1440px] mx-auto px-4 lg:px-8 py-6">
         <div className="flex items-center text-sm text-slate-500 gap-2 font-sans font-medium flex-wrap">
           <Link href="/" className="hover:text-[#036829] transition-colors">Home</Link>
           <span>/</span>
+          <Link href="/services" className="hover:text-[#036829] transition-colors">Services</Link>
+          <span>/</span>
+          <Link href={`/services/${serviceData.id}`} className="hover:text-[#036829] transition-colors font-semibold text-[#036829]">{serviceData.name}</Link>
+          <span>/</span>
           <Link href="/service-areas" className="hover:text-[#036829] transition-colors">Service Areas</Link>
           <span>/</span>
-          <span className="text-slate-900 font-semibold">{serviceData.name} {suburbName}</span>
+          <span className="text-slate-900 font-semibold">{suburbName}</span>
         </div>
       </div>
 
@@ -199,6 +208,52 @@ export default async function ServiceAreaPage({ params }: { params: Promise<{ sl
                   <span className="font-bold text-emerald-900 block mb-1">📜 Relevant Planning Overlay</span>
                   <span className="text-slate-600">{content.environmentalProfile.councilOverlay}</span>
                 </div>
+              </div>
+            </div>
+
+            {/* Contextual In-Content Cross-Linking */}
+            <div className="not-prose my-8 p-6 bg-emerald-50/70 rounded-2xl border border-[#7cc043]/40 shadow-xs">
+              <div className="flex items-center gap-2 text-[#036829] font-extrabold font-heading text-base mb-2">
+                <span>🌿</span>
+                <span>Complete Arborist Solutions in {suburbName}</span>
+              </div>
+              <p className="text-slate-700 text-sm leading-relaxed mb-3">
+                Planning comprehensive property care in {suburbName}? When removing dangerous or storm-damaged trees, prevent subterranean termite nesting and trip hazards with precision{' '}
+                <Link
+                  href={`/service-areas/stump-grinding-${slugify(suburbName)}`}
+                  className="font-bold text-[#036829] hover:underline"
+                >
+                  Stump Grinding in {suburbName}
+                </Link>
+                , or maintain high-risk tropical palms with specialized{' '}
+                <Link
+                  href={`/service-areas/palm-tree-removal-${slugify(suburbName)}`}
+                  className="font-bold text-[#036829] hover:underline"
+                >
+                  Palm Tree Removal in {suburbName}
+                </Link>
+                . You can also view our full equipment capabilities and certifications on our core{' '}
+                <Link
+                  href={`/services/${serviceData.id}`}
+                  className="font-bold text-[#036829] hover:underline"
+                >
+                  {serviceData.name} Townsville
+                </Link>{' '}
+                overview.
+              </p>
+              <div className="flex items-center gap-3 text-xs font-bold text-[#036829] flex-wrap pt-2 border-t border-emerald-200/60">
+                <Link href={`/service-areas/tree-removal-${slugify(suburbName)}`} className="hover:underline flex items-center gap-1">
+                  <span>›</span> Tree Removal {suburbName}
+                </Link>
+                <Link href={`/service-areas/stump-grinding-${slugify(suburbName)}`} className="hover:underline flex items-center gap-1">
+                  <span>›</span> Stump Grinding {suburbName}
+                </Link>
+                <Link href={`/service-areas/palm-tree-removal-${slugify(suburbName)}`} className="hover:underline flex items-center gap-1">
+                  <span>›</span> Palm Removal {suburbName}
+                </Link>
+                <Link href={`/service-areas/emergency-tree-removal-${slugify(suburbName)}`} className="hover:underline flex items-center gap-1">
+                  <span>›</span> Emergency Work {suburbName}
+                </Link>
               </div>
             </div>
 
@@ -313,6 +368,133 @@ export default async function ServiceAreaPage({ params }: { params: Promise<{ sl
                 </Link>
               </div>
             </div>
+
+            {/* Complementary Services in this Suburb */}
+            <div className="not-prose mt-12 pt-10 border-t border-slate-200/80 space-y-6">
+              <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-2">
+                <div>
+                  <span className="text-xs font-bold tracking-wider uppercase text-[#036829] font-heading block mb-1">
+                    Complementary Arborist Services
+                  </span>
+                  <h3 className="text-2xl font-extrabold text-emerald-950 font-heading">
+                    Other Tree Services in {suburbName}
+                  </h3>
+                </div>
+                <Link
+                  href={`/services/${serviceData.id}`}
+                  className="text-xs font-bold text-[#036829] hover:underline font-heading flex items-center gap-1"
+                >
+                  <span>All {serviceData.name} Standards</span>
+                  <span>→</span>
+                </Link>
+              </div>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                {complementaryServices.map((comp) => (
+                  <Link
+                    key={comp.id}
+                    href={`/service-areas/${comp.id}-${slugify(suburbName)}`}
+                    className="group p-5 rounded-2xl bg-slate-50 border border-slate-200/80 hover:border-[#7cc043] hover:bg-[#f4fbf6] transition-all flex flex-col justify-between shadow-2xs"
+                  >
+                    <div>
+                      <span className="text-[10px] font-bold uppercase tracking-wider text-[#7cc043] bg-[#051c0e] px-2.5 py-0.5 rounded-full inline-block mb-2.5">
+                        {comp.tag}
+                      </span>
+                      <h4 className="font-extrabold text-slate-900 group-hover:text-[#036829] font-heading text-base mb-1 transition-colors">
+                        {comp.name} {suburbName}
+                      </h4>
+                      <p className="text-slate-600 text-xs leading-relaxed">
+                        {comp.contextualReason}
+                      </p>
+                    </div>
+                    <div className="mt-4 pt-3 border-t border-slate-200/60 flex items-center justify-between text-xs font-bold text-[#036829]">
+                      <span>View {comp.shortName}</span>
+                      <span className="group-hover:translate-x-1 transition-transform">→</span>
+                    </div>
+                  </Link>
+                ))}
+              </div>
+            </div>
+
+            {/* Nearby Suburbs Served for this Service */}
+            <div className="not-prose mt-12 pt-10 border-t border-slate-200/80 space-y-6">
+              <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-2">
+                <div>
+                  <span className="text-xs font-bold tracking-wider uppercase text-[#036829] font-heading block mb-1">
+                    Regional Service Coverage
+                  </span>
+                  <h3 className="text-2xl font-extrabold text-emerald-950 font-heading">
+                    Nearby Suburbs Served for {serviceData.name}
+                  </h3>
+                </div>
+                <Link
+                  href="/service-areas"
+                  className="text-xs font-bold text-[#036829] hover:underline font-heading flex items-center gap-1"
+                >
+                  <span>View All 97 Suburbs</span>
+                  <span>→</span>
+                </Link>
+              </div>
+
+              <p className="text-slate-600 text-sm">
+                Our certified crews operate daily across {suburbName} and surrounding communities in {nearbySuburbs[0]?.regionName || 'Greater Townsville'}:
+              </p>
+
+              <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
+                {nearbySuburbs.map((nearby) => (
+                  <Link
+                    key={nearby.slug}
+                    href={`/service-areas/${serviceData.id}-${nearby.slug}`}
+                    className="group p-4 rounded-xl bg-white border border-slate-200/80 hover:border-[#036829] hover:shadow-xs transition-all flex flex-col justify-between"
+                  >
+                    <span className="font-extrabold text-slate-800 group-hover:text-[#036829] text-xs font-heading transition-colors">
+                      {serviceData.name} {nearby.name}
+                    </span>
+                    <span className="text-[11px] text-slate-400 mt-1 flex items-center justify-between">
+                      <span>{nearby.regionName}</span>
+                      <span className="text-[#7cc043] group-hover:translate-x-0.5 transition-transform">→</span>
+                    </span>
+                  </Link>
+                ))}
+              </div>
+            </div>
+
+            {/* Local Arborist Guides */}
+            {localArticles.length > 0 && (
+              <div className="not-prose mt-12 pt-10 border-t border-slate-200/80 space-y-4">
+                <span className="text-xs font-bold tracking-wider uppercase text-[#036829] font-heading block">
+                  Local North Queensland Advice
+                </span>
+                <h3 className="text-xl font-extrabold text-emerald-950 font-heading">
+                  Helpful Arborist Guides for {suburbName} Property Owners
+                </h3>
+                <div className="grid sm:grid-cols-2 gap-4">
+                  {localArticles.map((art) => (
+                    <Link
+                      key={art.slug}
+                      href={`/blog/${art.slug}`}
+                      className="group p-5 rounded-2xl bg-slate-50 border border-slate-200/80 hover:border-[#7cc043] transition-all flex flex-col justify-between"
+                    >
+                      <div>
+                        <span className="text-[10px] font-bold uppercase tracking-wider text-[#036829] font-heading block mb-1">
+                          {art.category}
+                        </span>
+                        <h4 className="font-extrabold text-slate-900 group-hover:text-[#036829] text-sm font-heading leading-snug transition-colors">
+                          {art.title}
+                        </h4>
+                        <p className="text-slate-500 text-xs mt-1.5 line-clamp-2 leading-relaxed">
+                          {art.excerpt}
+                        </p>
+                      </div>
+                      <span className="mt-3 text-xs font-bold text-[#036829] group-hover:underline flex items-center gap-1">
+                        <span>Read Guide</span>
+                        <span>→</span>
+                      </span>
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            )}
           </div>
         </div>
 
@@ -334,6 +516,15 @@ export default async function ServiceAreaPage({ params }: { params: Promise<{ sl
                   </svg>
                 </Link>
               ))}
+            </div>
+            <div className="pt-3 border-t border-slate-100 mt-4">
+              <Link
+                href={`/services/${serviceData.id}`}
+                className="inline-flex items-center gap-1.5 text-xs font-extrabold text-[#036829] hover:underline font-heading"
+              >
+                <span>All Townsville {serviceData.name} Standards</span>
+                <span>→</span>
+              </Link>
             </div>
           </div>
 

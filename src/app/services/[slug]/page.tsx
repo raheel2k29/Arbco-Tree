@@ -5,6 +5,8 @@ import Image from 'next/image';
 import { services, regions, slugify, allSuburbs } from '@/lib/locationData';
 import ServiceQuoteForm from '@/components/ServiceQuoteForm';
 import { generateCoreServiceJsonLd } from '@/lib/schemaStructuredData';
+import { priorityHubSuburbs } from '@/lib/internalLinking';
+import { getArticlesForService } from '@/lib/blogData';
 
 // Generate static routes for all 7 core services
 export function generateStaticParams() {
@@ -464,6 +466,7 @@ export default async function ServiceDetailPage({
 
   // Other services for navigation
   const otherServices = services.filter((s) => s.id !== service.id);
+  const relatedArticles = getArticlesForService(service.id);
 
   const jsonLdSchemas = generateCoreServiceJsonLd(service, details);
 
@@ -751,62 +754,130 @@ export default async function ServiceDetailPage({
       {/* Service Areas Link Section */}
       <section className="py-20 bg-slate-50">
         <div className="max-w-[1440px] mx-auto px-4 lg:px-8">
-          <div className="text-center max-w-3xl mx-auto space-y-4 mb-12">
+          <div className="text-center max-w-3xl mx-auto space-y-4 mb-10">
             <span className="text-[#036829] font-black uppercase tracking-wider text-xs">
               Local Suburbs
             </span>
             <h2 className="text-3xl font-extrabold text-slate-900 font-heading">
-              {service.name} Across Greater Townsville
+              {service.name} Across All 97 Greater Townsville Suburbs
             </h2>
             <p className="text-slate-600 text-sm">
-              We service all 97 suburbs across Townsville, Thuringowa, and the surrounding islands.
-              Select your suburb below for local details:
+              We service all 97 suburbs across Townsville City, Urban Thuringowa, Rural Townsville, Rural Thuringowa, and the surrounding islands. Select your suburb below for local ground conditions and quotes:
             </p>
           </div>
 
-          {/* Region Tabs / Suburb Samples */}
+          {/* Featured High-Priority Hubs */}
+          <div className="mb-10 bg-white p-6 rounded-2xl border border-slate-200/80 shadow-xs">
+            <span className="text-xs font-bold uppercase tracking-wider text-[#036829] font-heading block mb-3 text-center sm:text-left">
+              ⭐ Popular {service.name} Locations in Townsville:
+            </span>
+            <div className="flex flex-wrap gap-2 justify-center sm:justify-start">
+              {priorityHubSuburbs.map((suburb) => (
+                <Link
+                  key={suburb}
+                  href={`/service-areas/${service.id}-${slugify(suburb)}`}
+                  className="px-3.5 py-1.5 rounded-xl bg-slate-50 hover:bg-[#036829] text-slate-700 hover:text-white border border-slate-200/90 text-xs font-bold transition-all shadow-2xs font-heading"
+                >
+                  📍 {suburb}
+                </Link>
+              ))}
+            </div>
+          </div>
+
+          {/* Complete Regional Suburb Directory */}
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {regions.map((region, rIdx) => (
               <div
                 key={rIdx}
-                className="bg-white rounded-2xl p-6 border border-slate-200/80 shadow-sm"
+                className="bg-white rounded-2xl p-6 border border-slate-200/80 shadow-sm flex flex-col justify-between"
               >
-                <h4 className="font-extrabold text-[#036829] font-heading text-lg mb-4 flex items-center gap-2">
-                  <span className="w-1.5 h-5 bg-[#7cc043] rounded-full inline-block" />
-                  {region.name}
-                </h4>
-                <ul className="space-y-2 text-xs">
-                  {region.suburbs.slice(0, 6).map((sub, sIdx) => (
-                    <li key={sIdx}>
-                      <Link
-                        href={`/service-areas/${service.id}-${slugify(sub)}`}
-                        className="text-slate-600 hover:text-[#036829] flex items-center justify-between group py-1 border-b border-slate-100 last:border-0"
-                      >
-                        <span>
-                          {service.name} {sub}
-                        </span>
-                        <span className="text-[#7cc043] opacity-0 group-hover:opacity-100 transition-opacity">
-                          →
-                        </span>
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
+                <div>
+                  <h4 className="font-extrabold text-[#036829] font-heading text-lg mb-4 flex items-center justify-between border-b border-slate-100 pb-2">
+                    <span className="flex items-center gap-2">
+                      <span className="w-1.5 h-5 bg-[#7cc043] rounded-full inline-block" />
+                      {region.name}
+                    </span>
+                    <span className="text-xs font-bold text-slate-400">
+                      ({region.suburbs.length})
+                    </span>
+                  </h4>
+                  <ul className="space-y-1.5 text-xs max-h-72 overflow-y-auto pr-1">
+                    {region.suburbs.map((sub, sIdx) => (
+                      <li key={sIdx}>
+                        <Link
+                          href={`/service-areas/${service.id}-${slugify(sub)}`}
+                          className="text-slate-600 hover:text-[#036829] flex items-center justify-between group py-1 border-b border-slate-50 last:border-0 hover:translate-x-0.5 transition-all"
+                        >
+                          <span className="font-medium">
+                            {service.name} {sub}
+                          </span>
+                          <span className="text-[#7cc043] opacity-0 group-hover:opacity-100 transition-opacity">
+                            →
+                          </span>
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+                <div className="pt-3 mt-3 border-t border-slate-100 text-[11px] text-slate-400 text-right">
+                  All {region.suburbs.length} suburbs served
+                </div>
               </div>
             ))}
           </div>
 
-          <div className="text-center mt-8">
+          <div className="text-center mt-10">
             <Link
               href="/service-areas"
-              className="inline-flex items-center gap-2 text-sm font-extrabold text-[#036829] hover:underline font-heading"
+              className="inline-flex items-center gap-2 rounded-xl bg-[#036829] hover:bg-[#025320] text-white px-7 py-3.5 text-sm font-extrabold font-heading shadow-md transition-all"
             >
-              <span>View All 97 Townsville Suburbs in our Service Directory</span>
+              <span>Explore the Complete Service Areas Directory</span>
               <span>→</span>
             </Link>
           </div>
         </div>
       </section>
+
+      {/* Related Arborist Guides for this Service */}
+      {relatedArticles.length > 0 && (
+        <section className="py-16 bg-white border-t border-slate-200/60">
+          <div className="max-w-[1440px] mx-auto px-4 lg:px-8">
+            <div className="text-center max-w-2xl mx-auto space-y-3 mb-10">
+              <span className="text-[#036829] font-black uppercase tracking-wider text-xs">
+                Expert Knowledge
+              </span>
+              <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 font-heading">
+                Related {service.name} Advice & Guides
+              </h2>
+            </div>
+            <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 max-w-5xl mx-auto">
+              {relatedArticles.map((art) => (
+                <Link
+                  key={art.slug}
+                  href={`/blog/${art.slug}`}
+                  className="group bg-slate-50 rounded-2xl p-6 border border-slate-200/80 hover:border-[#7cc043] hover:shadow-md transition-all flex flex-col justify-between"
+                >
+                  <div>
+                    <span className="text-[10px] font-bold uppercase tracking-wider text-[#036829] font-heading block mb-2">
+                      {art.category}
+                    </span>
+                    <h4 className="font-extrabold text-slate-900 group-hover:text-[#036829] font-heading text-base leading-snug transition-colors">
+                      {art.title}
+                    </h4>
+                    <p className="text-slate-500 text-xs mt-2 line-clamp-2 leading-relaxed">
+                      {art.excerpt}
+                    </p>
+                  </div>
+                  <div className="mt-4 flex items-center gap-1.5 text-xs font-bold text-[#036829] group-hover:underline">
+                    <span>Read Guide</span>
+                    <span>→</span>
+                  </div>
+                </Link>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* Explore Other Services */}
       <section className="py-20 bg-white border-t border-slate-200/60">

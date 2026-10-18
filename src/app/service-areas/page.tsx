@@ -383,6 +383,18 @@ function ServiceAreasContent() {
             Call 0456 579 811
           </a>
         </div>
+
+        <div className="mt-8 pt-6 border-t border-slate-200/60 flex items-center justify-center gap-6 text-xs font-bold text-[#036829] flex-wrap">
+          <Link href="/services" className="hover:underline flex items-center gap-1">
+            <span>Explore All 7 Core Services</span>
+            <span>→</span>
+          </Link>
+          <span className="text-slate-300">•</span>
+          <Link href="/blog" className="hover:underline flex items-center gap-1">
+            <span>Read Townsville Arborist Guides</span>
+            <span>→</span>
+          </Link>
+        </div>
       </div>
     </main>
   );

@@ -98,6 +98,7 @@ export default function Header() {
             </div>
             <Link href="/#about" className="hover:text-[#036829] transition-colors">About Us</Link>
             <Link href="/service-areas" className="hover:text-[#036829] transition-colors">Areas We Serve</Link>
+            <Link href="/blog" className="hover:text-[#036829] transition-colors">Guides</Link>
             <Link href="/#gallery" className="hover:text-[#036829] transition-colors">Gallery</Link>
             <Link href="/#testimonials" className="hover:text-[#036829] transition-colors">Reviews</Link>
             <Link href="/#contact" className="hover:text-[#036829] transition-colors">Contact</Link>

@@ -51,6 +51,7 @@ export default function Footer() {
               <li><Link href="/#gallery" className="hover:text-white transition-colors flex items-center gap-1.5"><span className="text-[#7cc043] text-[9px]">❯</span> Gallery</Link></li>
               <li><Link href="/#testimonials" className="hover:text-white transition-colors flex items-center gap-1.5"><span className="text-[#7cc043] text-[9px]">❯</span> Reviews</Link></li>
               <li><Link href="/#services" className="hover:text-white transition-colors flex items-center gap-1.5"><span className="text-[#7cc043] text-[9px]">❯</span> Our Team</Link></li>
+              <li><Link href="/blog" className="hover:text-white transition-colors flex items-center gap-1.5"><span className="text-[#7cc043] text-[9px]">❯</span> Arborist Guides</Link></li>
               <li><Link href="/#contact" className="hover:text-white transition-colors flex items-center gap-1.5"><span className="text-[#7cc043] text-[9px]">❯</span> Contact Us</Link></li>
             </ul>
           </div>

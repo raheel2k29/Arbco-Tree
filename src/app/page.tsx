@@ -4,6 +4,7 @@
 import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { blogArticles } from "@/lib/blogData";
 
 export default function Home() {
   const [rotation, setRotation] = useState(0);
@@ -896,17 +897,94 @@ export default function Home() {
                 Rapid Response Tree Services Across All Townsville Suburbs
               </h2>
               <p className="text-slate-600 text-lg leading-relaxed font-sans">
-                Whether you need tree removal in Kirwan, stump grinding in Aitkenvale, or emergency pruning in Annandale, we have localized crews ready to respond.
+                Whether you need{' '}
+                <Link href="/service-areas/tree-removal-kirwan" className="text-[#036829] font-bold hover:underline">
+                  tree removal in Kirwan
+                </Link>
+                ,{' '}
+                <Link href="/service-areas/stump-grinding-aitkenvale" className="text-[#036829] font-bold hover:underline">
+                  stump grinding in Aitkenvale
+                </Link>
+                , or{' '}
+                <Link href="/service-areas/tree-pruning-lopping-annandale" className="text-[#036829] font-bold hover:underline">
+                  emergency pruning in Annandale
+                </Link>
+                , we have localized crews ready to respond.
               </p>
               <div className="pt-4">
                 <Link
                   href="/service-areas"
                   className="quote-btn-gradient inline-flex items-center justify-center rounded-xl text-white font-extrabold px-8 py-4 shadow-md transition-all font-heading hover:opacity-95"
                 >
-                  Explore Service Areas
+                  Explore Service Areas Directory
                 </Link>
               </div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Arborist Guides & Knowledge Hub */}
+      <section className="py-24 bg-white border-t border-slate-100">
+        <div className="mx-auto max-w-[1440px] px-4 lg:px-8">
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16">
+            <div className="space-y-3 max-w-2xl">
+              <span className="text-[#036829] font-black uppercase tracking-wider text-xs">
+                Local Expertise
+              </span>
+              <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 font-heading">
+                Townsville Arborist Advice & Guides
+              </h2>
+              <p className="text-slate-600 text-base sm:text-lg font-sans">
+                Stay informed with pre-cyclone readiness checklists, council planning overlays, and tree safety guides written by our certified Level 5 arborists.
+              </p>
+            </div>
+            <Link
+              href="/blog"
+              className="inline-flex items-center gap-1.5 text-sm font-extrabold text-[#036829] hover:underline font-heading shrink-0"
+            >
+              <span>View All Arborist Guides</span>
+              <span>→</span>
+            </Link>
+          </div>
+
+          <div className="grid gap-8 md:grid-cols-3">
+            {blogArticles.slice(0, 3).map((art) => (
+              <Link
+                key={art.slug}
+                href={`/blog/${art.slug}`}
+                className="group bg-slate-50 hover:bg-white rounded-3xl p-6 border border-slate-200/80 hover:border-[#7cc043] hover:shadow-xl transition-all duration-300 flex flex-col justify-between"
+              >
+                <div>
+                  <div className="relative h-44 w-full rounded-2xl overflow-hidden mb-5 bg-slate-200">
+                    <Image
+                      src={art.image}
+                      alt={art.title}
+                      fill
+                      className="object-cover group-hover:scale-105 transition-transform duration-500"
+                    />
+                    <div className="absolute top-3 left-3 bg-[#051c0e]/85 backdrop-blur-sm text-[#7cc043] text-[9px] font-bold tracking-widest uppercase px-2.5 py-1 rounded-full border border-[#7cc043]/30">
+                      {art.category}
+                    </div>
+                  </div>
+                  <div className="text-[11px] text-slate-400 font-medium mb-2 flex items-center gap-2">
+                    <span>{art.date}</span>
+                    <span>•</span>
+                    <span>{art.readTime}</span>
+                  </div>
+                  <h3 className="font-extrabold text-slate-900 group-hover:text-[#036829] font-heading text-lg leading-snug transition-colors">
+                    {art.title}
+                  </h3>
+                  <p className="text-slate-500 text-xs mt-2 line-clamp-3 leading-relaxed">
+                    {art.excerpt}
+                  </p>
+                </div>
+                <div className="mt-5 pt-4 border-t border-slate-200/60 flex items-center justify-between text-xs font-bold text-[#036829]">
+                  <span>Read Full Article</span>
+                  <span className="group-hover:translate-x-1 transition-transform">→</span>
+                </div>
+              </Link>
+            ))}
           </div>
         </div>
       </section>

@@ -1,5 +1,6 @@
 import { MetadataRoute } from 'next'
 import { allSuburbs, services, slugify } from '@/lib/locationData'
+import { blogArticles } from '@/lib/blogData'
 import { SITE_URL } from '@/lib/schemaStructuredData'
 
 export default function sitemap(): MetadataRoute.Sitemap {
@@ -24,6 +25,18 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'weekly',
       priority: 0.9,
     },
+    {
+      url: `${baseUrl}/blog`,
+      lastModified: new Date(),
+      changeFrequency: 'weekly',
+      priority: 0.85,
+    },
+    ...blogArticles.map((article) => ({
+      url: `${baseUrl}/blog/${article.slug}`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly' as const,
+      priority: 0.8,
+    })),
     ...services.map((service) => ({
       url: `${baseUrl}/services/${service.id}`,
       lastModified: new Date(),
