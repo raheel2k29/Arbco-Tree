@@ -2,6 +2,7 @@ import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { blogArticles } from '@/lib/blogData';
+import { generateBlogIndexJsonLd } from '@/lib/schemaStructuredData';
 
 export const metadata = {
   title: 'Arborist Guides & Advice | Arbco Tree Services Townsville',
@@ -15,6 +16,12 @@ export const metadata = {
 export default function BlogIndexPage() {
   return (
     <main className="min-h-screen bg-slate-50 font-sans text-slate-800">
+      {/* Schema.org Structured Data */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(generateBlogIndexJsonLd()) }}
+      />
+
       {/* Hero Section */}
       <section className="relative pt-32 pb-20 px-4 bg-[#051c0e] text-white overflow-hidden text-center">
         <div className="absolute inset-0 opacity-15 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-[#7cc043] via-transparent to-transparent" />

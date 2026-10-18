@@ -5,6 +5,7 @@ import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { blogArticles } from "@/lib/blogData";
+import { generateHomepageJsonLd } from "@/lib/schemaStructuredData";
 
 export default function Home() {
   const [rotation, setRotation] = useState(0);
@@ -76,7 +77,11 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-slate-50 font-sans text-slate-800 antialiased">
-
+      {/* Schema.org Structured Data (TreeService, WebSite, OfferCatalog) */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(generateHomepageJsonLd()) }}
+      />
 
       {/* Hero Section */}
       <section className="relative bg-emerald-950 py-24 lg:py-36 text-white overflow-hidden">

@@ -2,7 +2,14 @@ import { regions, allSuburbs, services, slugify } from '../src/lib/locationData'
 import { getComplementaryServices, getNearbySuburbs, priorityHubSuburbs } from '../src/lib/internalLinking';
 import { blogArticles, getBlogArticle, getArticlesForService, getArticlesForSuburb } from '../src/lib/blogData';
 import { getSuburbPageContent } from '../src/lib/suburbIntelligence';
-import { generateSuburbJsonLd, generateCoreServiceJsonLd } from '../src/lib/schemaStructuredData';
+import {
+  generateSuburbJsonLd,
+  generateCoreServiceJsonLd,
+  generateHomepageJsonLd,
+  generateServicesIndexJsonLd,
+  generateServiceAreasIndexJsonLd,
+  generateBlogIndexJsonLd,
+} from '../src/lib/schemaStructuredData';
 
 const errors: string[] = [];
 const warnings: string[] = [];
@@ -138,6 +145,20 @@ for (const suburb of allSuburbs) {
       if (!str.includes('Arbco Tree Services')) {
         errors.push(`Schema JSON-LD for ${service.id}-${suburb} does not contain "Arbco Tree Services"`);
       }
+      if (!str.includes('"TreeService"')) {
+        errors.push(`Schema JSON-LD for ${service.id}-${suburb} missing TreeService`);
+      }
+      if (!str.includes('"Service"')) {
+        errors.push(`Schema JSON-LD for ${service.id}-${suburb} missing Service schema`);
+      }
+      if (!str.includes('"BreadcrumbList"')) {
+        errors.push(`Schema JSON-LD for ${service.id}-${suburb} missing BreadcrumbList`);
+      }
+      // Check 5-tier breadcrumb matching visible UI
+      const breadcrumbObj: any = jsonLd.find((item: any) => item['@type'] === 'BreadcrumbList');
+      if (!breadcrumbObj || breadcrumbObj.itemListElement?.length !== 5) {
+        errors.push(`BreadcrumbList for ${service.id}-${suburb} does not have 5 items (got ${breadcrumbObj?.itemListElement?.length})`);
+      }
       if (!content.faqs || content.faqs.length < 4) {
         errors.push(`Suburb ${suburb} service ${service.id} has fewer than 4 FAQs (got ${content.faqs?.length})`);
       }
@@ -155,7 +176,7 @@ for (const suburb of allSuburbs) {
     }
   }
 }
-console.log(`- Verified ${schemaSuccessCount} suburb JSON-LD schemas and FAQ structures.`);
+console.log(`- Verified ${schemaSuccessCount} suburb JSON-LD schemas (TreeService, Service, FAQPage, 5-tier BreadcrumbList).`);
 
 console.log('\n6.1. Verifying Cross-Zone FAQ Diversity (Sample Checks)...');
 const chFaqs = getSuburbPageContent('Castle Hill', 'tree-removal', 'Tree Removal').faqs;
@@ -184,6 +205,7 @@ services.forEach(srv => {
     const details = {
       heroTagline: srv.description,
       subheading: srv.description,
+      features: [{ title: 'Safety First', desc: 'Compliant with standards', icon: '🌲' }],
       faqs: [{ question: 'Sample question?', answer: 'Sample answer.' }],
     };
     const jsonLd = generateCoreServiceJsonLd(srv, details);
@@ -191,10 +213,48 @@ services.forEach(srv => {
     if (!str.includes('Arbco Tree Services')) {
       errors.push(`Service JSON-LD for ${srv.id} does not contain "Arbco Tree Services"`);
     }
+    if (!str.includes('"TreeService"')) {
+      errors.push(`Service JSON-LD for ${srv.id} missing TreeService`);
+    }
+    if (!str.includes('"Service"')) {
+      errors.push(`Service JSON-LD for ${srv.id} missing Service schema`);
+    }
+    const breadcrumbObj: any = jsonLd.find((item: any) => item['@type'] === 'BreadcrumbList');
+    if (!breadcrumbObj || breadcrumbObj.itemListElement?.length !== 3) {
+      errors.push(`BreadcrumbList for service ${srv.id} does not have 3 items`);
+    }
   } catch (e: any) {
     errors.push(`Error generating service schema for ${srv.id}: ${e.message}`);
   }
 });
+console.log(`- Verified 7 core service JSON-LD schemas (TreeService, Service, FAQPage, BreadcrumbList).`);
+
+console.log('\n7.1. Verifying Homepage & Directory Hub JSON-LD Schemas...');
+try {
+  const homeJson = generateHomepageJsonLd();
+  const homeStr = JSON.stringify(homeJson);
+  if (!homeStr.includes('"TreeService"') || !homeStr.includes('"WebSite"') || !homeStr.includes('"OfferCatalog"')) {
+    errors.push(`Homepage JSON-LD missing required schemas`);
+  }
+  const servicesIndexJson = generateServicesIndexJsonLd();
+  const servicesIndexStr = JSON.stringify(servicesIndexJson);
+  if (!servicesIndexStr.includes('"BreadcrumbList"') || !servicesIndexStr.includes('"OfferCatalog"')) {
+    errors.push(`Services Index JSON-LD missing required schemas`);
+  }
+  const serviceAreasIndexJson = generateServiceAreasIndexJsonLd();
+  const serviceAreasIndexStr = JSON.stringify(serviceAreasIndexJson);
+  if (!serviceAreasIndexStr.includes('"BreadcrumbList"') || !serviceAreasIndexStr.includes('"TreeService"')) {
+    errors.push(`Service Areas Index JSON-LD missing required schemas`);
+  }
+  const blogIndexJson = generateBlogIndexJsonLd();
+  const blogIndexStr = JSON.stringify(blogIndexJson);
+  if (!blogIndexStr.includes('"BreadcrumbList"') || !blogIndexStr.includes('"Blog"')) {
+    errors.push(`Blog Index JSON-LD missing required schemas`);
+  }
+  console.log(`- Verified Homepage, Services Index, Service Areas Index, and Blog Index structured data.`);
+} catch (e: any) {
+  errors.push(`Error in directory/homepage schema generation: ${e.message}`);
+}
 
 console.log('\n8. Verifying Blog Article JSON-LD for all 4 articles...');
 blogArticles.forEach(art => {
