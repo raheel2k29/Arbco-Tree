@@ -189,7 +189,7 @@ export default function ServiceAreasClient() {
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               placeholder="Search suburb (e.g. Kirwan, Castle Hill)..."
-              className="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-3 pl-10 text-sm focus:outline-hidden focus:ring-2 focus:ring-[#036829] focus:bg-white transition-all font-sans"
+              className="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-3 pl-10 text-base sm:text-sm focus:outline-hidden focus:ring-2 focus:ring-[#036829] focus:bg-white transition-all font-sans"
             />
             <svg
               className="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2"

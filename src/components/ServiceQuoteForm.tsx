@@ -77,7 +77,7 @@ export default function ServiceQuoteForm({ serviceName }: { serviceName: string 
                 value={formData.name}
                 onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                 placeholder="e.g. David Smith"
-                className="w-full px-4 py-3 rounded-xl bg-white/10 border border-white/20 text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-[#7cc043] text-sm"
+                className="w-full px-4 py-3 rounded-xl bg-white/10 border border-white/20 text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-[#7cc043] text-base sm:text-sm"
               />
             </div>
             <div>
@@ -90,7 +90,7 @@ export default function ServiceQuoteForm({ serviceName }: { serviceName: string 
                 value={formData.phone}
                 onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                 placeholder="e.g. 0400 000 000"
-                className="w-full px-4 py-3 rounded-xl bg-white/10 border border-white/20 text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-[#7cc043] text-sm"
+                className="w-full px-4 py-3 rounded-xl bg-white/10 border border-white/20 text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-[#7cc043] text-base sm:text-sm"
               />
             </div>
           </div>
@@ -106,7 +106,7 @@ export default function ServiceQuoteForm({ serviceName }: { serviceName: string 
                 value={formData.suburb}
                 onChange={(e) => setFormData({ ...formData, suburb: e.target.value })}
                 placeholder="e.g. Annandale, QLD"
-                className="w-full px-4 py-3 rounded-xl bg-white/10 border border-white/20 text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-[#7cc043] text-sm"
+                className="w-full px-4 py-3 rounded-xl bg-white/10 border border-white/20 text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-[#7cc043] text-base sm:text-sm"
               />
             </div>
             <div>
@@ -117,7 +117,7 @@ export default function ServiceQuoteForm({ serviceName }: { serviceName: string 
                 type="text"
                 readOnly
                 value={serviceName}
-                className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-[#7cc043] font-bold text-sm cursor-not-allowed"
+                className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-[#7cc043] font-bold text-base sm:text-sm cursor-not-allowed"
               />
             </div>
           </div>
@@ -131,7 +131,7 @@ export default function ServiceQuoteForm({ serviceName }: { serviceName: string 
               value={formData.details}
               onChange={(e) => setFormData({ ...formData, details: e.target.value })}
               placeholder="Tell us about the tree species, size, location, access restrictions, or urgency..."
-              className="w-full px-4 py-3 rounded-xl bg-white/10 border border-white/20 text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-[#7cc043] text-sm"
+              className="w-full px-4 py-3 rounded-xl bg-white/10 border border-white/20 text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-[#7cc043] text-base sm:text-sm"
             />
           </div>
 

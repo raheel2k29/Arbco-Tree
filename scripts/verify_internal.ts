@@ -2,6 +2,8 @@ import { regions, allSuburbs, services, slugify } from '../src/lib/locationData'
 import { getComplementaryServices, getNearbySuburbs, priorityHubSuburbs } from '../src/lib/internalLinking';
 import { blogArticles, getBlogArticle, getArticlesForService, getArticlesForSuburb } from '../src/lib/blogData';
 import { getSuburbPageContent } from '../src/lib/suburbIntelligence';
+import * as nodeFs from 'fs';
+import * as nodePath from 'path';
 import {
   generateSuburbJsonLd,
   generateCoreServiceJsonLd,
@@ -421,6 +423,49 @@ for (let i = 0; i < treeRemovalTitles.length; i++) {
   }
 }
 console.log('- Confirmed descriptions are distinctly crafted per zone and NOT simple token replacements.');
+
+// 11. Mobile Experience & CTA Verification
+console.log('\n11. Verifying Mobile Experience, Sticky CTA Bar, and Phone Links...');
+const layoutContent = nodeFs.readFileSync(nodePath.join(__dirname, '../src/app/layout.tsx'), 'utf8');
+const headerContent = nodeFs.readFileSync(nodePath.join(__dirname, '../src/components/Header.tsx'), 'utf8');
+const stickyBarContent = nodeFs.readFileSync(nodePath.join(__dirname, '../src/components/MobileStickyBar.tsx'), 'utf8');
+const pageContent = nodeFs.readFileSync(nodePath.join(__dirname, '../src/app/page.tsx'), 'utf8');
+
+// Check MobileStickyBar integration in layout
+if (!layoutContent.includes('MobileStickyBar')) {
+  errors.push('MobileStickyBar is NOT imported or rendered in src/app/layout.tsx!');
+}
+if (!layoutContent.includes('pb-20 lg:pb-0')) {
+  errors.push('Safe bottom padding pb-20 lg:pb-0 is missing from body in src/app/layout.tsx!');
+}
+
+// Check tel:0456579811 in sticky bar
+if (!stickyBarContent.includes('tel:0456579811')) {
+  errors.push('tel:0456579811 link missing in MobileStickyBar.tsx!');
+}
+if (!stickyBarContent.includes('/quote')) {
+  errors.push('/quote link missing in MobileStickyBar.tsx!');
+}
+if (!stickyBarContent.includes('lg:hidden fixed bottom-0')) {
+  errors.push('MobileStickyBar must be pinned to bottom on mobile (lg:hidden fixed bottom-0)!');
+}
+
+// Check Header mobile features
+if (!headerContent.includes('mobileMenuOpen')) {
+  errors.push('Mobile drawer state mobileMenuOpen is missing in Header.tsx!');
+}
+if (!headerContent.includes('tel:0456579811')) {
+  errors.push('tel:0456579811 link missing in Header.tsx!');
+}
+
+// Check Hero CTA call button
+if (!pageContent.includes('tel:0456579811')) {
+  errors.push('tel:0456579811 link missing in page.tsx hero section!');
+}
+
+console.log('- MobileStickyBar integrated into layout with safe bottom padding.');
+console.log('- Header features responsive slide-down menu and direct tap-to-call button.');
+console.log('- Verified tel:0456579811 and /quote links across mobile touchpoints.');
 
 console.log('\n=== SUMMARY ===');
 console.log(`Errors found: ${errors.length}`);

@@ -133,7 +133,7 @@ function QuoteFormContent() {
                         value={formData.name}
                         onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                         placeholder="e.g. David Smith"
-                        className="w-full px-4 py-3 rounded-xl border border-slate-200 bg-slate-50 focus:bg-white focus:border-[#036829] focus:outline-none text-sm transition-colors"
+                        className="w-full px-4 py-3 rounded-xl border border-slate-200 bg-slate-50 focus:bg-white focus:border-[#036829] focus:outline-none text-base sm:text-sm transition-colors"
                       />
                     </div>
                     <div className="space-y-1">
@@ -144,7 +144,7 @@ function QuoteFormContent() {
                         value={formData.phone}
                         onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                         placeholder="e.g. 0456 000 000"
-                        className="w-full px-4 py-3 rounded-xl border border-slate-200 bg-slate-50 focus:bg-white focus:border-[#036829] focus:outline-none text-sm transition-colors"
+                        className="w-full px-4 py-3 rounded-xl border border-slate-200 bg-slate-50 focus:bg-white focus:border-[#036829] focus:outline-none text-base sm:text-sm transition-colors"
                       />
                     </div>
                   </div>
@@ -155,7 +155,7 @@ function QuoteFormContent() {
                       value={formData.email}
                       onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                       placeholder="e.g. david@example.com.au"
-                      className="w-full px-4 py-3 rounded-xl border border-slate-200 bg-slate-50 focus:bg-white focus:border-[#036829] focus:outline-none text-sm transition-colors"
+                      className="w-full px-4 py-3 rounded-xl border border-slate-200 bg-slate-50 focus:bg-white focus:border-[#036829] focus:outline-none text-base sm:text-sm transition-colors"
                     />
                   </div>
                 </div>
@@ -175,7 +175,7 @@ function QuoteFormContent() {
                         value={formData.suburb}
                         onChange={(e) => setFormData({ ...formData, suburb: e.target.value })}
                         placeholder="e.g. Annandale, QLD"
-                        className="w-full px-4 py-3 rounded-xl border border-slate-200 bg-slate-50 focus:bg-white focus:border-[#036829] focus:outline-none text-sm transition-colors"
+                        className="w-full px-4 py-3 rounded-xl border border-slate-200 bg-slate-50 focus:bg-white focus:border-[#036829] focus:outline-none text-base sm:text-sm transition-colors"
                       />
                     </div>
 
@@ -184,7 +184,7 @@ function QuoteFormContent() {
                       <select
                         value={formData.service}
                         onChange={(e) => setFormData({ ...formData, service: e.target.value })}
-                        className="w-full px-4 py-3 rounded-xl border border-slate-200 bg-slate-50 focus:bg-white focus:border-[#036829] focus:outline-none text-sm transition-colors appearance-none"
+                        className="w-full px-4 py-3 rounded-xl border border-slate-200 bg-slate-50 focus:bg-white focus:border-[#036829] focus:outline-none text-base sm:text-sm transition-colors appearance-none"
                       >
                         {services.map((s) => (
                           <option key={s.id} value={s.id}>
@@ -235,7 +235,7 @@ function QuoteFormContent() {
                       value={formData.details}
                       onChange={(e) => setFormData({ ...formData, details: e.target.value })}
                       placeholder="Please mention approximate tree height, species (if known), location on property, fence or pool access restrictions, or powerline proximity..."
-                      className="w-full px-4 py-3 rounded-xl border border-slate-200 bg-slate-50 focus:bg-white focus:border-[#036829] focus:outline-none text-sm transition-colors"
+                      className="w-full px-4 py-3 rounded-xl border border-slate-200 bg-slate-50 focus:bg-white focus:border-[#036829] focus:outline-none text-base sm:text-sm transition-colors"
                     />
                   </div>
                 </div>

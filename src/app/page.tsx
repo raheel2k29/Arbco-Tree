@@ -120,16 +120,25 @@ export default function Home() {
                 Arbco Tree Services provides professional tree removal, pruning, stump grinding and arborist services with a focus on safety, care and customer satisfaction.
               </p>
               
-              <div className="flex flex-wrap gap-4 pt-2 reveal-slide-up delay-200">
+              <div className="flex flex-wrap items-center gap-3.5 pt-2 reveal-slide-up delay-200">
                 <Link
                   href="/quote"
-                  className="quote-btn-gradient inline-flex items-center gap-2 rounded-lg px-6 py-3.5 text-sm font-extrabold text-white"
+                  className="quote-btn-gradient inline-flex items-center gap-2 rounded-lg px-6 py-3.5 text-sm font-extrabold text-white shadow-lg shadow-black/20"
                 >
                   Request a Free Quote <span className="text-xs">→</span>
                 </Link>
+                <a
+                  href="tel:0456579811"
+                  className="inline-flex items-center gap-2.5 rounded-lg bg-white/10 hover:bg-white/20 border border-white/25 px-5 py-3.5 text-sm font-extrabold text-white backdrop-blur-sm transition-all"
+                >
+                  <svg className="w-4 h-4 text-[#7cc043]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                  </svg>
+                  <span>Call 0456 579 811</span>
+                </a>
                 <Link
                   href="/services"
-                  className="inline-flex items-center gap-2 rounded-lg border border-slate-400 hover:border-white px-6 py-3.5 text-sm font-extrabold text-white transition-all"
+                  className="inline-flex items-center gap-1.5 rounded-lg border border-slate-400/60 hover:border-white px-5 py-3.5 text-sm font-semibold text-slate-200 hover:text-white transition-all"
                 >
                   Our Services <span className="text-xs">→</span>
                 </Link>
@@ -215,7 +224,7 @@ export default function Home() {
                         value={quoteData.name}
                         onChange={(e) => setQuoteData({ ...quoteData, name: e.target.value })}
                         placeholder="e.g. John Doe"
-                        className="w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-xs focus:border-[#036829] focus:bg-white focus:outline-none transition-colors"
+                        className="w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-base sm:text-xs focus:border-[#036829] focus:bg-white focus:outline-none transition-colors"
                       />
                     </div>
                     <div className="space-y-1">
@@ -226,7 +235,7 @@ export default function Home() {
                         value={quoteData.phone}
                         onChange={(e) => setQuoteData({ ...quoteData, phone: e.target.value })}
                         placeholder="e.g. 0400 000 000"
-                        className="w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-xs focus:border-[#036829] focus:bg-white focus:outline-none transition-colors"
+                        className="w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-base sm:text-xs focus:border-[#036829] focus:bg-white focus:outline-none transition-colors"
                       />
                     </div>
                     <div className="space-y-1">
@@ -237,7 +246,7 @@ export default function Home() {
                         value={quoteData.suburb}
                         onChange={(e) => setQuoteData({ ...quoteData, suburb: e.target.value })}
                         placeholder="e.g. Annandale, QLD"
-                        className="w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-xs focus:border-[#036829] focus:bg-white focus:outline-none transition-colors"
+                        className="w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-base sm:text-xs focus:border-[#036829] focus:bg-white focus:outline-none transition-colors"
                       />
                     </div>
                     <div className="space-y-1">
@@ -245,7 +254,7 @@ export default function Home() {
                       <select
                         value={quoteData.service}
                         onChange={(e) => setQuoteData({ ...quoteData, service: e.target.value })}
-                        className="w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-xs focus:border-[#036829] focus:bg-white focus:outline-none transition-colors appearance-none"
+                        className="w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-base sm:text-xs focus:border-[#036829] focus:bg-white focus:outline-none transition-colors appearance-none"
                         required
                       >
                         <option value="">Select a service...</option>
@@ -261,7 +270,7 @@ export default function Home() {
                     <button
                       type="submit"
                       disabled={quoteLoading}
-                      className="w-full rounded-xl bg-gradient-to-r from-[#036829] to-[#7cc043] py-3.5 text-xs font-extrabold text-white shadow-md shadow-emerald-950/20 hover:opacity-95 transition-opacity font-heading cursor-pointer disabled:opacity-60"
+                      className="w-full rounded-xl bg-gradient-to-r from-[#036829] to-[#7cc043] py-3.5 text-sm font-extrabold text-white shadow-md shadow-emerald-950/20 hover:opacity-95 transition-opacity font-heading cursor-pointer disabled:opacity-60"
                     >
                       {quoteLoading ? 'Sending Request...' : 'Get My Free Quote'}
                     </button>
