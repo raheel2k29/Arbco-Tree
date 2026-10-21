@@ -3,13 +3,14 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { blogArticles } from '@/lib/blogData';
 import { generateBlogIndexJsonLd } from '@/lib/schemaStructuredData';
+import { SITE_CANONICAL_DOMAIN } from '@/lib/seoMetadata';
 
 export const metadata = {
   title: 'Arborist Guides & Advice | Arbco Tree Services Townsville',
   description:
     'Expert arborist advice for Townsville homeowners. Pre-cyclone tree safety, Townsville City Council tree permits, stump grinding comparisons, and tropical palm care.',
   alternates: {
-    canonical: 'https://arbco-tree.vercel.app/blog',
+    canonical: `${SITE_CANONICAL_DOMAIN}/blog`,
   },
 };
 

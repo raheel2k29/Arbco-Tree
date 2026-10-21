@@ -7,7 +7,7 @@ import ServiceQuoteForm from '@/components/ServiceQuoteForm';
 import { generateCoreServiceJsonLd } from '@/lib/schemaStructuredData';
 import { priorityHubSuburbs } from '@/lib/internalLinking';
 import { getArticlesForService } from '@/lib/blogData';
-import { coreServicesSeo } from '@/lib/seoMetadata';
+import { coreServicesSeo, SITE_CANONICAL_DOMAIN } from '@/lib/seoMetadata';
 
 // Generate static routes for all 7 core services
 export function generateStaticParams() {
@@ -425,7 +425,7 @@ export async function generateMetadata({
   const pageDesc = seo
     ? seo.description
     : `${service.description} Servicing all 97 Greater Townsville suburbs.`;
-  const canonicalUrl = seo ? seo.canonical : `https://arbco-tree.vercel.app/services/${service.id}`;
+  const canonicalUrl = seo ? seo.canonical : `${SITE_CANONICAL_DOMAIN}/services/${service.id}`;
 
   return {
     title: pageTitle,

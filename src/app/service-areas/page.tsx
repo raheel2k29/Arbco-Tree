@@ -1,13 +1,14 @@
 import React, { Suspense } from 'react';
 import ServiceAreasClient from '@/components/ServiceAreasClient';
 import { generateServiceAreasIndexJsonLd } from '@/lib/schemaStructuredData';
+import { SITE_CANONICAL_DOMAIN } from '@/lib/seoMetadata';
 
 export const metadata = {
   title: 'Townsville Service Areas | Arbco Tree Services',
   description:
     'Explore all 97 Greater Townsville suburbs serviced by Arbco Tree Services. Local Level 5 arborists providing tree removal, stump grinding, and palm cleaning.',
   alternates: {
-    canonical: 'https://arbco-tree.vercel.app/service-areas',
+    canonical: `${SITE_CANONICAL_DOMAIN}/service-areas`,
   },
 };
 

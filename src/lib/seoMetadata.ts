@@ -1,7 +1,7 @@
 import { slugify } from './locationData';
 import type { SuburbEnvironmentalProfile, BespokeSuburbData } from './suburbIntelligence';
 
-export const SITE_CANONICAL_DOMAIN = 'https://arbco-tree.vercel.app';
+export const SITE_CANONICAL_DOMAIN = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.arbco.com.au';
 
 // ============================================================================
 // Core Services SEO Details

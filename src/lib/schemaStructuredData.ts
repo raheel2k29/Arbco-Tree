@@ -1,6 +1,6 @@
 import { slugify, services, allSuburbs } from './locationData';
 
-export const SITE_URL = 'https://arbco-tree.vercel.app';
+export const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.arbco.com.au';
 export const BUSINESS_NAME = 'Arbco Tree Services';
 export const BUSINESS_PHONE = '0456 579 811';
 export const BUSINESS_PHONE_INTL = '+61456579811';

@@ -29,6 +29,8 @@ validRoutes.add('/contact');
 validRoutes.add('/terms');
 validRoutes.add('/privacy');
 validRoutes.add('/blog');
+validRoutes.add('/robots.txt');
+validRoutes.add('/sitemap.xml');
 
 // Services
 services.forEach(s => validRoutes.add(`/services/${s.id}`));
@@ -329,7 +331,7 @@ for (const file of allCodeFiles) {
 console.log(`- Checked ${totalHrefsChecked} hardcoded internal hrefs across all source files.`);
 
 console.log('\n10. Verifying SEO Titles, Meta Descriptions, and Canonical URLs across all routes...');
-import { coreServicesSeo, generateSuburbSeoTitle, generateSuburbMetaDescription, generateSuburbCanonical, generateSuburbH1Subtitle } from '../src/lib/seoMetadata';
+import { coreServicesSeo, generateSuburbSeoTitle, generateSuburbMetaDescription, generateSuburbCanonical, generateSuburbH1Subtitle, SITE_CANONICAL_DOMAIN } from '../src/lib/seoMetadata';
 import { microZones, suburbZoneMap } from '../src/lib/suburbIntelligence';
 
 // Verify core services SEO
@@ -345,7 +347,7 @@ services.forEach(s => {
   if (!seo.description || seo.description.length < 100 || seo.description.length > 175) {
     errors.push(`Invalid core service SEO description length (${seo.description?.length}): ${seo.description}`);
   }
-  if (!seo.canonical || !seo.canonical.startsWith('https://arbco-tree.vercel.app/services/')) {
+  if (!seo.canonical || !seo.canonical.startsWith(`${SITE_CANONICAL_DOMAIN}/services/`)) {
     errors.push(`Invalid core service canonical URL: ${seo.canonical}`);
   }
   if (!seo.h1Subtitle) {
@@ -377,7 +379,7 @@ for (const suburb of allSuburbs) {
     if (!desc.includes('0456 579 811') && !desc.toLowerCase().includes('quote')) {
       errors.push(`Meta Description for ${s.id}-${suburb} missing CTA/phone: "${desc}"`);
     }
-    const expectedCanonical = `https://arbco-tree.vercel.app/service-areas/${s.id}-${slugify(suburb)}`;
+    const expectedCanonical = `${SITE_CANONICAL_DOMAIN}/service-areas/${s.id}-${slugify(suburb)}`;
     if (canonical !== expectedCanonical) {
       errors.push(`Canonical URL mismatch for ${s.id}-${suburb}: got "${canonical}", expected "${expectedCanonical}"`);
     }

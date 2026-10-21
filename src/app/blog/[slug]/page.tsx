@@ -24,7 +24,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     title: article.metaTitle,
     description: article.metaDescription,
     alternates: {
-      canonical: `https://arbco-tree.vercel.app/blog/${article.slug}`,
+      canonical: `${SITE_URL}/blog/${article.slug}`,
     },
   };
 }

@@ -3,13 +3,14 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { services } from '@/lib/locationData';
 import { generateServicesIndexJsonLd } from '@/lib/schemaStructuredData';
+import { SITE_CANONICAL_DOMAIN } from '@/lib/seoMetadata';
 
 export const metadata = {
   title: 'Arborist Services Townsville | Arbco Tree Services',
   description:
     'Comprehensive tree care, removal, stump grinding, palm maintenance, and land clearing across all 97 Greater Townsville suburbs. Fully insured Level 5 qualified arborists.',
   alternates: {
-    canonical: 'https://arbco-tree.vercel.app/services',
+    canonical: `${SITE_CANONICAL_DOMAIN}/services`,
   },
 };
 
