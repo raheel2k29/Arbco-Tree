@@ -1,13 +1,14 @@
 {
   "name": "arbco-tree",
-  "version": "0.3.6",
+  "version": "0.3.7",
   "private": true,
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "test:links": "jiti scripts/verify_internal.ts"
+    "test:links": "jiti scripts/verify_internal.ts",
+    "benchmark:ttfb": "jiti scripts/benchmark_server_response.ts"
   },
   "dependencies": {
     "next": "16.3.2",
