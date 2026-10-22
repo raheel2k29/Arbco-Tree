@@ -6,6 +6,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { blogArticles } from "@/lib/blogData";
 import { generateHomepageJsonLd } from "@/lib/schemaStructuredData";
+import { trackQuoteSubmission } from "@/lib/analytics";
 
 export default function Home() {
   const [rotation, setRotation] = useState(0);
@@ -17,6 +18,16 @@ export default function Home() {
   const handleQuoteSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setQuoteLoading(true);
+
+    // Track GA4 quote submission conversion
+    trackQuoteSubmission({
+      name: quoteData.name,
+      phone: quoteData.phone,
+      suburb: quoteData.suburb,
+      service: quoteData.service,
+      source: 'homepage_hero',
+    });
+
     setTimeout(() => {
       setQuoteLoading(false);
       setQuoteSubmitted(true);

@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from 'react';
+import { trackQuoteSubmission } from '@/lib/analytics';
 
 export default function ServiceQuoteForm({ serviceName }: { serviceName: string }) {
   const [formData, setFormData] = useState({
@@ -15,6 +16,16 @@ export default function ServiceQuoteForm({ serviceName }: { serviceName: string 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
+
+    // Track GA4 quote submission conversion
+    trackQuoteSubmission({
+      name: formData.name,
+      phone: formData.phone,
+      suburb: formData.suburb,
+      service: serviceName,
+      source: 'service_page_quote_form',
+    });
+
     setTimeout(() => {
       setLoading(false);
       setSubmitted(true);

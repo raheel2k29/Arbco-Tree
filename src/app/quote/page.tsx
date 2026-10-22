@@ -5,6 +5,7 @@ import { useSearchParams } from 'next/navigation';
 import Link from 'next/link';
 import Image from 'next/image';
 import { services } from '@/lib/locationData';
+import { trackQuoteSubmission } from '@/lib/analytics';
 
 function QuoteFormContent() {
   const searchParams = useSearchParams();
@@ -32,6 +33,17 @@ function QuoteFormContent() {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
+
+    // Track GA4 quote submission conversion
+    const matchingService = services.find(s => s.id === formData.service);
+    trackQuoteSubmission({
+      name: formData.name,
+      phone: formData.phone,
+      suburb: formData.suburb,
+      service: matchingService ? matchingService.name : formData.service,
+      source: 'quote_page_multi_step',
+    });
+
     // Simulate swift confirmation
     setTimeout(() => {
       setLoading(false);
