@@ -1,9 +1,13 @@
 import React from 'react';
 import Link from 'next/link';
+import { SITE_CANONICAL_DOMAIN } from '@/lib/seoMetadata';
 
 export const metadata = {
   title: 'Terms & Conditions | Arbco Tree Services',
   description: 'Terms & Conditions for Arbco Tree Services arborist, tree removal, and site maintenance services in Townsville QLD.',
+  alternates: {
+    canonical: `${SITE_CANONICAL_DOMAIN}/terms`,
+  },
 };
 
 export default function TermsPage() {

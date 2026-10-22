@@ -355,6 +355,22 @@ services.forEach(s => {
   }
 });
 
+// Verify Static Utility Pages SEO & Canonicals
+const quoteLayoutContent = nodeFs.readFileSync(nodePath.join(__dirname, '../src/app/quote/layout.tsx'), 'utf8');
+const privacyPageContent = nodeFs.readFileSync(nodePath.join(__dirname, '../src/app/privacy/page.tsx'), 'utf8');
+const termsPageContent = nodeFs.readFileSync(nodePath.join(__dirname, '../src/app/terms/page.tsx'), 'utf8');
+
+if (!quoteLayoutContent.includes('canonical: `${SITE_CANONICAL_DOMAIN}/quote`')) {
+  errors.push('/quote missing dedicated canonical URL `${SITE_CANONICAL_DOMAIN}/quote` in quote/layout.tsx!');
+}
+if (!privacyPageContent.includes('canonical: `${SITE_CANONICAL_DOMAIN}/privacy`')) {
+  errors.push('/privacy missing dedicated canonical URL `${SITE_CANONICAL_DOMAIN}/privacy` in privacy/page.tsx!');
+}
+if (!termsPageContent.includes('canonical: `${SITE_CANONICAL_DOMAIN}/terms`')) {
+  errors.push('/terms missing dedicated canonical URL `${SITE_CANONICAL_DOMAIN}/terms` in terms/page.tsx!');
+}
+console.log('- Verified dedicated canonical URLs for /quote, /privacy, and /terms.');
+
 // Verify all 679 suburb service routes
 let checkedSuburbMeta = 0;
 const sampleTitlesByZone: Record<string, string> = {};

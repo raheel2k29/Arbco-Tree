@@ -1,9 +1,13 @@
 import React from 'react';
 import Link from 'next/link';
+import { SITE_CANONICAL_DOMAIN } from '@/lib/seoMetadata';
 
 export const metadata = {
   title: 'Privacy Policy | Arbco Tree Services',
   description: 'Privacy Policy for Arbco Tree Services. Learn how we handle and protect your personal information.',
+  alternates: {
+    canonical: `${SITE_CANONICAL_DOMAIN}/privacy`,
+  },
 };
 
 export default function PrivacyPolicyPage() {
