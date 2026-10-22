@@ -4,7 +4,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { blogArticles, getBlogArticle } from '@/lib/blogData';
 import { services, slugify } from '@/lib/locationData';
-import { SITE_URL, BUSINESS_NAME, BUSINESS_PHONE_INTL, BUSINESS_EMAIL } from '@/lib/schemaStructuredData';
+import { SITE_URL, BUSINESS_NAME, BUSINESS_PHONE, BUSINESS_EMAIL } from '@/lib/schemaStructuredData';
 
 export function generateStaticParams() {
   return blogArticles.map((article) => ({

@@ -100,7 +100,7 @@ export default function ServiceQuoteForm({ serviceName }: { serviceName: string 
                 required
                 value={formData.phone}
                 onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                placeholder="e.g. 0400 000 000"
+                placeholder="e.g. 0456 579 811"
                 className="w-full px-4 py-3 rounded-xl bg-white/10 border border-white/20 text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-[#7cc043] text-base sm:text-sm"
               />
             </div>

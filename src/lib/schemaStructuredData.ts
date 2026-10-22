@@ -3,7 +3,7 @@ import { slugify, services, allSuburbs } from './locationData';
 export const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.arbco.com.au';
 export const BUSINESS_NAME = 'Arbco Tree Services';
 export const BUSINESS_PHONE = '0456 579 811';
-export const BUSINESS_PHONE_INTL = '+61456579811';
+export const BUSINESS_PHONE_INTL = '0456 579 811';
 export const BUSINESS_EMAIL = 'info@arbco.com.au';
 
 export interface ServiceData {
@@ -88,7 +88,7 @@ export function generateSuburbJsonLd(
     name: `${BUSINESS_NAME} - ${title}`,
     alternateName: `${title} by ${BUSINESS_NAME}`,
     url: pageUrl,
-    telephone: BUSINESS_PHONE_INTL,
+    telephone: BUSINESS_PHONE,
     email: BUSINESS_EMAIL,
     priceRange: '$$',
     image: `${SITE_URL}${serviceData.localImage || '/Tree Removal.png'}`,
@@ -116,7 +116,7 @@ export function generateSuburbJsonLd(
       name: BUSINESS_NAME,
       url: SITE_URL,
       logo: `${SITE_URL}/logo.png`,
-      telephone: BUSINESS_PHONE_INTL,
+      telephone: BUSINESS_PHONE,
       email: BUSINESS_EMAIL,
     },
   };
@@ -133,7 +133,7 @@ export function generateSuburbJsonLd(
       '@type': 'TreeService',
       name: BUSINESS_NAME,
       url: SITE_URL,
-      telephone: BUSINESS_PHONE_INTL,
+      telephone: BUSINESS_PHONE,
       email: BUSINESS_EMAIL,
       image: `${SITE_URL}/logo.png`,
     },
@@ -255,7 +255,7 @@ export function generateCoreServiceJsonLd(
     name: `${BUSINESS_NAME} - ${service.name} Townsville`,
     alternateName: `${service.name} Townsville`,
     url: pageUrl,
-    telephone: BUSINESS_PHONE_INTL,
+    telephone: BUSINESS_PHONE,
     email: BUSINESS_EMAIL,
     priceRange: '$$',
     image: `${SITE_URL}${service.localImage || '/Tree Removal.png'}`,
@@ -282,7 +282,7 @@ export function generateCoreServiceJsonLd(
       name: BUSINESS_NAME,
       url: SITE_URL,
       logo: `${SITE_URL}/logo.png`,
-      telephone: BUSINESS_PHONE_INTL,
+      telephone: BUSINESS_PHONE,
       email: BUSINESS_EMAIL,
     },
   };
@@ -298,7 +298,7 @@ export function generateCoreServiceJsonLd(
     provider: {
       '@type': 'TreeService',
       name: BUSINESS_NAME,
-      telephone: BUSINESS_PHONE_INTL,
+      telephone: BUSINESS_PHONE,
       email: BUSINESS_EMAIL,
       url: SITE_URL,
       image: `${SITE_URL}/logo.png`,
@@ -377,7 +377,7 @@ export function generateHomepageJsonLd() {
     name: BUSINESS_NAME,
     legalName: BUSINESS_NAME,
     url: SITE_URL,
-    telephone: BUSINESS_PHONE_INTL,
+    telephone: BUSINESS_PHONE,
     email: BUSINESS_EMAIL,
     priceRange: '$$',
     image: `${SITE_URL}/Tree Removal.png`,
@@ -512,7 +512,7 @@ export function generateServiceAreasIndexJsonLd() {
     '@id': `${SITE_URL}/service-areas#coverage`,
     name: `${BUSINESS_NAME} - Service Areas Directory`,
     url: `${SITE_URL}/service-areas`,
-    telephone: BUSINESS_PHONE_INTL,
+    telephone: BUSINESS_PHONE,
     email: BUSINESS_EMAIL,
     priceRange: '$$',
     description: `Professional arborist coverage across all ${allSuburbs.length} Greater Townsville suburbs.`,

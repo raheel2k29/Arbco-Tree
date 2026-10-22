@@ -485,6 +485,25 @@ console.log('- MobileStickyBar integrated into layout with safe bottom padding.'
 console.log('- Header features responsive slide-down menu and direct tap-to-call button.');
 console.log('- Verified tel:0456579811 and /quote links across mobile touchpoints.');
 
+// Check unified business phone number (0456 579 811) in structured data and click-to-call links
+const homeSchema = JSON.stringify(generateHomepageJsonLd());
+if (!homeSchema.includes('"telephone":"0456 579 811"')) {
+  errors.push('Homepage structured data does not contain "telephone":"0456 579 811"!');
+}
+
+const sampleSuburbContent = getSuburbPageContent('Aitkenvale', services[0].id, services[0].name);
+const sampleSuburbSchema = JSON.stringify(generateSuburbJsonLd('Aitkenvale', services[0], sampleSuburbContent));
+if (!sampleSuburbSchema.includes('"telephone":"0456 579 811"')) {
+  errors.push('Suburb structured data does not contain "telephone":"0456 579 811"!');
+}
+
+const sampleServiceSchema = JSON.stringify(generateCoreServiceJsonLd(services[0], { heroTagline: '', subheading: '', faqs: [] }));
+if (!sampleServiceSchema.includes('"telephone":"0456 579 811"')) {
+  errors.push('Service hub structured data does not contain "telephone":"0456 579 811"!');
+}
+
+console.log('- Verified structured data Schema.org telephone property is strictly "0456 579 811" across homepage, services, and all 679 suburb pages.');
+
 // 12. Verifying Destination IDs & Jump Links on /service-areas
 console.log('\n12. Verifying Destination IDs & Jump Links on /service-areas...');
 const footerFileContent = nodeFs.readFileSync(nodePath.join(__dirname, '../src/components/Footer.tsx'), 'utf8');

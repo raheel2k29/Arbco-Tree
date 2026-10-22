@@ -245,7 +245,7 @@ export default function Home() {
                         required
                         value={quoteData.phone}
                         onChange={(e) => setQuoteData({ ...quoteData, phone: e.target.value })}
-                        placeholder="e.g. 0400 000 000"
+                        placeholder="e.g. 0456 579 811"
                         className="w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-base sm:text-xs focus:border-[#036829] focus:bg-white focus:outline-none transition-colors"
                       />
                     </div>
