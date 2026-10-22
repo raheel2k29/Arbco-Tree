@@ -1,7 +1,6 @@
 "use client";
 import React, { useEffect, useState, useMemo } from "react";
 import Link from "next/link";
-import { useSearchParams } from "next/navigation";
 import { regions, services, slugify } from "@/lib/locationData";
 
 const serviceIcons: Record<string, React.ReactNode> = {
@@ -44,36 +43,43 @@ const serviceIcons: Record<string, React.ReactNode> = {
 };
 
 export default function ServiceAreasClient() {
-  const searchParams = useSearchParams();
-  const serviceParam = searchParams.get('service');
-  
-  // Default to query param if valid, else 'tree-removal'
-  const [selectedServiceId, setSelectedServiceId] = useState<string>(() => {
-    if (serviceParam && services.some(s => s.id === serviceParam)) {
-      return serviceParam;
-    }
-    return 'tree-removal';
-  });
-
+  // Default to 'tree-removal' during server-side static rendering
+  const [selectedServiceId, setSelectedServiceId] = useState<string>("tree-removal");
   const [searchQuery, setSearchQuery] = useState("");
 
-  // Sync state if URL query param changes
+  // On client-side mount, read URL search params and sync on popstate
   useEffect(() => {
-    if (serviceParam && services.some(s => s.id === serviceParam)) {
-      setSelectedServiceId(serviceParam);
-    }
-  }, [serviceParam]);
+    const syncServiceFromUrl = () => {
+      if (typeof window !== "undefined") {
+        const params = new URLSearchParams(window.location.search);
+        const serviceParam = params.get("service");
+        if (serviceParam && services.some((s) => s.id === serviceParam)) {
+          setSelectedServiceId(serviceParam);
+        } else {
+          setSelectedServiceId("tree-removal");
+        }
+      }
+    };
+
+    syncServiceFromUrl();
+    window.addEventListener("popstate", syncServiceFromUrl);
+    return () => window.removeEventListener("popstate", syncServiceFromUrl);
+  }, []);
 
   const activeService = useMemo(() => {
-    return services.find(s => s.id === selectedServiceId) || services[0];
+    return services.find((s) => s.id === selectedServiceId) || services[0];
   }, [selectedServiceId]);
 
   const handleSelectService = (id: string) => {
     setSelectedServiceId(id);
-    if (typeof window !== 'undefined') {
+    if (typeof window !== "undefined") {
       const url = new URL(window.location.href);
-      url.searchParams.set('service', id);
-      window.history.replaceState({}, '', url.toString());
+      if (id === "tree-removal") {
+        url.searchParams.delete("service");
+      } else {
+        url.searchParams.set("service", id);
+      }
+      window.history.pushState({}, "", url.toString());
     }
   };
 

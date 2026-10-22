@@ -591,6 +591,39 @@ console.log('- Delegated click-to-call listener intercepts all tel:0456579811 ac
 console.log('- Verified quote submission conversion tracking (generate_lead & quote_submission) across all 3 forms.');
 console.log('- Verified GA4 and GTM environment variable configuration in .env.example.');
 
+console.log('\n14. Verifying /service-areas Server-Side HTML Prerendering...');
+const serviceAreasPageContent = nodeFs.readFileSync(nodePath.join(__dirname, '../src/app/service-areas/page.tsx'), 'utf8');
+
+if (serviceAreasPageContent.includes('<Suspense')) {
+  errors.push('Suspense wrapper detected in src/app/service-areas/page.tsx! This causes Next.js SSG bailout to client-side loading spinner.');
+}
+if (serviceAreasClientContent.includes('useSearchParams')) {
+  errors.push('useSearchParams detected in src/components/ServiceAreasClient.tsx! Calling useSearchParams during SSG triggers BAILOUT_TO_CLIENT_SIDE_RENDERING.');
+}
+
+const serviceAreasHtmlPath = nodePath.join(__dirname, '../.next/server/app/service-areas.html');
+if (nodeFs.existsSync(serviceAreasHtmlPath)) {
+  const serviceAreasHtml = nodeFs.readFileSync(serviceAreasHtmlPath, 'utf8');
+  if (serviceAreasHtml.includes('BAILOUT_TO_CLIENT_SIDE_RENDERING')) {
+    errors.push('service-areas.html contains BAILOUT_TO_CLIENT_SIDE_RENDERING! HTML is missing server-rendered content.');
+  }
+  if (!serviceAreasHtml.includes('Tree Services Across Greater Townsville')) {
+    errors.push('service-areas.html is missing primary H1 "Tree Services Across Greater Townsville" in initial HTML!');
+  }
+  if (!serviceAreasHtml.includes('/service-areas/tree-removal-aitkenvale')) {
+    errors.push('service-areas.html is missing server-rendered suburb links in initial HTML!');
+  }
+  const suburbLinkCount = (serviceAreasHtml.match(/href="\/service-areas\/tree-removal-[^"]+"/g) || []).length;
+  if (suburbLinkCount < 97) {
+    errors.push(`service-areas.html only contains ${suburbLinkCount}/97 static suburb links in initial server-rendered HTML!`);
+  } else {
+    console.log(`- Verified all ${suburbLinkCount} Greater Townsville suburb links are present in initial server-rendered HTML.`);
+  }
+} else {
+  console.log('- (.next build artifact not present, skipping static HTML inspection)');
+}
+console.log('- Verified no Suspense bailout or useSearchParams blocking static SSG prerendering.');
+
 console.log('\n=== SUMMARY ===');
 console.log(`Errors found: ${errors.length}`);
 console.log(`Warnings found: ${warnings.length}`);

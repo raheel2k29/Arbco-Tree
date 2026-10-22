@@ -1,4 +1,4 @@
-import React, { Suspense } from 'react';
+import React from 'react';
 import ServiceAreasClient from '@/components/ServiceAreasClient';
 import { generateServiceAreasIndexJsonLd } from '@/lib/schemaStructuredData';
 import { SITE_CANONICAL_DOMAIN } from '@/lib/seoMetadata';
@@ -20,16 +20,7 @@ export default function ServiceAreasPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(generateServiceAreasIndexJsonLd()) }}
       />
-      <Suspense
-        fallback={
-          <main className="min-h-screen bg-slate-50 py-32 text-center">
-            <div className="inline-block animate-spin rounded-full h-10 w-10 border-b-2 border-[#036829]" />
-            <p className="mt-4 text-slate-500 font-sans text-sm">Loading service areas...</p>
-          </main>
-        }
-      >
-        <ServiceAreasClient />
-      </Suspense>
+      <ServiceAreasClient />
     </>
   );
 }
