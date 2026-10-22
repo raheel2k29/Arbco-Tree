@@ -95,6 +95,27 @@ export default function ServiceAreasClient() {
     return () => observer.disconnect();
   }, [searchQuery, selectedServiceId]);
 
+  useEffect(() => {
+    // Smoothly scroll to target region if URL contains anchor hash (e.g. #townsville-city)
+    const handleHashScroll = () => {
+      if (typeof window !== 'undefined' && window.location.hash) {
+        const targetId = window.location.hash.replace('#', '');
+        const targetEl = document.getElementById(targetId);
+        if (targetEl) {
+          targetEl.scrollIntoView({ behavior: 'smooth' });
+        }
+      }
+    };
+
+    // Run on initial mount and when hash changes
+    const timeout = setTimeout(handleHashScroll, 120);
+    window.addEventListener('hashchange', handleHashScroll);
+    return () => {
+      clearTimeout(timeout);
+      window.removeEventListener('hashchange', handleHashScroll);
+    };
+  }, []);
+
   const filteredRegions = useMemo(() => {
     return regions.map(region => ({
       ...region,
@@ -231,6 +252,20 @@ export default function ServiceAreasClient() {
           </Link>
         </div>
 
+        {/* Quick Regional Navigation Bar */}
+        <div className="flex items-center gap-2 mb-8 overflow-x-auto pb-2 scrollbar-hide text-xs font-bold font-heading">
+          <span className="text-slate-400 uppercase tracking-wider shrink-0 text-[10px] mr-1">Jump to Region:</span>
+          {regions.map((reg) => (
+            <a
+              key={reg.name}
+              href={`#${slugify(reg.name)}`}
+              className="shrink-0 px-3.5 py-1.5 rounded-xl bg-white hover:bg-emerald-50 text-slate-700 hover:text-[#036829] border border-slate-200/80 shadow-2xs transition-colors"
+            >
+              {reg.name === "Islands" ? "Magnetic & Islands" : reg.name}
+            </a>
+          ))}
+        </div>
+
         {/* Suburbs Grid Grouped by Region */}
         {filteredRegions.length === 0 ? (
           <div className="text-center py-20 bg-white rounded-3xl border border-slate-200 shadow-sm">
@@ -246,19 +281,29 @@ export default function ServiceAreasClient() {
           </div>
         ) : (
           <div className="space-y-12">
-            {filteredRegions.map((region) => (
-              <div key={region.name} className="space-y-4">
-                <div className="flex items-center justify-between border-b border-slate-200 pb-3">
-                  <div className="flex items-center gap-3">
-                    <span className="w-3 h-3 rounded-full bg-[#7cc043]" />
-                    <h2 className="text-xl sm:text-2xl font-extrabold text-slate-900 font-heading">
-                      {region.name}
-                    </h2>
-                    <span className="text-xs font-bold text-slate-400 bg-slate-100 px-2.5 py-0.5 rounded-full">
-                      {region.suburbs.length} {region.suburbs.length === 1 ? 'Suburb' : 'Suburbs'}
-                    </span>
+            {filteredRegions.map((region) => {
+              const regionSlug = slugify(region.name);
+              return (
+                <div
+                  key={region.name}
+                  id={regionSlug}
+                  className="space-y-4 scroll-mt-28 sm:scroll-mt-32 relative"
+                >
+                  {/* Alias anchor for Magnetic Island links */}
+                  {regionSlug === 'islands' && (
+                    <span id="magnetic-islands" className="absolute -top-32 left-0" />
+                  )}
+                  <div className="flex items-center justify-between border-b border-slate-200 pb-3">
+                    <div className="flex items-center gap-3">
+                      <span className="w-3 h-3 rounded-full bg-[#7cc043]" />
+                      <h2 className="text-xl sm:text-2xl font-extrabold text-slate-900 font-heading">
+                        {region.name === "Islands" ? "Magnetic & Islands" : region.name}
+                      </h2>
+                      <span className="text-xs font-bold text-slate-400 bg-slate-100 px-2.5 py-0.5 rounded-full">
+                        {region.suburbs.length} {region.suburbs.length === 1 ? 'Suburb' : 'Suburbs'}
+                      </span>
+                    </div>
                   </div>
-                </div>
 
                 <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3">
                   {region.suburbs.map((suburb) => {
@@ -282,7 +327,8 @@ export default function ServiceAreasClient() {
                   })}
                 </div>
               </div>
-            ))}
+            );
+          })}
           </div>
         )}
 

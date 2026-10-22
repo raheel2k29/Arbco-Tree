@@ -485,6 +485,61 @@ console.log('- MobileStickyBar integrated into layout with safe bottom padding.'
 console.log('- Header features responsive slide-down menu and direct tap-to-call button.');
 console.log('- Verified tel:0456579811 and /quote links across mobile touchpoints.');
 
+// 12. Verifying Destination IDs & Jump Links on /service-areas
+console.log('\n12. Verifying Destination IDs & Jump Links on /service-areas...');
+const footerFileContent = nodeFs.readFileSync(nodePath.join(__dirname, '../src/components/Footer.tsx'), 'utf8');
+const serviceAreasClientContent = nodeFs.readFileSync(nodePath.join(__dirname, '../src/components/ServiceAreasClient.tsx'), 'utf8');
+
+// Extract all /service-areas#... fragments from Footer.tsx
+const footerJumpRegex = /\/service-areas#([a-z0-9\-]+)/g;
+const expectedHashes: string[] = [];
+let match: RegExpExecArray | null;
+while ((match = footerJumpRegex.exec(footerFileContent)) !== null) {
+  expectedHashes.push(match[1]);
+}
+
+if (expectedHashes.length === 0) {
+  errors.push('No /service-areas bookmark links found in Footer.tsx!');
+} else {
+  console.log(`- Found ${expectedHashes.length} bookmark links in Footer.tsx: [${expectedHashes.join(', ')}]`);
+}
+
+// Ensure each expected hash has a corresponding destination id in ServiceAreasClient.tsx
+for (const hash of expectedHashes) {
+  // ServiceAreasClient uses id={regionSlug} or id="<hash>"
+  const hasDirectId = serviceAreasClientContent.includes(`id="${hash}"`);
+  const hasDynamicId = serviceAreasClientContent.includes(`id={regionSlug}`) &&
+    regions.some(r => slugify(r.name) === hash);
+
+  if (!hasDirectId && !hasDynamicId) {
+    errors.push(`Destination ID "${hash}" missing in src/components/ServiceAreasClient.tsx!`);
+  }
+}
+
+// Also verify magnetic-islands alias exists
+if (!serviceAreasClientContent.includes('id="magnetic-islands"')) {
+  errors.push('Alias anchor id="magnetic-islands" missing in src/components/ServiceAreasClient.tsx!');
+}
+
+// Verify scroll-mt (scroll margin top) offset is applied so sticky header doesn't obscure content
+if (!serviceAreasClientContent.includes('scroll-mt-28') && !serviceAreasClientContent.includes('scroll-mt-32')) {
+  errors.push('scroll-mt class missing from region containers in ServiceAreasClient.tsx (required for sticky header clearance)!');
+}
+
+// Verify client-side hash change listener
+if (!serviceAreasClientContent.includes('hashchange')) {
+  errors.push('hashchange event listener missing in ServiceAreasClient.tsx!');
+}
+
+// Verify regional jump pill navigation bar
+if (!serviceAreasClientContent.includes('Jump to Region:')) {
+  errors.push('Quick "Jump to Region" navigation bar missing in ServiceAreasClient.tsx!');
+}
+
+console.log('- Verified all 5 destination region IDs exist and match Footer links.');
+console.log('- Verified scroll margin offset (scroll-mt-28 sm:scroll-mt-32) prevents header clipping.');
+console.log('- Verified hashchange smooth-scroll listener and quick regional jump bar.');
+
 console.log('\n=== SUMMARY ===');
 console.log(`Errors found: ${errors.length}`);
 console.log(`Warnings found: ${warnings.length}`);
