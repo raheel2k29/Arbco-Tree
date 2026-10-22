@@ -32,7 +32,7 @@ export const blogArticles: BlogArticle[] = [
   {
     slug: 'cyclone-season-tree-preparation-townsville',
     title: 'Townsville Cyclone Season Tree Preparation: How to Protect Your Roof, Solar Panels & Family',
-    metaTitle: 'Townsville Cyclone Tree Preparation Guide | Arbco Tree Services',
+    metaTitle: 'Townsville Cyclone Tree Preparation Guide | Arbco',
     metaDescription: 'Essential pre-cyclone tree maintenance checklist for Townsville homeowners. Learn AS4373 canopy thinning, Ergon powerline clearance, and high-risk tree removal.',
     date: 'October 12, 2026',
     readTime: '6 min read',
@@ -97,7 +97,7 @@ export const blogArticles: BlogArticle[] = [
   {
     slug: 'townsville-council-tree-removal-permits-guide',
     title: 'When Do You Need Council Approval to Remove a Tree in Townsville? (TCC Guidelines)',
-    metaTitle: 'Townsville Council Tree Removal Permits Guide | Arbco Tree Services',
+    metaTitle: 'Townsville Council Tree Permits Guide | Arbco',
     metaDescription: 'Complete homeowner guide to Townsville City Council (TCC) tree removal rules, Heritage Character overlays, riparian Ross River corridors, and exempt vegetation.',
     date: 'October 14, 2026',
     readTime: '5 min read',
@@ -162,7 +162,7 @@ export const blogArticles: BlogArticle[] = [
   {
     slug: 'stump-grinding-vs-chemical-removal-townsville',
     title: 'Stump Grinding vs. Chemical Poisoning & DIY Digging: What Actually Works in North Queensland?',
-    metaTitle: 'Stump Grinding vs DIY Chemical Removal | Arbco Tree Services',
+    metaTitle: 'Stump Grinding vs Chemical Removal | Arbco',
     metaDescription: 'Why chemical stump poisoning fails in tropical Townsville clay and how mechanical stump grinding prevents subterranean termite nests and fungal rot.',
     date: 'October 15, 2026',
     readTime: '4 min read',
@@ -226,7 +226,7 @@ export const blogArticles: BlogArticle[] = [
   {
     slug: 'palm-tree-hazards-maintenance-north-queensland',
     title: 'Palm Tree Hazards in Tropical North Queensland: Falling Fronds, Bats & Invasive Roots',
-    metaTitle: 'Tropical Palm Tree Hazards & Care Guide | Arbco Tree Services',
+    metaTitle: 'Palm Tree Hazards & Care Guide | Arbco',
     metaDescription: 'Learn why neglected Cocos, Date, and African Oil palms attract pests, drop lethal 15kg fronds, and lift driveways in Townsville. Complete arborist maintenance advice.',
     date: 'October 16, 2026',
     readTime: '5 min read',

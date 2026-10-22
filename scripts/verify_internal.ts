@@ -386,8 +386,8 @@ for (const suburb of allSuburbs) {
     const canonical = generateSuburbCanonical(s.id, suburb);
     const h1Subtitle = generateSuburbH1Subtitle(s.id, zoneKey);
 
-    if (!title || title.length < 30 || title.length > 75) {
-      errors.push(`Invalid SEO title for ${s.id}-${suburb} (${title.length} chars): "${title}"`);
+    if (!title || title.length < 30 || title.length > 60) {
+      errors.push(`SEO title exceeds 60 chars or is too short for ${s.id}-${suburb} (${title.length} chars): "${title}"`);
     }
     if (!desc || desc.length < 110 || desc.length > 170) {
       errors.push(`Invalid Meta Description for ${s.id}-${suburb} (${desc.length} chars): "${desc}"`);
