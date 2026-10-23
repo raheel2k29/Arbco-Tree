@@ -94,12 +94,24 @@ export default function Header() {
                 <Link href="/services" className="block px-3.5 py-2 text-xs font-extrabold text-[#036829] hover:bg-emerald-50 rounded-xl transition-colors">All Services Overview →</Link>
               </div>
             </div>
-            <Link href="/#about" className="hover:text-[#036829] transition-colors">About Us</Link>
+            <div className="relative group flex items-center gap-1 hover:text-[#036829] transition-colors py-2">
+              <Link href="/about" className="flex items-center gap-1">
+                <span>About Us</span>
+                <svg className="h-3.5 w-3.5 text-slate-400 group-hover:text-[#036829] transition-colors mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+                </svg>
+              </Link>
+              <div className="absolute top-full left-0 hidden group-hover:block w-56 bg-white shadow-xl rounded-2xl border border-slate-100 p-2 z-50">
+                <Link href="/about" className="block px-3.5 py-2 text-xs font-semibold text-slate-700 hover:bg-emerald-50 hover:text-[#036829] rounded-xl transition-colors">About Our Company</Link>
+                <Link href="/partners" className="block px-3.5 py-2 text-xs font-semibold text-slate-700 hover:bg-emerald-50 hover:text-[#036829] rounded-xl transition-colors">Partners & Affiliations</Link>
+                <Link href="/other-local-directories" className="block px-3.5 py-2 text-xs font-semibold text-slate-700 hover:bg-emerald-50 hover:text-[#036829] rounded-xl transition-colors">Other Local Directories</Link>
+              </div>
+            </div>
             <Link href="/service-areas" className="hover:text-[#036829] transition-colors">Areas We Serve</Link>
             <Link href="/blog" className="hover:text-[#036829] transition-colors">Guides</Link>
             <Link href="/#gallery" className="hover:text-[#036829] transition-colors">Gallery</Link>
             <Link href="/#testimonials" className="hover:text-[#036829] transition-colors">Reviews</Link>
-            <Link href="/#contact" className="hover:text-[#036829] transition-colors">Contact</Link>
+            <Link href="/contact" className="hover:text-[#036829] transition-colors">Contact</Link>
           </nav>
 
           {/* Right Action Buttons */}
@@ -283,11 +295,29 @@ export default function Header() {
               </Link>
 
               <Link
-                href="/#about"
+                href="/about"
                 onClick={() => setMobileMenuOpen(false)}
                 className="flex items-center justify-between p-3 rounded-xl hover:bg-slate-50 transition-colors"
               >
                 <span>About Us</span>
+                <span className="text-slate-300">→</span>
+              </Link>
+
+              <Link
+                href="/partners"
+                onClick={() => setMobileMenuOpen(false)}
+                className="flex items-center justify-between p-3 rounded-xl hover:bg-slate-50 transition-colors"
+              >
+                <span>Our Partners & Affiliations</span>
+                <span className="text-slate-300">→</span>
+              </Link>
+
+              <Link
+                href="/other-local-directories"
+                onClick={() => setMobileMenuOpen(false)}
+                className="flex items-center justify-between p-3 rounded-xl hover:bg-slate-50 transition-colors"
+              >
+                <span>Other Local Directories</span>
                 <span className="text-slate-300">→</span>
               </Link>
 
@@ -301,7 +331,7 @@ export default function Header() {
               </Link>
 
               <Link
-                href="/#contact"
+                href="/contact"
                 onClick={() => setMobileMenuOpen(false)}
                 className="flex items-center justify-between p-3 rounded-xl hover:bg-slate-50 transition-colors"
               >

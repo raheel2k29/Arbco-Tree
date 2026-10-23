@@ -25,6 +25,8 @@ validRoutes.add('/services');
 validRoutes.add('/service-areas');
 validRoutes.add('/quote');
 validRoutes.add('/about');
+validRoutes.add('/partners');
+validRoutes.add('/other-local-directories');
 validRoutes.add('/contact');
 validRoutes.add('/terms');
 validRoutes.add('/privacy');
@@ -642,6 +644,63 @@ if (nodeFs.existsSync(serviceAreasHtmlPath)) {
   console.log('- (.next build artifact not present, skipping static HTML inspection)');
 }
 console.log('- Verified no Suspense bailout or useSearchParams blocking static SSG prerendering.');
+
+console.log('\n15. Verifying Dedicated Pages & Navigation (No Looping)...');
+const dedicatedPages = [
+  { path: '../src/app/about/page.tsx', route: '/about', expectedTitle: 'About Us | Arbco Tree Services Townsville' },
+  { path: '../src/app/partners/page.tsx', route: '/partners', expectedTitle: 'Our Partners & Affiliations | Arbco Tree Services' },
+  { path: '../src/app/other-local-directories/page.tsx', route: '/other-local-directories', expectedTitle: 'Local Directories & Trade Resources | Arbco' },
+  { path: '../src/app/contact/page.tsx', route: '/contact', expectedTitle: 'Contact Us | Arbco Tree Services Townsville' },
+];
+
+for (const page of dedicatedPages) {
+  const fullPath = nodePath.join(__dirname, page.path);
+  if (!nodeFs.existsSync(fullPath)) {
+    errors.push(`Dedicated page missing: ${page.path}`);
+    continue;
+  }
+  const content = nodeFs.readFileSync(fullPath, 'utf8');
+  if (page.expectedTitle.length > 60) {
+    errors.push(`Page title for ${page.route} exceeds 60 characters (${page.expectedTitle.length} chars)`);
+  }
+  if (!content.includes(page.expectedTitle)) {
+    errors.push(`Page title mismatch in ${page.path}! Expected: "${page.expectedTitle}"`);
+  }
+  if (!content.includes(`canonical: \`\${SITE_CANONICAL_DOMAIN}${page.route}\``) && !content.includes(`canonical: '${page.route}'`) && !content.includes(`canonical: "${page.route}"`)) {
+    errors.push(`Page canonical missing or incorrect in ${page.path}!`);
+  }
+  if (!content.includes('0456 579 811')) {
+    errors.push(`Business phone number missing in ${page.path}!`);
+  }
+}
+
+const sitemapContent = nodeFs.readFileSync(nodePath.join(__dirname, '../src/app/sitemap.ts'), 'utf8');
+
+// Check Header links
+['/about', '/partners', '/other-local-directories', '/contact'].forEach(route => {
+  if (!headerContent.includes(`href="${route}"`) && !headerContent.includes(`href='${route}'`)) {
+    errors.push(`Header.tsx does not link to ${route}!`);
+  }
+});
+
+// Check Footer links
+['/about', '/partners', '/other-local-directories', '/contact'].forEach(route => {
+  if (!footerFileContent.includes(`href="${route}"`) && !footerFileContent.includes(`href='${route}'`)) {
+    errors.push(`Footer.tsx does not link to ${route}!`);
+  }
+});
+
+// Check Sitemap entries
+['/about', '/partners', '/other-local-directories', '/contact'].forEach(route => {
+  if (!sitemapContent.includes(`\${baseUrl}${route}`)) {
+    errors.push(`sitemap.ts does not include ${route}!`);
+  }
+});
+
+console.log('- Verified all 4 dedicated pages exist with <= 60 char titles, canonicals, and phone numbers.');
+console.log('- Verified Header dropdown & mobile drawer link directly to dedicated routes with 0 looping.');
+console.log('- Verified Footer links to dedicated routes.');
+console.log('- Verified sitemap.ts includes all 4 dedicated routes.');
 
 console.log('\n=== SUMMARY ===');
 console.log(`Errors found: ${errors.length}`);

@@ -47,12 +47,12 @@ export default function Footer() {
           <div className="lg:col-span-2">
             <h4 className="text-white font-extrabold mb-4 text-xs uppercase tracking-widest font-heading pb-1 border-b border-slate-900 w-fit">Company</h4>
             <ul className="space-y-3 text-xs">
-              <li><Link href="/#about" className="hover:text-white transition-colors flex items-center gap-1.5"><span className="text-[#7cc043] text-[9px]">❯</span> About Us</Link></li>
-              <li><Link href="/#gallery" className="hover:text-white transition-colors flex items-center gap-1.5"><span className="text-[#7cc043] text-[9px]">❯</span> Gallery</Link></li>
-              <li><Link href="/#testimonials" className="hover:text-white transition-colors flex items-center gap-1.5"><span className="text-[#7cc043] text-[9px]">❯</span> Reviews</Link></li>
-              <li><Link href="/#services" className="hover:text-white transition-colors flex items-center gap-1.5"><span className="text-[#7cc043] text-[9px]">❯</span> Our Team</Link></li>
+              <li><Link href="/about" className="hover:text-white transition-colors flex items-center gap-1.5"><span className="text-[#7cc043] text-[9px]">❯</span> About Us</Link></li>
+              <li><Link href="/partners" className="hover:text-white transition-colors flex items-center gap-1.5"><span className="text-[#7cc043] text-[9px]">❯</span> Our Partners</Link></li>
+              <li><Link href="/other-local-directories" className="hover:text-white transition-colors flex items-center gap-1.5"><span className="text-[#7cc043] text-[9px]">❯</span> Local Directories</Link></li>
               <li><Link href="/blog" className="hover:text-white transition-colors flex items-center gap-1.5"><span className="text-[#7cc043] text-[9px]">❯</span> Arborist Guides</Link></li>
-              <li><Link href="/#contact" className="hover:text-white transition-colors flex items-center gap-1.5"><span className="text-[#7cc043] text-[9px]">❯</span> Contact Us</Link></li>
+              <li><Link href="/#testimonials" className="hover:text-white transition-colors flex items-center gap-1.5"><span className="text-[#7cc043] text-[9px]">❯</span> Customer Reviews</Link></li>
+              <li><Link href="/contact" className="hover:text-white transition-colors flex items-center gap-1.5"><span className="text-[#7cc043] text-[9px]">❯</span> Contact Us</Link></li>
             </ul>
           </div>
 

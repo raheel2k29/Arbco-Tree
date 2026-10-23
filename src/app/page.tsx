@@ -432,7 +432,7 @@ export default function Home() {
       </section>
 
       {/* Why Choose Us */}
-      <section id="about" ref={sectionRef} className="py-24 bg-white relative overflow-hidden">
+      <section id="about" ref={sectionRef} className="py-24 bg-white relative overflow-hidden scroll-mt-28 sm:scroll-mt-32">
         {/* Animated Background Silhouette Tree */}
         <div className="absolute left-[-5%] bottom-0 w-[50%] h-[110%] pointer-events-none z-0 select-none">
           <div 
