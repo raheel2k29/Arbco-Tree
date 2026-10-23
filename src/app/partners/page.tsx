@@ -124,7 +124,7 @@ export default function PartnersPage() {
             Our Partners & Affiliations
           </h1>
           <p className="text-base sm:text-lg text-slate-300 max-w-3xl mx-auto leading-relaxed">
-            Collaborating with leading insurers, civil contractors, industry regulatory bodies, and heavy machinery partners to set the benchmark for tree care in Townsville.
+            Collaborating with leading insurers, civil contractors, industry regulatory bodies, and heavy machinery partners to set the benchmark for tree care in Townsville. Backed by Level 5 qualified arborists and $20M public liability protection.
           </p>
         </div>
       </section>
@@ -179,13 +179,13 @@ export default function PartnersPage() {
                 Partner with Arbco Tree Services
               </h2>
               <p className="text-slate-200 text-sm sm:text-base leading-relaxed font-sans">
-                Are you a local civil engineering firm, body corporate manager, or insurer seeking a certified, dependable tree service partner in North Queensland? We offer dedicated Service Level Agreements (SLAs), priority storm response mobilization, and comprehensive compliance documentation.
+                Are you a local civil engineering firm, body corporate manager, or insurer seeking a certified, dependable tree service partner in North Queensland? Led by Level 5 qualified arborists, we offer dedicated Service Level Agreements (SLAs), priority storm response mobilization, and comprehensive compliance documentation.
               </p>
               <ul className="grid sm:grid-cols-2 gap-2 text-xs text-slate-200 pt-2 font-medium">
+                <li className="flex items-center gap-2"><span>✦</span> AQF Level 5 Certified Arborists</li>
                 <li className="flex items-center gap-2"><span>✦</span> $20M Public Liability Insurance</li>
                 <li className="flex items-center gap-2"><span>✦</span> Rapid 2-Hour Emergency Mobilization</li>
                 <li className="flex items-center gap-2"><span>✦</span> Comprehensive SWMS & Safety Plans</li>
-                <li className="flex items-center gap-2"><span>✦</span> Fixed-Price Itemized Invoicing</li>
               </ul>
             </div>
 
