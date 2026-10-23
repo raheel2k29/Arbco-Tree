@@ -1,10 +1,10 @@
 import { MetadataRoute } from 'next'
-import { allSuburbs, services, slugify } from '@/lib/locationData'
-import { blogArticles } from '@/lib/blogData'
-import { SITE_URL } from '@/lib/schemaStructuredData'
+import { allSuburbs, services, slugify } from '../lib/locationData'
+import { blogArticles } from '../lib/blogData'
+import { SITE_CANONICAL_DOMAIN } from '../lib/seoMetadata'
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || SITE_URL // Base URL
+  const baseUrl = SITE_CANONICAL_DOMAIN // Strictly guaranteed to resolve to https://www.arbco.com.au
 
   const baseRoutes: MetadataRoute.Sitemap = [
     {

@@ -1,7 +1,38 @@
 import { slugify } from './locationData';
 import type { SuburbEnvironmentalProfile, BespokeSuburbData } from './suburbIntelligence';
 
-export const SITE_CANONICAL_DOMAIN = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.arbco.com.au';
+export const PRODUCTION_DOMAIN = 'https://www.arbco.com.au';
+
+/**
+ * Resolves the canonical site domain.
+ * Strictly guarantees that canonical URLs and sitemaps ALWAYS use the live
+ * 'https://www.arbco.com.au' production domain and protects against any
+ * unintended preview-domain references (*.vercel.app, localhost, 127.0.0.1, etc.).
+ */
+export function resolveCanonicalDomain(): string {
+  const envUrl = process.env.NEXT_PUBLIC_SITE_URL?.trim();
+  if (!envUrl) return PRODUCTION_DOMAIN;
+
+  // Reject unintended preview, staging, vercel, or localhost domains
+  const isPreviewDomain =
+    envUrl.includes('vercel.app') ||
+    envUrl.includes('localhost') ||
+    envUrl.includes('127.0.0.1') ||
+    envUrl.includes('amplifyapp.com') ||
+    envUrl.includes('pages.dev') ||
+    envUrl.includes('.preview.') ||
+    envUrl.includes('web.app');
+
+  if (isPreviewDomain) {
+    return PRODUCTION_DOMAIN;
+  }
+
+  // Ensure scheme and remove trailing slashes
+  const cleanUrl = envUrl.replace(/\/+$/, '');
+  return cleanUrl.startsWith('http') ? cleanUrl : `https://${cleanUrl}`;
+}
+
+export const SITE_CANONICAL_DOMAIN = resolveCanonicalDomain();
 
 // ============================================================================
 // Core Services SEO Details

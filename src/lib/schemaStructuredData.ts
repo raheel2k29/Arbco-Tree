@@ -1,6 +1,7 @@
 import { slugify, services, allSuburbs } from './locationData';
+import { SITE_CANONICAL_DOMAIN } from './seoMetadata';
 
-export const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.arbco.com.au';
+export const SITE_URL = SITE_CANONICAL_DOMAIN;
 export const BUSINESS_NAME = 'Arbco Tree Services';
 export const BUSINESS_PHONE = '0456 579 811';
 export const BUSINESS_PHONE_INTL = '0456 579 811';

@@ -20,8 +20,10 @@ const caveat = Caveat({
   weight: ["700"],
 });
 
+import { SITE_CANONICAL_DOMAIN } from "@/lib/seoMetadata";
+
 export const metadata: Metadata = {
-  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'https://www.arbco.com.au'),
+  metadataBase: new URL(SITE_CANONICAL_DOMAIN),
   title: "Arbco Tree Services | Townsville's Trusted Arborists",
   description: "Specialising in safe tree removal, stump grinding, tree pruning, and arborist assessments across Townsville and Queensland. Fully insured with 15+ years experience.",
   alternates: {
