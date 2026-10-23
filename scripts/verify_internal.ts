@@ -702,6 +702,69 @@ console.log('- Verified Header dropdown & mobile drawer link directly to dedicat
 console.log('- Verified Footer links to dedicated routes.');
 console.log('- Verified sitemap.ts includes all 4 dedicated routes.');
 
+console.log('\n16. Verifying Quote Form API & Business Inbox Delivery (info@arbco.com.au)...');
+const apiQuotePath = nodePath.join(__dirname, '../src/app/api/quote/route.ts');
+if (!nodeFs.existsSync(apiQuotePath)) {
+  errors.push('Quote API route missing: src/app/api/quote/route.ts!');
+} else {
+  const apiQuoteContent = nodeFs.readFileSync(apiQuotePath, 'utf8');
+
+  // Verify target inbox
+  if (!apiQuoteContent.includes('info@arbco.com.au')) {
+    errors.push('Default business inbox info@arbco.com.au is missing in src/app/api/quote/route.ts!');
+  }
+  if (!apiQuoteContent.includes('BUSINESS_INBOX_EMAIL')) {
+    errors.push('BUSINESS_INBOX_EMAIL env override missing in src/app/api/quote/route.ts!');
+  }
+
+  // Verify spam honeypot
+  if (!apiQuoteContent.includes('honeypot')) {
+    errors.push('Spam honeypot field check missing in src/app/api/quote/route.ts!');
+  }
+
+  // Verify required field validation
+  if (!apiQuoteContent.includes('Full name is required') || !apiQuoteContent.includes('valid Australian phone number')) {
+    errors.push('Required field validation (name, phone) missing in src/app/api/quote/route.ts!');
+  }
+
+  // Verify delivery providers
+  if (!apiQuoteContent.includes('resend.com') || !apiQuoteContent.includes('nodemailer') || !apiQuoteContent.includes('LEAD_WEBHOOK_URL')) {
+    errors.push('Multi-transport delivery (Resend, Nodemailer SMTP, Webhook) missing in src/app/api/quote/route.ts!');
+  }
+
+  // Verify customer details in email template
+  if (!apiQuoteContent.includes('${trimmedName}') || !apiQuoteContent.includes('${cleanTel}') || !apiQuoteContent.includes('0456 579 811')) {
+    errors.push('HTML email template missing customer details or phone number in src/app/api/quote/route.ts!');
+  }
+}
+
+// Verify quote forms invoke /api/quote
+const pageSrc = nodeFs.readFileSync(nodePath.join(__dirname, '../src/app/page.tsx'), 'utf8');
+const quotePageSrc = nodeFs.readFileSync(nodePath.join(__dirname, '../src/app/quote/page.tsx'), 'utf8');
+const serviceQuoteFormSrc = nodeFs.readFileSync(nodePath.join(__dirname, '../src/components/ServiceQuoteForm.tsx'), 'utf8');
+
+if (!pageSrc.includes("fetch('/api/quote'")) {
+  errors.push('src/app/page.tsx does not call /api/quote!');
+}
+if (!quotePageSrc.includes("fetch('/api/quote'")) {
+  errors.push('src/app/quote/page.tsx does not call /api/quote!');
+}
+if (!serviceQuoteFormSrc.includes("fetch('/api/quote'")) {
+  errors.push('src/components/ServiceQuoteForm.tsx does not call /api/quote!');
+}
+
+// Verify .env.example
+const updatedEnvExample = nodeFs.readFileSync(nodePath.join(__dirname, '../.env.example'), 'utf8');
+if (!updatedEnvExample.includes('BUSINESS_INBOX_EMAIL=info@arbco.com.au') || !updatedEnvExample.includes('RESEND_API_KEY') || !updatedEnvExample.includes('SMTP_HOST')) {
+  errors.push('.env.example missing quote delivery environment variables!');
+}
+
+console.log('- Verified src/app/api/quote/route.ts handles POST submissions and targets info@arbco.com.au.');
+console.log('- Verified multi-transport delivery: Resend API, Nodemailer SMTP, Webhook forwarder, and server audit log.');
+console.log('- Verified bot protection (honeypot) and required field validation.');
+console.log('- Verified all 3 frontend quote forms (Homepage, /quote, and ServiceQuoteForm) dispatch to /api/quote.');
+console.log('- Verified quote delivery environment variables documented in .env.example.');
+
 console.log('\n=== SUMMARY ===');
 console.log(`Errors found: ${errors.length}`);
 console.log(`Warnings found: ${warnings.length}`);

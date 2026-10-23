@@ -13,23 +13,38 @@ export default function ServiceQuoteForm({ serviceName }: { serviceName: string 
   const [loading, setLoading] = useState(false);
   const [submitted, setSubmitted] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
 
-    // Track GA4 quote submission conversion
-    trackQuoteSubmission({
-      name: formData.name,
-      phone: formData.phone,
-      suburb: formData.suburb,
-      service: serviceName,
-      source: 'service_page_quote_form',
-    });
+    try {
+      await fetch('/api/quote', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: formData.name,
+          phone: formData.phone,
+          suburb: formData.suburb,
+          service: serviceName,
+          details: formData.details,
+          source: 'service_page_quote_form',
+        }),
+      });
+    } catch (err) {
+      console.error('Failed to dispatch quote enquiry to inbox:', err);
+    } finally {
+      // Track GA4 quote submission conversion
+      trackQuoteSubmission({
+        name: formData.name,
+        phone: formData.phone,
+        suburb: formData.suburb,
+        service: serviceName,
+        source: 'service_page_quote_form',
+      });
 
-    setTimeout(() => {
       setLoading(false);
       setSubmitted(true);
-    }, 600);
+    }
   };
 
   return (

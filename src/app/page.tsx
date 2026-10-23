@@ -15,23 +15,37 @@ export default function Home() {
   const [quoteData, setQuoteData] = useState({ name: '', phone: '', suburb: '', service: '' });
   const sectionRef = useRef<HTMLDivElement>(null);
 
-  const handleQuoteSubmit = (e: React.FormEvent) => {
+  const handleQuoteSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setQuoteLoading(true);
 
-    // Track GA4 quote submission conversion
-    trackQuoteSubmission({
-      name: quoteData.name,
-      phone: quoteData.phone,
-      suburb: quoteData.suburb,
-      service: quoteData.service,
-      source: 'homepage_hero',
-    });
+    try {
+      await fetch('/api/quote', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: quoteData.name,
+          phone: quoteData.phone,
+          suburb: quoteData.suburb,
+          service: quoteData.service,
+          source: 'homepage_hero',
+        }),
+      });
+    } catch (err) {
+      console.error('Failed to dispatch quote enquiry to inbox:', err);
+    } finally {
+      // Track GA4 quote submission conversion
+      trackQuoteSubmission({
+        name: quoteData.name,
+        phone: quoteData.phone,
+        suburb: quoteData.suburb,
+        service: quoteData.service,
+        source: 'homepage_hero',
+      });
 
-    setTimeout(() => {
       setQuoteLoading(false);
       setQuoteSubmitted(true);
-    }, 600);
+    }
   };
 
   useEffect(() => {

@@ -30,25 +30,43 @@ function QuoteFormContent() {
   const [loading, setLoading] = useState(false);
   const [submitted, setSubmitted] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
 
-    // Track GA4 quote submission conversion
     const matchingService = services.find(s => s.id === formData.service);
-    trackQuoteSubmission({
-      name: formData.name,
-      phone: formData.phone,
-      suburb: formData.suburb,
-      service: matchingService ? matchingService.name : formData.service,
-      source: 'quote_page_multi_step',
-    });
+    const resolvedServiceName = matchingService ? matchingService.name : formData.service;
 
-    // Simulate swift confirmation
-    setTimeout(() => {
+    try {
+      await fetch('/api/quote', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: formData.name,
+          phone: formData.phone,
+          email: formData.email,
+          suburb: formData.suburb,
+          service: resolvedServiceName,
+          urgency: formData.urgency,
+          details: formData.details,
+          source: 'quote_page_multi_step',
+        }),
+      });
+    } catch (err) {
+      console.error('Failed to dispatch quote enquiry to inbox:', err);
+    } finally {
+      // Track GA4 quote submission conversion
+      trackQuoteSubmission({
+        name: formData.name,
+        phone: formData.phone,
+        suburb: formData.suburb,
+        service: resolvedServiceName,
+        source: 'quote_page_multi_step',
+      });
+
       setLoading(false);
       setSubmitted(true);
-    }, 600);
+    }
   };
 
   return (

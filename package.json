@@ -1,6 +1,6 @@
 {
   "name": "arbco-tree",
-  "version": "0.3.9",
+  "version": "0.4.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
@@ -8,16 +8,19 @@
     "start": "next start",
     "lint": "eslint",
     "test:links": "jiti scripts/verify_internal.ts",
+    "test:quote": "jiti scripts/test_quote_api.ts",
     "benchmark:ttfb": "jiti scripts/benchmark_server_response.ts"
   },
   "dependencies": {
     "next": "16.3.2",
+    "nodemailer": "^10.2.1",
     "react": "19.2.8",
     "react-dom": "19.2.8"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
+    "@types/nodemailer": "^8.0.2",
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "eslint": "^9",
