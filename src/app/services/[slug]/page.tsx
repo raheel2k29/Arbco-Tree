@@ -646,7 +646,13 @@ export default async function ServiceDetailPage({
               <div className="relative h-64 w-full rounded-2xl overflow-hidden shadow-md border border-slate-200">
                 <Image
                   src={service.contentImage1 || service.heroImage}
-                  alt={service.id === 'tree-removal' ? 'Residential tree dismantling near roof in Townsville' : `${service.name} on-site action`}
+                  alt={
+                    service.id === 'tree-removal'
+                      ? 'Residential tree dismantling near roof in Townsville'
+                      : service.id === 'land-clearing'
+                      ? 'Heavy CASE excavator clearing timber and site preparation in Townsville'
+                      : `${service.name} on-site action`
+                  }
                   fill
                   sizes="(max-width: 1024px) 100vw, 40vw"
                   className="object-cover"
@@ -655,7 +661,13 @@ export default async function ServiceDetailPage({
               <div className="relative h-64 w-full rounded-2xl overflow-hidden shadow-md border border-slate-200">
                 <Image
                   src={service.contentImage2 || service.heroImage}
-                  alt={service.id === 'tree-removal' ? 'Felled tree trunk cut and stacked safely in Townsville yard' : `${service.name} equipment in action`}
+                  alt={
+                    service.id === 'tree-removal'
+                      ? 'Felled tree trunk cut and stacked safely in Townsville yard'
+                      : service.id === 'land-clearing'
+                      ? 'Cleared and graded building envelope with perimeter fencing in Townsville'
+                      : `${service.name} equipment in action`
+                  }
                   fill
                   sizes="(max-width: 1024px) 100vw, 40vw"
                   className="object-cover"

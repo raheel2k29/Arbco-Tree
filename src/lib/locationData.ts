@@ -125,8 +125,8 @@ export const services = [
     description: "Comprehensive site preparation and vegetation clearing for subdivisions, acreage properties, firebreaks, and commercial builds.",
     localImage: "/Land Clearing.png",
     heroImage: "https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&q=80&w=1200",
-    contentImage1: "https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?auto=format&fit=crop&q=80&w=800",
-    contentImage2: "https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?auto=format&fit=crop&q=80&w=800"
+    contentImage1: "/land-clearing-action-1.jpg",
+    contentImage2: "/land-clearing-action-2.jpg"
   }
 ];
 
