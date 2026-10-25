@@ -681,6 +681,8 @@ export default async function ServiceDetailPage({
                         ? 'Residential tree dismantling near roof in Townsville'
                         : service.id === 'wood-chipping-mulching'
                         ? 'Commercial Vermeer wood chipper chute filling tipper truck in Townsville'
+                        : service.id === 'tree-pruning-lopping'
+                        ? 'Precision manicured hedge and decorative tree pruning in Townsville'
                         : `${service.name} on-site action`
                     }
                     fill
@@ -696,6 +698,8 @@ export default async function ServiceDetailPage({
                         ? 'Felled tree trunk cut and stacked safely in Townsville yard'
                         : service.id === 'wood-chipping-mulching'
                         ? 'Massive mound of fresh organic forest wood mulch delivered in Townsville'
+                        : service.id === 'tree-pruning-lopping'
+                        ? 'Structural tree lopping and canopy reduction with yard loader in Townsville'
                         : `${service.name} equipment in action`
                     }
                     fill

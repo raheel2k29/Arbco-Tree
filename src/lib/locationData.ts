@@ -92,8 +92,8 @@ export const services = [
     description: "Structural canopy pruning, deadwood removal, powerline clearing, and crown thinning to Australian Standards AS4373-2007.",
     localImage: "/Tree Pruning and tree lopping.png",
     heroImage: "https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?auto=format&fit=crop&q=80&w=1200",
-    contentImage1: "https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?auto=format&fit=crop&q=80&w=800",
-    contentImage2: "https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&q=80&w=800"
+    contentImage1: "/tree-pruning-action-1.jpg",
+    contentImage2: "/tree-pruning-action-2.jpg"
   },
   {
     id: "emergency-tree-removal",
