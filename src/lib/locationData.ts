@@ -59,8 +59,8 @@ export const services = [
     description: "Professional, safe, and efficient tree removal services for residential, commercial, and rural properties in Townsville.",
     localImage: "/Tree Removal.png",
     heroImage: "https://images.unsplash.com/photo-1524661135-423995f22d0b?auto=format&fit=crop&q=80&w=1200",
-    contentImage1: "https://images.unsplash.com/photo-1622383563227-04401ab4e5ea?auto=format&fit=crop&q=80&w=800",
-    contentImage2: "https://images.unsplash.com/photo-1543878087-0b1a13fb1eb8?auto=format&fit=crop&q=80&w=800"
+    contentImage1: "/tree-removal-action-1.jpg",
+    contentImage2: "/tree-removal-action-2.jpg"
   },
   {
     id: "stump-grinding",
