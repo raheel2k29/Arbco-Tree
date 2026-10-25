@@ -8,6 +8,7 @@ A concise record of the audit fixes, feature implementations, and optimizations 
 
 | Version | Commit | Description | Status |
 |:---:|:---:|---|:---:|
+| **v0.4.5** | Pending | Add real Vermeer wood chipper & forest mulch mound photos to Mulching page | **Staged** |
 | **v0.4.4** | `e7478c1` | Add real CASE excavator & cleared building block photos to Land Clearing page | **Live in Production** |
 | **v0.4.3** | `f707b9c` | Add real on-site residential dismantling & felled logs photos to Tree Removal page | **Live in Production** |
 | **v0.4.2** | `3e1df90` | Verify $20M insurance, Level 5 qualifications, 15+ yrs experience & capabilities | **Live in Production** |

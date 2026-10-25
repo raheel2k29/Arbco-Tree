@@ -671,6 +671,8 @@ export default async function ServiceDetailPage({
                     alt={
                       service.id === 'tree-removal'
                         ? 'Residential tree dismantling near roof in Townsville'
+                        : service.id === 'wood-chipping-mulching'
+                        ? 'Commercial Vermeer wood chipper chute filling tipper truck in Townsville'
                         : `${service.name} on-site action`
                     }
                     fill
@@ -684,6 +686,8 @@ export default async function ServiceDetailPage({
                     alt={
                       service.id === 'tree-removal'
                         ? 'Felled tree trunk cut and stacked safely in Townsville yard'
+                        : service.id === 'wood-chipping-mulching'
+                        ? 'Massive mound of fresh organic forest wood mulch delivered in Townsville'
                         : `${service.name} equipment in action`
                     }
                     fill

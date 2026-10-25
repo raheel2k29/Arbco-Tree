@@ -114,8 +114,8 @@ export const services = [
     description: "High-capacity on-site wood chipping converting tree limbs and garden waste into clean, nutrient-dense organic mulch.",
     localImage: "/Mulching.png",
     heroImage: "https://images.unsplash.com/photo-1473448912268-2022ce9509d8?auto=format&fit=crop&q=80&w=1200",
-    contentImage1: "https://images.unsplash.com/photo-1502082553048-f009c37129b9?auto=format&fit=crop&q=80&w=800",
-    contentImage2: "https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&q=80&w=800"
+    contentImage1: "/mulching-action-1.jpg",
+    contentImage2: "/mulching-action-2.jpg"
   },
   {
     id: "land-clearing",
