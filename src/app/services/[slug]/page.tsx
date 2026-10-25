@@ -642,12 +642,16 @@ export default async function ServiceDetailPage({
             </div>
 
             {/* Gallery Images */}
-            {service.id === 'land-clearing' ? (
+            {service.id === 'land-clearing' || service.id === 'palm-tree-removal' ? (
               <div className="lg:col-span-5 grid grid-cols-2 gap-3 sm:gap-4">
                 <div className="relative h-[320px] sm:h-[420px] lg:h-[460px] w-full rounded-2xl overflow-hidden shadow-md border border-slate-200">
                   <Image
                     src={service.contentImage1 || service.heroImage}
-                    alt="Heavy CASE excavator clearing timber and site preparation in Townsville"
+                    alt={
+                      service.id === 'palm-tree-removal'
+                        ? 'Qualified arborist climbing and dismantling tall palm tree canopy in Townsville'
+                        : 'Heavy CASE excavator clearing timber and site preparation in Townsville'
+                    }
                     fill
                     sizes="(max-width: 1024px) 50vw, 20vw"
                     className="object-cover"
@@ -656,7 +660,11 @@ export default async function ServiceDetailPage({
                 <div className="relative h-[320px] sm:h-[420px] lg:h-[460px] w-full rounded-2xl overflow-hidden shadow-md border border-slate-200">
                   <Image
                     src={service.contentImage2 || service.heroImage}
-                    alt="Cleared and graded building envelope with perimeter fencing in Townsville"
+                    alt={
+                      service.id === 'palm-tree-removal'
+                        ? 'Tall mature palm tree towering in front of residential property in Townsville'
+                        : 'Cleared and graded building envelope with perimeter fencing in Townsville'
+                    }
                     fill
                     sizes="(max-width: 1024px) 50vw, 20vw"
                     className="object-cover"

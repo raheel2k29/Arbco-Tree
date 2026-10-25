@@ -81,8 +81,8 @@ export const services = [
     description: "Specialised tropical palm pruning, dead frond removal, skinning, and complete palm tree removal across Townsville.",
     localImage: "/Palm Tree Removal.png",
     heroImage: "https://images.unsplash.com/photo-1498522271744-cdd435c13f24?auto=format&fit=crop&q=80&w=1200",
-    contentImage1: "https://images.unsplash.com/photo-1622152349386-778396cddda4?auto=format&fit=crop&q=80&w=800",
-    contentImage2: "https://images.unsplash.com/photo-1550535300-3168d18f5042?auto=format&fit=crop&q=80&w=800"
+    contentImage1: "/palm-tree-removal-action-1.jpg",
+    contentImage2: "/palm-tree-removal-action-2.jpg"
   },
   {
     id: "tree-pruning-lopping",
