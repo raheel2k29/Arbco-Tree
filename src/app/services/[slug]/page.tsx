@@ -642,7 +642,7 @@ export default async function ServiceDetailPage({
             </div>
 
             {/* Gallery Images */}
-            {service.id === 'land-clearing' || service.id === 'palm-tree-removal' ? (
+            {service.id === 'land-clearing' || service.id === 'palm-tree-removal' || service.id === 'tree-pruning-lopping' ? (
               <div className="lg:col-span-5 grid grid-cols-2 gap-3 sm:gap-4">
                 <div className="relative h-[320px] sm:h-[420px] lg:h-[460px] w-full rounded-2xl overflow-hidden shadow-md border border-slate-200">
                   <Image
@@ -650,6 +650,8 @@ export default async function ServiceDetailPage({
                     alt={
                       service.id === 'palm-tree-removal'
                         ? 'Qualified arborist climbing and dismantling tall palm tree canopy in Townsville'
+                        : service.id === 'tree-pruning-lopping'
+                        ? 'Precision manicured hedge and decorative tree pruning in Townsville'
                         : 'Heavy CASE excavator clearing timber and site preparation in Townsville'
                     }
                     fill
@@ -663,11 +665,17 @@ export default async function ServiceDetailPage({
                     alt={
                       service.id === 'palm-tree-removal'
                         ? 'Tall mature palm tree towering in front of residential property in Townsville'
+                        : service.id === 'tree-pruning-lopping'
+                        ? 'Structural tree lopping and canopy reduction with yard loader in Townsville'
                         : 'Cleared and graded building envelope with perimeter fencing in Townsville'
                     }
                     fill
                     sizes="(max-width: 1024px) 50vw, 20vw"
-                    className="object-cover"
+                    className={
+                      service.id === 'tree-pruning-lopping'
+                        ? 'object-cover object-[35%_center]'
+                        : 'object-cover'
+                    }
                   />
                 </div>
               </div>
@@ -681,8 +689,6 @@ export default async function ServiceDetailPage({
                         ? 'Residential tree dismantling near roof in Townsville'
                         : service.id === 'wood-chipping-mulching'
                         ? 'Commercial Vermeer wood chipper chute filling tipper truck in Townsville'
-                        : service.id === 'tree-pruning-lopping'
-                        ? 'Precision manicured hedge and decorative tree pruning in Townsville'
                         : `${service.name} on-site action`
                     }
                     fill
@@ -698,8 +704,6 @@ export default async function ServiceDetailPage({
                         ? 'Felled tree trunk cut and stacked safely in Townsville yard'
                         : service.id === 'wood-chipping-mulching'
                         ? 'Massive mound of fresh organic forest wood mulch delivered in Townsville'
-                        : service.id === 'tree-pruning-lopping'
-                        ? 'Structural tree lopping and canopy reduction with yard loader in Townsville'
                         : `${service.name} equipment in action`
                     }
                     fill
