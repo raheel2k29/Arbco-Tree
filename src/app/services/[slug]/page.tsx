@@ -681,7 +681,7 @@ export default async function ServiceDetailPage({
               </div>
             ) : (
               <div className="lg:col-span-5 space-y-4">
-                <div className="relative h-64 w-full rounded-2xl overflow-hidden shadow-md border border-slate-200">
+                <div className="relative h-64 sm:h-72 w-full rounded-2xl overflow-hidden shadow-md border border-slate-200">
                   <Image
                     src={service.contentImage1 || service.heroImage}
                     alt={
@@ -689,6 +689,8 @@ export default async function ServiceDetailPage({
                         ? 'Residential tree dismantling near roof in Townsville'
                         : service.id === 'wood-chipping-mulching'
                         ? 'Commercial Vermeer wood chipper chute filling tipper truck in Townsville'
+                        : service.id === 'emergency-tree-removal'
+                        ? 'Emergency fallen tree resting on residential house roof in Townsville'
                         : `${service.name} on-site action`
                     }
                     fill
@@ -696,7 +698,7 @@ export default async function ServiceDetailPage({
                     className="object-cover"
                   />
                 </div>
-                <div className="relative h-64 w-full rounded-2xl overflow-hidden shadow-md border border-slate-200">
+                <div className="relative h-64 sm:h-72 w-full rounded-2xl overflow-hidden shadow-md border border-slate-200">
                   <Image
                     src={service.contentImage2 || service.heroImage}
                     alt={
@@ -704,6 +706,8 @@ export default async function ServiceDetailPage({
                         ? 'Felled tree trunk cut and stacked safely in Townsville yard'
                         : service.id === 'wood-chipping-mulching'
                         ? 'Massive mound of fresh organic forest wood mulch delivered in Townsville'
+                        : service.id === 'emergency-tree-removal'
+                        ? 'Storm damaged tree collapsed on boundary fence cut and cleared in Townsville'
                         : `${service.name} equipment in action`
                     }
                     fill

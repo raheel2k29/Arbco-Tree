@@ -103,8 +103,8 @@ export const services = [
     description: "24/7 priority emergency arborist response for storm-damaged, fallen, or dangerously unstable trees across Townsville.",
     localImage: "/Emergency Work.png",
     heroImage: "https://images.unsplash.com/photo-1516214104703-d870798883c5?auto=format&fit=crop&q=80&w=1200",
-    contentImage1: "https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?auto=format&fit=crop&q=80&w=800",
-    contentImage2: "https://images.unsplash.com/photo-1524661135-423995f22d0b?auto=format&fit=crop&q=80&w=800"
+    contentImage1: "/emergency-tree-action-1.jpg",
+    contentImage2: "/emergency-tree-action-2.jpg"
   },
   {
     id: "wood-chipping-mulching",
