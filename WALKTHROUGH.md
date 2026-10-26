@@ -8,7 +8,7 @@ A concise record of the audit fixes, feature implementations, and optimizations 
 
 | Version | Commit | Description | Status |
 |:---:|:---:|---|:---:|
-| **v0.4.8** | `Pending` | Add real fallen storm tree on house & fence clearance photos to Emergency Work page | **Staged** |
+| **v0.4.8** | `83d2b76` | Add real fallen storm tree on house & fence clearance photos to Emergency Work page | **Live in Production** |
 | **v0.4.7** | `689a78a` | Pruning photos in side-by-side vertical layout (no cropping of hedge or loader) | **Live in Production** |
 | **v0.4.6** | `958fa59` | Add real palm tree climber & mature palm photos to Palm Tree Removal page | **Live in Production** |
 | **v0.4.5** | `3086de1` | Add real Vermeer wood chipper & forest mulch mound photos to Mulching page | **Live in Production** |
