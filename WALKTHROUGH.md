@@ -8,7 +8,7 @@ A concise record of the audit fixes, feature implementations, and optimizations 
 
 | Version | Commit | Description | Status |
 |:---:|:---:|---|:---:|
-| **v0.5.0** | `Pending` | Add real compact & tracked stump grinder photos to Stump Grinding (vertical side-by-side) | **Staged** |
+| **v0.5.0** | `8548b03` | Add real compact & tracked stump grinder photos to Stump Grinding (vertical side-by-side) | **Live in Production** |
 | **v0.4.9** | `c5b72c3` | Add real arborist climbing & dismantling photos to Tree Removal (vertical side-by-side) | **Live in Production** |
 | **v0.4.8** | `83d2b76` | Add real fallen storm tree on house & fence clearance photos to Emergency Work page | **Live in Production** |
 | **v0.4.7** | `689a78a` | Pruning photos in side-by-side vertical layout (no cropping of hedge or loader) | **Live in Production** |
