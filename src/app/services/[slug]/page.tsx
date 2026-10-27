@@ -642,7 +642,7 @@ export default async function ServiceDetailPage({
             </div>
 
             {/* Gallery Images */}
-            {service.id === 'land-clearing' || service.id === 'palm-tree-removal' || service.id === 'tree-pruning-lopping' || service.id === 'tree-removal' ? (
+            {service.id === 'land-clearing' || service.id === 'palm-tree-removal' || service.id === 'tree-pruning-lopping' || service.id === 'tree-removal' || service.id === 'stump-grinding' ? (
               <div className="lg:col-span-5 grid grid-cols-2 gap-3 sm:gap-4">
                 <div className="relative h-[320px] sm:h-[420px] lg:h-[460px] w-full rounded-2xl overflow-hidden shadow-md border border-slate-200">
                   <Image
@@ -654,6 +654,8 @@ export default async function ServiceDetailPage({
                         ? 'Precision manicured hedge and decorative tree pruning in Townsville'
                         : service.id === 'tree-removal'
                         ? 'Certified arborist climbing and rigging tall eucalyptus for sectional removal in Townsville'
+                        : service.id === 'stump-grinding'
+                        ? 'Compact tight-access stump grinder on residential raised garden bed in Townsville'
                         : 'Heavy CASE excavator clearing timber and site preparation in Townsville'
                     }
                     fill
@@ -671,6 +673,8 @@ export default async function ServiceDetailPage({
                         ? 'Structural tree lopping and canopy reduction with yard loader in Townsville'
                         : service.id === 'tree-removal'
                         ? 'Qualified climber sectioning towering tree trunk beside residential home in Townsville'
+                        : service.id === 'stump-grinding'
+                        ? 'Commercial tracked stump grinder removing large tree stump in Townsville yard'
                         : 'Cleared and graded building envelope with perimeter fencing in Townsville'
                     }
                     fill

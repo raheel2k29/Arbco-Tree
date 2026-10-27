@@ -70,8 +70,8 @@ export const services = [
     description: "Complete precision mechanical stump grinding below surface level to eliminate termite hubs and reclaim your yard.",
     localImage: "/stump grinding.png",
     heroImage: "https://images.unsplash.com/photo-1588698188164-3e9a53bcfae9?auto=format&fit=crop&q=80&w=1200",
-    contentImage1: "https://images.unsplash.com/photo-1588698188164-3e9a53bcfae9?auto=format&fit=crop&q=80&w=800",
-    contentImage2: "https://images.unsplash.com/photo-1502082553048-f009c37129b9?auto=format&fit=crop&q=80&w=800"
+    contentImage1: "/stump-grinding-action-1.jpg",
+    contentImage2: "/stump-grinding-action-2.jpg"
   },
   {
     id: "palm-tree-removal",
