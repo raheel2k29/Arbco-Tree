@@ -177,18 +177,22 @@ Dispatch: 0456 579 811
 
     let dispatched = false;
     let providerUsed = 'none';
+    let smtpErrorDetails = '';
+
+    const cleanEnv = (val?: string) => (val ? val.trim().replace(/^["']|["']$/g, '') : '');
 
     // Transport 1: Resend API (Recommended Vercel serverless integration)
-    if (process.env.RESEND_API_KEY) {
+    const resendKey = cleanEnv(process.env.RESEND_API_KEY);
+    if (resendKey) {
       try {
         const resendRes = await fetch('https://api.resend.com/emails', {
           method: 'POST',
           headers: {
-            'Authorization': `Bearer ${process.env.RESEND_API_KEY}`,
+            'Authorization': `Bearer ${resendKey}`,
             'Content-Type': 'application/json',
           },
           body: JSON.stringify({
-            from: process.env.RESEND_FROM || `${BUSINESS_NAME} <${senderEmail}>`,
+            from: cleanEnv(process.env.RESEND_FROM) || `${BUSINESS_NAME} <${senderEmail}>`,
             to: [targetInbox],
             reply_to: trimmedEmail || undefined,
             subject: subject,
@@ -210,21 +214,34 @@ Dispatch: 0456 579 811
       }
     }
 
-    // Transport 2: SMTP via Nodemailer (Direct inbox delivery for cPanel, Gmail, or Microsoft 365)
-    if (!dispatched && process.env.SMTP_HOST && process.env.SMTP_USER && process.env.SMTP_PASS) {
+    // Transport 2: SMTP via Nodemailer (Direct inbox delivery for Hostinger, cPanel, Gmail, or Microsoft 365)
+    const smtpHost = cleanEnv(process.env.SMTP_HOST);
+    const smtpUser = cleanEnv(process.env.SMTP_USER);
+    const smtpPass = cleanEnv(process.env.SMTP_PASS);
+    const smtpPort = parseInt(cleanEnv(process.env.SMTP_PORT) || '465', 10);
+    const smtpSecure = cleanEnv(process.env.SMTP_SECURE) === 'true' || smtpPort === 465;
+    const smtpFrom = cleanEnv(process.env.SMTP_FROM) || smtpUser;
+
+    if (!dispatched && smtpHost && smtpUser && smtpPass) {
       try {
         const transporter = nodemailer.createTransport({
-          host: process.env.SMTP_HOST,
-          port: parseInt(process.env.SMTP_PORT || '587', 10),
-          secure: process.env.SMTP_SECURE === 'true' || process.env.SMTP_PORT === '465',
+          host: smtpHost,
+          port: smtpPort,
+          secure: smtpSecure,
           auth: {
-            user: process.env.SMTP_USER,
-            pass: process.env.SMTP_PASS,
+            user: smtpUser,
+            pass: smtpPass,
+          },
+          connectionTimeout: 10000,
+          greetingTimeout: 10000,
+          socketTimeout: 15000,
+          tls: {
+            rejectUnauthorized: false,
           },
         });
 
         await transporter.sendMail({
-          from: `"${BUSINESS_NAME}" <${process.env.SMTP_FROM || process.env.SMTP_USER}>`,
+          from: `"${BUSINESS_NAME}" <${smtpFrom}>`,
           to: targetInbox,
           replyTo: trimmedEmail || undefined,
           subject: subject,
@@ -234,16 +251,18 @@ Dispatch: 0456 579 811
 
         dispatched = true;
         providerUsed = 'smtp';
-        console.log(`[QUOTE_DELIVERY_SUCCESS] Dispatched to ${targetInbox} via SMTP (${process.env.SMTP_HOST}).`);
-      } catch (err) {
+        console.log(`[QUOTE_DELIVERY_SUCCESS] Dispatched to ${targetInbox} via SMTP (${smtpHost}).`);
+      } catch (err: unknown) {
+        smtpErrorDetails = err instanceof Error ? err.message : String(err);
         console.error('[SMTP_DISPATCH_EXCEPTION]', err);
       }
     }
 
     // Transport 3: Webhook forwarder (Zapier, Make, Slack, Discord, CRM)
-    if (process.env.LEAD_WEBHOOK_URL) {
+    const webhookUrl = cleanEnv(process.env.LEAD_WEBHOOK_URL);
+    if (webhookUrl) {
       try {
-        await fetch(process.env.LEAD_WEBHOOK_URL, {
+        await fetch(webhookUrl, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
@@ -280,6 +299,9 @@ Dispatch: 0456 579 811
       console.log(`Service: ${cleanService} | Suburb: ${cleanSuburb} | Urgency: ${cleanUrgency}`);
       console.log(`Details: ${cleanDetails}`);
       console.log(`Source: ${cleanSource} | Time: ${submissionTime}`);
+      if (smtpErrorDetails) {
+        console.log(`SMTP Dispatch Error: ${smtpErrorDetails}`);
+      }
       console.log('----------------------------------------------------');
       providerUsed = 'server_audit_log';
     }
@@ -290,6 +312,7 @@ Dispatch: 0456 579 811
       provider: providerUsed,
       businessInbox: targetInbox,
       customerName: trimmedName,
+      errorDetails: !dispatched && smtpErrorDetails ? smtpErrorDetails : undefined,
       message: `Thank you, ${trimmedName}. Your enquiry has been received and routed to ${targetInbox}. An arborist will contact you shortly at ${trimmedPhone}.`,
     }, { status: 200 });
 
