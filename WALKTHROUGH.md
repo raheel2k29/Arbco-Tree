@@ -8,7 +8,7 @@ A concise record of the audit fixes, feature implementations, and optimizations 
 
 | Version | Commit | Description | Status |
 |:---:|:---:|---|:---:|
-| **v0.5.1** | `Pending` | Enhance SMTP transport with connection timeouts, TLS compatibility & debug logging | **Staged** |
+| **v0.5.1** | `9f54242` | Enhance SMTP transport with connection timeouts, TLS compatibility & debug logging | **Live in Production** |
 | **v0.5.0** | `8548b03` | Add real compact & tracked stump grinder photos to Stump Grinding (vertical side-by-side) | **Live in Production** |
 | **v0.4.9** | `c5b72c3` | Add real arborist climbing & dismantling photos to Tree Removal (vertical side-by-side) | **Live in Production** |
 | **v0.4.8** | `83d2b76` | Add real fallen storm tree on house & fence clearance photos to Emergency Work page | **Live in Production** |
