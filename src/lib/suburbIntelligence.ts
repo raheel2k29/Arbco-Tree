@@ -36,6 +36,7 @@ export interface SuburbContentResult {
   sidebarPitch: string;
   zoneKey: string;
   h1Subtitle: string;
+  categoryBadge?: string;
   challengesSection?: {
     heading: string;
     introParagraphs: string[];
@@ -46,6 +47,11 @@ export interface SuburbContentResult {
     heading: string;
     paragraphs: string[];
   };
+  additionalSections?: {
+    heading: string;
+    paragraphs: string[];
+    bulletPoints?: string[];
+  }[];
   quoteCtaSection?: {
     heading: string;
     paragraphs: string[];
@@ -2796,8 +2802,10 @@ export function getSuburbPageContent(suburbName: string, serviceId: string, serv
     sidebarPitch: serviceFocus.sidebarPitch,
     zoneKey,
     h1Subtitle: override?.h1Subtitle || generateSuburbH1Subtitle(serviceId, zoneKey),
+    categoryBadge: override?.categoryBadge,
     challengesSection: override?.challengesSection,
     stormDamagedSection: override?.stormDamagedSection,
+    additionalSections: override?.additionalSections,
     quoteCtaSection: override?.quoteCtaSection,
   };
 }

@@ -142,7 +142,7 @@ export default async function ServiceAreaPage({ params }: { params: Promise<{ sl
         
         <div className="max-w-[1440px] mx-auto text-center relative z-10">
           <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#7cc043]/20 border border-[#7cc043]/30 text-[#7cc043] text-xs font-bold tracking-widest uppercase mb-6">
-            <span>🌿</span> {content.environmentalProfile.zoneName}
+            <span>🌿</span> {content.categoryBadge || content.environmentalProfile.zoneName}
           </div>
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight font-heading mb-3">
             {serviceData.name} <span className="text-[#7cc043]">{suburbName}</span>
@@ -349,6 +349,29 @@ export default async function ServiceAreaPage({ params }: { params: Promise<{ sl
                 ))}
               </div>
             )}
+
+            {/* Additional Custom Suburb Sections (When present in bespoke data) */}
+            {content.additionalSections && content.additionalSections.map((sec, sIdx) => (
+              <div key={`add-sec-${sIdx}`} className="not-prose my-10 pt-4">
+                <h2 className="text-2xl lg:text-3xl font-extrabold text-emerald-950 font-heading mb-4">
+                  {sec.heading}
+                </h2>
+                {sec.paragraphs.map((p, pIdx) => (
+                  <p key={`add-p-${sIdx}-${pIdx}`} className="text-slate-700 leading-relaxed text-base lg:text-lg mb-3">
+                    {p}
+                  </p>
+                ))}
+                {sec.bulletPoints && sec.bulletPoints.length > 0 && (
+                  <ul className="space-y-2.5 my-4 pl-5 list-disc text-slate-700 text-base lg:text-lg">
+                    {sec.bulletPoints.map((bp, bpIdx) => (
+                      <li key={`add-bp-${sIdx}-${bpIdx}`} className="leading-relaxed">
+                        {bp}
+                      </li>
+                    ))}
+                  </ul>
+                )}
+              </div>
+            ))}
 
             {/* Content Image 2 */}
             <div className="my-8 rounded-2xl overflow-hidden shadow-md">
