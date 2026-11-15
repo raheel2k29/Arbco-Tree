@@ -6,6 +6,11 @@ export interface SuburbServiceOverride {
   categoryBadge?: string;
   h1Subtitle?: string;
   heroDescription?: string;
+  introParagraphs?: string[];
+  serviceFocusParagraphs?: string[];
+  propertyAndAccessParagraphs?: string[];
+  councilAndSafetyParagraphs?: string[];
+  whyChoosePoints?: { title: string; desc: string }[];
   processHeading?: string;
   processSteps?: { title: string; desc: string }[];
   faqs?: { question: string; answer: string }[];

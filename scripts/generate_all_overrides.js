@@ -10,9 +10,115 @@ function cleanText(t) {
   return t
     .replace(/\r/g, '')
     .replace(/\u00a0/g, ' ')
-    .replace(/^["']|["']$/g, '')
+    .replace(/^["'“”‘’]|["'“”‘’]$/g, '')
     .replace(/\s+/g, ' ')
     .trim();
+}
+
+function extractParagraphs(block) {
+  if (!block) return [];
+  const lines = block.split('\n').map(cleanText).filter(Boolean);
+  return lines.filter(l => {
+    if (l.length < 25) return false;
+    if (/^(?:KEEP|REMOVE|Retain|Do not|Please|Ensure|LOCATION:|ADD:)/i.test(l)) return false;
+    if (l.includes('internal links') && l.includes('Retain')) return false;
+    return true;
+  });
+}
+
+function parseWhyChoose(sec) {
+  if (!sec) return [];
+
+  // Pattern A: `REMOVE (?:BOX|CARD) [1-4]: ... REPLACE WITH:\nTitle\nDesc`
+  const cardMatchesA = [...sec.matchAll(/REMOVE (?:BOX|CARD) [1-4]:[\s\S]*?REPLACE WITH:[\s\n]*([^\n]+)\n([\s\S]*?)(?=(?:REMOVE (?:BOX|CARD) [1-4]:|$))/gi)];
+  if (cardMatchesA.length === 4) {
+    return cardMatchesA.map(m => {
+      const descLines = m[2].split('\n').map(cleanText).filter(l => l && !/^(?:REMOVE|REPLACE|Card|Box)/i.test(l));
+      return {
+        title: cleanText(m[1]),
+        desc: cleanText(descLines.join(' '))
+      };
+    });
+  }
+
+  // Pattern B: `(?:Box|Card)\s*[1-4][\s\S]*?REMOVE:[\s\S]*?REPLACE WITH:[\s\n]*([^\n]+)\n([\s\S]*?)(?=(?:(?:Box|Card)\s*[1-4]|$))/gi`
+  const cardMatchesB = [...sec.matchAll(/(?:Box|Card)\s*[1-4][\s\S]*?REMOVE:[\s\S]*?REPLACE WITH:[\s\n]*([^\n]+)\n([\s\S]*?)(?=(?:(?:Box|Card)\s*[1-4]|$))/gi)];
+  if (cardMatchesB.length === 4) {
+    return cardMatchesB.map(m => {
+      const descLines = m[2].split('\n').map(cleanText).filter(l => l && !/^(?:REMOVE|REPLACE|Card|Box)/i.test(l));
+      return {
+        title: cleanText(m[1]),
+        desc: cleanText(descLines.join(' '))
+      };
+    });
+  }
+
+  // Pattern C: `REPLACE WITH: ... 1. Title\nDesc ...`
+  const repMatch = sec.match(/REPLACE WITH[^\n:]*:[\s\n]*([\s\S]*)$/i);
+  if (repMatch) {
+    const block = repMatch[1].trim();
+    const numMatches = [...block.matchAll(/(?:^|\n)\s*([1-4])\.\s+([^\n]+)\n([\s\S]*?)(?=(?:\n\s*[1-4]\.\s+)|$)/g)];
+    if (numMatches.length === 4) {
+      return numMatches.map(m => {
+        const descLines = m[3].split('\n').map(cleanText).filter(l => l && !/^(?:REMOVE|REPLACE|Card|Box)/i.test(l));
+        return {
+          title: cleanText(m[2]),
+          desc: cleanText(descLines.join(' '))
+        };
+      });
+    }
+    const boxMatches = [...block.matchAll(/(?:^|\n)\s*(?:Box|Card)\s*[1-4][\s\n]+([^\n]+)\n([\s\S]*?)(?=(?:\n\s*(?:Box|Card)\s*[1-4])|$)/gi)];
+    if (boxMatches.length === 4) {
+      return boxMatches.map(m => {
+        const descLines = m[2].split('\n').map(cleanText).filter(l => l && !/^(?:REMOVE|REPLACE|Card|Box)/i.test(l));
+        return {
+          title: cleanText(m[1]),
+          desc: cleanText(descLines.join(' '))
+        };
+      });
+    }
+  }
+
+  return [];
+}
+
+function parseProcessSteps(secText) {
+  if (!secText) return [];
+
+  // Pattern A: REMOVE STEP / STEP X — REMOVE
+  if (/(?:REMOVE STEP|STEP\s*[1-4]\s*—\s*REMOVE)/i.test(secText)) {
+    const steps = [];
+    for (let i = 1; i <= 4; i++) {
+      const nextPattern = i < 4 ? `(?:REMOVE STEP ${i+1}|STEP\\s*${i+1}\\s*—\\s*REMOVE|$)` : `$`;
+      const stepRegex = new RegExp(`(?:REMOVE STEP ${i}|STEP\\s*${i}\\s*—\\s*REMOVE)[\\s\\S]*?REPLACE WITH:[\\s\\n]*([\\s\\S]*?)(?=${nextPattern})`, 'i');
+      const m = secText.match(stepRegex);
+      if (m) {
+        const lines = m[1].split('\n').map(cleanText).filter(Boolean);
+        if (lines.length > 0) {
+          const rawTitle = lines[0].replace(/^(?:Step\s*\d+:?|[1-4]\.\s*)/i, '').trim();
+          const desc = lines.slice(1).filter(l => !/^(?:REMOVE|REPLACE|STEP)/i.test(l)).join(' ');
+          steps.push({ title: cleanText(rawTitle), desc: cleanText(desc) });
+        }
+      }
+    }
+    if (steps.length === 4) return steps;
+  }
+
+  // Pattern B: Standard REPLACE WITH: 1. Title\nDesc ... 4. Title\nDesc
+  const repMatch = secText.match(/REPLACE WITH[^\n:]*:[\s\n]*([\s\S]*)$/i);
+  const block = repMatch ? repMatch[1] : secText;
+  const stepMatches = [...block.matchAll(/(?:^|\n)\s*([1-4])\.\s+([^\n]+)\n([\s\S]*?)(?=(?:\n\s*[1-4]\.\s+)|$)/g)];
+  if (stepMatches.length === 4) {
+    return stepMatches.map(m => {
+      const lines = m[3].split('\n').map(cleanText).filter(l => l && !/^(?:REMOVE|REPLACE|STEP)/i.test(l));
+      return {
+        title: cleanText(m[2]),
+        desc: cleanText(lines.join(' '))
+      };
+    });
+  }
+
+  return [];
 }
 
 function parseFile(fileName, defaultSlug) {
@@ -34,6 +140,11 @@ function parseFile(fileName, defaultSlug) {
     categoryBadge: '',
     h1Subtitle: '',
     heroDescription: '',
+    introParagraphs: [],
+    serviceFocusParagraphs: [],
+    propertyAndAccessParagraphs: [],
+    councilAndSafetyParagraphs: [],
+    whyChoosePoints: [],
     processHeading: `Our Tree Removal Process in ${suburbClean}`,
     processSteps: [],
     faqs: [],
@@ -84,16 +195,23 @@ function parseFile(fileName, defaultSlug) {
   }
 
   // 3. Category Badge, Subtitle & Hero Description
-  const catMatch = content.match(/REMOVE (?:THE )?(?:EXISTING )?(?:LOCATION LABEL|CATEGORY):[\s\S]*?REPLACE WITH:[\s\n]*([^\n]+)/i);
+  let catMatch = content.match(/(?:REMOVE (?:THE )?(?:EXISTING )?(?:LOCATION LABEL|CATEGORY LABEL|CATEGORY|LABEL):|replace the small category label above the H1:[\s\S]*?REMOVE:)[\s\S]*?REPLACE WITH:[\s\n]*([^\n]+)/i);
+  if (!catMatch) {
+    catMatch = content.match(/Remove the existing hero location label:[\s\S]*?REPLACE WITH:[\s\n]*([^\n]+)/i);
+  }
   if (catMatch) result.categoryBadge = cleanText(catMatch[1]);
 
   const subMatch = content.match(/REMOVE (?:THE )?(?:EXISTING )?SUBTITLE:[\s\S]*?REPLACE WITH:[\s\n]*([^\n]+)/i);
   if (subMatch) result.h1Subtitle = cleanText(subMatch[1]);
 
-  const descMatch = content.match(/REMOVE (?:THE )?(?:EXISTING )?(?:HERO )?DESCRIPTION:[\s\S]*?REPLACE WITH:[\s\n]*([\s\S]*?)(?=(?:Retain (?:the|both)|\d+\.\s+Replace|\n\s*\n\s*\d+\.|$))/i);
-  if (descMatch) result.heroDescription = cleanText(descMatch[1]);
+  const descMatch = content.match(/REMOVE (?:THE )?(?:EXISTING )?(?:HERO )?DESCRIPTION:[\s\S]*?REPLACE WITH:[\s\n]*([\s\S]*?)(?=\n\s*(?:(?:[1-9]|\d{2})\.\s+Replace|Also replace|Please retain|Retain|$))/i);
+  if (descMatch) {
+    result.heroDescription = cleanText(descMatch[1])
+      .replace(/(?:Please retain|Retain the existing|Retain)[^.]*\.?/gi, '')
+      .trim();
+  }
 
-  // Special case for Oak Valley style (where it's 3 consecutive REMOVE / REPLACE WITH without explicit labels)
+  // Special case for Oak Valley style
   if (!result.h1Subtitle) {
     const heroBlock = content.match(/1\.\s+Replace the hero section[\s\S]*?(?=2\.\s+Replace)/i);
     if (heroBlock) {
@@ -101,38 +219,63 @@ function parseFile(fileName, defaultSlug) {
       if (rwMatches.length >= 3) {
         result.categoryBadge = cleanText(rwMatches[0][1]);
         result.h1Subtitle = cleanText(rwMatches[1][1]);
-        result.heroDescription = cleanText(rwMatches[2][1]);
+        result.heroDescription = cleanText(rwMatches[2][1])
+          .replace(/(?:Please retain|Retain the existing|Retain)[^.]*\.?/gi, '')
+          .trim();
       }
     }
   }
 
-  // 4. Process Steps (4 steps)
-  const procMatch = content.match(/(?:Replace the (?:entire )?(?:four|four-step|entire four-step|Tree Removal Process)?\s*(?:tree\s*)?(?:removal\s*)?process(?:\s+section)?[\s\S]*?REPLACE WITH[^\n:]*:[\s\n]*)([\s\S]*?)(?=\n\s*(?:(?:[12]\d|[89])\.\s+Replace|\d+\.\s+Add|\d+\.\s+Preserve|$))/i);
+  // 4. Intro Paragraphs (Section 2)
+  const introMatch = content.match(/(?:(?:[1-9]|\d{2})\.\s+(?:Replace\s+(?:all\s+|the\s+)?(?:three\s+)?introduct[a-z\s]+|Introduction)[\s\S]*?REPLACE[^\n:]*WITH:[\s\n]*)([\s\S]*?)(?=\n\s*(?:(?:[1-9]|\d{2})\.\s+Replace|\d+\.\s+Add|\d+\.\s+Check|$))/i);
+  if (introMatch) {
+    const paragraphs = extractParagraphs(introMatch[1]);
+    if (paragraphs.length > 0) result.introParagraphs = paragraphs;
+  }
+
+  // 5. Service Focus Paragraphs (Section 5)
+  const sfMatch = content.match(/(?:(?:[1-9]|\d{2})\.\s+Replace[^\n]*Safe,?\s*Precision[\s\S]*?REPLACE[^\n:]*WITH:[\s\n]*)([\s\S]*?)(?=\n\s*(?:(?:[1-9]|\d{2})\.\s+Replace|\d+\.\s+Add|$))/i);
+  if (sfMatch) {
+    const paragraphs = extractParagraphs(sfMatch[1]);
+    if (paragraphs.length > 0) result.serviceFocusParagraphs = paragraphs;
+  }
+
+  // 6. Property Access Paragraphs (Section 6)
+  const paMatch = content.match(/(?:(?:[1-9]|\d{2})\.\s+Replace[^\n]*Property\s*Access[\s\S]*?REPLACE[^\n:]*WITH:[\s\n]*)([\s\S]*?)(?=\n\s*(?:(?:[1-9]|\d{2})\.\s+Replace|\d+\.\s+Add|$))/i);
+  if (paMatch) {
+    const paragraphs = extractParagraphs(paMatch[1]);
+    if (paragraphs.length > 0) result.propertyAndAccessParagraphs = paragraphs;
+  }
+
+  // 7. Council & Safety Paragraphs (Section 7)
+  const cMatch = content.match(/(?:(?:[1-9]|\d{2})\.\s+Replace[^\n]*(?:council|Townsville City Council)[\s\S]*?REPLACE[^\n:]*WITH:[\s\n]*)([\s\S]*?)(?=\n\s*(?:(?:[1-9]|\d{2})\.\s+Replace|\d+\.\s+Add|$))/i);
+  if (cMatch) {
+    const paragraphs = extractParagraphs(cMatch[1]);
+    if (paragraphs.length > 0) result.councilAndSafetyParagraphs = paragraphs;
+  }
+
+  // 8. Why Choose Benefit Cards (Section 8)
+  const secMatch = content.match(/(?:(?:[1-9]|\d{2})\.\s+(?:Replace[^\n]*Why Choose|Why Choose[^\n]*replace)[\s\S]*?)(?=\n\s*(?:(?:[1-9]|\d{2})\.\s+Replace|\d+\.\s+Add|$))/i);
+  const wcPts = parseWhyChoose(secMatch ? secMatch[0] : '');
+  if (wcPts.length === 4) {
+    result.whyChoosePoints = wcPts;
+  }
+
+  // 9. Process Steps (4 steps)
+  const procMatch = content.match(/(?:Replace the (?:entire )?(?:four|four-step|entire four-step|Tree Removal Process)?\s*(?:tree\s*)?(?:removal\s*)?process(?:\s+section)?[\s\S]*?)(?=\n\s*(?:(?:[12]\d|[89])\.\s+Replace|\d+\.\s+Add|\d+\.\s+Preserve|$))/i);
   if (procMatch) {
-    const stepMatches = [...procMatch[1].matchAll(/(?:^|\n)\s*([1-4])\.\s+([^\n]+)\n([\s\S]*?)(?=(?:\n\s*[1-4]\.\s+)|$)/g)];
-    for (const sm of stepMatches) {
-      result.processSteps.push({
-        title: cleanText(sm[2]),
-        desc: cleanText(sm[3])
-      });
-    }
+    result.processSteps = parseProcessSteps(procMatch[0]);
   }
 
   // Fallback for Aitkenvale style
   if (result.processSteps.length === 0) {
     const aitkenMatch = content.match(/Our Tree Removal Process in[^\n]*\n([\s\S]*?)(?=\n\s*2\.\s+Add|\n\s*\d+\.|$)/i);
     if (aitkenMatch) {
-      const stepMatches = [...aitkenMatch[1].matchAll(/(?:^|\n)\s*([1-4])\.\s+([^\n]+)\n([\s\S]*?)(?=(?:\n\s*[1-4]\.\s+)|$)/g)];
-      for (const sm of stepMatches) {
-        result.processSteps.push({
-          title: cleanText(sm[2]),
-          desc: cleanText(sm[3])
-        });
-      }
+      result.processSteps = parseProcessSteps(aitkenMatch[0]);
     }
   }
 
-  // 5. FAQs (5 FAQs)
+  // 10. FAQs (5 FAQs)
   const sections = content.split(/(?=(?:^|\n)\s*\d+\.\s+)/);
   for (const sec of sections) {
     if (!/^\s*\d+\.\s+Replace[\s\S]*?FAQ/i.test(sec)) continue;
@@ -188,9 +331,9 @@ function parseFile(fileName, defaultSlug) {
     }
   }
 
-  // 6. Additional Sections (Challenges, Storm, and Custom)
+  // 11. Additional Sections (Challenges, Storm, and Custom)
   for (const sec of sections) {
-    if (!/^\s*\d+\.\s+Add/i.test(sec)) continue;
+    if (!/^\s*\d+\.\s+Add\s+/i.test(sec)) continue;
     const titleMatch = sec.match(/^\s*\d+\.\s+Add\s+(?:a\s+|a\s+new\s+|an\s+)?(?:section\s+about\s+)?([^\n]+)/i);
     const repMatch = sec.match(/ADD[^\n:]*:[\s\n]*([\s\S]*)$/i);
     if (repMatch) {
@@ -198,6 +341,18 @@ function parseFile(fileName, defaultSlug) {
       const lines = block.split('\n').map(cleanText).filter(Boolean);
       if (lines.length > 0) {
         const heading = lines[0];
+
+        // Filter out internal reviewer/SEO notes
+        const hLower = heading.toLowerCase();
+        if (hLower.includes('seo') || 
+            hLower.includes('technical') || 
+            hLower.includes('checklist') || 
+            hLower.includes('schema') || 
+            hLower.includes('audit') || 
+            hLower.includes('the authorised site')) {
+          continue;
+        }
+
         const paragraphs = [];
         const bullets = [];
         for (let i = 1; i < lines.length; i++) {
@@ -235,7 +390,7 @@ function parseFile(fileName, defaultSlug) {
     }
   }
 
-  // 7. Quote CTA Section
+  // 12. Quote CTA Section
   const contactMatch = content.match(/(?:Replace the main contact section|Add a clear local call-to-action)[\s\S]*?(?:REPLACE WITH|ADD THE FOLLOWING EXACT CONTENT|ADD:):[\s\n]*([\s\S]*?)(?=\n\s*(?:Retain|\d+\.\s+Replace|\d+\.\s+Preserve|\d+\.\s+Update|\d+\.\s+Technical|Confirm|$))/i);
   if (contactMatch) {
     const lines = contactMatch[1].split('\n').map(cleanText).filter(l => l && !l.startsWith('KEEP THE HEADING') && !l.startsWith('REMOVE'));
@@ -255,7 +410,6 @@ const overrides = {};
 for (const item of manifest) {
   const parsed = parseFile(item.TxtFile, item.Slug);
   if (parsed && item.Slug) {
-    // Save under the slug key
     overrides[item.Slug] = parsed;
   }
 }
@@ -272,4 +426,4 @@ if (!fs.existsSync(outDir)) {
 }
 
 fs.writeFileSync(path.join(outDir, 'suburbOverrides.json'), JSON.stringify(overrides, null, 2), 'utf8');
-console.log(`Generated overrides for ${Object.keys(overrides).length} suburbs in src/data/suburbOverrides.json`);
+console.log(`Generated enhanced overrides for ${Object.keys(overrides).length} suburbs in src/data/suburbOverrides.json`);
