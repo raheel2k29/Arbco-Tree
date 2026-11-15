@@ -1,9 +1,7 @@
 import React from 'react';
 import { generateSuburbH1Subtitle } from './seoMetadata';
-
-// ============================================================================
-// Types
-// ============================================================================
+import { slugify } from './locationData';
+import { suburbServiceOverrides } from './suburbBespokeOverrides';
 
 export interface SuburbEnvironmentalProfile {
   zoneName: string;
@@ -38,6 +36,20 @@ export interface SuburbContentResult {
   sidebarPitch: string;
   zoneKey: string;
   h1Subtitle: string;
+  challengesSection?: {
+    heading: string;
+    introParagraphs: string[];
+    bulletPoints: string[];
+    footerParagraph?: string;
+  };
+  stormDamagedSection?: {
+    heading: string;
+    paragraphs: string[];
+  };
+  quoteCtaSection?: {
+    heading: string;
+    paragraphs: string[];
+  };
 }
 
 export interface BespokeSuburbData {
@@ -2758,8 +2770,11 @@ export function getSuburbPageContent(suburbName: string, serviceId: string, serv
   const propertyAccess = generatePropertyAndAccess(serviceId, suburbName, env, data);
   const councilSafety = generateCouncilAndSafety(serviceId, suburbName, env, data);
 
+  const overrideKey = `${serviceId}-${slugify(suburbName)}`;
+  const override = suburbServiceOverrides[overrideKey];
+
   return {
-    heroDescription: serviceFocus.heroDescription,
+    heroDescription: override?.heroDescription || serviceFocus.heroDescription,
     h2: `${serviceName} ${suburbName} — Certified Local Specialists`,
     introParagraphs,
     environmentalProfile: env,
@@ -2771,16 +2786,19 @@ export function getSuburbPageContent(suburbName: string, serviceId: string, serv
     councilAndSafetyParagraphs: councilSafety.paragraphs,
     whyChooseHeading: `Why Choose Arbco for ${serviceName} in ${suburbName}?`,
     whyChoosePoints: serviceFocus.whyChoosePoints,
-    processHeading: `Our ${serviceName} Process in ${suburbName}`,
-    processSteps: serviceFocus.processSteps,
+    processHeading: override?.processHeading || `Our ${serviceName} Process in ${suburbName}`,
+    processSteps: override?.processSteps || serviceFocus.processSteps,
     faqHeading: `Frequently Asked Questions About ${serviceName} in ${suburbName}`,
-    faqs,
+    faqs: override?.faqs || faqs,
     ctaHeadline: serviceFocus.ctaHeadline,
     ctaText: serviceFocus.ctaText,
     sidebarHeading: serviceFocus.sidebarHeading,
     sidebarPitch: serviceFocus.sidebarPitch,
     zoneKey,
-    h1Subtitle: generateSuburbH1Subtitle(serviceId, zoneKey)
+    h1Subtitle: override?.h1Subtitle || generateSuburbH1Subtitle(serviceId, zoneKey),
+    challengesSection: override?.challengesSection,
+    stormDamagedSection: override?.stormDamagedSection,
+    quoteCtaSection: override?.quoteCtaSection,
   };
 }
 

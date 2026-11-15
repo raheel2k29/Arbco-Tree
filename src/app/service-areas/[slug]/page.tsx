@@ -308,6 +308,48 @@ export default async function ServiceAreaPage({ params }: { params: Promise<{ sl
               </p>
             ))}
 
+            {/* Suburb-Specific Challenges Section (When present in bespoke data) */}
+            {content.challengesSection && (
+              <div className="not-prose my-10 pt-4">
+                <h2 className="text-2xl lg:text-3xl font-extrabold text-emerald-950 font-heading mb-4">
+                  {content.challengesSection.heading}
+                </h2>
+                {content.challengesSection.introParagraphs.map((p, idx) => (
+                  <p key={`challenge-p-${idx}`} className="text-slate-700 leading-relaxed text-base lg:text-lg mb-3">
+                    {p}
+                  </p>
+                ))}
+                {content.challengesSection.bulletPoints.length > 0 && (
+                  <ul className="space-y-2.5 my-4 pl-5 list-disc text-slate-700 text-base lg:text-lg">
+                    {content.challengesSection.bulletPoints.map((bp, idx) => (
+                      <li key={`challenge-bp-${idx}`} className="leading-relaxed">
+                        {bp}
+                      </li>
+                    ))}
+                  </ul>
+                )}
+                {content.challengesSection.footerParagraph && (
+                  <p className="text-slate-700 leading-relaxed text-base lg:text-lg mt-4">
+                    {content.challengesSection.footerParagraph}
+                  </p>
+                )}
+              </div>
+            )}
+
+            {/* Storm-Damaged Tree Removal Section (When present in bespoke data) */}
+            {content.stormDamagedSection && (
+              <div className="not-prose my-10 pt-4">
+                <h2 className="text-2xl lg:text-3xl font-extrabold text-emerald-950 font-heading mb-4">
+                  {content.stormDamagedSection.heading}
+                </h2>
+                {content.stormDamagedSection.paragraphs.map((p, idx) => (
+                  <p key={`storm-p-${idx}`} className="text-slate-700 leading-relaxed text-base lg:text-lg mb-4">
+                    {p}
+                  </p>
+                ))}
+              </div>
+            )}
+
             {/* Content Image 2 */}
             <div className="my-8 rounded-2xl overflow-hidden shadow-md">
               <img src={serviceData.contentImage2} alt={`Professional Arborists in ${suburbName}`} className="w-full h-auto object-cover max-h-[400px]" />
@@ -342,9 +384,9 @@ export default async function ServiceAreaPage({ params }: { params: Promise<{ sl
             </div>
 
             {/* Tailored Service Process */}
-            <h3 className="text-2xl font-extrabold text-emerald-950 font-heading mt-12 mb-6">
+            <h2 className="text-2xl font-extrabold text-emerald-950 font-heading mt-12 mb-6">
               {content.processHeading}
-            </h3>
+            </h2>
             <div className="not-prose space-y-4 my-6">
               {content.processSteps.map((step, idx) => (
                 <div key={idx} className="flex items-start gap-4 p-5 rounded-2xl bg-slate-50 border border-slate-100">
@@ -352,7 +394,7 @@ export default async function ServiceAreaPage({ params }: { params: Promise<{ sl
                     {idx + 1}
                   </span>
                   <div>
-                    <h4 className="font-extrabold text-slate-900 text-base font-heading mb-1">{step.title}</h4>
+                    <h3 className="font-extrabold text-slate-900 text-base font-heading mb-1">{step.title}</h3>
                     <p className="text-slate-600 text-sm leading-relaxed">{step.desc}</p>
                   </div>
                 </div>
@@ -360,9 +402,9 @@ export default async function ServiceAreaPage({ params }: { params: Promise<{ sl
             </div>
 
             {/* Localized Frequently Asked Questions */}
-            <h3 className="text-2xl font-extrabold text-emerald-950 font-heading mt-12 mb-6">
+            <h2 className="text-2xl font-extrabold text-emerald-950 font-heading mt-12 mb-6">
               {content.faqHeading}
-            </h3>
+            </h2>
             <div className="not-prose space-y-4 mt-6">
               {content.faqs.map((faq, idx) => (
                 <div key={idx} className="p-6 rounded-2xl bg-slate-50 border border-slate-100">
@@ -376,6 +418,34 @@ export default async function ServiceAreaPage({ params }: { params: Promise<{ sl
                 </div>
               ))}
             </div>
+
+            {/* Dedicated Local Quote CTA Section (When present in bespoke data) */}
+            {content.quoteCtaSection && (
+              <div className="not-prose my-12 p-8 lg:p-10 rounded-3xl bg-[#f4fbf6] border border-[#7cc043]/40 shadow-xs">
+                <h2 className="text-2xl lg:text-3xl font-extrabold text-emerald-950 font-heading mb-4">
+                  {content.quoteCtaSection.heading}
+                </h2>
+                {content.quoteCtaSection.paragraphs.map((p, idx) => (
+                  <p key={`quote-p-${idx}`} className="text-slate-700 leading-relaxed text-base lg:text-lg mb-3">
+                    {p}
+                  </p>
+                ))}
+                <div className="mt-6 flex items-center gap-4 flex-wrap">
+                  <a
+                    href="tel:0456579811"
+                    className="inline-flex items-center justify-center rounded-xl bg-[#036829] text-white font-extrabold px-8 py-4 shadow-md hover:bg-[#024a1d] transition-colors font-heading text-sm"
+                  >
+                    📞 Call 0456 579 811
+                  </a>
+                  <Link
+                    href="/quote"
+                    className="inline-flex items-center justify-center rounded-xl bg-white text-[#036829] border border-[#036829]/30 font-extrabold px-8 py-4 shadow-xs hover:bg-slate-50 transition-colors font-heading text-sm"
+                  >
+                    Request a Free Quote →
+                  </Link>
+                </div>
+              </div>
+            )}
 
             {/* Suburb Assessment CTA Card */}
             <div className="not-prose mt-12 p-8 bg-[#f4fbf6] rounded-3xl border border-[#7cc043]/30 text-center relative overflow-hidden shadow-sm">

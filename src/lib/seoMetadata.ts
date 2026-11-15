@@ -1,5 +1,6 @@
 import { slugify } from './locationData';
 import type { SuburbEnvironmentalProfile, BespokeSuburbData } from './suburbIntelligence';
+import { suburbServiceOverrides } from './suburbBespokeOverrides';
 
 export const PRODUCTION_DOMAIN = 'https://www.arbco.com.au';
 
@@ -501,6 +502,11 @@ export function generateSuburbSeoTitle(
   zoneKey: string,
   bespokeData?: BespokeSuburbData
 ): string {
+  const overrideKey = `${serviceId}-${slugify(suburbName)}`;
+  if (suburbServiceOverrides[overrideKey]?.seoTitle) {
+    return suburbServiceOverrides[overrideKey].seoTitle!;
+  }
+
   const zoneConfig = zoneHooks[zoneKey] || zoneHooks['alluvial-floodplain'];
   const hookData = zoneConfig[serviceId] || zoneConfig['tree-removal'];
   const hook = hookData.titleHook;
@@ -541,6 +547,11 @@ export function generateSuburbMetaDescription(
   bespokeData: any,
   zoneKey: string
 ): string {
+  const overrideKey = `${serviceId}-${slugify(suburbName)}`;
+  if (suburbServiceOverrides[overrideKey]?.metaDescription) {
+    return suburbServiceOverrides[overrideKey].metaDescription!;
+  }
+
   const zoneConfig = zoneHooks[zoneKey] || zoneHooks['alluvial-floodplain'];
   const hookData = zoneConfig[serviceId] || zoneConfig['tree-removal'];
 
