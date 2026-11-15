@@ -20,8 +20,9 @@ function extractParagraphs(block) {
   const lines = block.split('\n').map(cleanText).filter(Boolean);
   return lines.filter(l => {
     if (l.length < 25) return false;
-    if (/^(?:KEEP|REMOVE|Retain|Do not|Please|Ensure|LOCATION:|ADD:)/i.test(l)) return false;
-    if (l.includes('internal links') && l.includes('Retain')) return false;
+    if (/^(?:KEEP|REMOVE|Retain|Do not|Please|Ensure|LOCATION:|ADD:|IMPORTANT:|NOTE:)/i.test(l)) return false;
+    if (l.includes('internal links') && (l.includes('Retain') || l.includes('Preserve'))) return false;
+    if (l.includes('Retain the existing') || l.includes('Retain existing')) return false;
     return true;
   });
 }
@@ -234,21 +235,21 @@ function parseFile(fileName, defaultSlug) {
   }
 
   // 5. Service Focus Paragraphs (Section 5)
-  const sfMatch = content.match(/(?:(?:[1-9]|\d{2})\.\s+Replace[^\n]*Safe,?\s*Precision[\s\S]*?REPLACE[^\n:]*WITH:[\s\n]*)([\s\S]*?)(?=\n\s*(?:(?:[1-9]|\d{2})\.\s+Replace|\d+\.\s+Add|$))/i);
+  const sfMatch = content.match(/(?:(?:[1-9]|\d{2})\.\s+(?:Replace\s+)?(?:the\s+)?Safe,?\s*Precision[\s\S]*?REPLACE[^\n:]*WITH:[\s\n]*)([\s\S]*?)(?=\n\s*(?:(?:[1-9]|\d{2})\.\s+[A-Z]|\d+\.\s+Add|$))/i);
   if (sfMatch) {
     const paragraphs = extractParagraphs(sfMatch[1]);
     if (paragraphs.length > 0) result.serviceFocusParagraphs = paragraphs;
   }
 
   // 6. Property Access Paragraphs (Section 6)
-  const paMatch = content.match(/(?:(?:[1-9]|\d{2})\.\s+Replace[^\n]*Property\s*Access[\s\S]*?REPLACE[^\n:]*WITH:[\s\n]*)([\s\S]*?)(?=\n\s*(?:(?:[1-9]|\d{2})\.\s+Replace|\d+\.\s+Add|$))/i);
+  const paMatch = content.match(/(?:(?:[1-9]|\d{2})\.\s+(?:Replace\s+)?(?:the\s+)?Property\s*Access[\s\S]*?REPLACE[^\n:]*WITH:[\s\n]*)([\s\S]*?)(?=\n\s*(?:(?:[1-9]|\d{2})\.\s+[A-Z]|\d+\.\s+Add|$))/i);
   if (paMatch) {
     const paragraphs = extractParagraphs(paMatch[1]);
     if (paragraphs.length > 0) result.propertyAndAccessParagraphs = paragraphs;
   }
 
   // 7. Council & Safety Paragraphs (Section 7)
-  const cMatch = content.match(/(?:(?:[1-9]|\d{2})\.\s+Replace[^\n]*(?:council|Townsville City Council)[\s\S]*?REPLACE[^\n:]*WITH:[\s\n]*)([\s\S]*?)(?=\n\s*(?:(?:[1-9]|\d{2})\.\s+Replace|\d+\.\s+Add|$))/i);
+  const cMatch = content.match(/(?:(?:[1-9]|\d{2})\.\s+(?:Replace\s+)?(?:the\s+)?[^\n]*(?:council|planning|environmental)[\s\S]*?REPLACE[^\n:]*WITH:[\s\n]*)([\s\S]*?)(?=\n\s*(?:(?:[1-9]|\d{2})\.\s+[A-Z]|\d+\.\s+Add|$))/i);
   if (cMatch) {
     const paragraphs = extractParagraphs(cMatch[1]);
     if (paragraphs.length > 0) result.councilAndSafetyParagraphs = paragraphs;
