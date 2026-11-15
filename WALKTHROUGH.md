@@ -8,6 +8,7 @@ A concise record of the audit fixes, feature implementations, and optimizations 
 
 | Version | Commit | Description | Status |
 |:---:|:---:|---|:---:|
+| **v0.5.3** | `f0e2f88` | Implement all 83 client-specified suburb service page rewrites (process, FAQs, challenges, SEO) | **Live in Production** |
 | **v0.5.2** | `723577e` | Implement client-specified content, process, challenges, FAQs & SEO for Aitkenvale | **Live in Production** |
 | **v0.5.1** | `9f54242` | Enhance SMTP transport with connection timeouts, TLS compatibility & debug logging | **Live in Production** |
 | **v0.5.0** | `8548b03` | Add real compact & tracked stump grinder photos to Stump Grinding (vertical side-by-side) | **Live in Production** |
