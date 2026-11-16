@@ -18,8 +18,6 @@ export async function GET() {
     console.error('Error in /api/reviews route handler:', error);
     return NextResponse.json(
       {
-        rating: 5.0,
-        userRatingCount: 1,
         googleMapsUri: 'https://search.google.com/local/reviews?placeid=ChIJG-YJIXv51WsR13gvhrSbQYA',
         reviews: [],
         isFallback: true,

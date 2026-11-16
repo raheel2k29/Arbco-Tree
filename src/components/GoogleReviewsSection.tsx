@@ -6,8 +6,6 @@ import { GOOGLE_MAPS_REVIEW_URL, GoogleReviewItem, GoogleReviewsResponse } from 
 
 export default function GoogleReviewsSection() {
   const [data, setData] = useState<GoogleReviewsResponse>({
-    rating: 5.0,
-    userRatingCount: 1,
     googleMapsUri: GOOGLE_MAPS_REVIEW_URL,
     reviews: [],
     isFallback: true,
@@ -41,8 +39,6 @@ export default function GoogleReviewsSection() {
   }, []);
 
   const mapsUrl = data.googleMapsUri || GOOGLE_MAPS_REVIEW_URL;
-  const rating = (data.rating || 5.0).toFixed(1);
-  const count = data.userRatingCount || 1;
 
   return (
     <section id="reviews" className="py-20 lg:py-28 bg-white border-t border-slate-100">
@@ -80,24 +76,26 @@ export default function GoogleReviewsSection() {
             Authentic feedback from local homeowners and property managers across Greater Townsville.
           </p>
 
-          {/* Rating Summary Bar */}
-          <div className="pt-2 flex flex-wrap items-center justify-center gap-3">
-            <div className="flex items-center gap-1.5 bg-amber-50 border border-amber-200/80 px-4 py-2 rounded-2xl">
-              <span className="text-2xl font-black text-slate-900">{rating}</span>
-              <div className="flex text-amber-400 text-lg leading-none" aria-label={`${rating} out of 5 stars`}>
-                {"★".repeat(Math.round(Number(rating)))}
+          {/* Dynamic Rating Summary Bar (Rendered ONLY when returned from Google Places API) */}
+          {typeof data.rating === "number" && typeof data.userRatingCount === "number" && (
+            <div className="pt-2 flex flex-wrap items-center justify-center gap-3">
+              <div className="flex items-center gap-1.5 bg-amber-50 border border-amber-200/80 px-4 py-2 rounded-2xl">
+                <span className="text-2xl font-black text-slate-900">{data.rating.toFixed(1)}</span>
+                <div className="flex text-amber-400 text-lg leading-none" aria-label={`${data.rating} out of 5 stars`}>
+                  {"★".repeat(Math.round(data.rating))}
+                </div>
               </div>
-            </div>
 
-            <div className="text-left text-xs sm:text-sm text-slate-600 font-medium">
-              <div className="font-bold text-slate-900">
-                {count === 1 ? "1 Verified Review" : `${count} Verified Reviews`}
-              </div>
-              <div className="flex items-center gap-1 text-slate-500">
-                <span>on Google Maps</span>
+              <div className="text-left text-xs sm:text-sm text-slate-600 font-medium">
+                <div className="font-bold text-slate-900">
+                  {data.userRatingCount === 1 ? "1 Verified Review" : `${data.userRatingCount} Verified Reviews`}
+                </div>
+                <div className="flex items-center gap-1 text-slate-500">
+                  <span>on Google Maps</span>
+                </div>
               </div>
             </div>
-          </div>
+          )}
         </div>
 
         {/* Review Cards Grid */}
@@ -108,7 +106,7 @@ export default function GoogleReviewsSection() {
             ))}
           </div>
         ) : (
-          /* Graceful State when API key is pending or 1 review is loading */
+          /* Clean Card linking to Google Maps reviews */
           <div className="max-w-2xl mx-auto bg-slate-50 border border-slate-200/80 rounded-3xl p-8 sm:p-10 shadow-sm text-center space-y-6">
             <div className="w-14 h-14 mx-auto rounded-2xl bg-white border border-slate-200 flex items-center justify-center shadow-xs">
               <svg className="w-7 h-7" viewBox="0 0 24 24">
@@ -131,14 +129,11 @@ export default function GoogleReviewsSection() {
               </svg>
             </div>
             <div className="space-y-2">
-              <div className="flex items-center justify-center gap-1 text-amber-400 text-xl font-bold">
-                ★★★★★
-              </div>
               <h3 className="text-xl font-bold text-slate-900 font-heading">
-                5.0-Star Rated Tree Services on Google
+                Verified Customer Feedback on Google
               </h3>
               <p className="text-sm text-slate-600 font-sans max-w-md mx-auto leading-relaxed">
-                See our latest customer reviews, ratings, and job photos directly on our verified Google Maps business listing.
+                See authentic customer reviews, ratings, and job photos directly on our verified Google Maps business listing.
               </p>
             </div>
             <div className="pt-2">

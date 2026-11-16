@@ -27,8 +27,8 @@ async function runTests() {
   // 3. Test Graceful Fallback (when API key is absent)
   delete process.env.GOOGLE_PLACES_API_KEY;
   const fallback = await fetchGooglePlacesReviews();
-  assert(fallback.rating === 5.0, 'Fallback rating is 5.0');
-  assert(fallback.userRatingCount >= 1, 'Fallback userRatingCount >= 1');
+  assert(fallback.rating === undefined, 'Fallback does not hardcode rating without API');
+  assert(fallback.userRatingCount === undefined, 'Fallback does not hardcode review count without API');
   assert(fallback.isFallback === true, 'Fallback flag is true when key not configured');
   assert(fallback.googleMapsUri.includes(GOOGLE_PLACE_ID), 'Fallback contains valid Google Maps review URI');
 

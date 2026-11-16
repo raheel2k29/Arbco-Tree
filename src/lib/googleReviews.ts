@@ -25,8 +25,8 @@ export interface GoogleReviewItem {
 }
 
 export interface GoogleReviewsResponse {
-  rating: number;
-  userRatingCount: number;
+  rating?: number;
+  userRatingCount?: number;
   googleMapsUri: string;
   reviews: GoogleReviewItem[];
   isFallback: boolean;
@@ -38,10 +38,8 @@ export interface GoogleReviewsResponse {
 export async function fetchGooglePlacesReviews(): Promise<GoogleReviewsResponse> {
   const apiKey = process.env.GOOGLE_PLACES_API_KEY;
 
-  // Fallback data when API key is not configured or in development
+  // Fallback data without hardcoded rating/count (only populated by genuine API response)
   const fallbackData: GoogleReviewsResponse = {
-    rating: 5.0,
-    userRatingCount: 1,
     googleMapsUri: GOOGLE_MAPS_REVIEW_URL,
     reviews: [],
     isFallback: true,
@@ -98,8 +96,8 @@ export async function fetchGooglePlacesReviews(): Promise<GoogleReviewsResponse>
     }));
 
     return {
-      rating: typeof data.rating === 'number' ? data.rating : 5.0,
-      userRatingCount: typeof data.userRatingCount === 'number' ? data.userRatingCount : reviews.length || 1,
+      rating: typeof data.rating === 'number' ? data.rating : undefined,
+      userRatingCount: typeof data.userRatingCount === 'number' ? data.userRatingCount : undefined,
       googleMapsUri: data.googleMapsUri || GOOGLE_MAPS_REVIEW_URL,
       reviews,
       isFallback: false,
