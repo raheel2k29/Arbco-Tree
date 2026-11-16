@@ -31,6 +31,8 @@ export interface GoogleReviewsResponse {
   reviews: GoogleReviewItem[];
   isFallback: boolean;
   businessName?: string;
+  debugStatus?: string;
+  debugMessage?: string;
 }
 
 export async function fetchGooglePlacesReviews(): Promise<GoogleReviewsResponse> {
@@ -47,8 +49,10 @@ export async function fetchGooglePlacesReviews(): Promise<GoogleReviewsResponse>
   };
 
   if (!apiKey) {
-    // API key not set yet (e.g. during build or pending Vercel variable deployment)
-    return fallbackData;
+    return {
+      ...fallbackData,
+      debugStatus: 'missing_key'
+    };
   }
 
   try {
@@ -59,7 +63,7 @@ export async function fetchGooglePlacesReviews(): Promise<GoogleReviewsResponse>
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
-        'X-Goog-Api-Key': apiKey,
+        'X-Goog-Api-Key': apiKey.trim(),
         'X-Goog-FieldMask': fieldMask,
         'Accept-Language': 'en'
       },
@@ -70,7 +74,11 @@ export async function fetchGooglePlacesReviews(): Promise<GoogleReviewsResponse>
     if (!res.ok) {
       const errorText = await res.text().catch(() => '');
       console.warn(`[Google Places API] Request failed with HTTP ${res.status}: ${errorText.substring(0, 150)}`);
-      return fallbackData;
+      return {
+        ...fallbackData,
+        debugStatus: `api_error_${res.status}`,
+        debugMessage: errorText.substring(0, 200)
+      };
     }
 
     const data = await res.json();

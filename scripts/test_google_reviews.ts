@@ -46,7 +46,7 @@ async function runTests() {
   // 5. Verify API Route Code
   const routePath = path.join(process.cwd(), 'src/app/api/reviews/route.ts');
   const routeCode = fs.readFileSync(routePath, 'utf8');
-  assert(routeCode.includes('revalidate = 86400'), 'API route defines 24-hour cache revalidation (complying with Google max 30-day storage policy)');
+  assert(routeCode.includes('s-maxage=86400') || routeCode.includes('revalidate = 86400'), 'API route defines 24-hour cache headers (complying with Google max 30-day storage policy)');
   assert(routeCode.includes('Cache-Control'), 'API route returns public cache control headers');
 
   // 6. Verify Homepage Integration

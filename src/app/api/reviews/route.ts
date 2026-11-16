@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server';
 import { fetchGooglePlacesReviews } from '@/lib/googleReviews';
 
-export const revalidate = 86400; // Cache for 24 hours on Next.js server/edge
+export const dynamic = 'force-dynamic'; // Always evaluate dynamically at request time
 
 export async function GET() {
   try {
