@@ -7,7 +7,7 @@ import Link from "next/link";
 import { blogArticles } from "@/lib/blogData";
 import { generateHomepageJsonLd } from "@/lib/schemaStructuredData";
 import { trackQuoteSubmission } from "@/lib/analytics";
-import GoogleReviewsSection from "@/components/GoogleReviewsSection";
+import GoogleReviews from "@/components/GoogleReviews";
 
 export default function Home() {
   const [rotation, setRotation] = useState(0);
@@ -822,7 +822,7 @@ export default function Home() {
       </section>
 
       {/* Official Google Reviews Section (Google Places API New) */}
-      <GoogleReviewsSection />
+      <GoogleReviews />
 
       {/* Map & Service Regions */}
       <section className="py-24 bg-slate-50 border-t border-b border-slate-200/50">

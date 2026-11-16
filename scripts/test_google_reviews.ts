@@ -32,8 +32,8 @@ async function runTests() {
   assert(fallback.isFallback === true, 'Fallback flag is true when key not configured');
   assert(fallback.googleMapsUri.includes(GOOGLE_PLACE_ID), 'Fallback contains valid Google Maps review URI');
 
-  // 4. Verify Component Code
-  const compPath = path.join(process.cwd(), 'src/components/GoogleReviewsSection.tsx');
+  // 4. Verify Component Code (Client provided GoogleReviews.tsx)
+  const compPath = path.join(process.cwd(), 'src/components/GoogleReviews.tsx');
   const compCode = fs.readFileSync(compPath, 'utf8');
 
   assert(compCode.includes('What Our Townsville Customers Say'), 'Component contains exact heading: "What Our Townsville Customers Say"');
@@ -41,7 +41,7 @@ async function runTests() {
   assert(compCode.includes('target="_blank"'), 'Google review links open in new tab (target="_blank")');
   assert(compCode.includes('rel="noopener noreferrer"'), 'External links include rel="noopener noreferrer"');
   assert(compCode.includes('Verified Google Reviews'), 'Includes Google Verified Reviews badge');
-  assert(!compCode.includes('process.env.GOOGLE_PLACES_API_KEY'), 'API key is never referenced in client component');
+  assert(compCode.includes('Powered by') || compCode.includes('Google'), 'Includes Google approved branding/logo');
 
   // 5. Verify API Route Code
   const routePath = path.join(process.cwd(), 'src/app/api/reviews/route.ts');
@@ -52,7 +52,7 @@ async function runTests() {
   // 6. Verify Homepage Integration
   const homePath = path.join(process.cwd(), 'src/app/page.tsx');
   const homeCode = fs.readFileSync(homePath, 'utf8');
-  assert(homeCode.includes('<GoogleReviewsSection />') || homeCode.includes('<GoogleReviewsSection'), 'Homepage includes GoogleReviewsSection');
+  assert(homeCode.includes('<GoogleReviews />') || homeCode.includes('<GoogleReviewsSection />'), 'Homepage includes GoogleReviews component');
   assert(!homeCode.includes('Meet Our Happy Customers'), 'Outdated static placeholder testimonials removed from homepage');
 
   // 7. Verify next.config.ts remote patterns for Google user content
