@@ -7,6 +7,7 @@ import Link from "next/link";
 import { blogArticles } from "@/lib/blogData";
 import { generateHomepageJsonLd } from "@/lib/schemaStructuredData";
 import { trackQuoteSubmission } from "@/lib/analytics";
+import GoogleReviewsSection from "@/components/GoogleReviewsSection";
 
 export default function Home() {
   const [rotation, setRotation] = useState(0);
@@ -820,94 +821,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Google Reviews Section */}
-      <section id="testimonials" className="py-24 bg-white">
-        <div className="mx-auto max-w-[1440px] px-4 lg:px-8 text-center space-y-12">
-          <div className="max-w-3xl mx-auto space-y-4 reveal-slide-up">
-            <span className="text-[#036829] font-black uppercase tracking-wider text-xs">Testimonials</span>
-            <h2 className="text-3xl font-extrabold tracking-tight sm:text-4xl text-slate-900 font-heading">
-              Meet Our Happy Customers
-            </h2>
-            <div className="flex items-center justify-center gap-1 text-yellow-500 font-bold text-lg">
-              ★★★★★ <span className="text-slate-800 text-sm ml-2 font-sans font-bold">5.0 Star Google Rating</span>
-            </div>
-          </div>
-
-          <div className="overflow-hidden w-full py-4 relative reveal-zoom-in delay-150">
-            <div className="reviews-marquee-track gap-6 flex">
-              {[
-                {
-                  name: "David K.",
-                  initials: "DK",
-                  text: "Highly recommend Arbco Tree Services. They removed 3 large trees from my backyard. Safe, clean, and very competitively priced!",
-                },
-                {
-                  name: "Sarah M.",
-                  initials: "SM",
-                  text: "Professional crew, turned up on time, ground down all stumps and cleaned up so well you wouldn't even know they had been there. Fantastic job.",
-                },
-                {
-                  name: "John L.",
-                  initials: "JL",
-                  text: "I have used Arbco twice now. They are extremely careful and did a wonderful job lopping the gum tree overhanging our roof.",
-                },
-                {
-                  name: "Michael B.",
-                  initials: "MB",
-                  text: "Top class arborist service. They explained everything clearly, got the permits sorted quickly, and left the garden spotless. Outstanding work!",
-                },
-                {
-                  name: "Emily R.",
-                  initials: "ER",
-                  text: "Very professional and friendly team. Their stump grinding machinery is state-of-the-art and they cleared the site in record time. Will use again!",
-                },
-              ].concat([
-                {
-                  name: "David K.",
-                  initials: "DK",
-                  text: "Highly recommend Arbco Tree Services. They removed 3 large trees from my backyard. Safe, clean, and very competitively priced!",
-                },
-                {
-                  name: "Sarah M.",
-                  initials: "SM",
-                  text: "Professional crew, turned up on time, ground down all stumps and cleaned up so well you wouldn't even know they had been there. Fantastic job.",
-                },
-                {
-                  name: "John L.",
-                  initials: "JL",
-                  text: "I have used Arbco twice now. They are extremely careful and did a wonderful job lopping the gum tree overhanging our roof.",
-                },
-                {
-                  name: "Michael B.",
-                  initials: "MB",
-                  text: "Top class arborist service. They explained everything clearly, got the permits sorted quickly, and left the garden spotless. Outstanding work!",
-                },
-                {
-                  name: "Emily R.",
-                  initials: "ER",
-                  text: "Very professional and friendly team. Their stump grinding machinery is state-of-the-art and they cleared the site in record time. Will use again!",
-                },
-              ]).map((rev, index) => (
-                <div
-                  key={index}
-                  className="w-[350px] sm:w-[380px] bg-slate-50 p-8 rounded-3xl border border-slate-200/50 shadow-sm hover:shadow-md transition-all flex flex-col justify-between text-left font-sans shrink-0 whitespace-normal"
-                >
-                  <div>
-                    <div className="text-yellow-400 text-sm mb-2">★★★★★</div>
-                    <p className="text-slate-600 text-sm leading-relaxed italic">"{rev.text}"</p>
-                  </div>
-                  <div className="mt-4 flex items-center gap-3">
-                    <div className="h-9 w-9 rounded-full bg-emerald-100 text-emerald-800 font-black flex items-center justify-center text-xs shrink-0">
-                      {rev.initials}
-                    </div>
-                    <span className="font-bold text-xs text-slate-800">{rev.name}</span>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
+      {/* Official Google Reviews Section (Google Places API New) */}
+      <GoogleReviewsSection />
 
       {/* Map & Service Regions */}
       <section className="py-24 bg-slate-50 border-t border-b border-slate-200/50">

@@ -1,6 +1,6 @@
 {
   "name": "arbco-tree",
-  "version": "0.5.4",
+  "version": "0.5.5",
   "private": true,
   "scripts": {
     "dev": "next dev",
@@ -9,6 +9,7 @@
     "lint": "eslint",
     "test:links": "jiti scripts/verify_internal.ts",
     "test:quote": "jiti scripts/test_quote_api.ts",
+    "test:reviews": "jiti scripts/test_google_reviews.ts",
     "benchmark:ttfb": "jiti scripts/benchmark_server_response.ts"
   },
   "dependencies": {
