@@ -55,6 +55,8 @@ export async function fetchGooglePlacesReviews(): Promise<GoogleReviewsResponse>
     };
   }
 
+  const cleanApiKey = apiKey.trim().replace(/^["']|["']$/g, '').trim();
+
   try {
     const url = `https://places.googleapis.com/v1/places/${GOOGLE_PLACE_ID}`;
     const fieldMask = 'id,displayName,rating,userRatingCount,reviews,googleMapsUri';
@@ -63,7 +65,7 @@ export async function fetchGooglePlacesReviews(): Promise<GoogleReviewsResponse>
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
-        'X-Goog-Api-Key': apiKey.trim(),
+        'X-Goog-Api-Key': cleanApiKey,
         'X-Goog-FieldMask': fieldMask,
         'Accept-Language': 'en'
       },
