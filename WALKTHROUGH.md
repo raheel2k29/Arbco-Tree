@@ -8,7 +8,7 @@ A concise record of the audit fixes, feature implementations, and optimizations 
 
 | Version | Commit | Description | Status |
 |:---:|:---:|---|:---:|
-| **v0.5.5** | `6c3248b` | Official Google Places API (New) Reviews integration on homepage with Place ID `ChIJG-YJIXv51WsR13gvhrSbQYA` | **Live in Production** |
+| **v0.5.5** | `073be71` | Official Google Places API (New) Reviews integration on homepage with Place ID `ChIJG-YJIXv51WsR13gvhrSbQYA` | **Live in Production (Key Configured)** |
 | **v0.5.4** | `fed089d` | Full integration of all client body rewrites (intro, service focus, access, council, Why Choose) across 83 suburbs | **Live in Production** |
 | **v0.5.3** | `f0e2f88` | Implement all 83 client-specified suburb service page rewrites (process, FAQs, challenges, SEO) | **Live in Production** |
 | **v0.5.2** | `723577e` | Implement client-specified content, process, challenges, FAQs & SEO for Aitkenvale | **Live in Production** |
