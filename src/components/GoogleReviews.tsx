@@ -1,4 +1,6 @@
-import type { CSSProperties } from "react";
+"use client";
+
+import { useState, useEffect, type CSSProperties } from "react";
 
 type Review = {
   rating?: number;
@@ -28,36 +30,6 @@ const card: CSSProperties = {
   boxShadow: "0 1px 3px 0 rgba(0, 0, 0, 0.05)",
 };
 
-async function getReviews(): Promise<Place> {
-  const key = process.env.GOOGLE_PLACES_API_KEY;
-  const placeId = process.env.GOOGLE_PLACE_ID || "ChIJG-YJIXv51WsR13gvhrSbQYA";
-
-  if (!key || !placeId) {
-    throw new Error("Missing Google Places configuration");
-  }
-
-  const cleanKey = key.trim().replace(/^["']|["']$/g, "").trim();
-  const url =
-    `https://places.googleapis.com/v1/places/` + encodeURIComponent(placeId);
-
-  const response = await fetch(url, {
-    headers: {
-      "X-Goog-Api-Key": cleanKey,
-      "X-Goog-FieldMask":
-        "displayName,rating,userRatingCount,reviews,googleMapsUri",
-      "Accept-Language": "en-AU",
-    },
-    // Comply with Google storage & caching policies (max 30 days, 24h ISR prevents quota exhaustion)
-    next: { revalidate: 86400 },
-  });
-
-  if (!response.ok) {
-    throw new Error(`Google Places HTTP ${response.status}`);
-  }
-
-  return response.json();
-}
-
 function Stars({ rating }: { rating: number }) {
   const count = Math.max(0, Math.min(5, Math.round(rating)));
   return (
@@ -71,15 +43,57 @@ function Stars({ rating }: { rating: number }) {
   );
 }
 
-export default async function GoogleReviews() {
-  let place: Place;
-  try {
-    place = await getReviews();
-  } catch (error) {
-    console.error("Google Reviews unavailable", error);
-    // Graceful error handling: return null if API fails or is not configured so homepage continues functioning
-    return null;
-  }
+export default function GoogleReviews() {
+  const [place, setPlace] = useState<Place>({
+    displayName: { text: "Arbco Tree Services" },
+    googleMapsUri:
+      "https://search.google.com/local/reviews?placeid=ChIJG-YJIXv51WsR13gvhrSbQYA",
+    reviews: [],
+  });
+
+  useEffect(() => {
+    let isMounted = true;
+    async function loadReviews() {
+      try {
+        const res = await fetch("/api/reviews");
+        if (res.ok) {
+          const data = await res.json();
+          if (isMounted && data) {
+            setPlace({
+              displayName: { text: data.businessName || "Arbco Tree Services" },
+              rating: typeof data.rating === "number" ? data.rating : undefined,
+              userRatingCount:
+                typeof data.userRatingCount === "number"
+                  ? data.userRatingCount
+                  : undefined,
+              googleMapsUri:
+                data.googleMapsUri ||
+                "https://search.google.com/local/reviews?placeid=ChIJG-YJIXv51WsR13gvhrSbQYA",
+              reviews: (data.reviews || []).map((r: any) => ({
+                rating: r.rating,
+                text: { text: typeof r.text === "string" ? r.text : r.text?.text },
+                relativePublishTimeDescription: r.relativePublishTimeDescription,
+                googleMapsUri: r.googleMapsUri,
+                authorAttribution: {
+                  displayName: r.authorAttribution?.displayName || r.authorName,
+                  uri: r.authorAttribution?.uri || r.authorUrl,
+                  photoUri: r.authorAttribution?.photoUri || r.profilePhotoUrl,
+                },
+              })),
+            });
+          }
+        }
+      } catch (err) {
+        console.warn("Google Reviews unavailable", err);
+      }
+    }
+
+    loadReviews();
+
+    return () => {
+      isMounted = false;
+    };
+  }, []);
 
   const reviews = place.reviews ?? [];
   const mapsUrl =
@@ -157,111 +171,204 @@ export default async function GoogleReviews() {
             <Stars rating={place.rating} />
           </p>
         )}
-        <p style={{ color: "#64748b", fontSize: 14 }}>
-          Based on {place.userRatingCount ?? 0} Google ratings
-        </p>
+        {typeof place.userRatingCount === "number" && (
+          <p style={{ color: "#64748b", fontSize: 14 }}>
+            Based on {place.userRatingCount} Google ratings
+          </p>
+        )}
       </div>
 
-      <div
-        style={{
-          display: "grid",
-          gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 280px), 1fr))",
-          gap: 20,
-        }}
-      >
-        {reviews.map((review, index) => {
-          const author = review.authorAttribution;
-          return (
-            <article key={index} style={card}>
-              <div
-                style={{
-                  display: "flex",
-                  gap: 12,
-                  alignItems: "center",
-                  marginBottom: 12,
-                }}
-              >
-                {author?.photoUri && (
-                  <img
-                    src={author.photoUri}
-                    alt={author.displayName ?? "Reviewer"}
-                    width={42}
-                    height={42}
-                    referrerPolicy="no-referrer"
-                    style={{ borderRadius: "50%", objectFit: "cover" }}
-                  />
+      {reviews.length > 0 ? (
+        <div
+          style={{
+            display: "grid",
+            gridTemplateColumns:
+              "repeat(auto-fit, minmax(min(100%, 280px), 1fr))",
+            gap: 20,
+          }}
+        >
+          {reviews.map((review, index) => {
+            const author = review.authorAttribution;
+            return (
+              <article key={index} style={card}>
+                <div
+                  style={{
+                    display: "flex",
+                    gap: 12,
+                    alignItems: "center",
+                    marginBottom: 12,
+                  }}
+                >
+                  {author?.photoUri && (
+                    <img
+                      src={author.photoUri}
+                      alt={author.displayName ?? "Reviewer"}
+                      width={42}
+                      height={42}
+                      referrerPolicy="no-referrer"
+                      style={{ borderRadius: "50%", objectFit: "cover" }}
+                    />
+                  )}
+                  <div>
+                    {author?.uri ? (
+                      <a
+                        href={author.uri}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        style={{
+                          fontWeight: 600,
+                          color: "#0f172a",
+                          textDecoration: "none",
+                          fontSize: 15,
+                        }}
+                      >
+                        {author.displayName ?? "Google reviewer"}
+                      </a>
+                    ) : (
+                      <strong style={{ color: "#0f172a", fontSize: 15 }}>
+                        {author?.displayName ?? "Google reviewer"}
+                      </strong>
+                    )}
+                    <div>
+                      {review.rating != null && (
+                        <Stars rating={review.rating} />
+                      )}
+                    </div>
+                  </div>
+                </div>
+                {review.text?.text && (
+                  <p
+                    style={{
+                      whiteSpace: "pre-wrap",
+                      color: "#334155",
+                      fontSize: 14,
+                      lineHeight: 1.6,
+                      margin: "8px 0",
+                    }}
+                  >
+                    {review.text.text}
+                  </p>
                 )}
-                <div>
-                  {author?.uri ? (
+                <small
+                  style={{
+                    display: "block",
+                    color: "#94a3b8",
+                    fontSize: 12,
+                    marginTop: 6,
+                  }}
+                >
+                  {review.relativePublishTimeDescription}
+                </small>
+                {review.googleMapsUri && (
+                  <p style={{ marginTop: 10, marginBottom: 0 }}>
                     <a
-                      href={author.uri}
+                      href={review.googleMapsUri}
                       target="_blank"
                       rel="noopener noreferrer"
                       style={{
+                        color: "#036829",
+                        fontSize: 13,
                         fontWeight: 600,
-                        color: "#0f172a",
-                        textDecoration: "none",
-                        fontSize: 15,
+                        textDecoration: "underline",
                       }}
                     >
-                      {author.displayName ?? "Google reviewer"}
+                      View original review on Google Maps
                     </a>
-                  ) : (
-                    <strong style={{ color: "#0f172a", fontSize: 15 }}>
-                      {author?.displayName ?? "Google reviewer"}
-                    </strong>
-                  )}
-                  <div>
-                    {review.rating != null && <Stars rating={review.rating} />}
-                  </div>
-                </div>
-              </div>
-              {review.text?.text && (
-                <p
-                  style={{
-                    whiteSpace: "pre-wrap",
-                    color: "#334155",
-                    fontSize: 14,
-                    lineHeight: 1.6,
-                    margin: "8px 0",
-                  }}
-                >
-                  {review.text.text}
-                </p>
-              )}
-              <small
-                style={{
-                  display: "block",
-                  color: "#94a3b8",
-                  fontSize: 12,
-                  marginTop: 6,
-                }}
-              >
-                {review.relativePublishTimeDescription}
-              </small>
-              {review.googleMapsUri && (
-                <p style={{ marginTop: 10, marginBottom: 0 }}>
-                  <a
-                    href={review.googleMapsUri}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    style={{
-                      color: "#036829",
-                      fontSize: 13,
-                      fontWeight: 600,
-                      textDecoration: "underline",
-                    }}
-                  >
-                    View original review on Google Maps
-                  </a>
-                </p>
-              )}
-            </article>
-          );
-        })}
-      </div>
+                  </p>
+                )}
+              </article>
+            );
+          })}
+        </div>
+      ) : (
+        /* Clean fallback card linking to Google Maps reviews */
+        <div
+          style={{
+            maxWidth: 580,
+            margin: "0 auto",
+            backgroundColor: "#f8fafc",
+            border: "1px solid #e2e8f0",
+            borderRadius: 24,
+            padding: "36px 24px",
+            textAlign: "center",
+          }}
+        >
+          <div
+            style={{
+              width: 52,
+              height: 52,
+              margin: "0 auto 16px auto",
+              borderRadius: 16,
+              backgroundColor: "#ffffff",
+              border: "1px solid #e2e8f0",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+            }}
+          >
+            <svg width="24" height="24" viewBox="0 0 24 24">
+              <path
+                fill="#4285F4"
+                d="M23.745 12.27c0-.7-.06-1.4-.19-2.07H12v4.51h6.6c-.29 1.52-1.14 2.82-2.4 3.68v3.05h3.88c2.27-2.09 3.665-5.17 3.665-9.17z"
+              />
+              <path
+                fill="#34A853"
+                d="M12 24c3.24 0 5.95-1.08 7.93-2.91l-3.88-3.05c-1.08.72-2.45 1.16-4.05 1.16-3.12 0-5.77-2.1-6.72-4.93H1.25v3.15C3.26 21.36 7.34 24 12 24z"
+              />
+              <path
+                fill="#FBBC05"
+                d="M5.28 14.28c-.25-.72-.38-1.49-.38-2.28s.13-1.56.38-2.28V6.57H1.25C.45 8.16 0 9.94 0 12s.45 3.84 1.25 5.43l4.03-3.15z"
+              />
+              <path
+                fill="#EA4335"
+                d="M12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C17.95 1.19 15.24 0 12 0 7.34 0 3.26 2.64 1.25 6.57l4.03 3.15c.95-2.83 3.6-4.97 6.72-4.97z"
+              />
+            </svg>
+          </div>
+          <h3
+            style={{
+              fontSize: 18,
+              fontWeight: 700,
+              color: "#0f172a",
+              marginBottom: 8,
+            }}
+          >
+            Verified Customer Feedback on Google
+          </h3>
+          <p
+            style={{
+              fontSize: 14,
+              color: "#64748b",
+              lineHeight: 1.6,
+              maxWidth: 440,
+              margin: "0 auto 20px auto",
+            }}
+          >
+            See authentic customer reviews, ratings, and job photos directly on
+            our verified Google Maps business listing.
+          </p>
+          <a
+            href={mapsUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{
+              display: "inline-block",
+              backgroundColor: "#036829",
+              color: "#ffffff",
+              padding: "12px 24px",
+              borderRadius: 12,
+              fontWeight: 700,
+              fontSize: 15,
+              textDecoration: "none",
+              boxShadow: "0 2px 4px rgba(0, 0, 0, 0.1)",
+            }}
+          >
+            Read Our Google Reviews
+          </a>
+        </div>
+      )}
 
-      {mapsUrl && (
+      {mapsUrl && reviews.length > 0 && (
         <p style={{ textAlign: "center", marginTop: 32 }}>
           <a
             href={mapsUrl}
