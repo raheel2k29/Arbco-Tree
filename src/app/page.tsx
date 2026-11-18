@@ -828,20 +828,41 @@ export default function Home() {
       <section className="py-24 bg-slate-50 border-t border-b border-slate-200/50">
         <div className="mx-auto max-w-[1440px] px-4 lg:px-8">
           <div className="grid gap-12 lg:grid-cols-12 lg:items-center">
-            {/* Left side: Map representation */}
-            <div className="lg:col-span-6 h-[400px] rounded-3xl overflow-hidden relative shadow-inner">
-              <Image
-                src="https://images.unsplash.com/photo-1524661135-423995f22d0b?auto=format&fit=crop&q=80&w=1200"
-                alt="Map of Greater Townsville Queensland"
-                fill
-                className="object-cover opacity-60 mix-blend-multiply"
+            {/* Left side: Map representation (Townsville, QLD) */}
+            <div className="lg:col-span-6 h-[420px] rounded-3xl overflow-hidden relative shadow-md border border-slate-200/80 bg-slate-100">
+              <iframe
+                title="Greater Townsville Service Area Map"
+                src="https://maps.google.com/maps?q=Townsville%20QLD%2C%20Australia&t=&z=11&ie=UTF8&iwloc=&output=embed"
+                width="100%"
+                height="100%"
+                style={{ border: 0 }}
+                allowFullScreen
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                className="w-full h-full"
               />
-              <div className="absolute inset-0 bg-emerald-950/20" />
-              <div className="absolute inset-0 flex flex-col items-center justify-center p-6 text-center text-slate-900">
-                <span className="text-4xl mb-3">📍</span>
-                <h4 className="font-extrabold text-2xl text-emerald-950 font-heading">Greater Townsville Coverage</h4>
-                <p className="text-sm mt-2 text-slate-800 max-w-xs font-semibold font-sans">97 target suburbs serviced with fast-response arborist teams.</p>
+
+              {/* Floating Coverage Badge */}
+              <div className="absolute top-4 left-4 bg-white/95 backdrop-blur-md border border-slate-200/90 shadow-lg rounded-2xl px-4 py-3 flex items-center gap-3 z-10 pointer-events-none">
+                <div className="w-10 h-10 rounded-xl bg-emerald-50 border border-emerald-200 flex items-center justify-center text-emerald-700 text-lg shrink-0">
+                  📍
+                </div>
+                <div>
+                  <h4 className="font-extrabold text-sm text-slate-900 font-heading">Greater Townsville Coverage</h4>
+                  <p className="text-xs text-slate-600 font-medium font-sans">97 target suburbs serviced with fast response</p>
+                </div>
               </div>
+
+              {/* Bottom Quick-Action Link */}
+              <a
+                href="https://www.google.com/maps/search/?api=1&query=Townsville+QLD+Australia"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="absolute bottom-3 right-3 bg-white/95 hover:bg-white text-slate-800 text-xs font-bold px-3 py-1.5 rounded-xl shadow-md border border-slate-200/90 flex items-center gap-1.5 transition-colors z-10"
+              >
+                <span>View Full Map</span>
+                <span className="text-[10px]">↗</span>
+              </a>
             </div>
 
             {/* Right side: Details */}
