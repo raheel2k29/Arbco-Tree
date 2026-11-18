@@ -76,8 +76,8 @@ export default function GoogleReviews() {
                 googleMapsUri: r.googleMapsUri,
                 authorAttribution: {
                   displayName: r.authorAttribution?.displayName || r.authorName,
-                  uri: r.authorAttribution?.uri || r.authorUrl,
-                  photoUri: r.authorAttribution?.photoUri || r.profilePhotoUrl,
+                  uri: r.authorAttribution?.uri || r.authorUri || r.authorUrl,
+                  photoUri: r.authorAttribution?.photoUri || r.authorPhoto || r.profilePhotoUrl,
                 },
               })),
             });
