@@ -582,6 +582,9 @@ if (!gaComponentContent.includes('GA_MEASUREMENT_ID') || !gaComponentContent.inc
 if (!gaComponentContent.includes('a[href^="tel:"]') || !gaComponentContent.includes('trackClickToCall')) {
   errors.push('Delegated click-to-call listener for tel: links missing in src/components/GoogleAnalytics.tsx!');
 }
+if (!gaComponentContent.includes('mailto:') || !gaComponentContent.includes('trackEmailClick')) {
+  errors.push('Delegated email click listener for mailto: links missing in src/components/GoogleAnalytics.tsx!');
+}
 
 // Check Analytics helper event definitions
 if (!analyticsHelperContent.includes('generate_lead') || !analyticsHelperContent.includes('quote_submission')) {
@@ -589,6 +592,9 @@ if (!analyticsHelperContent.includes('generate_lead') || !analyticsHelperContent
 }
 if (!analyticsHelperContent.includes('click_to_call') || !analyticsHelperContent.includes('contact')) {
   errors.push('click_to_call and contact events missing in src/lib/analytics.ts!');
+}
+if (!analyticsHelperContent.includes('email_click')) {
+  errors.push('email_click event definition missing in src/lib/analytics.ts!');
 }
 
 // Check quote submission tracking across all 3 forms
