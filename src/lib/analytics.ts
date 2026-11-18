@@ -1,8 +1,8 @@
 // Google Analytics 4 (GA4) & Google Tag Manager (GTM) Event Tracking Helper
 // Supports Next.js App Router and standard gtag / dataLayer dispatches
 
-export const GA_MEASUREMENT_ID = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID || '';
-export const GTM_ID = process.env.NEXT_PUBLIC_GTM_ID || '';
+export const GA_MEASUREMENT_ID = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID || 'G-CQ4T2ZN6VD';
+export const GTM_ID = process.env.NEXT_PUBLIC_GTM_ID || 'GTM-N4TSXHTH';
 
 // Type-safe global Window interface augmentation
 declare global {
