@@ -103,6 +103,7 @@ export default function GoogleReviews() {
   return (
     <section
       id="reviews"
+      className="scroll-mt-28 sm:scroll-mt-32"
       aria-labelledby="google-reviews-heading"
       style={{
         maxWidth: 1100,
@@ -110,6 +111,8 @@ export default function GoogleReviews() {
         padding: "56px 20px",
       }}
     >
+      {/* Anchor for backward compatibility with #testimonials */}
+      <span id="testimonials" className="block -mt-28 pt-28 pointer-events-none" aria-hidden="true" />
       {/* Official Google Verified Badge */}
       <div style={{ textAlign: "center", marginBottom: 16 }}>
         <div

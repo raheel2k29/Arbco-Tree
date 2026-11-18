@@ -110,7 +110,7 @@ export default function Header() {
             <Link href="/service-areas" className="hover:text-[#036829] transition-colors">Areas We Serve</Link>
             <Link href="/blog" className="hover:text-[#036829] transition-colors">Guides</Link>
             <Link href="/#gallery" className="hover:text-[#036829] transition-colors">Gallery</Link>
-            <Link href="/#testimonials" className="hover:text-[#036829] transition-colors">Reviews</Link>
+            <Link href="/#reviews" className="hover:text-[#036829] transition-colors">Reviews</Link>
             <Link href="/contact" className="hover:text-[#036829] transition-colors">Contact</Link>
           </nav>
 
@@ -322,7 +322,7 @@ export default function Header() {
               </Link>
 
               <Link
-                href="/#testimonials"
+                href="/#reviews"
                 onClick={() => setMobileMenuOpen(false)}
                 className="flex items-center justify-between p-3 rounded-xl hover:bg-slate-50 transition-colors"
               >
