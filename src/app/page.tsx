@@ -110,20 +110,21 @@ export default function Home() {
       />
 
       {/* Hero Section */}
-      <section className="relative bg-emerald-950 py-24 lg:py-36 text-white overflow-hidden">
+      <section className="relative bg-emerald-950 pt-10 pb-16 sm:pt-16 sm:pb-24 lg:py-36 text-white overflow-hidden">
         {/* Looping HTML5 Background Video */}
-        <div className="absolute inset-0 z-0">
+        <div className="absolute top-0 left-0 right-0 h-[460px] sm:h-[560px] lg:h-full z-0 overflow-hidden">
           <video
             autoPlay
             loop
             muted
             playsInline
-            className="absolute inset-0 h-full w-full object-cover opacity-75"
+            className="h-full w-full object-cover object-[center_25%] opacity-65 lg:opacity-75"
           >
             <source src="/hero-video.mp4" type="video/mp4" />
             Your browser does not support the video tag.
           </video>
-          <div className="absolute inset-0 bg-slate-950/50" />
+          <div className="absolute inset-0 bg-gradient-to-b from-slate-950/70 via-slate-950/50 to-emerald-950 lg:hidden" />
+          <div className="hidden lg:block absolute inset-0 bg-slate-950/50" />
         </div>
         
         <div className="relative z-10 mx-auto max-w-[1440px] px-4 lg:px-8">
