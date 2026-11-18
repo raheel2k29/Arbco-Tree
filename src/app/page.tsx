@@ -120,7 +120,7 @@ export default function Home() {
             playsInline
             className="absolute inset-0 h-full w-full object-cover opacity-75"
           >
-            <source src="/hero%20sec%20video.mp4" type="video/mp4" />
+            <source src="/hero-video.mp4" type="video/mp4" />
             Your browser does not support the video tag.
           </video>
           <div className="absolute inset-0 bg-slate-950/50" />

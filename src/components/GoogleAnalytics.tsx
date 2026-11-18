@@ -2,7 +2,7 @@
 
 import React, { useEffect, useRef, Suspense } from "react";
 import Script from "next/script";
-import { usePathname, useSearchParams } from "next/navigation";
+import { usePathname } from "next/navigation";
 import {
   GA_MEASUREMENT_ID,
   GTM_ID,
@@ -16,7 +16,6 @@ import {
  */
 function PageViewTracker() {
   const pathname = usePathname();
-  const searchParams = useSearchParams();
   const isFirstRender = useRef(true);
 
   useEffect(() => {
@@ -31,8 +30,8 @@ function PageViewTracker() {
       typeof window.gtag === "function" &&
       GA_MEASUREMENT_ID
     ) {
-      const url =
-        pathname + (searchParams?.toString() ? `?${searchParams.toString()}` : "");
+      const search = window.location.search || "";
+      const url = pathname + search;
 
       window.gtag("event", "page_view", {
         page_path: url,
@@ -41,7 +40,7 @@ function PageViewTracker() {
         send_to: GA_MEASUREMENT_ID,
       });
     }
-  }, [pathname, searchParams]);
+  }, [pathname]);
 
   return null;
 }
